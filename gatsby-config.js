@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/`,
   siteMetadata: {
     author: 'Jon Leopard',
     title: `Jon Leopard | Web Developer`,
@@ -9,6 +10,8 @@ module.exports = {
   },
 
   plugins: [
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-next',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

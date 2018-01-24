@@ -1,34 +1,40 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
+import React from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import Footer from '../components/footer';
+import Header from '../components/header';
+import Page from '../components/page';
 
-import Header from "../components/Header";
-
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        { name: "description", content: "Sample" },
-        { name: "keywords", content: "sample, something" }
-      ]}
-    />
-    <Header />
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
-        paddingTop: 0
-      }}
-    >
-      {children()}
-    </div>
-  </div>
-);
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func
+const theme = {
+  fontWeight: [300, 400, 500, 600],
+  fontSizes: [12, 14, 16, 18, 20, 24, 32, 48, 64, 72],
+  colors: {
+    background: '#fcfdff',
+    heading: '#000',
+    text: '#000',
+    textHover: '#000',
+    toggleBackground: '#3336c7',
+    toggleButton: '#fcfdff',
+    border: '#e6e9ef',
+    link: '#00000',
+    primary: '#00000'
+  }
 };
 
-export default TemplateWrapper;
+const Inner = styled.div`
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 16px;
+`;
+
+export default props => (
+  <ThemeProvider theme={theme}>
+    <Page>
+      <Inner>
+        <Header />
+        {props.children()}
+        <Footer />
+      </Inner>
+    </Page>
+  </ThemeProvider>
+);

@@ -1,9 +1,11 @@
+import styledNormalize from 'styled-normalize';
 import styled, { injectGlobal } from 'styled-components';
 
 // eslint-disable-next-line no-unused-expressions
-import normalize from 'normalize.css';
-
 injectGlobal`
+
+  ${styledNormalize}
+
   ::selection {
     background-color: #A980E4;
     color: #fff;
@@ -21,7 +23,6 @@ injectGlobal`
   }
   a {
     text-decoration: none;
-    color: #000;
     &:hover {
       color: ${props => props.theme.colors.primary};
     }

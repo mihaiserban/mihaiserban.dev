@@ -12,7 +12,7 @@ const BaseType = styled(BaseComponent)`
   margin: 0;
   padding: 0;
   line-height: 1.2em;
-  color: ${props => props.theme.colors.heading};
+  color: ${props => props.theme.colors.text};
   ${fontSize};
   ${fontWeight};
   ${space};

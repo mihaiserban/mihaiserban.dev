@@ -8,15 +8,15 @@ const theme = {
   fontWeight: [300, 400, 500, 600],
   fontSizes: [12, 14, 16, 18, 20, 24, 32, 48, 64, 72],
   colors: {
-    background: '#fcfdff',
-    heading: '#000',
-    text: '#000',
-    textHover: '#000',
+    background: '#F5F5F5',
+    heading: '#00f',
+    text: '#000000',
+    textHover: '#F59AF0',
     toggleBackground: '#3336c7',
     toggleButton: '#fcfdff',
     border: '#e6e9ef',
-    link: '#00000',
-    primary: '#00000'
+    link: '#000000',
+    primary: '#F59AF0'
   }
 };
 

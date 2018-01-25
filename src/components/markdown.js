@@ -84,6 +84,7 @@ const Markdown = Box.extend`
   }
 
   a {
+    color: ${props => props.theme.colors.text};
     padding-bottom: 1px;
     border-bottom: 1px solid ${props => props.theme.colors.primary};
   }

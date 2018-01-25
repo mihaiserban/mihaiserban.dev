@@ -14,7 +14,7 @@ export default ({ children, ...otherProps }) => (
 );
 
 const StyledSectionTitle = styled(H2)`
-  color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.text};
 `;
 
 export const SectionTitle = props => (

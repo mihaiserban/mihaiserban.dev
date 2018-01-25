@@ -28,7 +28,7 @@ const Index = ({ data }) => {
           <h1>Hello, my name is Jon. I am a web developer based in Paris.</h1>
         </Section>
         <Section>
-          <SectionTitle>Recent Posts</SectionTitle>
+          <SectionTitle>Recent articles</SectionTitle>
           {posts
             .filter(post => post.node.frontmatter.title.length > 0)
             .map(({ node: post }) => (

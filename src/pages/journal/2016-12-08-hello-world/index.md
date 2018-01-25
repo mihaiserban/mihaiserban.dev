@@ -1,5 +1,5 @@
 ---
-title: "dotfile-management-with-gnu-stow"
+title: "Hello, world!
 ---
 
 First post, oh yeah!

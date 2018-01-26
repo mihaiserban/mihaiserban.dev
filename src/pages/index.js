@@ -34,10 +34,7 @@ const Index = ({ data }) => {
             .map(({ node: post }) => (
               <Box mb={2} key={post.frontmatter.title}>
                 <Text>
-                  <Link
-                    to={post.fields.slug}
-                    style={{ textDecoration: 'none' }}
-                  >
+                  <Link to={post.fields.slug} style={{ color: 'black' }}>
                     {post.frontmatter.title}
                     <PostDate is="time" dateTime={post.fields.date}>
                       {post.fields.date}

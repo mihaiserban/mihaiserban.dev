@@ -9,7 +9,7 @@ const theme = {
   fontSizes: [12, 14, 16, 18, 20, 24, 32, 48, 64, 72],
   colors: {
     background: '#F5F5F5',
-    heading: '#00f',
+    heading: '#000000',
     text: '#000000',
     textHover: '#F59AF0',
     toggleBackground: '#3336c7',

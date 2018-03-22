@@ -5,6 +5,7 @@
   "author": "Jon Leopard <contact@jonleopard.com>",
   "dependencies": {
     "gatsby": "^1.9.153",
+    "gatsby-cli": "^1.1.47",
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-google-analytics": "^1.0.15",
     "gatsby-plugin-offline": "^1.0.12",

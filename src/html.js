@@ -1,6 +1,6 @@
 import React from 'react';
 
-import favicon from 'static-assets/favicon.png';
+import favicon from 'static-assets/favicon.ico';
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {
@@ -27,6 +27,13 @@ module.exports = class HTML extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <link rel="shortcut icon" href={favicon} />
+          <meta name="author" content="Jon Leopard" />
+
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"

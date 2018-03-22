@@ -1,0 +1,88 @@
+==================================================================
+https://keybase.io/jonleopard
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.jonleopard.com
+  * I am jonleopard (https://keybase.io/jonleopard) on keybase.
+  * I have a public key with fingerprint BF82 EA02 0D9C 8289 0D0A  DE5F 8E0A 77AE AE52 C863
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012037b7da57c145dcf8fa1cc0956ee6c51d41597540b99434166e814769151e80f70a",
+      "fingerprint": "bf82ea020d9c82890d0ade5f8e0a77aeae52c863",
+      "host": "keybase.io",
+      "key_id": "8e0a77aeae52c863",
+      "kid": "0101256aeb4da815e13aa627043706996e8238f5fb0992732c037577bfa7046df9a40a",
+      "uid": "001c97fd59fca0f20f735dc7be80ac19",
+      "username": "jonleopard"
+    },
+    "merkle_root": {
+      "ctime": 1521730058,
+      "hash_meta": "74588853c98bc1093f35d1e2647eed6ce3d18480858dd96722dd7ecec4ccc841",
+      "seqno": 2272624
+    },
+    "revoke": {
+      "sig_ids": [
+        "e2a366da7c148407ba1927fff772047bd5603620ea6af263a3b22c6d3eb1d17e0f"
+      ]
+    },
+    "service": {
+      "hostname": "www.jonleopard.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1521730056,
+  "expire_in": 157680000,
+  "prev": "a9b11130b53abb6e83a0c3b302b1fa605348045db53fd3b2e97330ff76517519",
+  "seqno": 53,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.76
+Comment: https://keybase.io/crypto
+
+yMQLAnicbVN7UBVVHL7gC65gYL7yEbFToMXgOXv27NmlAUdAk2ysiDI1vJ7dPQsr
+3LuXvRdQga6OMyiGmqnN+EAtNUemgQKTicoHU+Ajk3EyzUZFTUvymWmWqZ1LOs00
+nX92zp7v9/2+7/ud82VsL5c7Ypm7vKEhd58ecbDtzVLX9Oa2qApBs425QlqFUMR6
+PqzYYIGgp8gyhDQBQBEgohGDYqJDCRu6qZgU6jpQscyYrGNoSBCrBEtAU1UJSVCW
+mQIlIqsQQ6YAkwAqpAim5Stgjt+xfEFOq5mKyCgQgaHqiqiowADUYNhUGKCEUEYZ
+FnVFRryw0A6EK7g4jQZYqmXzf3zj6ZH3P/iHurlyLFOmSQZVIGYQUSqLBEiIAFlV
+uUYRKSY2NaCqIkGizm1iQjSTcoxsmCqVenSX/kMHoK4S08CqqVNgitwV4lkQjRuk
+OlTDwABzfNTLOHq27Stmtp86hlCVIniZU1TMPI5tB8Px6kErDIJYhAQBgBVukQYK
+PV4WpLyWSFhRFIx0VdF0CFRk8kaQibJEGDNknSEDKpICFKwYhioTUTQMwnSmS7qu
+KxLkSgKsxGcLaaJIRFmUuAKHldlFLNw8YBXw4AJC2gyBiRTJskHDY1UkQDQKeRCm
+aRIiAoloBpYBkkXAqExNUUYUaaKoywZiGjQgYcAU8qvCzZwyS+8hD0/qQQLl5eWp
+/6aQqttersvv2EFbt4v5eWEw6A+khdMJzvX3FDDN84DKo1k+g98WXlHGnIBl+3ha
+HPnf4OQUgc3xWw7zWGEEJrIC+Ar3YWWckqoahBABDSOqaXzgiAIdaQiIGjSpDDDi
+MfIbzc9Ng5tjKkEIcP8yhgT3zPRBkhhxnbSAc/L8fDRY6jChqm3vG71dEW5X3z6R
+4WfkckfHPXxcnqtxrsauGb4rZ9b1vp+f0XBy39qVZwRp4eIWmnBwxea/7nf5UUxH
+XuKWqB/fKekaf67PRdC6zb9tZ3ceqk8fu8Y3WhoxvOObJGetOer5WvPkCWX1uxdi
+Ez7JKlmcayWWRpQsmZJ3c8Xhxllrh1SnD+uaFDVyoxTZ9VJcxrmRx5xfveP6F4/I
+Wb3y9O8LIjNeGxjq5a2c89xnfbPyp0QnH0geNubWicwBmfuPzENvDw3dHLtHbOg8
+nze9lW64lVM9bTvWZsamT59UGQpN2LOj8dbP1+1g7senP83vlMtzZ3dE54VGnW7O
+uPDIkyl9Lp9/b0JD/S81lYVtx2d2e6sbP9j9dZPQMuTFpraWg1aiVvdyxb2fri34
+s/5OweNnx+2vHLDRM+vUW/c6M7KlR4/Fr/uhdeGVG7sqPjycvHX34Gcf+0L3rK/b
+8f7n8eMv5rQNWr8j63pqd0bf74X5S6ct23J7dXt7dMy8IbOWwOqJytDavYtOHg3F
+fnvoq9uuJXuaXp16/YZcdWpX/KX624HsvU8sWrpr4s6kpKPf3VfHtXZ4XskcntQ/
+Prt9cmfq63cij1uX/qiNGVSy6dDmgdmJc6fWNGdt6K6zj9Rsmj8580Bt3rXlY2ZE
+Rbqvntie/lTc03EJRyffnXTuo/bMsxv8oxNy6koHNxes6beueeRxn+32RqxqOLs8
+EHqhHZ+/7E6+635Gjflt1dacfk35S1vG/g04lf3y
+=6ARu
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jonleopard
+
+==================================================================

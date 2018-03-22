@@ -16,8 +16,8 @@ const theme = {
     toggleButton: '#fcfdff',
     border: '#e6e9ef',
     link: '#000000',
-    primary: '#F59AF0'
-  }
+    primary: '#F59AF0',
+  },
 };
 
 const Inner = styled.div`

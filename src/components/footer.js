@@ -22,7 +22,7 @@ const StyledFooter = Flex.extend`
 const Footer = () => (
   <StyledFooter is="footer">
     <span itemScope="" itemType="http://schema.org/Organization">
-      <link itemProp="url" href="https://alexpate.uk" />
+      <link itemProp="url" href="https://jonleopard.com" />
       &copy; {CURRENT_YEAR} -
       <a
         target="_blank"

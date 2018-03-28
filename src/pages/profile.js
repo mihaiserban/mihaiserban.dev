@@ -37,11 +37,6 @@ export default ({ data }) => {
         </P>
       </Section>
 
-      <Section>
-        <SectionTitle>Certifications</SectionTitle>
-        <P>2016 - LinuxAcademy</P>
-        <P>2010 - 2013</P>
-      </Section>
     </main>
   );
 };

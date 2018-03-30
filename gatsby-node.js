@@ -12,7 +12,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     const relativePath = createFilePath({
       node,
       getNode,
-      basePath: 'pages'
+      basePath: 'pages',
     });
 
     let slug = permalink;
@@ -26,7 +26,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
         const day = match[3];
         const filename = match[4];
 
-        slug = `/journal/${slugify(filename)}/`;
+        slug = `/${slugify(filename)}/`;
 
         const date = new Date(
           Number.parseInt(year),
@@ -38,7 +38,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
         createNodeField({
           node,
           name: 'date',
-          value: date.toJSON()
+          value: date.toJSON(),
         });
       }
     }
@@ -51,7 +51,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: slug
+      value: slug,
     });
   }
 };
@@ -88,8 +88,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         path: slug,
         component: blogPostTemplate,
         context: {
-          slug
-        }
+          slug,
+        },
       });
     });
 
@@ -101,8 +101,8 @@ exports.modifyWebpackConfig = ({ config, env }) => {
   config.merge({
     resolve: {
       root: path.resolve(__dirname, './src'),
-      extensions: ['', '.js', '.jsx', '.json']
-    }
+      extensions: ['', '.js', '.jsx', '.json'],
+    },
   });
   return config;
 };

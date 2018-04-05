@@ -1,15 +1,11 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-
 import PageHeader from 'components/page-header';
 import Markdown from 'components/markdown';
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data;
   const meta = data.site.siteMetadata;
-
-  const dateToday = new Date();
-  const datePost = new Date(post.fields.date);
 
   return (
     <main>

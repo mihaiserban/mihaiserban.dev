@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Footer from '../components/footer';
 import Header from '../components/header';
-import Page from '../components/page';
+import Page from '../components/global-styles';
 
 const theme = {
   fontWeight: [300, 400, 500, 600],
@@ -22,7 +22,7 @@ const theme = {
 
 const Inner = styled.div`
   width: 100%;
-  max-width: 1024px;
+  max-width: 740px;
   margin: 0 auto;
   padding: 0 16px;
 `;

@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontSize, fontWeight, removeProps, space } from 'styled-system';
+import cleanElement from 'clean-element';
+import { fontSize, fontWeight, space } from 'styled-system';
 import { Box } from 'grid-styled';
 
-const BaseComponent = props => {
-  const next = removeProps(props);
-  return <Box {...next} />;
-};
-
-const BaseType = styled(BaseComponent)`
+const BaseType = styled(Box)`
   margin: 0;
   padding: 0;
   line-height: 1.2em;
@@ -23,8 +19,8 @@ export const H1 = ({ children, ...otherProps }) => (
     is="h1"
     fontWeight="400"
     fontSize={[6, 6, 7]}
-    mt={[8]}
-    mb={[16]}
+    mt={[1]}
+    mb={[1]}
     {...otherProps}
   >
     {children}

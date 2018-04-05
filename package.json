@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Jon Leopard <contact@jonleopard.com>",
   "dependencies": {
+    "clean-element": "^1.0.0",
     "gatsby": "^1.9.153",
     "gatsby-cli": "^1.1.47",
     "gatsby-link": "^1.6.34",
@@ -18,14 +19,25 @@
     "gatsby-transformer-json": "^1.0.14",
     "gatsby-transformer-remark": "^1.7.28",
     "gatsby-transformer-sharp": "^1.6.16",
-    "grid-styled": "^2.0.0-11",
+    "grid-styled": "^3.2.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "slug": "^0.9.1",
-    "styled-components": "^2.4.0",
-    "styled-normalize": "^2.3.0",
-    "styled-system": "^1.1.1"
+    "styled-components": "^3.2.3",
+    "styled-normalize": "^4.0.0",
+    "styled-system": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.5.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.10.2"
   },
   "keywords": [
     "Jon Leopard",
@@ -42,15 +54,5 @@
     "develop": "gatsby develop",
     "format": "prettier --write '{./,__{tests,mocks}__}/**/*.+(js|jsx)'",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "eslint": "^4.15.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.5.0",
-    "eslint-plugin-react": "^7.5.1",
-    "prettier": "^1.10.2"
   }
 }

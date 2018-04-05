@@ -1,5 +1,5 @@
 ---
-title: "Hello, world!
+title: "Hello, world!"
 ---
 
 First post, oh yeah!

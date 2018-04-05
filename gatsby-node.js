@@ -29,9 +29,9 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
         slug = `/${slugify(filename)}/`;
 
         const date = new Date(
-          Number.parseInt(year),
-          Number.parseInt(month) - 1,
-          Number.parseInt(day)
+          Number.parseInt(year, 10),
+          Number.parseInt(month, 10) - 1,
+          Number.parseInt(day, 10)
         );
 
         // Blog posts are sorted by date and display the date in their header.

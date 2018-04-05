@@ -25,7 +25,9 @@ const Index = ({ data }) => {
           <meta name="twitter:description" content={meta.defaultDescription} />
         </Helmet>
         <Section pt={[20, 40]}>
-          <h1>Hello, my name is Jon. I am a web developer based in Paris.</h1>
+          <h1>
+            Hello, my name is Jon. <br /> I am a web developer based in Paris.
+          </h1>
         </Section>
         <Section>
           <SectionTitle>Recent articles</SectionTitle>

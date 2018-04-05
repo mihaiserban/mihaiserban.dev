@@ -1,11 +1,14 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true
-  },
-  "extends": ["airbnb", "plugin:prettier/recommended"],
-  "plugins": ["react", "prettier"],
-  "rules": {
-    "prettier/prettier": "error"
-  }
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true
+	},
+	"parser": "babel-eslint",
+	"extends": ["airbnb", "plugin:prettier/recommended"],
+	"plugins": ["react", "prettier"],
+	"rules": {
+		"prettier/prettier": "error",
+		"react/jsx-filename-extension": 0
+	}
 }

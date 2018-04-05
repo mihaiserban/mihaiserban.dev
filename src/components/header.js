@@ -47,7 +47,7 @@ const Nav = Box.extend`
 
 export default () => (
   <StyledNav is="header" justify="space-between">
-    <Logo href="/">jon leopard</Logo>
+    <Logo href="/">jonleopard.com</Logo>
     <Nav is="nav">
       <ul>
         <li>

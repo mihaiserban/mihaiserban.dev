@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Footer from '../components/footer';
 import Header from '../components/header';
-import Page from '../components/global-styles';
+import GlobalStyles from '../components/global-styles';
 
 const theme = {
   fontWeight: [300, 400, 500, 600],
@@ -12,8 +12,6 @@ const theme = {
     heading: '#000000',
     text: '#000000',
     textHover: '#F59AF0',
-    toggleBackground: '#3336c7',
-    toggleButton: '#fcfdff',
     border: '#e6e9ef',
     link: '#000000',
     primary: '#F59AF0',
@@ -29,12 +27,12 @@ const Inner = styled.div`
 
 export default props => (
   <ThemeProvider theme={theme}>
-    <Page>
+    <GlobalStyles>
       <Inner>
         <Header />
         {props.children()}
         <Footer />
       </Inner>
-    </Page>
+    </GlobalStyles>
   </ThemeProvider>
 );

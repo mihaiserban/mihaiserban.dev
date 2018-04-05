@@ -18,5 +18,7 @@ const StyledSectionTitle = styled(H2)`
 `;
 
 export const SectionTitle = props => (
-  <StyledSectionTitle mb={[2, 2, 2]}>{props.children}</StyledSectionTitle>
+  <StyledSectionTitle mt={[3, 3, 3]} mb={[3, 3, 3]}>
+    {props.children}
+  </StyledSectionTitle>
 );

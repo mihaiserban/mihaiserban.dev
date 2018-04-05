@@ -29,23 +29,22 @@ const Index = ({ data }) => {
             Hello, my name is Jon. <br /> I am a web developer based in Paris.
           </h1>
         </Section>
-        <Section>
-          <SectionTitle>Recent articles</SectionTitle>
-          {posts
-            .filter(post => post.node.frontmatter.title.length > 0)
-            .map(({ node: post }) => (
-              <Box mb={2} key={post.frontmatter.title}>
-                <Text>
-                  <Link to={post.fields.slug} style={{ color: 'black' }}>
-                    {post.frontmatter.title}
-                    <PostDate is="time" dateTime={post.fields.date}>
-                      {post.fields.date}
-                    </PostDate>
-                  </Link>
-                </Text>
-              </Box>
-            ))}
-        </Section>
+
+        <SectionTitle>Recent articles</SectionTitle>
+        {posts
+          .filter(post => post.node.frontmatter.title.length > 0)
+          .map(({ node: post }) => (
+            <Box mb={2} key={post.frontmatter.title}>
+              <Text>
+                <Link to={post.fields.slug} style={{ color: 'black' }}>
+                  {post.frontmatter.title}
+                  <PostDate is="time" dateTime={post.fields.date}>
+                    {post.fields.date}
+                  </PostDate>
+                </Link>
+              </Text>
+            </Box>
+          ))}
       </main>
     </div>
   );

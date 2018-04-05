@@ -22,10 +22,14 @@ injectGlobal`
     min-height: 100vh;
   }
   a {
-    text-decoration: none;
+		color: inherit;
+		text-decoration: none;
+		border-bottom: 1px solid #F59AF0;
     &:hover {
       color: ${props => props.theme.colors.primary};
-    }
+		}
+		&:visited {
+      color: inherit;
   }
   p {
     margin: 0;

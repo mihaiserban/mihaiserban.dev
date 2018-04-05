@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import cleanElement from 'clean-element';
 import { fontSize, fontWeight, space } from 'styled-system';
 import { Box } from 'grid-styled';
 

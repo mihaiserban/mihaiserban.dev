@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "author": "Jon Leopard <contact@jonleopard.com>",
   "dependencies": {
-    "clean-element": "^1.0.0",
     "gatsby": "^1.9.153",
     "gatsby-cli": "^1.1.47",
     "gatsby-link": "^1.6.34",

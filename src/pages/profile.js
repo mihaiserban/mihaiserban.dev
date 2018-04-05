@@ -21,8 +21,23 @@ export default ({ data }) => {
           the projects I'm working on, as well as post other random musings. I'm
           a huge movie buff, gaming nerd, and coffee lover. When I'm not in
           front of a screen, I'm most likely reading a good book or listening to
-          music. Check out my <a href="#">last.fm</a> and Goodreads profile to
-          see what I'm into these days.
+          music. Check out my{' '}
+          <a
+            href="https://last.fm/user/crunkmastafunk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            last.fm
+          </a>{' '}
+          and and{' '}
+          <a
+            href="https://goodreads.com/jonleopard"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Goodreads
+          </a>{' '}
+          profile to see what I'm into these days.
         </P>
       </Section>
 

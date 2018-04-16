@@ -1354,8 +1354,8 @@ backo2@1.0.2:
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
 
 bail@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/bail/-/bail-1.0.2.tgz#f7d6c1731630a9f9f0d4d35ed1f962e2074a1764"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/bail/-/bail-1.0.3.tgz#63cfb9ddbac829b02a3128cd53224be78e6c21a3"
 
 balanced-match@0.1.0:
   version "0.1.0"
@@ -1912,8 +1912,8 @@ chalk@2.3.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.
     supports-color "^5.3.0"
 
 character-entities-html4@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/character-entities-html4/-/character-entities-html4-1.1.1.tgz#359a2a4a0f7e29d3dc2ac99bdbe21ee39438ea50"
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/character-entities-html4/-/character-entities-html4-1.1.2.tgz#c44fdde3ce66b52e8d321d6c1bf46101f0150610"
 
 character-entities-legacy@^1.0.0:
   version "1.1.1"
@@ -4102,8 +4102,8 @@ gatsby-module-loader@^1.0.11:
     loader-utils "^0.2.16"
 
 gatsby-plugin-google-analytics@^1.0.15:
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-1.0.29.tgz#9ed1beb355f5989594c1b50f3da3cd24a922bb5d"
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-1.0.30.tgz#a577a7df875bfde802e98f1406ce5d692b48d53e"
   dependencies:
     babel-runtime "^6.26.0"
 
@@ -4160,13 +4160,12 @@ gatsby-react-router-scroll@^1.0.14:
     scroll-behavior "^0.9.9"
     warning "^3.0.0"
 
-gatsby-remark-prismjs@^1.2.24:
-  version "1.2.24"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-1.2.24.tgz#b2cc4e9c4e71c08d89a32fd847244f927f4a7b79"
+gatsby-remark-prismjs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-2.0.1.tgz#04955d9a0c9f9b251f973093d462d4230803d55a"
   dependencies:
     babel-runtime "^6.26.0"
     parse-numeric-range "0.0.2"
-    prismjs "^1.12.2"
     unist-util-visit "^1.3.0"
 
 gatsby-source-filesystem@^1.5.14:
@@ -4227,8 +4226,8 @@ gatsby-transformer-sharp@^1.6.16:
     probe-image-size "^3.2.0"
 
 gatsby@^1.9.153:
-  version "1.9.250"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-1.9.250.tgz#e0d25bfad6a95e472c109db7da0f4e3a1e1c28f4"
+  version "1.9.251"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-1.9.251.tgz#52bdb725ddaafeb508c605e15d7ce6e11db405b9"
   dependencies:
     async "^2.1.2"
     babel-code-frame "^6.22.0"
@@ -8077,7 +8076,7 @@ pretty-error@^2.1.1:
     renderkid "^2.0.1"
     utila "~0.4"
 
-prismjs@^1.12.2:
+prismjs@^1.14.0:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.14.0.tgz#bbccfdb8be5d850d26453933cb50122ca0362ae0"
   optionalDependencies:
@@ -8320,8 +8319,8 @@ react-dom@^15.6.0:
     prop-types "^15.5.10"
 
 react-dom@^16.0.0, react-dom@^16.2.0:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -8388,8 +8387,8 @@ react-side-effect@^1.1.0:
     shallowequal "^1.0.1"
 
 react@>=16.0.0, react@^16.0.0, react@^16.2.0:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"

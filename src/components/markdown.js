@@ -1,4 +1,5 @@
 import { Box } from 'grid-styled';
+import styled from 'styled-components';
 import { H2 } from 'components/typography';
 
 const Markdown = Box.extend`
@@ -89,127 +90,406 @@ const Markdown = Box.extend`
     border-bottom: 1px solid ${props => props.theme.colors.primary};
   }
 
-  code[class*='language-'],
-  pre[class*='language-'] {
-    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
-      'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-      'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-      'Courier New', Courier, monospace;
-    font-size: 14px;
-    line-height: 1.375;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    tab-size: 4;
-    -ms-hyphens: none;
-    hyphens: none;
-    background-color: #f4f7fd;
-    color: #586e75;
-    border-radius: 4px;
-  }
+  /**
+ * Dracula Theme for Prism.JS
+ *
+ * @author Gustavo Costa
+ * e-mail: gusbemacbe@gmail.com
+ * @license MIT 2016
+ */
 
-  pre[class*='language-']::-moz-selection,
-  pre[class*='language-'] ::-moz-selection,
-  code[class*='language-']::-moz-selection,
-  code[class*='language-'] ::-moz-selection {
-    text-shadow: none;
-    background: #eee8d5;
-  }
-  pre[class*='language-']::selection,
-  pre[class*='language-'] ::selection,
-  code[class*='language-']::selection,
-  code[class*='language-'] ::selection {
-    text-shadow: none;
-    background: #eee8d5;
-  }
-  pre[class*='language-'] {
-    padding: 1em;
+  .gatsby-highlight {
+    background-color: rgba(40, 42, 54, 1);
+    border-radius: 0.3em;
     margin: 0.5em 0;
+    padding: 1em;
     overflow: auto;
   }
-  :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
-    border-radius: 0.3em;
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    background-color: rgba(40, 42, 54, 1);
+    border-color: inherit;
+    border-radius: 0px;
+    color: #ccc;
+    direction: ltr;
+    font-family: Hack, Consolas, Monaco, 'Andale Mono', monospace;
+    line-height: 1.5;
+    margin: auto;
+    text-align: left;
+    word-break: normal;
+    word-spacing: 0;
   }
-  .token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: #839496;
+
+  code::selection {
+    background-color: #5a5f80;
   }
-  .token.punctuation {
-    color: #586e75;
+
+  pre::selection {
+    background-color: #5a5f80;
   }
-  .token.namespace {
-    opacity: 0.7;
+
+  ::selection {
+    background-color: #5a5f80;
   }
-  .token.operator,
-  .token.boolean,
-  .token.number {
-    color: #cb4b16;
+
+  ::selector {
+    background-color: #5a5f80;
   }
-  .token.property {
-    color: #b58900;
+
+  .token.comment {
+    color: rgba(98, 114, 164, 1);
   }
+
+  .token.prolog {
+    color: rgba(207, 207, 194, 1);
+  }
+
   .token.tag {
-    color: #268bd2;
+    color: rgba(220, 104, 170, 1);
   }
-  .token.string {
-    color: #2aa198;
+
+  .token.entity {
+    color: rgba(139, 233, 253, 1);
   }
-  .token.selector {
-    color: #6c71c4;
-  }
-  .token.attr-name {
-    color: #cb4b16;
-  }
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .style .token.string {
-    color: #2aa198;
-  }
-  .token.attr-value,
-  .token.keyword,
-  .token.control,
-  .token.directive,
-  .token.unit {
-    color: #859900;
-  }
-  .token.statement,
-  .token.regex,
+
   .token.atrule {
-    color: #2aa198;
+    color: rgba(98, 239, 117, 1);
   }
-  .token.placeholder,
+
+  .token.url {
+    color: rgba(102, 217, 239, 1);
+  }
+
+  .token.selector {
+    color: rgba(207, 207, 194, 1);
+  }
+
+  .token.string {
+    color: rgba(241, 250, 140, 1);
+  }
+
+  .token.property {
+    color: rgba(255, 184, 108, 1);
+  }
+
+  .token.important {
+    color: rgba(255, 121, 198, 1);
+    font-weight: bold;
+  }
+
+  .token.punctuation {
+    color: rgba(230, 219, 116, 1);
+  }
+
+  .token.number {
+    color: rgba(189, 147, 249, 1);
+  }
+
+  .token.function {
+    color: rgba(80, 250, 123, 1);
+  }
+
+  .token.class-name {
+    color: rgba(255, 184, 108, 1);
+  }
+
+  .token.keyword {
+    color: rgba(255, 121, 198, 1);
+  }
+
+  .token.boolean {
+    color: rgba(255, 184, 108, 1);
+  }
+
+  .token.operator {
+    color: rgba(139, 233, 253, 1);
+  }
+
+  .token.char {
+    color: rgba(255, 135, 157, 1);
+  }
+
+  .token.regex {
+    color: rgba(80, 250, 123, 1);
+  }
+
   .token.variable {
-    color: #268bd2;
+    color: rgba(80, 250, 123, 1);
   }
+
+  .token.constant {
+    color: rgba(255, 184, 108, 1);
+  }
+
+  .token.symbol {
+    color: rgba(255, 184, 108, 1);
+  }
+
+  .token.builtin {
+    color: rgba(255, 121, 198, 1);
+  }
+
+  .token.attr-value {
+    color: #7ec699;
+  }
+
   .token.deleted {
-    text-decoration: line-through;
+    color: #e2777a;
   }
-  .token.inserted {
-    border-bottom: 1px dotted #002b36;
-    text-decoration: none;
+
+  .token.namespace {
+    color: #e2777a;
   }
-  .token.italic {
-    font-style: italic;
-  }
-  .token.important,
+
   .token.bold {
     font-weight: bold;
   }
-  .token.important {
-    color: #dc322f;
+
+  .token.italic {
+    font-style: italic;
   }
-  .token.entity {
-    cursor: help;
+
+  .token {
+    color: #ff79c6;
   }
-  pre > code.highlight {
-    outline: 0.4em solid #dc322f;
-    outline-offset: 0.4em;
+
+  .langague-cpp .token.string {
+    color: #8be9fd;
+  }
+
+  .langague-c .token.string {
+    color: #8be9fd;
+  }
+
+  .language-css .token.selector {
+    color: rgba(80, 250, 123, 1);
+  }
+
+  .language-css .token.property {
+    color: rgba(255, 184, 108, 1);
+  }
+
+  .language-java span.token.class-name {
+    color: #8be9fd;
+  }
+
+  .language-java .token.class-name {
+    color: #8be9fd;
+  }
+
+  .language-markup .token.attr-value {
+    color: rgba(102, 217, 239, 1);
+  }
+
+  .language-markup .token.tag {
+    color: rgba(80, 250, 123, 1);
+  }
+
+  .language-objectivec .token.property {
+    color: #66d9ef;
+  }
+
+  .language-objectivec .token.string {
+    color: #50fa7b;
+  }
+
+  .language-php .token.boolean {
+    color: #8be9fd;
+  }
+
+  .language-php .token.function {
+    color: #ff79c6;
+  }
+
+  .language-php .token.keyword {
+    color: #66d9ef;
+  }
+
+  .language-ruby .token.symbol {
+    color: #8be9fd;
+  }
+
+  .language-ruby .token.class-name {
+    color: #cfcfc2;
+  }
+
+  div.prism-show-language {
+    color: green;
+    position: relative;
+  }
+
+  div.prism-show-language > div.prism-show-language-label {
+    color: #000;
+    display: inline-block;
+    position: absolute;
+    bottom: auto;
+    left: auto;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    font-size: 0.9em;
+    border-radius: 0 0 0 5px;
+    padding: 0 0.5em;
+    text-shadow: none;
+    z-index: 1;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    background: #cfcfcf;
+  }
+
+  .command-line-prompt {
+    border-right: 1px solid #999;
+    display: block;
+    float: left;
+    font-size: 100%;
+    letter-spacing: -1px;
+    margin-right: 1em;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .command-line-prompt > span:before {
+    color: #999;
+    content: ' ';
+    display: block;
+    padding-right: 0.8em;
+  }
+
+  .command-line-prompt > span[data-user]:before {
+    content: '[' attr(data-user) '@' attr(data-host) '] $';
+  }
+
+  .command-line-prompt > span[data-user='root']:before {
+    content: '[' attr(data-user) '@' attr(data-host) '] #';
+  }
+
+  .command-line-prompt > span[data-prompt]:before {
+    content: attr(data-prompt);
+  }
+
+  pre.line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+  }
+
+  pre.line-numbers > code {
+    position: relative;
+  }
+
+  .line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em;
+    /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+  }
+
+  .line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+  }
+
+  pre.code-toolbar {
+    position: relative;
+  }
+
+  pre.code-toolbar > .toolbar {
+    position: absolute;
+    top: 0.3em;
+    right: 0.2em;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  pre.code-toolbar:hover > .toolbar {
+    opacity: 1;
+  }
+
+  pre.code-toolbar > .toolbar .toolbar-item {
+    display: inline-block;
+  }
+
+  pre.code-toolbar > .toolbar a {
+    cursor: pointer;
+  }
+
+  pre.code-toolbar > .toolbar button {
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-user-select: none;
+    /* for button */
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  pre.code-toolbar > .toolbar a,
+  pre.code-toolbar > .toolbar button,
+  pre.code-toolbar > .toolbar span {
+    color: #bbb;
+    font-size: 0.8em;
+    padding: 0 0.5em;
+    background: #f5f2f0;
+    background: rgba(224, 224, 224, 0.2);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+  }
+
+  pre.code-toolbar > .toolbar a:hover,
+  pre.code-toolbar > .toolbar a:focus,
+  pre.code-toolbar > .toolbar button:hover,
+  pre.code-toolbar > .toolbar button:focus,
+  pre.code-toolbar > .toolbar span:hover,
+  pre.code-toolbar > .toolbar span:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  pre::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  pre::-webkit-scrollbar-track {
+    background-color: #6272a4;
+    border-radius: 0px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background-color: #bd93f9;
+    border-radius: 0px;
   }
 `;
 

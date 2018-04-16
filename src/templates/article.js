@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import PageHeader from 'components/page-header';
-import Markdown from 'components/markdown';
+import PageHeader from '../components/page-header';
+import Markdown from '../components/markdown';
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data;

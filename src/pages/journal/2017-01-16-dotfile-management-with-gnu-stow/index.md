@@ -20,31 +20,31 @@ Stow is available for all linux and unix like distros via your package manager. 
 
 MacOS (Homebrew)
 
-```
+```bash
 $ brew install stow
 ```
 
 Ubuntu (apt)
 
-```
+```bash
 $ sudo apt-get install stow
 ```
 
 CentOS (yum)
 
-```
+```bash
 $ sudo yum install stow
 ```
 
 Archlinux (pacman)
 
-```
+```bash
 $ sudo pacman -S stow
 ```
 
 Confirm that it installed:
 
-```
+```bash
 $ stow --version
 stow (GNU Stow) version 2.2.2
 ```
@@ -53,7 +53,7 @@ stow (GNU Stow) version 2.2.2
 
 Now that stow is installed, lets create a test directory with some dummy files:
 
-```
+```bash
 $ cd && mkdir -p test/foo/ && mkdir test/bar/ && touch test/foo/.foo && touch test/bar/.bar
 ```
 
@@ -61,7 +61,7 @@ You'll now have have a folder named "test" in your home directory with two folde
 
 Here's how that directory structure looks (pre-stow)
 
-```
+```bash
 .
 ├── bar
 │   └── .bar
@@ -71,13 +71,13 @@ Here's how that directory structure looks (pre-stow)
 
 By default, stow will create symlinks for files/folders in the parent directory of where you execute the command. Lets now create our first symlink!
 
-```
+```bash
 $ stow foo
 ```
 
 Now go up a directory and ls -al to see what happened:
 
-```
+```bash
 cd ../ && ls -al
 total 8
 drwxr-xr-x   4 jon  staff   136 Jan 15 20:31 .
@@ -90,13 +90,13 @@ You should now see a symlink pointing to the original file in the directory.
 
 Lets run the same command on our older folder, bar. You'll need to run stow on each of the files/folders you wish to create symlinks for.
 
-```
+```bash
 $ stow bar
 ```
 
 Here's another way of viewing the directory:
 
-```
+```bash
 .
 ├── .bar -> test/bar/.bar
 ├── .foo -> test/foo/.foo
@@ -109,7 +109,7 @@ Here's another way of viewing the directory:
 
 Here's how my dotfile directory looks:
 
-```
+```bash
 .
 ├── git
 │   ├── .gitattributes

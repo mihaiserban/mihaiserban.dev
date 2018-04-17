@@ -54,7 +54,7 @@ export default ({ data }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Lunarphase.io
+                Moonphase.space
               </a>
               <br />
               A tiny app that displays the current moon phase

@@ -115,7 +115,7 @@ const Markdown = Box.extend`
   code[class*='language-'],
   pre[class*='language-'] {
     color: #ccc;
-    background: none;
+    background: rgb(40, 41, 54);
     text-shadow: none;
     font-family: PT Mono, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
       monospace;

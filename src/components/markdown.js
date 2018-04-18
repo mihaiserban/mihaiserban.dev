@@ -91,50 +91,94 @@ const Markdown = Box.extend`
   }
 
   /**
- * Dracula Theme for Prism.JS
- *
- * @author Gustavo Costa
- * e-mail: gusbemacbe@gmail.com
- * @license MIT 2016
- */
+	 * Dracula Theme for Prism.JS
+	 *
+	 * @author Gustavo Costa
+	 * e-mail: gusbemacbe@gmail.com
+	 * @license MIT 2016-2018
+	 */
 
-  .gatsby-highlight {
-    background-color: rgba(40, 42, 54, 1);
-    border-radius: 0.3em;
-    margin: 0.5em 0;
-    padding: 1em;
-    overflow: auto;
+  pre::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  pre::-webkit-scrollbar-track {
+    background-color: #6272a4;
+    border-radius: 0px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background-color: #bd93f9;
+    border-radius: 0px;
   }
 
   code[class*='language-'],
   pre[class*='language-'] {
-    background-color: rgba(40, 42, 54, 1);
-    border-color: inherit;
-    border-radius: 0px;
     color: #ccc;
-    direction: ltr;
-    font-family: Hack, Consolas, Monaco, 'Andale Mono', monospace;
-    line-height: 1.5;
-    margin: auto;
+    background: none;
+    text-shadow: none;
+    font-family: PT Mono, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+      monospace;
     text-align: left;
+    white-space: pre;
+    word-spacing: normal;
     word-break: normal;
-    word-spacing: 0;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
   }
 
-  code::selection {
+  pre[class*='language-']::-moz-selection,
+  pre[class*='language-'] ::-moz-selection,
+  code[class*='language-']::-moz-selection,
+  code[class*='language-'] ::-moz-selection {
+    text-shadow: none;
     background-color: #5a5f80;
   }
 
-  pre::selection {
+  pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection,
+  code[class*='language-']::selection,
+  code[class*='language-'] ::selection {
+    text-shadow: none;
     background-color: #5a5f80;
   }
 
-  ::selection {
-    background-color: #5a5f80;
+  @media print {
+    code[class*='language-'],
+    pre[class*='language-'] {
+      text-shadow: none;
+    }
   }
 
-  ::selector {
-    background-color: #5a5f80;
+  /* Code blocks */
+  pre[class*='language-'] {
+    background: rgba(40, 41, 54, 1) !important;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    height: auto;
+  }
+
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    background: #f5f2f0;
+  }
+
+  /* Inline code */
+  :not(pre) > code[class*='language-'] {
+    padding: 0.1em;
+    border-radius: 0.3em;
+    white-space: normal;
   }
 
   .token.comment {
@@ -314,70 +358,6 @@ const Markdown = Box.extend`
     color: #cfcfc2;
   }
 
-  div.prism-show-language {
-    color: green;
-    position: relative;
-  }
-
-  div.prism-show-language > div.prism-show-language-label {
-    color: #000;
-    display: inline-block;
-    position: absolute;
-    bottom: auto;
-    left: auto;
-    top: 0;
-    right: 0;
-    width: auto;
-    height: auto;
-    font-size: 0.9em;
-    border-radius: 0 0 0 5px;
-    padding: 0 0.5em;
-    text-shadow: none;
-    z-index: 1;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-    background: #cfcfcf;
-  }
-
-  .command-line-prompt {
-    border-right: 1px solid #999;
-    display: block;
-    float: left;
-    font-size: 100%;
-    letter-spacing: -1px;
-    margin-right: 1em;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  .command-line-prompt > span:before {
-    color: #999;
-    content: ' ';
-    display: block;
-    padding-right: 0.8em;
-  }
-
-  .command-line-prompt > span[data-user]:before {
-    content: '[' attr(data-user) '@' attr(data-host) '] $';
-  }
-
-  .command-line-prompt > span[data-user='root']:before {
-    content: '[' attr(data-user) '@' attr(data-host) '] #';
-  }
-
-  .command-line-prompt > span[data-prompt]:before {
-    content: attr(data-prompt);
-  }
-
   pre.line-numbers {
     position: relative;
     padding-left: 3.8em;
@@ -386,6 +366,7 @@ const Markdown = Box.extend`
 
   pre.line-numbers > code {
     position: relative;
+    white-space: inherit;
   }
 
   .line-numbers .line-numbers-rows {
@@ -394,10 +375,10 @@ const Markdown = Box.extend`
     top: 0;
     font-size: 100%;
     left: -3.8em;
-    width: 3em;
-    /* works for line-numbers below 1000 lines */
+    width: 3em; /* works for line-numbers below 1000 lines */
     letter-spacing: -1px;
     border-right: 1px solid #999;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -418,11 +399,11 @@ const Markdown = Box.extend`
     text-align: right;
   }
 
-  pre.code-toolbar {
+  div.code-toolbar {
     position: relative;
   }
 
-  pre.code-toolbar > .toolbar {
+  div.code-toolbar > .toolbar {
     position: absolute;
     top: 0.3em;
     right: 0.2em;
@@ -430,19 +411,20 @@ const Markdown = Box.extend`
     opacity: 0;
   }
 
-  pre.code-toolbar:hover > .toolbar {
+  div.code-toolbar:hover > .toolbar {
     opacity: 1;
   }
 
-  pre.code-toolbar > .toolbar .toolbar-item {
+  div.code-toolbar > .toolbar .toolbar-item {
     display: inline-block;
+    padding-right: 20px;
   }
 
-  pre.code-toolbar > .toolbar a {
+  div.code-toolbar > .toolbar a {
     cursor: pointer;
   }
 
-  pre.code-toolbar > .toolbar button {
+  div.code-toolbar > .toolbar button {
     background: none;
     border: 0;
     color: inherit;
@@ -450,46 +432,30 @@ const Markdown = Box.extend`
     line-height: normal;
     overflow: visible;
     padding: 0;
-    -webkit-user-select: none;
-    /* for button */
+    -webkit-user-select: none; /* for button */
     -moz-user-select: none;
     -ms-user-select: none;
   }
 
-  pre.code-toolbar > .toolbar a,
-  pre.code-toolbar > .toolbar button,
-  pre.code-toolbar > .toolbar span {
-    color: #bbb;
+  div.code-toolbar > .toolbar a,
+  div.code-toolbar > .toolbar button,
+  div.code-toolbar > .toolbar span {
+    color: #ccc;
     font-size: 0.8em;
-    padding: 0 0.5em;
-    background: #f5f2f0;
-    background: rgba(224, 224, 224, 0.2);
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+    background: rgba(98, 114, 164, 1);
     border-radius: 0.5em;
   }
 
-  pre.code-toolbar > .toolbar a:hover,
-  pre.code-toolbar > .toolbar a:focus,
-  pre.code-toolbar > .toolbar button:hover,
-  pre.code-toolbar > .toolbar button:focus,
-  pre.code-toolbar > .toolbar span:hover,
-  pre.code-toolbar > .toolbar span:focus {
+  div.code-toolbar > .toolbar a:hover,
+  div.code-toolbar > .toolbar a:focus,
+  div.code-toolbar > .toolbar button:hover,
+  div.code-toolbar > .toolbar button:focus,
+  div.code-toolbar > .toolbar span:hover,
+  div.code-toolbar > .toolbar span:focus {
     color: inherit;
     text-decoration: none;
-  }
-
-  pre::-webkit-scrollbar {
-    width: 14px;
-  }
-
-  pre::-webkit-scrollbar-track {
-    background-color: #6272a4;
-    border-radius: 0px;
-  }
-
-  pre::-webkit-scrollbar-thumb {
-    background-color: #bd93f9;
-    border-radius: 0px;
+    background-color: var(--verde);
   }
 `;
 

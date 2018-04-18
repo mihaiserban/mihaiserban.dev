@@ -21,6 +21,7 @@
     "grid-styled": "^4.0.0",
     "prismjs": "^1.14.0",
     "react": "^16.2.0",
+    "react-disqus-comments": "^1.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "slug": "^0.9.1",

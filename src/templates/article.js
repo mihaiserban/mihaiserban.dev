@@ -1,11 +1,22 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import ReactDisqusComments from 'react-disqus-comments';
 import PageHeader from '../components/page-header';
 import Markdown from '../components/markdown';
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data;
   const meta = data.site.siteMetadata;
+
+  const disqusShortname = 'jonleopard';
+  const disqusConfig = {
+    url: post.fields.slug,
+    identifier: post.fields.slug,
+    title: post.frontmatter.title,
+  };
+
+
+	console.log(post.fields.slug)
 
   return (
     <main>
@@ -27,6 +38,13 @@ export default function Template({ data }) {
           className="content"
         />
       </article>
+      <ReactDisqusComments
+        shortname={disqusShortname}
+        identifier={post.fields.slug}
+        title={post.title}
+        url={post.fields.slug}
+        category_id={post.fields.slug}
+      />
     </main>
   );
 }

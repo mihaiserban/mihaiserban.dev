@@ -90,13 +90,17 @@ const Markdown = Box.extend`
     border-bottom: 1px solid ${props => props.theme.colors.primary};
   }
 
-  /**
-	 * Dracula Theme for Prism.JS
-	 *
-	 * @author Gustavo Costa
-	 * e-mail: gusbemacbe@gmail.com
-	 * @license MIT 2016-2018
-	 */
+  /*
+	* Dracula Theme for Prism.JS
+	*
+	* @author Gustavo Costa
+	* e-mail: gusbemacbe@gmail.com
+	*
+	* @contributor Jon Leopard
+	* e-mail: jonlprd@gmail.com
+	*
+	* @license MIT 2016-2018
+	*/
 
   pre::-webkit-scrollbar {
     width: 14px;
@@ -171,14 +175,38 @@ const Markdown = Box.extend`
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    background: #f5f2f0;
+    background: rgba(40, 41, 54, 1);
   }
 
   /* Inline code */
   :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
+    padding: 4px 7px;
     border-radius: 0.3em;
     white-space: normal;
+  }
+
+  .limit-300 {
+    height: 300px !important;
+  }
+
+  .limit-400 {
+    height: 400px !important;
+  }
+
+  .limit-500 {
+    height: 500px !important;
+  }
+
+  .limit-600 {
+    height: 600px !important;
+  }
+
+  .limit-700 {
+    height: 700px !important;
+  }
+
+  .limit-800 {
+    height: 800px !important;
   }
 
   .token.comment {

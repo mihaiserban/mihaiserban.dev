@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: 'https://jonleopard.com',
     defaultTitle: 'Jon Leopard | Web Developer',
     defaultDescription:
-      'Jon Leopard is a Javascript Web Developer with skills in both Front-end and Back-end technologies.',
+      'Jon Leopard is a Javascript Web Developer with skills in both front-end and back-end technologies.',
   },
 
   // mapping: {
@@ -13,6 +13,9 @@ module.exports = {
   // },
   plugins: [
     // Adding various source folders to the GraphQL layer.
+    {
+      resolve: `gatsby-plugin-sitemap`,
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

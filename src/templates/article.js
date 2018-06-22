@@ -9,15 +9,13 @@ export default function Template({ data }) {
   const meta = data.site.siteMetadata;
 
   const disqusShortname = 'jonleopard';
-  const disqusConfig = {
-    url: post.fields.slug,
-    identifier: post.fields.slug,
-    title: post.frontmatter.title,
-  };
+  const url = `jonleopard.com${post.fields.slug}`;
 
 
-	console.log(post.fields.slug)
-
+  console.log(url);
+  console.log(post.fields.slug);
+  console.log(disqusShortname);
+  console.log(post.frontmatter.title);
   return (
     <main>
       <article>
@@ -41,8 +39,8 @@ export default function Template({ data }) {
       <ReactDisqusComments
         shortname={disqusShortname}
         identifier={post.fields.slug}
-        title={post.title}
-        url={post.fields.slug}
+        title={post.frontmatter.title}
+        url={url}
         category_id={post.fields.slug}
       />
     </main>

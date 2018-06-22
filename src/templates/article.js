@@ -9,7 +9,7 @@ export default function Template({ data }) {
   const meta = data.site.siteMetadata;
 
   const disqusShortname = 'jonleopard';
-  const url = `jonleopard.com${post.fields.slug}`;
+	const url = `https://jonleopard.com${post.fields.slug}`;
 
   return (
     <main>
@@ -36,7 +36,6 @@ export default function Template({ data }) {
         identifier={post.frontmatter.title}
         title={post.frontmatter.title}
         url={url}
-        category_id={post.fields.slug}
       />
     </main>
   );

@@ -11,11 +11,6 @@ export default function Template({ data }) {
   const disqusShortname = 'jonleopard';
   const url = `jonleopard.com${post.fields.slug}`;
 
-
-  console.log(url);
-  console.log(post.fields.slug);
-  console.log(disqusShortname);
-  console.log(post.frontmatter.title);
   return (
     <main>
       <article>
@@ -38,7 +33,7 @@ export default function Template({ data }) {
       </article>
       <ReactDisqusComments
         shortname={disqusShortname}
-        identifier={post.fields.slug}
+        identifier={post.frontmatter.title}
         title={post.frontmatter.title}
         url={url}
         category_id={post.fields.slug}

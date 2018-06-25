@@ -10,11 +10,10 @@ export default class Template extends Component {
     const meta = data.site.siteMetadata;
     if (!data) return null;
 
+
     const disqusShortname = 'jonleopard';
-		const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
+    const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 
-
-		console.log(url)
     return (
       <main>
         <article>
@@ -64,6 +63,7 @@ export const query = graphql`
       body {
         childMarkdownRemark {
           html
+          excerpt
         }
       }
       createdAt(formatString: "DD MMMM YYYY")

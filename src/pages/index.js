@@ -17,7 +17,7 @@ const PostDate = styled(Text)`
 const Index = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost;
   const meta = data.site.siteMetadata;
-	console.log(data.allContentfulBlogPost)
+
   return (
     <div>
       <main>
@@ -41,7 +41,7 @@ I am a web developer based in Paris.
               <Text>
                 <Link to={post.slug} style={{ color: 'black' }}>
                   {post.title}
-                  <PostDate is="time" dateTime={post.createdAt}>
+                  <PostDate is="time">
                     {post.createdAt}
                   </PostDate>
                 </Link>

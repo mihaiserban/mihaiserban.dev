@@ -46,6 +46,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'soglt180o4mt',
+        accessToken:
+          '69445aa6f275b8bc0d7cb0f2889ed6daf877d07aee7493dcb03a7725ab41c0af',
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [

@@ -15,8 +15,9 @@ const PostDate = styled(Text)`
 `;
 
 const Index = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark;
+  const { edges: posts } = data.allContentfulBlogPost;
   const meta = data.site.siteMetadata;
+	console.log(data.allContentfulBlogPost)
   return (
     <div>
       <main>
@@ -26,20 +27,22 @@ const Index = ({ data }) => {
         </Helmet>
         <Section pt={[20, 40]}>
           <h1>
-            Hello, my name is Jon. <br /> I am a web developer based in Paris.
-          </h1>
+            Hello, my name is Jon. <br />
+{' '}
+I am a web developer based in Paris.
+</h1>
         </Section>
 
         <SectionTitle>Recent articles</SectionTitle>
         {posts
-          .filter(post => post.node.frontmatter.title.length > 0)
+          .filter(post => post.node.title.length > 0)
           .map(({ node: post }) => (
-            <Box mb={2} key={post.frontmatter.title}>
+            <Box mb={2} key={post.title}>
               <Text>
-                <Link to={post.fields.slug} style={{ color: 'black' }}>
-                  {post.frontmatter.title}
-                  <PostDate is="time" dateTime={post.fields.date}>
-                    {post.fields.date}
+                <Link to={post.slug} style={{ color: 'black' }}>
+                  {post.title}
+                  <PostDate is="time" dateTime={post.createdAt}>
+                    {post.createdAt}
                   </PostDate>
                 </Link>
               </Text>
@@ -60,18 +63,13 @@ export const pageQuery = graphql`
         defaultDescription
       }
     }
-    allMarkdownRemark(sort: { fields: [fields___date], order: DESC }) {
+    allContentfulBlogPost {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          createdAt(formatString: "DD MMMM YYYY")
+          title
+          slug
           id
-          fields {
-            date(formatString: "DD MMMM, YYYY")
-            slug
-          }
-          frontmatter {
-            title
-          }
         }
       }
     }

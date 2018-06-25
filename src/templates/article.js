@@ -1,65 +1,80 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import ReactDisqusComments from 'react-disqus-comments';
 import PageHeader from '../components/page-header';
 import Markdown from '../components/markdown';
 
-export default function Template({ data }) {
-  const { markdownRemark: post } = data;
-  const meta = data.site.siteMetadata;
+export default class Template extends Component {
+  render() {
+    const { data } = this.props;
+    const meta = data.site.siteMetadata;
+    if (!data) return null;
 
-  const disqusShortname = 'jonleopard';
-	const url = `https://jonleopard.com${post.fields.slug}`;
+    const disqusShortname = 'jonleopard';
+		const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 
-  return (
-    <main>
-      <article>
-        <Helmet title={`${post.frontmatter.title} - ${meta.defaultTitle}`}>
-          <meta
-            name="twitter:title"
-            content={`${post.frontmatter.title} - ${meta.defaultTitle}`}
+
+		console.log(url)
+    return (
+      <main>
+        <article>
+          <Helmet
+            title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
+          >
+            <meta
+              name="twitter:title"
+              content={`${data.contentfulBlogPost.title} - ${
+                meta.defaultTitle
+              }`}
+            />
+            <meta
+              name="twitter:description"
+              content={data.contentfulBlogPost.excerpt}
+            />
+          </Helmet>
+          <PageHeader
+            title={data.contentfulBlogPost.title}
+            subTitle={`By ${meta.author} on ${
+              data.contentfulBlogPost.createdAt
+            }`}
           />
-          <meta name="twitter:description" content={post.excerpt} />
-        </Helmet>
-        <PageHeader
-          title={post.frontmatter.title}
-          subTitle={`By ${meta.author} on ${post.fields.date}`}
+          <Markdown
+            dangerouslySetInnerHTML={{
+              __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
+            }}
+            id="top"
+            className="content"
+          />
+        </article>
+        <ReactDisqusComments
+          shortname={disqusShortname}
+          identifier={data.contentfulBlogPost.title}
+          title={data.contentfulBlogPost.title}
+          url={url}
         />
-        <Markdown
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          id="top"
-          className="content"
-        />
-      </article>
-      <ReactDisqusComments
-        shortname={disqusShortname}
-        identifier={post.frontmatter.title}
-        title={post.frontmatter.title}
-        url={url}
-      />
-    </main>
-  );
+      </main>
+    );
+  }
 }
 
-export const pageQuery = graphql`
-  query BlogPostByPath($slug: String!) {
+export const query = graphql`
+  query BlogPostQuery($slug: String!) {
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      createdAt(formatString: "DD MMMM YYYY")
+      id
+      slug
+    }
     site {
       siteMetadata {
         author
         defaultTitle
         defaultDescription
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt
-      timeToRead
-      fields {
-        date(formatString: "DD MMM, YYYY")
-        slug
-      }
-      frontmatter {
-        title
       }
     }
   }

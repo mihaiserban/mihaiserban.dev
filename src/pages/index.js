@@ -18,6 +18,7 @@ const Index = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost;
   const meta = data.site.siteMetadata;
 
+  console.log(data);
   return (
     <div>
       <main>
@@ -27,23 +28,19 @@ const Index = ({ data }) => {
         </Helmet>
         <Section pt={[20, 40]}>
           <h1>
-            Hello, my name is Jon. <br />
+            Hello, my name is Jon.
 {' '}
-I am a web developer based in Paris.
-</h1>
+<br /> I am a web developer based in Paris.
+          </h1>
         </Section>
 
         <SectionTitle>Recent articles</SectionTitle>
         {posts
-          .filter(post => post.node.title.length > 0)
           .map(({ node: post }) => (
             <Box mb={2} key={post.title}>
               <Text>
                 <Link to={post.slug} style={{ color: 'black' }}>
                   {post.title}
-                  <PostDate is="time">
-                    {post.createdAt}
-                  </PostDate>
                 </Link>
               </Text>
             </Box>
@@ -66,7 +63,6 @@ export const pageQuery = graphql`
     allContentfulBlogPost {
       edges {
         node {
-          createdAt(formatString: "DD MMMM YYYY")
           title
           slug
           id

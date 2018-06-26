@@ -10,7 +10,7 @@ export default class Template extends Component {
     const meta = data.site.siteMetadata;
     if (!data) return null;
 
-
+    console.log(data.contentfulBlogPost.createdAt);
     const disqusShortname = 'jonleopard';
     const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 

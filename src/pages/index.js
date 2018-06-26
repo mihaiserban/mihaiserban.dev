@@ -41,6 +41,9 @@ const Index = ({ data }) => {
               <Text>
                 <Link to={post.slug} style={{ color: 'black' }}>
                   {post.title}
+                  <PostDate is="time">
+{post.date}
+</PostDate>
                 </Link>
               </Text>
             </Box>
@@ -63,6 +66,7 @@ export const pageQuery = graphql`
     allContentfulBlogPost {
       edges {
         node {
+          date(formatString: "DD MMMM YYYY")
           title
           slug
           id

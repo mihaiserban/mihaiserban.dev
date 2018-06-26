@@ -10,7 +10,6 @@ export default class Template extends Component {
     const meta = data.site.siteMetadata;
     if (!data) return null;
 
-    console.log(data.contentfulBlogPost.createdAt);
     const disqusShortname = 'jonleopard';
     const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 
@@ -34,7 +33,7 @@ export default class Template extends Component {
           <PageHeader
             title={data.contentfulBlogPost.title}
             subTitle={`By ${meta.author} on ${
-              data.contentfulBlogPost.createdAt
+              data.contentfulBlogPost.date
             }`}
           />
           <Markdown
@@ -66,7 +65,7 @@ export const query = graphql`
           excerpt
         }
       }
-      createdAt(formatString: "DD MMMM YYYY")
+      date(formatString: "DD MMMM YYYY")
       id
       slug
     }

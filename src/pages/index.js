@@ -28,16 +28,15 @@ const Index = ({ data }) => {
         <Section pt={[20, 40]}>
           <h1>
             Hello, my name is Jon. 
-{' '}
-<br />
             {' '}
-I am a web developer based in Paris.
+            <br />
+            {' '}
+            I am a web developer based in Paris.
           </h1>
         </Section>
 
         <SectionTitle>Recent articles</SectionTitle>
         {posts
-          .filter(post => post.node.title.length > 0)
           .map(({ node: post }) => (
             <Box mb={2} key={post.title}>
               <Text>

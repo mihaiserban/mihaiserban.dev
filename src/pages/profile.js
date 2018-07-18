@@ -44,7 +44,7 @@ export default ({ data }) => {
       <Section>
         <SectionTitle>Projects</SectionTitle>
         <Flex>
-          <Box w={[1 / 2, 1 / 2, 1 / 2]} mr={3}>
+          <Box width={[1 / 2, 1 / 2, 1 / 2]} mr={3}>
             <Text fontSize={[1, 2]} pb={2}>
               <span role="img" aria-label="Moon">
                 🌙
@@ -60,7 +60,7 @@ export default ({ data }) => {
               A tiny app that displays the current moon phase
             </Text>
           </Box>
-          <Box w={[1 / 2, 1 / 2, 1 / 2]}>
+          <Box width={[1 / 2, 1 / 2, 1 / 2]}>
             <Text fontSize={[1, 2]} pb={2}>
               <span role="img" aria-label="Tools">
                 🛠
@@ -99,55 +99,55 @@ export default ({ data }) => {
 
       <SectionTitle>Certifications</SectionTitle>
       <Flex flexWrap="wrap">
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> Docker Quick Start
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> Ansible Quick Start
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> Introduction to Linux
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> OpenStack Essentials
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2017 - Udemy <br /> Web Developer Bootcamp
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2017 - Udemy <br /> GraphQL with React
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2017 - Wes Bos <br /> LearnNode!
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2017 - Wes Bos <br /> ES6 for Everyone
           </Text>
         </Box>
 
-        <Box w={[1 / 2, 1 / 2, 1 / 3]}>
+        <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <Text fontSize={[1, 2]} pb={2}>
             2017 - Wes Bos <br /> React for Beginners
           </Text>

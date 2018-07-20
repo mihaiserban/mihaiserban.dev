@@ -27,7 +27,7 @@ export default class Template extends Component {
             />
             <meta
               name="twitter:description"
-              content={data.contentfulBlogPost.excerpt}
+              content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt}
             />
           </Helmet>
           <PageHeader

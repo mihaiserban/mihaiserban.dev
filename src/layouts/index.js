@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import Footer from '../components/footer';
-import Header from '../components/header';
-import GlobalStyles from '../components/global-styles';
+import Footer from 'components/footer';
+import Header from 'components/header';
+import GlobalStyles from 'components/global-styles';
 
 const theme = {
   fontWeight: [300, 400, 500, 600],

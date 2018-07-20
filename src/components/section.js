@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box } from 'grid-styled';
-import { H2 } from '../components/typography';
+import { H2 } from 'components/typography';
 
 const StyledSection = Box.extend`
   border-bottom: 2px solid ${props => props.theme.colors.primary};

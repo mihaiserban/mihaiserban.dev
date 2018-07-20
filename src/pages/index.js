@@ -4,8 +4,8 @@ import Helmet from 'react-helmet';
 import { Box } from 'grid-styled';
 import styled from 'styled-components';
 
-import { Text, P } from '../components/typography';
-import Section, { SectionTitle } from '../components/section';
+import { Text, P } from 'components/typography';
+import Section, { SectionTitle } from 'components/section';
 
 // import svgAnimation from '../assets/images/icon.svg';
 

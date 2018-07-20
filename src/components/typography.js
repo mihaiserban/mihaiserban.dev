@@ -16,7 +16,7 @@ const BaseType = styled(Box)`
 export const H1 = ({ children, ...otherProps }) => (
   <BaseType
     is="h1"
-    fontWeight="400"
+    fontWeight="800"
     fontSize={[6, 6, 7]}
     mt={[1]}
     mb={[1]}
@@ -27,7 +27,12 @@ export const H1 = ({ children, ...otherProps }) => (
 );
 
 export const H2 = ({ children, ...otherProps }) => (
-  <BaseType is="h2" fontWeight="500" fontSize={[1, 2, 3]} {...otherProps}>
+  <BaseType
+    is="h2"
+    fontWeight="400"
+    fontSize={[1, 2, 3]}
+    {...otherProps}
+  >
     {children}
   </BaseType>
 );

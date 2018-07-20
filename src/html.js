@@ -1,6 +1,7 @@
 import React from 'react';
 
 import favicon from 'static-assets/favicon.ico';
+import twitterCard from 'static-assets/twitter-card.png';
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {
@@ -32,11 +33,18 @@ module.exports = class HTML extends React.Component {
             content="width=device-width, initial-scale=1.0"
           />
           <link rel="shortcut icon" href={favicon} />
+          <meta name="theme-color" content="#F59Af0" />
           <meta name="author" content="Jon Leopard" />
-
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@jonlprd" />
+          <meta name="twitter:creator" content="@jonlprd" />
+          <meta
+            name="twitter:image"
+            content={`https://jonleopard.com${twitterCard}`}
           />
           {this.props.headComponents}
           {css}

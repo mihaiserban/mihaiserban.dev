@@ -19,8 +19,6 @@ export default function Template({ data }) {
           title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
         >
           {/* Twitter Card tags */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:creator" content="@jonlprd" />
           <meta
             name="twitter:title"
             content={`${data.contentfulBlogPost.title} - Jon Leopard | Web Developer`}

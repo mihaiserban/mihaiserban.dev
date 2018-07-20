@@ -2,8 +2,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import ReactDisqusComments from 'react-disqus-comments';
 import twitterCard from 'static-assets/twitter-card.png';
-import PageHeader from '../components/page-header';
-import Markdown from '../components/markdown';
+import PageHeader from 'components/page-header';
+import Markdown from 'components/markdown';
 
 export default function Template({ data }) {
   const meta = data.site.siteMetadata;

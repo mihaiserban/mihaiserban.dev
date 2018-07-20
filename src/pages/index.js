@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { Box } from 'grid-styled';
 import styled from 'styled-components';
 
+import twitterCard from 'static-assets/twitter-card.png';
 import { Text, P } from 'components/typography';
 import Section, { SectionTitle } from 'components/section';
 
@@ -24,6 +25,7 @@ const Index = ({ data }) => {
         <Helmet title={meta.defaultTitle}>
           <meta name="twitter:title" content={meta.defaultTitle} />
           <meta name="twitter:description" content={meta.defaultDescription} />
+          <meta name="twitter:image" content={`https://jonleopard.com${twitterCard}`} />
         </Helmet>
         <Section pt={[20, 40]}>
           <h1>

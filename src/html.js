@@ -40,16 +40,16 @@ module.exports = class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           /> 
-          
-          {/* Twitter Card tags */}
-          
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@jonlprd" />
-        <meta name="twitter:creator" content="@jonlprd" />
-        <meta
-          name="twitter:image"
-          content={`https://jonleopard.com${twitterCard}`}
-        />
+         
+          {/* Twitter Card tags */} 
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@jonlprd" />
+          <meta name="twitter:creator" content="@jonlprd" />
+          <meta name="twitter:title" content="Jon Leopard | Web Developer" />
+          <meta
+            name="twitter:image"
+            content={`https://jonleopard.com${twitterCard}`}
+          />
           {this.props.headComponents}
           {css}
         </head>

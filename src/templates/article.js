@@ -18,21 +18,6 @@ export default function Template({ data }) {
         <Helmet
           title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
         >
-          {/* OpenGraph tags */}
-          <meta property="og:url" content="https://jonleopard.com" />
-          <meta property="og:type" content="article" />
-          <meta
-            property="og:title"
-            content={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
-          />
-          <meta
-            property="og:description"
-            content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt}
-          />
-          <meta
-            property="og:image"
-            content={`https://jonleopard.com${twitterCard}`}
-          />
           {/* Twitter Card tags */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:creator" content="@jonlprd" />

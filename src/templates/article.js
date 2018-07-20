@@ -1,58 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import ReactDisqusComments from 'react-disqus-comments';
+import twitterCard from 'static-assets/twitter-card.png';
 import PageHeader from '../components/page-header';
 import Markdown from '../components/markdown';
 
-export default class Template extends Component {
-  render() {
-    const { data } = this.props;
-    const meta = data.site.siteMetadata;
-    if (!data) return null;
+export default function Template({ data }) {
+  const meta = data.site.siteMetadata;
+  if (!data) return null;
 
-    const disqusShortname = 'jonleopard';
-    const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
+  const disqusShortname = 'jonleopard';
+  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 
-    return (
-      <main>
-        <article>
-          <Helmet
-            title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
-          >
-            <meta
-              name="twitter:title"
-              content={`${data.contentfulBlogPost.title} - ${
-                meta.defaultTitle
-              }`}
-            />
-            <meta
-              name="twitter:description"
-              content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt}
-            />
-          </Helmet>
-          <PageHeader
-            title={data.contentfulBlogPost.title}
-            subTitle={`By ${meta.author} on ${
-              data.contentfulBlogPost.date
-            }`}
+  return (
+    <main>
+      <article>
+        <Helmet
+          title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
+        >
+          {/* Twitter Card tags */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:creator" content="@jonlprd" />
+          <meta
+            name="twitter:title"
+            content={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
           />
-          <Markdown
-            dangerouslySetInnerHTML={{
-              __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
-            }}
-            id="top"
-            className="content"
+          <meta
+            name="twitter:description"
+            content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt}
           />
-        </article>
-        <ReactDisqusComments
-          shortname={disqusShortname}
-          identifier={data.contentfulBlogPost.title}
+          <meta
+            name="twitter:image"
+            content={`https://jonleopard.com${twitterCard}`}
+          />
+        </Helmet>
+        <PageHeader
           title={data.contentfulBlogPost.title}
-          url={url}
+          subTitle={`By ${meta.author} on ${data.contentfulBlogPost.date}`}
         />
-      </main>
-    );
-  }
+        <Markdown
+          dangerouslySetInnerHTML={{
+            __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
+          }}
+          id="top"
+          className="content"
+        />
+      </article>
+      <ReactDisqusComments
+        shortname={disqusShortname}
+        identifier={data.contentfulBlogPost.title}
+        title={data.contentfulBlogPost.title}
+        url={url}
+      />
+    </main>
+  );
 }
 
 export const query = graphql`

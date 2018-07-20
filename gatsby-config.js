@@ -7,6 +7,7 @@ module.exports = {
     defaultTitle: 'Jon Leopard | Web Developer',
     defaultDescription:
       'Jon Leopard is a Javascript Web Developer with skills in both front-end and back-end technologies.',
+    twitterHandle: '@jonlprd',
   },
 
   plugins: [

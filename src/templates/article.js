@@ -23,15 +23,11 @@ export default function Template({ data }) {
           <meta name="twitter:creator" content="@jonlprd" />
           <meta
             name="twitter:title"
-            content={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
+            content={`${data.contentfulBlogPost.title} - Jon Leopard | Web Developer`}
           />
           <meta
             name="twitter:description"
             content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt}
-          />
-          <meta
-            name="twitter:image"
-            content={`https://jonleopard.com${twitterCard}`}
           />
         </Helmet>
         <PageHeader

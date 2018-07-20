@@ -43,20 +43,13 @@ module.exports = class HTML extends React.Component {
           
           {/* Twitter Card tags */}
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@jonlprd" />
           <meta name="twitter:creator" content="@jonlprd" />
-          <meta
-            name="twitter:title"
-            content="Test"
-          />
-          <meta
-            name="twitter:description"
-            content="Test"
-          />
+          <meta name="twitter:title" content="Jon Leopard | Web Developer" />
           <meta
             name="twitter:image"
             content={`https://jonleopard.com${twitterCard}`}
-          />
-          
+          />          
           {this.props.headComponents}
           {css}
         </head>

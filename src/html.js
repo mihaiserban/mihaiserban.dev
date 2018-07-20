@@ -46,7 +46,7 @@ module.exports = class HTML extends React.Component {
           <meta name="twitter:creator" content="@jonlprd" />
           <meta
             name="twitter:title"
-            content="Test"}
+            content="Test"
           />
           <meta
             name="twitter:description"

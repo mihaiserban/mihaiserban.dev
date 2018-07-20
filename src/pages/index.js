@@ -18,7 +18,7 @@ const PostDate = styled(Text)`
 const Index = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost;
   const meta = data.site.siteMetadata;
-
+  console.log(twitterCard)
   return (
     <div>
       <main>

@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     author: 'Jon Leopard',
@@ -20,13 +21,6 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/static/`,
       },
     },
     {

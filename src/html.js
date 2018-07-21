@@ -9,7 +9,7 @@ import faviconAndroidChrome from 'favicons/android-chrome-256x256.png';
 import manifest from 'site.webmanifest';
 import maskIcon from 'favicons/safari-pinned-tab.svg';
 
-import twitterCard from 'static/social/twitter-card.png';
+import twitterCard from 'social/twitter-card.png';
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {

@@ -2,8 +2,10 @@ import React from 'react';
 
 import faviconShortcut from 'static/favicon.ico';
 import faviconSmall from 'static/favicons/favicon-16x16.png';
-import faviconMedium from 'static/favicons/favicon-32x32.png'
-import faviconApple from 'static/favicons/apple-touch-icon.png'
+import faviconMedium from 'static/favicons/favicon-32x32.png';
+import faviconApple from 'static/favicons/apple-touch-icon.png';
+import faviconAndroid from 'static/favicons/android-chrome-192x192.png';
+import faviconAndroidChrome from 'static/favicons/android-chrome-256x256.png';
 import manifest from 'static/site.webmanifest';
 import maskIcon from 'static/favicons/safari-pinned-tab.svg';
 
@@ -43,6 +45,8 @@ module.exports = class HTML extends React.Component {
           <link rel="icon" href={faviconSmall} />
           <link rel="icon" href={faviconMedium} />
           <link rel="icon" href={faviconApple} />
+          <link rel="icon" href={faviconAndroid} />
+          <link rel="icon" href={faviconAndroidChrome} />
           <link rel="manifest" href={manifest} />
           <meta name="msapplication-TileColor" content="#603cba">
           <meta name="theme-color" content="#F59Af0" />

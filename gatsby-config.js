@@ -81,5 +81,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-next',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-netlify',
   ],
 };

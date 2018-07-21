@@ -1,6 +1,12 @@
 import React from 'react';
 
-import favicon from 'static/favicon.ico';
+import faviconShortcut from 'static/favicon.ico';
+import faviconSmall from 'static/favicons/favicon-16x16.png';
+import faviconMedium from 'static/favicons/favicon-32x32.png'
+import faviconApple from 'static/favicons/apple-touch-icon.png'
+import manifest from 'static/site.webmanifest';
+import maskIcon from 'static/favicons/safari-pinned-tab.svg';
+
 import twitterCard from 'static/social/twitter-card.png';
 
 let stylesStr;
@@ -33,7 +39,12 @@ module.exports = class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <link rel="shortcut icon" href={favicon} />
+          <link rel="shortcut icon" href={faviconShortcut} />
+          <link rel="icon" href={faviconSmall} />
+          <link rel="icon" href={faviconMedium} />
+          <link rel="icon" href={faviconApple} />
+          <link rel="manifest" href={manifest} />
+          <meta name="msapplication-TileColor" content="#603cba">
           <meta name="theme-color" content="#F59Af0" />
           <meta name="author" content="Jon Leopard" />
           <meta

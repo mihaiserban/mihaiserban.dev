@@ -6,7 +6,7 @@ import faviconMedium from 'favicons/favicon-32x32.png';
 import faviconApple from 'favicons/apple-touch-icon.png';
 import faviconAndroid from 'favicons/android-chrome-192x192.png';
 import faviconAndroidChrome from 'favicons/android-chrome-256x256.png';
-import manifest from './site.webmanifest';
+import manifest from 'site.webmanifest';
 import maskIcon from 'favicons/safari-pinned-tab.svg';
 
 import twitterCard from 'static/social/twitter-card.png';

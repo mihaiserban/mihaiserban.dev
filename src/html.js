@@ -1,7 +1,7 @@
 import React from 'react';
 
-import favicon from 'static-assets/favicon.ico';
-import twitterCard from 'static-assets/twitter-card.png';
+import favicon from 'static/favicon.ico';
+import twitterCard from 'static/social/twitter-card.png';
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import faviconShortcut from 'static/favicon.ico';
-import faviconSmall from 'static/favicons/favicon-16x16.png';
-import faviconMedium from 'static/favicons/favicon-32x32.png';
-import faviconApple from 'static/favicons/apple-touch-icon.png';
-import faviconAndroid from 'static/favicons/android-chrome-192x192.png';
-import faviconAndroidChrome from 'static/favicons/android-chrome-256x256.png';
-import manifest from 'static/site.webmanifest';
-import maskIcon from 'static/favicons/safari-pinned-tab.svg';
+import faviconShortcut from 'favicon.ico';
+import faviconSmall from 'favicons/favicon-16x16.png';
+import faviconMedium from 'favicons/favicon-32x32.png';
+import faviconApple from 'favicons/apple-touch-icon.png';
+import faviconAndroid from 'favicons/android-chrome-192x192.png';
+import faviconAndroidChrome from 'favicons/android-chrome-256x256.png';
+import manifest from './site.webmanifest';
+import maskIcon from 'favicons/safari-pinned-tab.svg';
 
 import twitterCard from 'static/social/twitter-card.png';
 

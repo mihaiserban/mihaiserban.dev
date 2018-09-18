@@ -25,7 +25,7 @@ const Inner = styled.div`
   padding: 0 16px;
 `;
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles>
       <Inner>
@@ -36,3 +36,5 @@ export default ({ children }) => (
     </GlobalStyles>
   </ThemeProvider>
 );
+
+export default Layout

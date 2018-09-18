@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import Layout from "components/layout";
 
-const PostDate = styled.h3`
+const PostDate = styled.p`
   font-size: 0.8em;
   display: block;
 `;
@@ -27,15 +27,19 @@ const Index = ({ data }) => {
             Hello, my name is Jon. <br /> I am a web developer based in Paris.
           </h1>
         </Box>
-
-        <h1>Recent articles</h1>
+          
+        <Box py={[10, 10]}>
+          <h3>Recent articles</h3>
+        </Box>
         {posts.map(({ node: post }) => (
-          <Box mb={2} key={post.title}>
-              <Link to={post.slug} style={{ color: "black" }}>
-                {post.title}
+          <Box mb={3} key={post.title}>
+            <Link to={post.slug} style={{ color: "heading" }}>
+              {post.title}
+              <Box mt={2}>
                 <PostDate is="time" dateTime={post.date}>
                   {post.date}
                 </PostDate>
+              </Box>
               </Link>
           </Box>
         ))}

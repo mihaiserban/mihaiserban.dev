@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import ReactDisqusComments from 'react-disqus-comments';
 import PageHeader from 'components/page-header';
 import Markdown from 'components/markdown';
+import Layout from 'components/layout';
 
 export default function Template({ data }) {
   const meta = data.site.siteMetadata;
@@ -13,7 +14,7 @@ export default function Template({ data }) {
   const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 
   return (
-    <main>
+    <Layout>
       <article>
         <Helmet
           title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
@@ -46,7 +47,7 @@ export default function Template({ data }) {
         title={data.contentfulBlogPost.title}
         url={url}
       />
-    </main>
+    </Layout>
   );
 }
 

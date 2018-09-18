@@ -1,7 +1,7 @@
 const path = require('path');
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
   return new Promise((resolve, reject) => {
     graphql(`
       {
@@ -28,12 +28,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   });
 };
 
-exports.modifyWebpackConfig = ({ config, env }) => {
-  config.merge({
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
     resolve: {
-      root: path.resolve(__dirname, './src'),
-      extensions: ['', '.js', '.jsx', '.json'],
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
     },
-  });
-  return config;
-};
+  })
+}
+

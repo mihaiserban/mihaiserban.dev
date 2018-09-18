@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 import { Flex, Box } from 'grid-styled';
 import PageHeader from 'components/page-header';
 import { Text, P } from 'components/typography';

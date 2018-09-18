@@ -1,4 +1,4 @@
-import styledNormalize from 'styled-normalize';
+import styledNormalize from "styled-normalize";
 import styled, { injectGlobal } from 'styled-components';
 
 // eslint-disable-next-line no-unused-expressions
@@ -27,13 +27,13 @@ injectGlobal`
   }
 
   a {
-		color: inherit;
-		text-decoration: none;
-		border-bottom: 1px solid #F59AF0;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid #F59AF0;
     &:hover {
       color: ${props => props.theme.colors.primary};
-		}
-		&:visited {
+  }
+    &:visited {
       color: inherit;
     }
 

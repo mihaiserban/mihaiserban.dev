@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 import ReactDisqusComments from 'react-disqus-comments';
 import PageHeader from 'components/page-header';
 import Markdown from 'components/markdown';

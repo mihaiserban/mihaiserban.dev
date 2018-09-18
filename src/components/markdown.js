@@ -1,8 +1,7 @@
 import { Box } from 'grid-styled';
-import { H2 } from 'components/typography';
 
 const Markdown = Box.extend`
-  color: ${props => props.theme.colors.text};
+  color: text;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -84,9 +83,9 @@ const Markdown = Box.extend`
   }
 
   a {
-    color: ${props => props.theme.colors.text};
+    color: text;
     padding-bottom: 1px;
-    border-bottom: 1px solid ${props => props.theme.colors.primary};
+    border-bottom: 1px solid primary;
   }
 
   blockquote {

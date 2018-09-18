@@ -5,10 +5,8 @@ import { Box } from "grid-styled";
 import styled from "styled-components";
 
 import Layout from "components/layout";
-import { Text, P } from "components/typography";
-import Section, { SectionTitle } from "components/section";
 
-const PostDate = styled(Text)`
+const PostDate = styled.h3`
   font-size: 0.8em;
   display: block;
 `;
@@ -24,23 +22,21 @@ const Index = ({ data }) => {
           <meta name="twitter:title" content={meta.defaultTitle} />
           <meta name="twitter:description" content={meta.defaultDescription} />
         </Helmet>
-        <Section pt={[20, 40]}>
+        <Box pt={[20, 40]}>
           <h1>
             Hello, my name is Jon. <br /> I am a web developer based in Paris.
           </h1>
-        </Section>
+        </Box>
 
-        <SectionTitle>Recent articles</SectionTitle>
+        <h1>Recent articles</h1>
         {posts.map(({ node: post }) => (
           <Box mb={2} key={post.title}>
-            <Text>
               <Link to={post.slug} style={{ color: "black" }}>
                 {post.title}
                 <PostDate is="time" dateTime={post.date}>
                   {post.date}
                 </PostDate>
               </Link>
-            </Text>
           </Box>
         ))}
       </Layout>

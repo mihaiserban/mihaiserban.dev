@@ -1,11 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { Flex, Box } from 'grid-styled';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import { Flex, Box } from "grid-styled";
 
-import { Text } from './typography';
-
-const Logo = styled('a')`
+const Logo = styled("a")`
   display: block;
   color: ${props => props.theme.colors.text};
   text-decoration: none;
@@ -50,32 +48,26 @@ export default () => (
     <Nav is="nav">
       <ul>
         <li>
-          <Text fontSize={[1, 2]} style={{ lineHeight: '1em' }}>
-            <Link to="/profile">Profile</Link>
-          </Text>
+          <Link to="/profile">Profile</Link>
         </li>
 
         <li>
-          <Text fontSize={[1, 2]} style={{ lineHeight: '1em' }}>
-            <a
-              href="https://github.com/jonleopard"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github
-            </a>
-          </Text>
+          <a
+            href="https://github.com/jonleopard"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </a>
         </li>
         <li>
-          <Text fontSize={[1, 2]} style={{ lineHeight: '1em' }}>
-            <a
-              href="https://twitter.com/jonlprd"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Twitter
-            </a>
-          </Text>
+          <a
+            href="https://twitter.com/jonlprd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twitter
+          </a>
         </li>
       </ul>
     </Nav>

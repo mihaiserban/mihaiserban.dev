@@ -2,21 +2,21 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { Flex, Box } from 'grid-styled';
+import { fontSize } from 'styled-system';
+import Layout from 'components/layout';
 import PageHeader from 'components/page-header';
-import { Text, P } from 'components/typography';
-import Section, { SectionTitle } from 'components/section';
 
 export default ({ data }) => {
   const meta = data.site.siteMetadata;
   return (
-    <main>
+    <Layout>
       <Helmet title={`Profile - ${meta.defaultTitle}`}>
         <meta name="twitter:title" content={`Profile - ${meta.defaultTitle}`} />
         <meta name="twitter:description" content={meta.defaultDescription} />
       </Helmet>
       <PageHeader title="Profile" />
-      <Section>
-        <P>
+      <div>
+        <p>
           I'm a self taught web developer who loves all things tech. This blog
           serves as a medium to get me more involved in the industry, talk about
           the projects I'm working on, as well as post other random musings. I'm
@@ -39,14 +39,14 @@ export default ({ data }) => {
             Goodreads
           </a>{' '}
           profile to see what I'm into these days.
-        </P>
-      </Section>
+        </p>
+      </div>
 
-      <Section>
-        <SectionTitle>Projects</SectionTitle>
+      <div>
+        <h1>Projects</h1>
         <Flex>
           <Box width={[1 / 2, 1 / 2, 1 / 2]} mr={3}>
-            <Text fontSize={[1, 2]} pb={2}>
+            <p fontSize={[1, 2]} pb={2}>
               <span role="img" aria-label="Moon">
                 🌙
               </span>
@@ -59,10 +59,10 @@ export default ({ data }) => {
               </a>
               <br />
               A tiny app that displays the current moon phase
-            </Text>
+            </p>
           </Box>
           <Box width={[1 / 2, 1 / 2, 1 / 2]}>
-            <Text fontSize={[1, 2]} pb={2}>
+            <p fontSize={[1, 2]} pb={2}>
               <span role="img" aria-label="Tools">
                 🛠
               </span>
@@ -75,86 +75,86 @@ export default ({ data }) => {
               </a>
               <br />
               A dotfile repo for my development environment
-            </Text>
+            </p>
           </Box>
         </Flex>
-      </Section>
+      </div>
 
-      <Section>
-        <SectionTitle>Professional Experience</SectionTitle>
-        <Text fontSize={[1, 2]} pb={2}>
+      <div>
+        <h1>Professional Experience</h1>
+        <p fontSize={[1, 2]} pb={2}>
           2014 - 2016 <br /> Frontend Designer & Project Manager / UpFX
-        </Text>
-        <Text fontSize={[1, 2]} pb={2}>
+        </p>
+        <p fontSize={[1, 2]} pb={2}>
           2010 - 2013 <br /> Frontend Designer, Wireframer, Project Manager /
           1Cart
-        </Text>
-        <Text fontSize={[1, 2]} pb={2}>
+        </p>
+        <p fontSize={[1, 2]} pb={2}>
           2009 - 2010 <br /> Frontend Designer & Project Manager / GoingUP
-        </Text>
-        <Text fontSize={[1, 2]} pb={2}>
+        </p>
+        <p fontSize={[1, 2]} pb={2}>
           2006 - 2008 <br /> Technician & Customer Support Representative /
           TotalRecall
-        </Text>
-      </Section>
+        </p>
+      </div>
 
-      <SectionTitle>Certifications</SectionTitle>
+      <div>Certifications</div>
       <Flex flexWrap="wrap">
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> Docker Quick Start
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> Ansible Quick Start
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> Introduction to Linux
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2016 - LinuxAcademy <br /> OpenStack Essentials
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2017 - Udemy <br /> Web Developer Bootcamp
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2017 - Udemy <br /> GraphQL with React
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2017 - Wes Bos <br /> LearnNode!
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2017 - Wes Bos <br /> ES6 for Everyone
-          </Text>
+          </p>
         </Box>
 
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
-          <Text fontSize={[1, 2]} pb={2}>
+          <p fontSize={[1, 2]} pb={2}>
             2017 - Wes Bos <br /> React for Beginners
-          </Text>
+          </p>
         </Box>
       </Flex>
-    </main>
+    </Layout>
   );
 };
 

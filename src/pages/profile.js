@@ -16,7 +16,7 @@ export default ({ data }) => {
       </Helmet>
       <PageHeader title="Profile" />
       <div>
-        <p>
+        <p style={{ fontSize: 20 }}>
           I'm a self taught web developer who loves all things tech. This blog
           serves as a medium to get me more involved in the industry, talk about
           the projects I'm working on, as well as post other random musings. I'm
@@ -43,7 +43,7 @@ export default ({ data }) => {
       </div>
 
       <div>
-        <h1>Projects</h1>
+        <PageHeader title="Projects"/>
         <Flex>
           <Box width={[1 / 2, 1 / 2, 1 / 2]} mr={3}>
             <p fontSize={[1, 2]} pb={2}>
@@ -80,8 +80,7 @@ export default ({ data }) => {
         </Flex>
       </div>
 
-      <div>
-        <h1>Professional Experience</h1>
+      <PageHeader title="Professional Experience" />
         <p fontSize={[1, 2]} pb={2}>
           2014 - 2016 <br /> Frontend Designer & Project Manager / UpFX
         </p>
@@ -96,9 +95,8 @@ export default ({ data }) => {
           2006 - 2008 <br /> Technician & Customer Support Representative /
           TotalRecall
         </p>
-      </div>
 
-      <div>Certifications</div>
+        <PageHeader title="Certifications"/>
       <Flex flexWrap="wrap">
         <Box width={[1 / 2, 1 / 2, 1 / 3]}>
           <p fontSize={[1, 2]} pb={2}>

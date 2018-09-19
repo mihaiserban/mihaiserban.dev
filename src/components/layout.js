@@ -1,28 +1,27 @@
-import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import React, { Fragment } from "react";
 import Footer from "components/footer";
-import Header from "components/header";
-import GlobalStyles from "components/global-styles";
+import NavBar from "components/navbar";
+import { ThemeProvider, Container, Box } from "jonleopard-design-system";
 
-import theme from './theme'
-
-const Inner = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 16px;
-`;
+// const Inner = styled.div`
+//   width: 100%;
+//   max-width: 800px;
+//   margin: 0 auto;
+//   padding: 0 16px;
+// `;
 
 const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles>
-      <Inner>
-        <Header />
-        {children}
-        <Footer />
-      </Inner>
-    </GlobalStyles>
-  </ThemeProvider>
+  <Fragment>
+    <ThemeProvider>
+      <Box width={[1, 1, 1, 1]} p={3} bg="snow">
+        <Container px={3}>
+          <NavBar />
+          {children}
+          <Footer />
+        </Container>
+      </Box>
+    </ThemeProvider>
+  </Fragment>
 );
 
 export default Layout;

@@ -22,6 +22,7 @@
     "gatsby-transformer-sharp": "^2.1.1",
     "global": "^4.3.2",
     "grid-styled": "^5.0.2",
+    "jonleopard-design-system": "^0.0.8",
     "prismjs": "^1.14.0",
     "react": "^16.5.2",
     "react-disqus-comments": "^1.2.0",

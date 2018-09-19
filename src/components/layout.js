@@ -9,7 +9,7 @@ const Layout = ({ children }) => (
   <Fragment>
     <ThemeProvider>
       <Box width={[1, 1, 1]} p={3} bg="snow">
-        <Container px={3}>
+        <Container maxWidth={980} px={3}>
           <NavBar />
           {children}
           <Footer />

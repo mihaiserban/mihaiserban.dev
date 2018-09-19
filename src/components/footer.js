@@ -4,7 +4,7 @@ import { Flex, Box, Link, Text } from "jonleopard-design-system";
 const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => (
-  <Flex alignItems="right" justifyContent="center" py={3}>
+  <Flex alignItems="right" justifyContent="center" py={40}>
     <Box width={1 / 3}>
       <Text>&copy; {CURRENT_YEAR}</Text>
     </Box>

@@ -17,7 +17,7 @@ const Index = ({ data }) => {
         <meta name="twitter:description" content={meta.defaultDescription} />
       </Helmet>
       <Box width={1} pt={[20, 40]}>
-        <Heading fontSize={[4, 5, 6]}>
+        <Heading fontSize={[4,5,7]}>
           Hello, my name is Jon. <br /> I am a web developer based in Paris.
         </Heading>
       </Box>

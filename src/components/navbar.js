@@ -7,7 +7,7 @@ import { Flex, Box, Link, Text } from "jonleopard-design-system";
 const NavBar = () => (
   <Flex alignItems="center" justifyContent="center" py={3}>
     <Box width={1 / 3}>
-      <Link href="/">jonleopard.com</Link>
+      <GLink to='/'>jonleopard.com</GLink>
     </Box>
     <Box mx="auto" />
     <Box pr={2}>

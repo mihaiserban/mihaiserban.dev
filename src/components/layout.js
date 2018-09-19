@@ -8,7 +8,7 @@ import { ThemeProvider, Container, Box } from "jonleopard-design-system";
 const Layout = ({ children }) => (
   <Fragment>
     <ThemeProvider>
-      <Box width={[1, 1, 1]} p={3} bg="snow">
+      <Box width={[1, 1, 1]} p={3} bg="snow" minHeight={4000}>
         <Container maxWidth={980} px={3}>
           <NavBar />
           {children}

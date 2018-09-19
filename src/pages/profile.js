@@ -17,7 +17,7 @@ export default ({ data }) => {
       <Flex flexWrap="wrap">
         <Box width={1} pt={[20, 40]}>
           <Heading fontSize={[4,5,7]} pb={4}>Profile</Heading>
-          <Text fontSize={[2,3]}>
+          <Text fontSize={[1,2,3]}>
             I'm a self taught web developer who loves all things tech. This blog
             serves as a medium to get me more involved in the industry, talk
             about the projects I'm working on, as well as post other random

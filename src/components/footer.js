@@ -1,52 +1,45 @@
-import React from 'react';
-import { Flex } from 'grid-styled';
+import React from "react";
+import { Flex, Box, Link, Text } from "jonleopard-design-system";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-const StyledFooter = Flex.extend`
-  width: 100%;
-  padding: 16px 0 32px;
-  margin-top: 40px;
-  font-size: 14px;
-
-  a {
-    margin: 0 8px;
-    color: ${props => props.theme.colors.text};
-    text-decoration: none;
-    border-bottom: 0;
-  }
-`;
-
 const Footer = () => (
-  <StyledFooter is="footer">
-    <span itemScope="" itemType="http://schema.org/Organization">
-      <link itemProp="url" href="https://jonleopard.com" />
-      &copy; {CURRENT_YEAR} -
-      <a
-        target="_blank"
-        rel="noopener noreferrer me"
-        href="https://twitter.com/jonlprd"
-        itemProp="sameAs"
-      >
-        Twitter
-      </a>
-      <a
-        target="_blank"
-        rel="noopener noreferrer me"
-        href="http://github.com/jonleopard"
-        itemProp="sameAs"
-      >
-        GitHub
-      </a>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://github.com/jonleopard/jonleopard.com"
-      >
-        View Source
-      </a>
-    </span>
-  </StyledFooter>
+  <Flex alignItems="right" justifyContent="center" py={3}>
+    <Box width={1 / 3}>
+      <Text>&copy; {CURRENT_YEAR}</Text>
+    </Box>
+    <Box mx="auto" />
+
+      <Box pr={2}>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer me"
+          href="https://twitter.com/jonlprd"
+          itemProp="sameAs"
+        >
+          Twitter
+        </Link>
+      </Box>
+      <Box pr={2}>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer me"
+          href="http://github.com/jonleopard"
+          itemProp="sameAs"
+        >
+          GitHub
+        </Link>
+      </Box>
+      <Box>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="http://github.com/jonleopard/jonleopard.com"
+        >
+          View Source
+        </Link>
+      </Box>
+  </Flex>
 );
 
 export default Footer;

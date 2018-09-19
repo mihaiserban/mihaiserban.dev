@@ -1,50 +1,47 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import Helmet from "react-helmet";
-import { Box } from "grid-styled";
+import { Box, Heading, Text } from "jonleopard-design-system";
 import styled from "styled-components";
 
 import Layout from "components/layout";
-
-const PostDate = styled.p`
-  font-size: 0.8em;
-  display: block;
-`;
 
 const Index = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost;
   const meta = data.site.siteMetadata;
 
   return (
-    <main>
-      <Layout>
-        <Helmet title={meta.defaultTitle}>
-          <meta name="twitter:title" content={meta.defaultTitle} />
-          <meta name="twitter:description" content={meta.defaultDescription} />
-        </Helmet>
-        <Box pt={[20, 40]}>
-          <h1>
-            Hello, my name is Jon. <br /> I am a web developer based in Paris.
-          </h1>
-        </Box>
-          
-        <Box py={[10, 10]}>
-          <h3>Recent articles</h3>
-        </Box>
+    <Layout>
+      <Helmet title={meta.defaultTitle}>
+        <meta name="twitter:title" content={meta.defaultTitle} />
+        <meta name="twitter:description" content={meta.defaultDescription} />
+      </Helmet>
+      <Box width={1} pt={[20, 40]}>
+        <Heading fontSize={[4, 5, 6]}>
+          Hello, my name is Jon. <br /> I am a web developer based in Paris.
+        </Heading>
+      </Box>
+
+      <Box pt={[20, 50]} pb={[20, 20]}>
+        <Heading regular fontSize={[2, 2, 3]}>
+          Recent articles
+        </Heading>
+      </Box>
+      <Box width={[1, 1, 1]}>
         {posts.map(({ node: post }) => (
-          <Box mb={3} key={post.title}>
-            <Link to={post.slug} style={{ color: "heading" }}>
+          <Text fontSize={[2,2,2]} key={post.title}>
+            <Link to={post.slug} color="primary">
               {post.title}
-              <Box mt={2}>
-                <PostDate is="time" dateTime={post.date}>
+              <Box pb={3}>
+                <Text is="time" dateTime={post.date}>
                   {post.date}
-                </PostDate>
+                </Text>
               </Box>
-              </Link>
-          </Box>
+            </Link>
+          </Text>
         ))}
-      </Layout>
-    </main>
+      </Box>
+    </Layout>
   );
 };
 

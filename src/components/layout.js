@@ -1,20 +1,24 @@
 import React, { Fragment } from "react";
 import Footer from "components/footer";
 import NavBar from "components/navbar";
+import styled from 'styled-components'
 import { ThemeProvider, Container, Box } from "jonleopard-design-system";
 
 
+const Hero = styled(Box)`
+  min-height: 100vh;
+`
 
 const Layout = ({ children }) => (
   <Fragment>
     <ThemeProvider>
-      <Box width={[1, 1, 1]} p={3} bg="snow" minHeight={4000}>
-        <Container maxWidth={980} px={3}>
+      <Hero width={1} p={3} bg="snow">
+        <Container maxWidth={960} px={3}>
           <NavBar />
           {children}
           <Footer />
         </Container>
-      </Box>
+      </Hero>
     </ThemeProvider>
   </Fragment>
 );

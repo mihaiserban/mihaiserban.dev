@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Text } from 'jonleopard-design-system';
+import { Box, Heading } from 'jonleopard-design-system';
 
 const PageHeader = ({ title, subTitle }) => (
   <Box pt={[24, 48]} pb={[2, 4]}>

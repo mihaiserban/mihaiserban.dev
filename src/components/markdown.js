@@ -1,9 +1,8 @@
-import { Box } from 'grid-styled';
+import { Box } from 'jonleopard-design-system';
 
 const Markdown = Box.extend`
-  color: text;
+  color: ${props => props.muted};
   width: 100%;
-  max-width: 800px;
   margin: 0 auto;
 
   table {

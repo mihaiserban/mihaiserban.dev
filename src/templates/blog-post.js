@@ -5,6 +5,7 @@ import ReactDisqusComments from 'react-disqus-comments';
 import PageHeader from 'components/page-header';
 import Markdown from 'components/markdown';
 import Layout from 'components/layout';
+import { Box } from 'jonleopard-design-system';
 
 export default function Template({ data }) {
   const meta = data.site.siteMetadata;

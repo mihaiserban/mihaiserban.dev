@@ -52,7 +52,10 @@
     }
  },
   "lint-staged": {
-   "*.js": ["eslint --fix", "git add"]
+   "src/**/*.{js,jsx,json}": [
+     "yarn run format",
+      "git add"
+   ]
  },
  "keywords": [
     "Jon Leopard",

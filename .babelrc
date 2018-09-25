@@ -28,6 +28,7 @@
       },
     ],
     "@babel/plugin-syntax-dynamic-import",
+    "babel-plugin-styled-components",
     "babel-plugin-macros",
     [
       "@babel/plugin-transform-runtime",

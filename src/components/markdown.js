@@ -1,6 +1,7 @@
 import { Box } from 'jonleopard-design-system';
+import styled from 'styled-components';
 
-const Markdown = Box.extend`
+const Markdown = styled(Box)`
   color: ${props => props.muted};
   width: 100%;
   margin: 0 auto;

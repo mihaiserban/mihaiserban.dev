@@ -5566,12 +5566,6 @@ gray-matter@^4.0.0:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-grid-styled@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/grid-styled/-/grid-styled-5.0.2.tgz#1e81d7d5bde50a9b43d81cf111b81399126fe595"
-  dependencies:
-    system-components "^3.0.0"
-
 gud@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
@@ -10563,12 +10557,6 @@ styled-normalize@^8.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-styled-system@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.0.2.tgz#2189a6d829117d212fb6ac8ebc4260fdb75d1109"
-  dependencies:
-    prop-types "^15.6.2"
-
 styled-system@^3.1.6:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.1.6.tgz#286448a62932b1f7ed98075d1a520afd52da97d1"
@@ -10647,12 +10635,6 @@ svgo@^1.0.0:
 symbol-observable@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
-
-system-components@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/system-components/-/system-components-3.0.0.tgz#073e7c6712012c3c17375bae3ae986cb81866347"
-  dependencies:
-    styled-system "^3.0.1"
 
 table@4.0.2:
   version "4.0.2"

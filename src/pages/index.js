@@ -1,50 +1,51 @@
-import React from "react";
-import { Link, graphql } from "gatsby";
-import Helmet from "react-helmet";
-import { Box } from "grid-styled";
-import styled from "styled-components";
+import React from 'react';
+import { Link as GLink, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
+import styled from 'styled-components';
 
-import Layout from "components/layout";
-
-const PostDate = styled.p`
-  font-size: 0.8em;
-  display: block;
-`;
+import Layout from 'components/layout';
 
 const Index = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost;
   const meta = data.site.siteMetadata;
 
   return (
-    <main>
-      <Layout>
-        <Helmet title={meta.defaultTitle}>
-          <meta name="twitter:title" content={meta.defaultTitle} />
-          <meta name="twitter:description" content={meta.defaultDescription} />
-        </Helmet>
-        <Box pt={[20, 40]}>
-          <h1>
-            Hello, my name is Jon. <br /> I am a web developer based in Paris.
-          </h1>
-        </Box>
-          
-        <Box py={[10, 10]}>
-          <h3>Recent articles</h3>
-        </Box>
-        {posts.map(({ node: post }) => (
-          <Box mb={3} key={post.title}>
-            <Link to={post.slug} style={{ color: "heading" }}>
-              {post.title}
-              <Box mt={2}>
-                <PostDate is="time" dateTime={post.date}>
-                  {post.date}
-                </PostDate>
-              </Box>
+    <Layout>
+      <Helmet title={meta.defaultTitle}>
+        <meta name="twitter:title" content={meta.defaultTitle} />
+        <meta name="twitter:description" content={meta.defaultDescription} />
+      </Helmet>
+      <Box width={1} pt={[20, 40]}>
+        <Heading fontSize={[4, 5, 6]}>
+          Hello, my name is Jon. <br />
+{' '}
+I am a web developer based in Paris.
+</Heading>
+      </Box>
+
+      <Box pt={[20, 50]} pb={[20, 20]}>
+        <Heading regular fontSize={[2, 2, 3]}>
+          Recent articles
+        </Heading>
+      </Box>
+      <Flex flexDirection="column">
+        <Box>
+          {posts.map(({ node: post }) => (
+            <Text fontSize={2} key={post.title}>
+              <Link as={GLink} to={post.slug} color="black">
+                {post.title}
               </Link>
-          </Box>
-        ))}
-      </Layout>
-    </main>
+              <Box pb={3}>
+                <Text fontSize={1} dateTime={post.date}>
+                  {post.date}
+                </Text>
+              </Box>
+            </Text>
+          ))}
+        </Box>
+      </Flex>
+    </Layout>
   );
 };
 

@@ -54,7 +54,7 @@
   "lint-staged": {
    "src/**/*.{js,jsx,json}": [
      "yarn run format",
-      "git add"
+    "git add"
    ]
  },
  "keywords": [

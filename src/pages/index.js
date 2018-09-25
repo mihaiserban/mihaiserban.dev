@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link as GLink, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import { Flex, Box, Heading, Text } from 'jonleopard-design-system';
+import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
 import styled from 'styled-components';
 
 import Layout from 'components/layout';
@@ -30,17 +30,17 @@ I am a web developer based in Paris.
         </Heading>
       </Box>
       <Flex flexDirection="column">
-        <Box width={1/3}>
+        <Box width={1 / 3}>
           {posts.map(({ node: post }) => (
             <Text fontSize={2} key={post.title}>
-              <Link to={post.slug} color="primary">
+              <Link as={GLink} to={post.slug} color="black">
                 {post.title}
-                <Box pb={3}>
-                  <Text pt={2} fontSize={1} dateTime={post.date}>
-                    {post.date}
-                  </Text>
-                </Box>
               </Link>
+              <Box pb={3}>
+                <Text pt={2} fontSize={1} dateTime={post.date}>
+                  {post.date}
+                </Text>
+              </Box>
             </Text>
           ))}
         </Box>

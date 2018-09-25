@@ -42,9 +42,19 @@
     "eslint-plugin-prettier": "^2.5.0",
     "eslint-plugin-react": "^7.5.1",
     "gatsby-codemods": "^1.0.4",
+    "husky": "^1.0.0-rc.15",
+    "lint-staged": "^7.3.0",
     "prettier": "^1.14.3"
   },
-  "keywords": [
+   "husky": {
+    "hooks": {  
+     "pre-commit": "lint-staged"
+    }
+ },
+  "lint-staged": {
+   "*.js": ["eslint --fix", "git add"]
+ },
+ "keywords": [
     "Jon Leopard",
     "gatsby",
     "blog",
@@ -55,7 +65,8 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop", 
+    "precommit": "lint-staged",
     "format": "prettier --write '{./,__{tests,mocks}__}/**/*.+(js|jsx)'",
     "test": "echo \"Error: no test specified\" && exit 1"
   }

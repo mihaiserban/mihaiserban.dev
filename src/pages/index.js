@@ -30,14 +30,14 @@ I am a web developer based in Paris.
         </Heading>
       </Box>
       <Flex flexDirection="column">
-        <Box width={1 / 3}>
+        <Box>
           {posts.map(({ node: post }) => (
             <Text fontSize={2} key={post.title}>
               <Link as={GLink} to={post.slug} color="base">
                 {post.title}
               </Link>
               <Box pb={3}>
-                <Text pt={2} fontSize={1} dateTime={post.date}>
+                <Text fontSize={1} dateTime={post.date}>
                   {post.date}
                 </Text>
               </Box>

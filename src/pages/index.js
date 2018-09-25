@@ -33,7 +33,7 @@ I am a web developer based in Paris.
         <Box width={1 / 3}>
           {posts.map(({ node: post }) => (
             <Text fontSize={2} key={post.title}>
-              <Link as={GLink} to={post.slug} color="black">
+              <Link as={GLink} to={post.slug} color="base">
                 {post.title}
               </Link>
               <Box pb={3}>

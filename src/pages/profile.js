@@ -25,6 +25,7 @@ export default ({ data }) => {
             I'm not in front of a screen, I'm most likely reading a good book or
             listening to music. Check out my{" "}
             <Link
+              color="primary"
               href="https://last.fm/user/crunkmastafunk"
               target="_blank"
               rel="noopener noreferrer"
@@ -33,6 +34,7 @@ export default ({ data }) => {
             </Link>{" "}
             and{" "}
             <Link
+              color="primary"
               href="https://goodreads.com/jonleopard"
               target="_blank"
               rel="noopener noreferrer"
@@ -52,6 +54,7 @@ export default ({ data }) => {
                   🌙
                 </span>
                 <Link
+                  color="primary"
                   href="https://github.com/jonleopard/lunarphase"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -68,6 +71,7 @@ export default ({ data }) => {
                   🛠
                 </span>
                 <Link
+                  color="primary"
                   href="https://github.com/jonleopard/dotfiles"
                   target="_blank"
                   rel="noopener noreferrer"

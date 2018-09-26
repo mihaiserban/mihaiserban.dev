@@ -70,6 +70,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-mdx',
     'gatsby-transformer-json',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

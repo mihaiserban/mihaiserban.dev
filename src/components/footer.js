@@ -6,11 +6,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 const Footer = () => (
   <Flex alignItems="right" justifyContent="center" py={40}>
     <Box width={1 / 3}>
-      <Text>
-        &copy;
-        {' '}
-        {CURRENT_YEAR}
-      </Text>
+      <Text>&copy; {CURRENT_YEAR}</Text>
     </Box>
     <Box mx="auto" />
 

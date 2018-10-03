@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 import { Text } from 'jonleopard-design-system';
 
-
-
 const Link = ({ children, to, ...other }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)

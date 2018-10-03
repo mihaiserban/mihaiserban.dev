@@ -16,12 +16,10 @@ const Index = ({ data }) => {
         <meta name="twitter:title" content={meta.defaultTitle} />
         <meta name="twitter:description" content={meta.defaultDescription} />
       </Helmet>
-      <Box width={1} pt={[20, 40]}>
+      <Box width={1} pt={[20, 80]}>
         <Heading fontSize={[4, 5, 6]}>
-          Hello, my name is Jon. <br />
-{' '}
-I am a web developer based in Paris.
-</Heading>
+          Hello, my name is Jon. <br /> I am a web developer based in Paris.
+        </Heading>
       </Box>
 
       <Box pt={[20, 50]} pb={[20, 20]}>

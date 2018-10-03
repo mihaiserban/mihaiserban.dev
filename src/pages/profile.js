@@ -1,9 +1,9 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import { Flex, Box, Heading, Text, Link } from "jonleopard-design-system";
-import Layout from "components/layout";
-import PageHeader from "components/page-header";
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
+import Layout from 'components/layout';
+import PageHeader from 'components/page-header';
 
 export default ({ data }) => {
   const meta = data.site.siteMetadata;
@@ -15,15 +15,17 @@ export default ({ data }) => {
       </Helmet>
 
       <Flex flexWrap="wrap">
-        <Box width={1} pt={[20, 40]}>
-          <Heading fontSize={[4,5,7]} pb={4}>Profile</Heading>
-          <Text fontSize={[1,2,3]}>
+        <Box width={1} pt={[20, 80]}>
+          <Heading fontSize={[4, 5, 6]} pb={4}>
+            Profile
+          </Heading>
+          <Text fontSize={[1, 2, 3]}>
             I'm a self taught web developer who loves all things tech. This blog
             serves as a medium to get me more involved in the industry, talk
             about the projects I'm working on, as well as post other random
             musings. I'm a huge movie buff, gaming nerd, and coffee lover. When
             I'm not in front of a screen, I'm most likely reading a good book or
-            listening to music. Check out my{" "}
+            listening to music. Check out my{' '}
             <Link
               color="black"
               href="https://last.fm/user/crunkmastafunk"
@@ -31,8 +33,8 @@ export default ({ data }) => {
               rel="noopener noreferrer"
             >
               last.fm
-            </Link>{" "}
-            and{" "}
+            </Link>{' '}
+            and{' '}
             <Link
               color="black"
               href="https://goodreads.com/jonleopard"
@@ -40,7 +42,7 @@ export default ({ data }) => {
               rel="noopener noreferrer"
             >
               Goodreads
-            </Link>{" "}
+            </Link>{' '}
             profile to see what I'm into these days.
           </Text>
         </Box>
@@ -65,7 +67,7 @@ export default ({ data }) => {
               </Text>
             </Box>
 
-            <Box width={[1 / 2, 1/2, 1/2]}>
+            <Box width={[1 / 2, 1 / 2, 1 / 2]}>
               <Text fontSize={[1, 2]} pb={2}>
                 <span role="img" aria-label="Tools">
                   🛠
@@ -112,58 +114,58 @@ export default ({ data }) => {
           </Flex>
         </Box>
 
-        <Box width={1} pt={[20,50]}>
+        <Box width={1} pt={[20, 50]}>
           <Heading pb={3}>Certifications</Heading>
           <Flex flexWrap="wrap">
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2016 - LinuxAcademy <br /> Docker Quick Start
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2016 - LinuxAcademy <br /> Ansible Quick Start
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2016 - LinuxAcademy <br /> Introduction to Linux
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2016 - LinuxAcademy <br /> OpenStack Essentials
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2017 - Udemy <br /> Web Developer Bootcamp
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2017 - Udemy <br /> GraphQL with React
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2017 - Wes Bos <br /> LearnNode!
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2017 - Wes Bos <br /> ES6 for Everyone
               </Text>
             </Box>
 
-            <Box width={1/3}>
+            <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
                 2017 - Wes Bos <br /> React for Beginners
               </Text>

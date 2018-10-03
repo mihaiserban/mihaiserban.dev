@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import { Link as GLink } from 'gatsby';
 import { Flex, Box, Link, Text } from 'jonleopard-design-system';
 
-
 const NavBar = () => (
   <Flex alignItems="center" justifyContent="center" py={3}>
     <Box width={1 / 3}>
       <Link as={GLink} color="black" to="/">
-        jonleopard.com
+        jonleopard.com ▌
       </Link>
     </Box>
     <Box mx="auto" />

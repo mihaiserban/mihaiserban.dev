@@ -2,7 +2,6 @@ import React from 'react';
 import { Link as GLink, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
-import styled from 'styled-components';
 
 import Layout from 'components/layout';
 

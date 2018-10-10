@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Baffle from 'baffle-react';
 import { Link as GLink } from 'gatsby';
 import { Flex, Box, Link, Text } from 'jonleopard-design-system';
 
@@ -8,7 +9,15 @@ const NavBar = () => (
     <Flex alignItems="center" justifyContent="center" py={3}>
       <Box>
         <Link as={GLink} color="black" to="/">
-          <Text fontSize={3}>jonleopard.com ▌</Text>
+          <Text
+            as={Baffle}
+            obfuscate={false}
+            speed={50}
+            revealDelay={0}
+            characters="10 "
+          >
+            jonleopard.com ▌
+          </Text>
         </Link>
       </Box>
       <Box mx="auto" />

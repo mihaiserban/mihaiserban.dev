@@ -14,9 +14,6 @@ module.exports = {
   plugins: [
     // Adding various source folders to the GraphQL layer.
     {
-      resolve: `gatsby-plugin-sitemap`,
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
@@ -70,6 +67,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sitemap`,
     'gatsby-transformer-json',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

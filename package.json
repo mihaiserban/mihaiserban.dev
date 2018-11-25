@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "author": "Jon Leopard <contact@jonleopard.com>",
   "dependencies": {
-    "@mdx-js/mdx": "^0.16.3",
+    "@mdx-js/mdx": "^0.16.5",
     "@mdx-js/tag": "^0.16.1",
     "babel-plugin-styled-components": "^1.8.0",
     "baffle-react": "^0.0.2",

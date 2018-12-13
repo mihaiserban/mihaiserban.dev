@@ -1784,10 +1784,10 @@ babel-plugin-remove-graphql-queries@^2.5.2:
     "@babel/helper-annotate-as-pure" "^7.0.0"
     lodash "^4.17.10"
 
-babel-plugin-styled-components@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.9.3.tgz#facc61da441d15b291128b36cba07f309ed324f0"
-  integrity sha512-MkRRvMyWRSZti9HlNCROdbrxkaE2TCsRjKqT8OJ1GH4+ksNIIPNEG3HuqWzcwicKbpW6O1KZizOGFEmnpOeD4Q==
+babel-plugin-styled-components@^1.9.4:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.9.4.tgz#5f2c34d31237c6ee1e86453cc5fa488b97136669"
+  integrity sha512-FIACAvgJsUasYA+CdhPMWUIXWCdUUirz7fL9FGQYNNuOls+bs9OUWWHYVM2W9gjVoS2TXdEMqcOVVyG3Hagd/g==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.0.0"
     babel-plugin-syntax-jsx "^6.18.0"
@@ -2126,7 +2126,7 @@ babel-template@^6.24.1, babel-template@^6.26.0:
     babylon "^6.18.0"
     lodash "^4.17.4"
 
-babel-traverse@6.26.0, babel-traverse@^6.24.1, babel-traverse@^6.26.0:
+babel-traverse@^6.24.1, babel-traverse@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.26.0.tgz#46a9cbd7edcc62c8e5c064e2d2d8d0f4035766ee"
   integrity sha1-RqnL1+3MYsjlwGTi0tjQ9ANXZu4=
@@ -6057,10 +6057,10 @@ gatsby-transformer-sharp@^2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.65:
-  version "2.0.65"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.65.tgz#d0887557e9b42f503510c1fa765cb5a0cb1f3799"
-  integrity sha512-VhmVCs/Or3gtSAnvO36CiGWoqZH8xpkbvVdyPNRRhECi9l/uYlb6i3j6UQGeHlVrNc2jtErQnyHy5ocpSDiZEQ==
+gatsby@^2.0.67:
+  version "2.0.67"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.67.tgz#c7c8d183057b9f6654220fc9ccbbc2c6a5804582"
+  integrity sha512-Y7a8EvI2hyw4QaqaKeJWP+H0P9Qzjfi8iuTubr0weugeah9YK9A9Ds/BNQKVmg5Mz9kdgFhsB/YB5MWzwtZEmQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6079,7 +6079,6 @@ gatsby@^2.0.65:
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-remove-graphql-queries "^2.5.2"
     babel-preset-gatsby "^0.1.6"
-    babel-traverse "6.26.0"
     better-queue "^3.8.6"
     bluebird "^3.5.0"
     browserslist "3.2.8"

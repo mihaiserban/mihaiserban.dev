@@ -21,7 +21,7 @@
     "gatsby-source-contentful": "^2.0.32",
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-transformer-json": "^2.1.8",
-    "gatsby-transformer-remark": "^2.2.6",
+    "gatsby-transformer-remark": "^2.3.0",
     "gatsby-transformer-sharp": "^2.1.14",
     "global": "^4.3.2",
     "jonleopard-design-system": "^0.1.3",

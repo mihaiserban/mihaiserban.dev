@@ -20,5 +20,4 @@ module.exports = {
   // Manifest and Progress color
   //themeColor: tailwind.colors.orange,
   //backgroundColor: tailwind.colors.blue,
-}
-
+};

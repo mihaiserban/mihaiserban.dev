@@ -52,8 +52,4 @@ jobs:
     - <<: *store_results
     - <<: *store_results_artifacts
 
-workflows:
-  version: 2
-  lint-test:
-    jobs:
-    - lint
+

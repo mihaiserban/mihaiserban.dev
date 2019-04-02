@@ -1,24 +1,17 @@
 import React from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
-import Layout from 'components/layout';
-import PageHeader from 'components/page-header';
+import { Flex, Box, Text, Link } from 'rebass';
+import SEO from '../components/seo';
+import Layout from '../components/layout';
 
 export default ({ data }) => {
-  const meta = data.site.siteMetadata;
   return (
     <Layout>
-      <Helmet title={`Profile - ${meta.defaultTitle}`}>
-        <meta name="twitter:title" content={`Profile - ${meta.defaultTitle}`} />
-        <meta name="twitter:description" content={meta.defaultDescription} />
-      </Helmet>
-
+      <SEO />
       <Flex flexWrap="wrap">
         <Box width={1} pt={[20, 80]}>
-          <Heading fontSize={[4, 5, 6]} pb={4}>
+          <Text fontSize={[4, 5, 6]} pb={4}>
             Profile
-          </Heading>
+          </Text>
           <Text fontSize={[1, 2, 3]}>
             I'm a self taught web developer who loves all things tech. This blog
             serves as a medium to get me more involved in the industry, talk
@@ -48,7 +41,9 @@ export default ({ data }) => {
         </Box>
 
         <Box width={1} pt={[20, 50]}>
-          <Heading pb={3}>Projects</Heading>
+          <Text fontSize={4} pb={3}>
+            Projects
+          </Text>
           <Flex flexWrap="wrap">
             <Box width={1 / 2}>
               <Text fontSize={[1, 2]} pb={2}>
@@ -87,7 +82,9 @@ export default ({ data }) => {
         </Box>
 
         <Box width={1} pt={[20, 50]}>
-          <Heading pb={3}>Professional Experience</Heading>
+          <Text fontSize={4} pb={3}>
+            Professional Experience
+          </Text>
           <Flex flexWrap="wrap">
             <Box width={1 / 2}>
               <Text fontSize={[1, 2]} pb={2}>
@@ -115,7 +112,9 @@ export default ({ data }) => {
         </Box>
 
         <Box width={1} pt={[20, 50]}>
-          <Heading pb={3}>Certifications</Heading>
+          <Text fontSize={4} pb={3}>
+            Certifications
+          </Text>
           <Flex flexWrap="wrap">
             <Box width={1 / 3}>
               <Text fontSize={[1, 2]} pb={2}>
@@ -176,14 +175,3 @@ export default ({ data }) => {
     </Layout>
   );
 };
-
-export const pageQuery = graphql`
-  query ProfileQuery {
-    site {
-      siteMetadata {
-        defaultTitle
-        defaultDescription
-      }
-    }
-  }
-`;

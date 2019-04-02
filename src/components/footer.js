@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Link, Text } from 'jonleopard-design-system';
+import { Flex, Box, Link, Text } from 'rebass';
 
 const CURRENT_YEAR = new Date().getFullYear();
 

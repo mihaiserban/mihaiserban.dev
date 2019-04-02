@@ -1,14 +1,11 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import ReactDisqusComments from 'react-disqus-comments';
-import PageHeader from 'components/page-header';
-import Markdown from 'components/markdown';
-import Layout from 'components/layout';
-import { Box } from 'jonleopard-design-system';
+import Markdown from '../components/markdown';
+import Layout from '../components/layout';
+import { Text } from 'rebass';
 
 export default function Template({ data }) {
-  const meta = data.site.siteMetadata;
   if (!data) return null;
 
   const disqusShortname = 'jonleopard';
@@ -17,24 +14,9 @@ export default function Template({ data }) {
   return (
     <Layout>
       <article>
-        <Helmet
-          title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}
-        >
-          {/* Twitter Card tags */}
-          <meta
-            name="twitter:title"
-            content={`${
-              data.contentfulBlogPost.title
-            } - Jon Leopard | Web Developer`}
-          />
-          <meta
-            name="twitter:description"
-            content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt}
-          />
-        </Helmet>
-        <PageHeader
+        <Text
           title={data.contentfulBlogPost.title}
-          subTitle={`By ${meta.author} on ${data.contentfulBlogPost.date}`}
+          subTitle={`Written on ${data.contentfulBlogPost.date}`}
         />
         <Markdown
           dangerouslySetInnerHTML={{
@@ -67,13 +49,6 @@ export const query = graphql`
       date(formatString: "DD MMMM YYYY")
       id
       slug
-    }
-    site {
-      siteMetadata {
-        author
-        defaultTitle
-        defaultDescription
-      }
     }
   }
 `;

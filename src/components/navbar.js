@@ -1,7 +1,7 @@
-import React from 'react'
-import Baffle from 'baffle-react'
-import { Link as GLink } from 'gatsby'
-import { Flex, Box, Link, Text } from 'jonleopard-design-system'
+import React from "react";
+import Baffle from "baffle-react";
+import { Link as GLink } from "gatsby";
+import { Flex, Box, Link, Text } from "jonleopard-design-system";
 
 const NavBar = () => (
   <Box with={1}>
@@ -47,6 +47,6 @@ const NavBar = () => (
       </Box>
     </Flex>
   </Box>
-)
+);
 
-export default NavBar
+export default NavBar;

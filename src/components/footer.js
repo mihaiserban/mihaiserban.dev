@@ -1,7 +1,7 @@
-import React from 'react'
-import { Flex, Box, Link, Text } from 'jonleopard-design-system'
+import React from "react";
+import { Flex, Box, Link, Text } from "jonleopard-design-system";
 
-const CURRENT_YEAR = new Date().getFullYear()
+const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => (
   <Flex alignItems="right" justifyContent="center" py={40}>
@@ -43,6 +43,6 @@ const Footer = () => (
       </Link>
     </Box>
   </Flex>
-)
+);
 
-export default Footer
+export default Footer;

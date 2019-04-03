@@ -1,11 +1,11 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
-import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system'
-import Layout from '../components/layout'
+import React from "react";
+import Helmet from "react-helmet";
+import { graphql } from "gatsby";
+import { Flex, Box, Heading, Text, Link } from "jonleopard-design-system";
+import Layout from "../components/layout";
 
 const profile = ({ data }) => {
-  const meta = data.site.siteMetadata
+  const meta = data.site.siteMetadata;
   return (
     <Layout>
       <Helmet title={`Profile - ${meta.defaultTitle}`}>
@@ -24,7 +24,7 @@ const profile = ({ data }) => {
             about the projects I'm working on, as well as post other random
             musings. I'm a huge movie buff, gaming nerd, and coffee lover. When
             I'm not in front of a screen, I'm most likely reading a good book or
-            listening to music. Check out my{' '}
+            listening to music. Check out my{" "}
             <Link
               color="black"
               href="https://last.fm/user/crunkmastafunk"
@@ -32,8 +32,8 @@ const profile = ({ data }) => {
               rel="noopener noreferrer"
             >
               last.fm
-            </Link>{' '}
-            and{' '}
+            </Link>{" "}
+            and{" "}
             <Link
               color="black"
               href="https://goodreads.com/jonleopard"
@@ -41,7 +41,7 @@ const profile = ({ data }) => {
               rel="noopener noreferrer"
             >
               Goodreads
-            </Link>{' '}
+            </Link>{" "}
             profile to see what I'm into these days.
           </Text>
         </Box>
@@ -173,10 +173,10 @@ const profile = ({ data }) => {
         </Box>
       </Flex>
     </Layout>
-  )
-}
+  );
+};
 
-export default profile
+export default profile;
 
 export const pageQuery = graphql`
   query ProfileQuery {
@@ -187,4 +187,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -55,10 +55,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json}": [
-      "yarn run format",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "keywords": [
     "Jon Leopard",
@@ -73,7 +70,6 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "precommit": "lint-staged",
-    "format": "prettier --write '{./,__{tests,mocks}__}/**/*.+(js|jsx)'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",

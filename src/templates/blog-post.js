@@ -1,17 +1,17 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import ReactDisqusComments from 'react-disqus-comments';
-import PageHeader from '../components/page-header';
-import Markdown from '../components/markdown';
-import Layout from '../components/layout';
+import React from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import ReactDisqusComments from 'react-disqus-comments'
+import PageHeader from '../components/page-header'
+import Markdown from '../components/markdown'
+import Layout from '../components/layout'
 
 export default function Template({ data }) {
-  const meta = data.site.siteMetadata;
-  if (!data) return null;
+  const meta = data.site.siteMetadata
+  if (!data) return null
 
-  const disqusShortname = 'jonleopard';
-  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
+  const disqusShortname = 'jonleopard'
+  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`
 
   return (
     <Layout>
@@ -50,7 +50,7 @@ export default function Template({ data }) {
         url={url}
       />
     </Layout>
-  );
+  )
 }
 
 export const query = graphql`
@@ -75,4 +75,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

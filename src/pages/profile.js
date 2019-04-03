@@ -1,11 +1,11 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
-import Layout from '../components/layout';
+import React from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system'
+import Layout from '../components/layout'
 
 const profile = ({ data }) => {
-  const meta = data.site.siteMetadata;
+  const meta = data.site.siteMetadata
   return (
     <Layout>
       <Helmet title={`Profile - ${meta.defaultTitle}`}>
@@ -173,10 +173,10 @@ const profile = ({ data }) => {
         </Box>
       </Flex>
     </Layout>
-  );
-};
+  )
+}
 
-export default profile;
+export default profile
 
 export const pageQuery = graphql`
   query ProfileQuery {
@@ -187,4 +187,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

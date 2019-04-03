@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ThemeProvider, Container, Box } from 'jonleopard-design-system';
-import Footer from './footer';
-import NavBar from './navbar';
+import React from 'react'
+import styled from 'styled-components'
+import { ThemeProvider, Container, Box } from 'jonleopard-design-system'
+import Footer from './footer'
+import NavBar from './navbar'
 
 const Hero = styled(Box)`
   min-height: 100vh;
-`;
+`
 
 const Layout = ({ children }) => (
   <>
@@ -20,6 +20,6 @@ const Layout = ({ children }) => (
       </Hero>
     </ThemeProvider>
   </>
-);
+)
 
-export default Layout;
+export default Layout

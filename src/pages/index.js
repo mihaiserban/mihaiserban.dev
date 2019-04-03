@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link as GLink, graphql } from 'gatsby';
-import Helmet from 'react-helmet';
-import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
+import React from 'react'
+import { Link as GLink, graphql } from 'gatsby'
+import Helmet from 'react-helmet'
+import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system'
 
-import Layout from '../components/layout';
+import Layout from '../components/layout'
 
 const Index = ({ data }) => {
-  const { edges: posts } = data.allContentfulBlogPost;
-  const meta = data.site.siteMetadata;
+  const { edges: posts } = data.allContentfulBlogPost
+  const meta = data.site.siteMetadata
 
   return (
     <Layout>
@@ -43,10 +43,10 @@ const Index = ({ data }) => {
         </Box>
       </Flex>
     </Layout>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -67,4 +67,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

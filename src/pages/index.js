@@ -3,7 +3,7 @@ import { Link as GLink, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
 
-import Layout from 'components/layout';
+import Layout from '../components/layout';
 
 const Index = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost;

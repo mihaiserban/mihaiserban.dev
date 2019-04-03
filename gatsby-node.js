@@ -1,8 +1,8 @@
-const path = require('path');
+const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-  return new Promise((resolve, reject) => {
+  const { createPage } = actions
+  return new Promise(resolve => {
     graphql(`
       {
         allContentfulBlogPost {
@@ -21,17 +21,17 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             slug: node.slug,
           },
-        });
-      });
-      resolve();
-    });
-  });
-};
+        })
+      })
+      resolve()
+    })
+  })
+}
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
-  });
-};
+  })
+}

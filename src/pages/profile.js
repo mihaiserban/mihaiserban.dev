@@ -2,10 +2,9 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system';
-import Layout from 'components/layout';
-import PageHeader from 'components/page-header';
+import Layout from '../components/layout';
 
-export default ({ data }) => {
+const profile = ({ data }) => {
   const meta = data.site.siteMetadata;
   return (
     <Layout>
@@ -176,6 +175,8 @@ export default ({ data }) => {
     </Layout>
   );
 };
+
+export default profile;
 
 export const pageQuery = graphql`
   query ProfileQuery {

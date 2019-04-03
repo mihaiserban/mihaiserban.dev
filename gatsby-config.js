@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -74,4 +74,4 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
   ],
-};
+}

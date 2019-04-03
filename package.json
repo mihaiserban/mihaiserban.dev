@@ -38,7 +38,7 @@
     "babel-eslint": "^10.0.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -74,6 +74,9 @@
     "develop": "gatsby develop",
     "precommit": "lint-staged",
     "format": "prettier --write '{./,__{tests,mocks}__}/**/*.+(js|jsx)'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
+    "lint:ci": "yarn lint --format junit -o results/eslint/result.xml"
   }
 }

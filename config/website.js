@@ -7,7 +7,8 @@ module.exports = {
   siteBanner: 'social/banner.jpg',
   siteUrl: 'https://jonleopard.com',
   pathPrefix: '/',
-  siteDescription: 'Jon Leopard is a Javascript Web Developer with skills in both front-end and back-end technologies.',
+  siteDescription:
+    'Jon Leopard is a Javascript Web Developer with skills in both front-end and back-end technologies.',
   twitter: '@jonlprd',
   themeColor: '#F59Af0',
   backgroundColor: '#FFF',

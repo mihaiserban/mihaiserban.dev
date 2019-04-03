@@ -1,11 +1,11 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import { Flex, Box, Heading, Text, Link } from "jonleopard-design-system";
-import Layout from "../components/layout";
+import React from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import { Flex, Box, Heading, Text, Link } from 'jonleopard-design-system'
+import Layout from '../components/layout'
 
 const profile = ({ data }) => {
-  const meta = data.site.siteMetadata;
+  const meta = data.site.siteMetadata
   return (
     <Layout>
       <Helmet title={`Profile - ${meta.defaultTitle}`}>
@@ -19,29 +19,17 @@ const profile = ({ data }) => {
             Profile
           </Heading>
           <Text fontSize={[1, 2, 3]}>
-            I'm a self taught web developer who loves all things tech. This blog
-            serves as a medium to get me more involved in the industry, talk
-            about the projects I'm working on, as well as post other random
-            musings. I'm a huge movie buff, gaming nerd, and coffee lover. When
-            I'm not in front of a screen, I'm most likely reading a good book or
-            listening to music. Check out my{" "}
-            <Link
-              color="black"
-              href="https://last.fm/user/crunkmastafunk"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            I'm a self taught web developer who loves all things tech. This blog serves as a medium to get me more
+            involved in the industry, talk about the projects I'm working on, as well as post other random musings. I'm
+            a huge movie buff, gaming nerd, and coffee lover. When I'm not in front of a screen, I'm most likely reading
+            a good book or listening to music. Check out my{' '}
+            <Link color="black" href="https://last.fm/user/crunkmastafunk" target="_blank" rel="noopener noreferrer">
               last.fm
-            </Link>{" "}
-            and{" "}
-            <Link
-              color="black"
-              href="https://goodreads.com/jonleopard"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            </Link>{' '}
+            and{' '}
+            <Link color="black" href="https://goodreads.com/jonleopard" target="_blank" rel="noopener noreferrer">
               Goodreads
-            </Link>{" "}
+            </Link>{' '}
             profile to see what I'm into these days.
           </Text>
         </Box>
@@ -95,8 +83,7 @@ const profile = ({ data }) => {
             </Box>
             <Box width={1 / 2}>
               <Text fontSize={[1, 2]} pb={2}>
-                2010 - 2013 <br /> Frontend Designer, Wireframer, Project
-                Manager / 1Cart
+                2010 - 2013 <br /> Frontend Designer, Wireframer, Project Manager / 1Cart
               </Text>
             </Box>
             <Box width={1 / 2}>
@@ -106,8 +93,7 @@ const profile = ({ data }) => {
             </Box>
             <Box width={1 / 2}>
               <Text fontSize={[1, 2]} pb={2}>
-                2006 - 2008 <br /> Technician & Customer Support Representative
-                / TotalRecall
+                2006 - 2008 <br /> Technician & Customer Support Representative / TotalRecall
               </Text>
             </Box>
           </Flex>
@@ -173,10 +159,10 @@ const profile = ({ data }) => {
         </Box>
       </Flex>
     </Layout>
-  );
-};
+  )
+}
 
-export default profile;
+export default profile
 
 export const pageQuery = graphql`
   query ProfileQuery {
@@ -187,4 +173,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

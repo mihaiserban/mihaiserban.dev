@@ -1,7 +1,7 @@
-import React from "react";
-import { Flex, Box, Link, Text } from "jonleopard-design-system";
+import React from 'react'
+import { Flex, Box, Link, Text } from 'jonleopard-design-system'
 
-const CURRENT_YEAR = new Date().getFullYear();
+const CURRENT_YEAR = new Date().getFullYear()
 
 const Footer = () => (
   <Flex alignItems="right" justifyContent="center" py={40}>
@@ -33,16 +33,11 @@ const Footer = () => (
       </Link>
     </Box>
     <Box>
-      <Link
-        color="black"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://github.com/jonleopard/jonleopard.com"
-      >
+      <Link color="black" target="_blank" rel="noopener noreferrer" href="http://github.com/jonleopard/jonleopard.com">
         View Source
       </Link>
     </Box>
   </Flex>
-);
+)
 
-export default Footer;
+export default Footer

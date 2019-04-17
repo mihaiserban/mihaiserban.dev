@@ -99,7 +99,11 @@ export default ({ data }) => {
             </Box>
             <Box width={1 / 2}>
               <Text fontSize={2} pb={2}>
-                2009 - 2010 <br /> Frontend Designer & Project Manager / GoingUP
+                2009 - 2010
+              </Text>
+
+              <Text fontSize={2}>
+                Frontend Designer & Project Manager / GoingUP
               </Text>
             </Box>
             <Box width={1 / 2}>

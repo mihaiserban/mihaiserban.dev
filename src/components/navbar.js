@@ -26,6 +26,11 @@ const NavBar = () => (
         </Link>
       </Box>
       <Box pr={2}>
+        <Link as={GLink} to="/blog" color="black">
+          Blog
+        </Link>
+      </Box>
+      <Box pr={2}>
         <Link
           color="black"
           href="https://github.com/jonleopard"

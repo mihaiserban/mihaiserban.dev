@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Flex, Box, Link, Text } from 'rebass';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => (
-  <Flex alignItems="right" justifyContent="center" py={40}>
+  <Flex as="footer" alignItems="right" justifyContent="center" py={40}>
     <Box width={1 / 3}>
       <Text>&copy; {CURRENT_YEAR}</Text>
     </Box>

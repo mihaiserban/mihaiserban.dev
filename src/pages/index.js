@@ -10,7 +10,7 @@ const Index = () => {
       <Layout>
         <SEO />
         <Box width={1} pt={[20, 80]}>
-          <Text fontSize={[4, 5, 6]} fontWeight="bold" fontFamily="mono">
+          <Text fontSize={[4, 5, 6]}>
             Hello, my name is Jon. <br /> I am a web developer based in Paris.
           </Text>
         </Box>

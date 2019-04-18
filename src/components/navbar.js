@@ -5,7 +5,7 @@ import { Flex, Box, Link, Text } from 'rebass';
 
 const NavBar = () => (
   <Box with={1}>
-    <Flex alignItems="center" justifyContent="center" py={3}>
+    <Flex alignItems="center" py={3}>
       <Box>
         <Link as={GLink} color="black" to="/">
           <Text
@@ -22,12 +22,17 @@ const NavBar = () => (
       <Box mx="auto" />
       <Box pr={2}>
         <Link as={GLink} to="/profile" color="black">
-          Profile
+          profile
         </Link>
       </Box>
       <Box pr={2}>
         <Link as={GLink} to="/blog" color="black">
-          Blog
+          blog
+        </Link>
+      </Box>
+      <Box pr={2}>
+        <Link as={GLink} to="/blog" color="black">
+          photos
         </Link>
       </Box>
     </Flex>

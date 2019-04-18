@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { Box } from 'rebass';
+import { Flex, Box } from 'rebass';
 import reset from 'styled-reset';
 
 import SEO from './seo';
@@ -33,13 +33,16 @@ const GlobalStyle = createGlobalStyle`
 
    html {
       font-family: "Open-Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 100%;
     }
   
     body {
       background-color: ${props => props.theme.colors.lightgray};
       margin: 0;
+      min-height: 100%;
 
     a {
+      color: 'purple';
       text-decoration: none;
     }
 }`;

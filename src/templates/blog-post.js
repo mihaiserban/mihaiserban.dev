@@ -1,20 +1,20 @@
-import React from "react";
-import { graphql } from "gatsby";
-import ReactDisqusComments from "react-disqus-comments";
+import React from 'react'
+import { graphql } from 'gatsby'
+import ReactDisqusComments from 'react-disqus-comments'
 
-import { Text, Box } from "rebass";
+import { Box } from 'rebass'
 
-import Markdown from "../components/markdown";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import PageHeader from "../components/page-header";
+import Markdown from '../components/markdown'
+import Layout from '../components/layout'
+import SEO from '../components/SEO'
+import PageHeader from '../components/page-header'
 
 export default function Template({ data }) {
-  if (!data) return null;
-  console.log(data);
+  if (!data) return null
+  console.log(data)
 
-  const disqusShortname = "jonleopard";
-  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
+  const disqusShortname = 'jonleopard'
+  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`
 
   return (
     <Layout>
@@ -29,7 +29,7 @@ export default function Template({ data }) {
         </Box>
         <Markdown
           dangerouslySetInnerHTML={{
-            __html: data.contentfulBlogPost.body.childMarkdownRemark.html
+            __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
           }}
         />
       </article>
@@ -40,7 +40,7 @@ export default function Template({ data }) {
         url={url}
       />
     </Layout>
-  );
+  )
 }
 
 export const query = graphql`
@@ -58,4 +58,4 @@ export const query = graphql`
       slug
     }
   }
-`;
+`

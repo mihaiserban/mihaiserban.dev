@@ -1,11 +1,11 @@
-import React from "react";
-import { Link as GLink, graphql } from "gatsby";
-import { Flex, Box, Text, Link, Heading } from "rebass";
+import React from 'react'
+import { Link as GLink, graphql } from 'gatsby'
+import { Flex, Box, Text, Link, Heading } from 'rebass'
 
-import Layout from "../components/layout";
+import Layout from '../components/layout'
 
 const Blog = ({ data }) => {
-  const { edges: posts } = data.allContentfulBlogPost;
+  const { edges: posts } = data.allContentfulBlogPost
 
   return (
     <Layout>
@@ -31,10 +31,10 @@ const Blog = ({ data }) => {
         </Box>
       </Flex>
     </Layout>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog
 
 export const pageQuery = graphql`
   query BlogQuery {
@@ -49,4 +49,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

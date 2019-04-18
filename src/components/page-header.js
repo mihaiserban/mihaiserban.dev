@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Text } from "rebass";
+import React from 'react'
+import { Text } from 'rebass'
 
 const PageHeader = ({ title, subTitle }) => (
   <>
@@ -10,5 +10,5 @@ const PageHeader = ({ title, subTitle }) => (
       </Text>
     ) : null}
   </>
-);
-export default PageHeader;
+)
+export default PageHeader

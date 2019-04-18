@@ -1,7 +1,7 @@
-import React from "react";
-import { Flex, Box, Link, Text } from "rebass";
+import React from 'react'
+import { Flex, Box, Link, Text } from 'rebass'
 
-const CURRENT_YEAR = new Date().getFullYear();
+const CURRENT_YEAR = new Date().getFullYear()
 
 const Footer = () => (
   <Flex as="footer" py={40}>
@@ -32,13 +32,7 @@ const Footer = () => (
       </Link>
     </Box>
     <Box pr={2}>
-      <Link
-        color="black"
-        target="_blank"
-        rel="noopener noreferrer me"
-        href="https://t.me/hiJon"
-        itemProp="sameAs"
-      >
+      <Link color="black" target="_blank" rel="noopener noreferrer me" href="https://t.me/hiJon" itemProp="sameAs">
         telegram
       </Link>
     </Box>
@@ -54,6 +48,6 @@ const Footer = () => (
       </Link>
     </Box>
   </Flex>
-);
+)
 
-export default Footer;
+export default Footer

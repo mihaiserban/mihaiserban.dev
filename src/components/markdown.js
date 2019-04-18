@@ -1,5 +1,5 @@
-import { Box } from "rebass";
-import styled from "styled-components";
+import { Box } from 'rebass'
+import styled from 'styled-components'
 
 const Markdown = styled(Box)`
  
@@ -36,6 +36,6 @@ const Markdown = styled(Box)`
   }
 
 }
-`;
+`
 
-export default Markdown;
+export default Markdown

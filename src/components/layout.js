@@ -1,36 +1,32 @@
-import React from "react";
-import styled, {
-  createGlobalStyle,
-  ThemeProvider,
-  css
-} from "styled-components";
-import { Flex, Box } from "rebass";
-import reset from "styled-reset";
+import React from 'react'
+import styled, { createGlobalStyle, ThemeProvider, css } from 'styled-components'
+import { Flex, Box } from 'rebass'
+import reset from 'styled-reset'
 
-import SEO from "./seo";
-import Footer from "components/footer";
-import NavBar from "components/navbar";
+import Footer from './footer'
+import NavBar from './navbar'
+import SEO from './SEO'
 
-const blue = "#07c";
-const lightgray = "#f6f6ff";
+const blue = '#07c'
+const lightgray = '#f6f6ff'
 
 const theme = {
   colors: {
     blue,
-    lightgray
+    lightgray,
   },
   buttons: {
     primary: {
-      color: "#fff",
-      backgroundColor: blue
+      color: '#fff',
+      backgroundColor: blue,
     },
     outline: {
       color: blue,
-      backgroundColor: "transparent",
-      boxShadow: "inset 0 0 2px"
-    }
-  }
-};
+      backgroundColor: 'transparent',
+      boxShadow: 'inset 0 0 2px',
+    },
+  },
+}
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -45,14 +41,14 @@ const GlobalStyle = createGlobalStyle`
     a {
       text-decoration: none;
     }
-}`;
+}`
 
 const Wrapper = styled(Box)`
   max-width: 560px;
   margin: 0 auto;
   padding-left: 16px;
   padding-right: 16px;
-`;
+`
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -77,6 +73,6 @@ const Layout = ({ children }) => (
       </Flex>
     </Wrapper>
   </ThemeProvider>
-);
+)
 
-export default Layout;
+export default Layout

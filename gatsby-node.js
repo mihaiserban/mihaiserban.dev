@@ -1,7 +1,7 @@
-const path = require("path");
+const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
   return new Promise(resolve => {
     graphql(`
       {
@@ -17,21 +17,21 @@ exports.createPages = ({ graphql, actions }) => {
       result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
         createPage({
           path: node.slug,
-          component: path.resolve("./src/templates/blog-post.js"),
+          component: path.resolve('./src/templates/blog-post.js'),
           context: {
-            slug: node.slug
-          }
-        });
-      });
-      resolve();
-    });
-  });
-};
+            slug: node.slug,
+          },
+        })
+      })
+      resolve()
+    })
+  })
+}
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"]
-    }
-  });
-};
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+}

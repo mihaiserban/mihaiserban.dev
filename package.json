@@ -56,7 +56,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [
-      "yarn run format",
+      "yarn run lint:fix",
       "git add"
     ]
   },
@@ -73,7 +73,9 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "precommit": "lint-staged",
-    "format": "prettier --write '{./,__{tests,mocks}__}/**/*.+(js|jsx)'",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
+    "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

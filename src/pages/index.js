@@ -1,9 +1,8 @@
 import React from "react";
 import { Flex, Box, Text, Heading } from "rebass";
-import { css } from "styled-components";
 
 import SEO from "../components/seo";
-import Layout from "components/layout";
+import Layout from "../components/layout";
 
 const Index = () => {
   return (

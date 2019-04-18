@@ -1,36 +1,36 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
-import ReactDisqusComments from 'react-disqus-comments'
-import PageHeader from '../components/page-header'
-import Markdown from '../components/markdown'
-import Layout from '../components/layout'
+import React from "react";
+import { graphql } from "gatsby";
+import ReactDisqusComments from "react-disqus-comments";
+
+import { Text, Box } from "rebass";
+
+import Markdown from "../components/markdown";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import PageHeader from "../components/page-header";
 
 export default function Template({ data }) {
-  const meta = data.site.siteMetadata
-  if (!data) return null
+  if (!data) return null;
+  console.log(data);
 
-  const disqusShortname = 'jonleopard'
-  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`
+  const disqusShortname = "jonleopard";
+  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`;
 
   return (
     <Layout>
+      <SEO />
       <article>
-        <Helmet title={`${data.contentfulBlogPost.title} - ${meta.defaultTitle}`}>
-          {/* Twitter Card tags */}
-          <meta name="twitter:title" content={`${data.contentfulBlogPost.title} - Jon Leopard | Web Developer`} />
-          <meta name="twitter:description" content={data.contentfulBlogPost.body.childMarkdownRemark.excerpt} />
-        </Helmet>
-        <PageHeader
-          title={data.contentfulBlogPost.title}
-          subTitle={`By ${meta.author} on ${data.contentfulBlogPost.date}`}
-        />
+        <Box width={1} pt={[20, 80]} pb={4}>
+          <PageHeader
+            pb={4}
+            title={data.contentfulBlogPost.title}
+            subTitle={`Written on ${data.contentfulBlogPost.date}`}
+          />
+        </Box>
         <Markdown
           dangerouslySetInnerHTML={{
-            __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
+            __html: data.contentfulBlogPost.body.childMarkdownRemark.html
           }}
-          id="top"
-          className="content"
         />
       </article>
       <ReactDisqusComments
@@ -40,7 +40,7 @@ export default function Template({ data }) {
         url={url}
       />
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -57,12 +57,5 @@ export const query = graphql`
       id
       slug
     }
-    site {
-      siteMetadata {
-        author
-        defaultTitle
-        defaultDescription
-      }
-    }
   }
-`
+`;

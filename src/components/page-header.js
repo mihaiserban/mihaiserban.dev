@@ -1,14 +1,14 @@
-import React from 'react'
-import { Box, Heading } from 'jonleopard-design-system'
+import React from "react";
+import { Box, Text } from "rebass";
 
 const PageHeader = ({ title, subTitle }) => (
-  <Box pt={[24, 48]} pb={[2, 4]}>
-    <Heading fontSize={[4, 5, 6]}>{title}</Heading>
+  <>
+    <Text fontSize={[4, 5, 6]}>{title}</Text>
     {subTitle ? (
-      <Heading fontSize={[0, 1, 2]} color="muted">
+      <Text fontSize={[2, 2, 3]} pt={2}>
         {subTitle}
-      </Heading>
+      </Text>
     ) : null}
-  </Box>
-)
-export default PageHeader
+  </>
+);
+export default PageHeader;

@@ -1,14 +1,10 @@
-require('dotenv').config()
+const config = require('./config/website');
+
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    author: 'Jon Leopard',
-    title: `Jon Leopard | Web Developer`,
-    siteUrl: 'https://jonleopard.com',
-    defaultTitle: 'Jon Leopard | Web Developer',
-    defaultDescription:
-      'Jon Leopard is a Javascript Web Developer with skills in both front-end and back-end technologies.',
-    twitterHandle: '@jonlprd',
+    siteUrl: config.siteUrl,
   },
 
   plugins: [
@@ -20,6 +16,7 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
+
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -29,12 +26,38 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: config.siteTitle,
+        short_name: config.siteTitleShort,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'standalone',
+        icons: [
+          {
+            src: '/favicons/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/favicons/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
+    },
+
+    {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID || '',
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
       },
     },
+
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -74,4 +97,4 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
   ],
-}
+};

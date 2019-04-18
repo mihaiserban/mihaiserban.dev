@@ -1,5 +1,9 @@
 import React from 'react';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, {
+  createGlobalStyle,
+  ThemeProvider,
+  css,
+} from 'styled-components';
 import { Flex, Box } from 'rebass';
 import reset from 'styled-reset';
 
@@ -31,18 +35,14 @@ const theme = {
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
-   html {
+   html,body {
       font-family: "Open-Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      height: 100%;
-    }
-  
-    body {
       background-color: ${props => props.theme.colors.lightgray};
       margin: 0;
-      min-height: 100%;
-
+      height: 100%
+    }
+  
     a {
-      color: 'purple';
       text-decoration: none;
     }
 }`;
@@ -57,11 +57,24 @@ const Wrapper = styled(Box)`
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <Wrapper>
-      <NavBar />
-      <SEO />
-      <GlobalStyle />
-      {children}
-      <Footer />
+      <Flex
+        flexDirection="column"
+        css={css`
+          min-height: 100vh;
+        `}
+      >
+        <NavBar />
+        <SEO />
+        <GlobalStyle />
+        <Box
+          css={css`
+            flex-grow: 1;
+          `}
+        >
+          {children}
+        </Box>
+        <Footer />
+      </Flex>
     </Wrapper>
   </ThemeProvider>
 );

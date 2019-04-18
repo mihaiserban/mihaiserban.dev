@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Text, Link } from 'rebass';
+import { Flex, Box, Text, Link, Heading } from 'rebass';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 
@@ -9,9 +9,9 @@ export default ({ data }) => {
       <SEO />
       <Flex flexWrap="wrap">
         <Box pt={[20, 80]}>
-          <Text fontSize={[4, 5, 6]} pb={4}>
+          <Heading fontSize={[4, 5, 6]} pb={4}>
             Profile
-          </Text>
+          </Heading>
           <Text fontSize={[2, 2, 3]}>
             I'm a self taught web developer who loves all things tech. This blog
             serves as a medium to get me more involved in the industry, talk

@@ -53,16 +53,6 @@ const Footer = () => (
         gpg
       </Link>
     </Box>
-    <Box>
-      <Link
-        color="black"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://github.com/jonleopard/jonleopard.com"
-      >
-        view source
-      </Link>
-    </Box>
   </Flex>
 );
 

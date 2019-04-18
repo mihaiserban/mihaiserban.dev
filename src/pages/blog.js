@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as GLink, graphql } from 'gatsby';
-import { Flex, Box, Text, Link } from 'rebass';
+import { Flex, Box, Text, Link, Heading } from 'rebass';
 
 import Layout from '../components/layout';
 
@@ -10,9 +10,9 @@ const Blog = ({ data }) => {
   return (
     <Layout>
       <Box width={1} pt={[20, 80]}>
-        <Text fontSize={[4, 5, 6]} pb={4}>
+        <Heading fontSize={[4, 5, 6]} pb={4}>
           Blog
-        </Text>
+        </Heading>
       </Box>
       <Flex flexDirection="column">
         <Box>

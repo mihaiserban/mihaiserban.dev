@@ -5,7 +5,6 @@ import reset from 'styled-reset'
 
 import Footer from './footer'
 import NavBar from './navbar'
-import SEO from './SEO'
 
 const blue = '#07c'
 const lightgray = '#f6f6ff'
@@ -60,7 +59,6 @@ const Layout = ({ children }) => (
         `}
       >
         <NavBar />
-        <SEO />
         <GlobalStyle />
         <Box
           css={css`

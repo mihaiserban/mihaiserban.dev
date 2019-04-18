@@ -30,26 +30,6 @@ const NavBar = () => (
           Blog
         </Link>
       </Box>
-      <Box pr={2}>
-        <Link
-          color="black"
-          href="https://github.com/jonleopard"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Github
-        </Link>
-      </Box>
-      <Box>
-        <Link
-          color="black"
-          href="https://twitter.com/jonlprd"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Twitter
-        </Link>
-      </Box>
     </Flex>
   </Box>
 );

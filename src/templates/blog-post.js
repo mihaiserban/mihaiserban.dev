@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import ReactDisqusComments from 'react-disqus-comments'
 
 import { Box } from 'rebass'
 
@@ -11,10 +10,6 @@ import PageHeader from '../components/page-header'
 
 export default function Template({ data }) {
   if (!data) return null
-  console.log(data)
-
-  const disqusShortname = 'jonleopard'
-  const url = `https://jonleopard.com/${data.contentfulBlogPost.slug}`
 
   return (
     <Layout>
@@ -33,12 +28,6 @@ export default function Template({ data }) {
           }}
         />
       </article>
-      <ReactDisqusComments
-        shortname={disqusShortname}
-        identifier={data.contentfulBlogPost.title}
-        title={data.contentfulBlogPost.title}
-        url={url}
-      />
     </Layout>
   )
 }

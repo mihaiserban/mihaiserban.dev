@@ -10,7 +10,7 @@ const Index = () => (
       <SEO />
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
         <Box width={1} pt={[20, 80]}>
-          <Heading fontSize={[4, 5, 6]} pb={3}>
+          <Heading fontSize={6} pb={3}>
             Greetings Program.
           </Heading>
           <Text fontSize={[2, 2, 3]}>My name is Jon Leopard 👋🏼</Text>

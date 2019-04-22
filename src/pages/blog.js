@@ -10,7 +10,7 @@ const Blog = ({ data }) => {
   return (
     <Layout>
       <Box width={1} pt={[20, 80]}>
-        <Heading fontSize={[4, 5, 6]} pb={4}>
+        <Heading fontSize={6} pb={4}>
           Blog
         </Heading>
       </Box>

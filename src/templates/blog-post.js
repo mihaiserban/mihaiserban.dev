@@ -8,9 +8,8 @@ import Layout from '../components/layout'
 import SEO from '../components/SEO'
 import PageHeader from '../components/page-header'
 
-export default function Template({ data }) {
+const Template = ({ data }) => {
   if (!data) return null
-
   return (
     <Layout>
       <SEO />
@@ -32,19 +31,21 @@ export default function Template({ data }) {
   )
 }
 
-export const query = graphql`
+export default Template
+
+export const pageQuery = graphql`
   query BlogPostQuery($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
+      id
+      slug
+      date(formatString: "DD MMMM YYYY")
       body {
         childMarkdownRemark {
           html
           excerpt
         }
       }
-      date(formatString: "DD MMMM YYYY")
-      id
-      slug
     }
   }
 `

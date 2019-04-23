@@ -1,12 +1,14 @@
 const config = require('./config/website')
 
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+
 module.exports = {
   siteMetadata: {
-    siteUrl: config.siteUrl,
+    siteUrl: config.siteUrl + pathPrefix,
   },
 
   plugins: [
@@ -57,6 +59,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID || '',
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+        downloadLocal: true,
       },
     },
 

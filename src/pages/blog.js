@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link as GLink, graphql } from 'gatsby'
-import { Flex, Box, Text, Link, Heading } from 'rebass'
+import { Link as glink, graphql } from 'gatsby'
+import { Flex, Box, Text, Heading, Link } from 'rebass'
 
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
 
-const Blog = ({ data }) => {
+const BlogIndex = ({ props, data }) => {
   const { edges: posts } = data.allContentfulBlogPost
 
   return (
@@ -20,7 +20,7 @@ const Blog = ({ data }) => {
         <Box>
           {posts.map(({ node: post }) => (
             <Text fontSize={[2, 2, 3]} key={post.title} mb={3}>
-              <Link as={GLink} to={post.slug} color="black">
+              <Link as={glink} to={`/blog/${post.slug}`} color="black">
                 {post.title}
               </Link>
               <Box pt={2}>
@@ -36,10 +36,10 @@ const Blog = ({ data }) => {
   )
 }
 
-export default Blog
+export default BlogIndex
 
 export const pageQuery = graphql`
-  query BlogQuery {
+  query BlogIndexQuery {
     allContentfulBlogPost(sort: { fields: [date], order: DESC }) {
       edges {
         node {

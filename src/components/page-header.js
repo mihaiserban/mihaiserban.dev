@@ -1,11 +1,11 @@
 import React from 'react'
-import { Text } from 'rebass'
+import { Heading, Text } from 'rebass'
 
 const PageHeader = ({ title, subTitle }) => (
   <>
-    <Text fontSize={[4, 5, 6]}>{title}</Text>
+    <Heading fontSize={6}>{title}</Heading>
     {subTitle ? (
-      <Text fontSize={[2, 2, 3]} pt={2}>
+      <Text fontSize={3} pt={2}>
         {subTitle}
       </Text>
     ) : null}

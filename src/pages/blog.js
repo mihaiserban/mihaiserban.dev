@@ -5,7 +5,7 @@ import { Flex, Box, Text, Heading, Link } from 'rebass'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
 
-const BlogIndex = ({ props, data }) => {
+const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost
 
   return (

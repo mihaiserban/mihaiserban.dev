@@ -1,8 +1,8 @@
 const _ = require(`lodash`)
+
 const slash = require(`slash`)
 const path = require('path')
 
-// get rid of slash
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
@@ -46,7 +46,7 @@ exports.createPages = ({ graphql, actions }) => {
       isPermanent: true,
     })
     // Uncomment next line to see forEach in action during build
-    console.log(`\nRedirecting:\n${f}\nTo:\n${t}\n`)
+    // console.log(`\nRedirecting:\n${f}\nTo:\n${t}\n`)
   })
 
   return graphql(

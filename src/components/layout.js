@@ -6,10 +6,17 @@ import reset from 'styled-reset'
 import Footer from './footer'
 import NavBar from './navbar'
 
+import 'typeface-work-sans'
+import 'typeface-source-sans-pro'
+
 const blue = '#07c'
 const lightgray = '#f6f6ff'
 
 const theme = {
+  fonts: {
+    sansSerif: 'typeface-work-sans',
+    sourceSans: 'Source Sans Pro',
+  },
   colors: {
     blue,
     lightgray,
@@ -28,18 +35,26 @@ const theme = {
 }
 
 const GlobalStyle = createGlobalStyle`
-  ${reset}
+ 
+  html {
+    background-color: ${props => props.theme.colors.lightgray};
+    margin: 0;
+    border: 0;
+    }
 
-   html,body {
-      font-family: "Open-Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background-color: ${props => props.theme.colors.lightgray};
-      margin: 0;
-      height: 100%
-    }
+  body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
   
-    a {
+  a {
       text-decoration: none;
-    }
+  }
+
+  ${reset}
 }`
 
 const Wrapper = styled(Box)`
@@ -52,23 +67,25 @@ const Wrapper = styled(Box)`
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <Wrapper>
-      <Flex
-        flexDirection="column"
-        css={css`
-          min-height: 100vh;
-        `}
-      >
-        <NavBar />
-        <GlobalStyle />
-        <Box
+      <>
+        <Flex
+          flexDirection="column"
           css={css`
-            flex-grow: 1;
+            min-height: 100vh;
           `}
         >
-          {children}
-        </Box>
-        <Footer />
-      </Flex>
+          <NavBar />
+          <GlobalStyle />
+          <Box
+            css={css`
+              flex-grow: 1;
+            `}
+          >
+            {children}
+          </Box>
+          <Footer />
+        </Flex>
+      </>
     </Wrapper>
   </ThemeProvider>
 )

@@ -31,6 +31,18 @@ const Footer = () => (
         twitter
       </Link>
     </Box>
+
+    <Box pr={2}>
+      <Link
+        color="black"
+        target="_blank"
+        rel="noopener noreferrer me"
+        href="https://stackoverflow.com/users/10541736/jon-leopard"
+        itemProp="sameAs"
+      >
+        stack overflow
+      </Link>
+    </Box>
     <Box pr={2}>
       <Link color="black" target="_blank" rel="noopener noreferrer me" href="https://t.me/hiJon" itemProp="sameAs">
         telegram

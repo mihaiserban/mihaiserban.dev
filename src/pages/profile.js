@@ -70,6 +70,23 @@ const profile = () => (
             </Text>
             <Text>A dotfile repo for my development environment</Text>
           </Box>
+
+          <Box width={[1, 1 / 2]}>
+            <Text fontSize={3} mb={2}>
+              <span role="img" aria-label="Hat">
+                🎓{' '}
+              </span>
+              <Link
+                color="black"
+                href="https://github.com/jonleopard/dotfiles"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Dotfile Starter
+              </Link>
+            </Text>
+            <Text>A practice/starter guide on how to make your own dotfile repo</Text>
+          </Box>
         </Flex>
       </Box>
 

@@ -49,7 +49,7 @@ const profile = () => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              Moonphase.space
+              moonphase.space
             </Link>
           </Text>
           <Text>A tiny app that displays the current moon phase</Text>
@@ -66,7 +66,7 @@ const profile = () => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              Dotfiles
+              dotfiles
             </Link>
           </Text>
           <Text>A dotfile repo for my development environment</Text>
@@ -83,7 +83,7 @@ const profile = () => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              Dotfile Starter
+              dotfile Starter
             </Link>
           </Text>
           <Text>A practice/starter guide on how to make your own dotfile repo</Text>

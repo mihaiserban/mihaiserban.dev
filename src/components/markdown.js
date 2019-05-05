@@ -33,10 +33,6 @@ const Markdown = styled(Box)`
     padding-bottom: 19px;
   }
 
-  a {
-    color: ${props => props.theme.colors.blue};
-  }
-
   /*
 Name: Duotone Dark
 Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/projects/2016/01/01/duotone-themes)

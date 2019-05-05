@@ -6,7 +6,9 @@ import reset from 'styled-reset'
 import Footer from './footer'
 import NavBar from './navbar'
 
-const blue = '#07c'
+const pink = '#ff88f4'
+const purple = '#a771e7'
+const black = '#000'
 const lightgray = '#f6f6ff'
 
 const theme = {
@@ -19,21 +21,12 @@ const theme = {
     body: 1.667,
   },
   colors: {
-    blue,
+    pink,
+    purple,
+    black,
     lightgray,
   },
   fontSizes: [12, 14, 18, 20, 24, 32, 48, 64, 72],
-  buttons: {
-    primary: {
-      color: '#fff',
-      backgroundColor: blue,
-    },
-    outline: {
-      color: blue,
-      backgroundColor: 'transparent',
-      boxShadow: 'inset 0 0 2px',
-    },
-  },
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -53,7 +46,8 @@ const GlobalStyle = createGlobalStyle`
   }
   
   a {
-      text-decoration: none;
+    text-decoration: none;
+    color: ${props => props.theme.colors.purple};
   }
 
   ${reset}

@@ -49,7 +49,6 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: ${props => props.theme.colors.purple};
   }
-
   ${reset}
 }`
 

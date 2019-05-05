@@ -28,6 +28,8 @@ const Template = ({ data }) => {
             dangerouslySetInnerHTML={{
               __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
             }}
+            id="top"
+            className="content"
           />
         </>
       </article>

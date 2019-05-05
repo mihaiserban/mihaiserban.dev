@@ -33,6 +33,16 @@ const Markdown = styled(Box)`
     padding-bottom: 19px;
   }
 
+  ul {
+    list-style-type: circle;
+    font-family: 'Lato';
+    font-size: 18px;
+  }
+  li {
+    font-family: 'Lato';
+    font-size: 18px;
+  }
+
   /*
 Name: Duotone Dark
 Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/projects/2016/01/01/duotone-themes)

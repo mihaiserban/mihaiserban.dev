@@ -20,11 +20,11 @@ const profile = () => (
           involved in the industry, talk about the projects I'm working on, as well as post other random musings. I'm a
           huge movie buff, gaming nerd, and coffee lover. When I'm not in front of a screen, I'm most likely reading a
           good book or listening to music. Check out my{' '}
-          <Link color="black" href="https://last.fm/user/crunkmastafunk" target="_blank" rel="noopener noreferrer">
+          <Link color="purple" href="https://last.fm/user/crunkmastafunk" target="_blank" rel="noopener noreferrer">
             last.fm
           </Link>{' '}
           and{' '}
-          <Link color="black" href="https://goodreads.com/jonleopard" target="_blank" rel="noopener noreferrer">
+          <Link color="purple" href="https://goodreads.com/jonleopard" target="_blank" rel="noopener noreferrer">
             Goodreads
           </Link>{' '}
           profile to see what I'm into these days.
@@ -44,7 +44,7 @@ const profile = () => (
               🌙{' '}
             </span>
             <Link
-              color="black"
+              color="purple"
               href="https://github.com/jonleopard/lunarphase"
               target="_blank"
               rel="noopener noreferrer"
@@ -60,7 +60,12 @@ const profile = () => (
             <span role="img" aria-label="Tools">
               🛠{' '}
             </span>
-            <Link color="black" href="https://github.com/jonleopard/dotfiles" target="_blank" rel="noopener noreferrer">
+            <Link
+              color="purple"
+              href="https://github.com/jonleopard/dotfiles"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Dotfiles
             </Link>
           </Text>
@@ -72,7 +77,12 @@ const profile = () => (
             <span role="img" aria-label="Hat">
               🎓{' '}
             </span>
-            <Link color="black" href="https://github.com/jonleopard/dotfiles" target="_blank" rel="noopener noreferrer">
+            <Link
+              color="purple"
+              href="https://github.com/jonleopard/dotfiles"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Dotfile Starter
             </Link>
           </Text>

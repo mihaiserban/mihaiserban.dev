@@ -5,5 +5,5 @@
  */
 
 // You can delete this file if you're not using it
-require('typeface-rubik');
-require('typeface-lato');
+require('typeface-rubik')
+require('typeface-lato')

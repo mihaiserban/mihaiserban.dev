@@ -4,7 +4,7 @@ import { Link as GLink } from 'gatsby'
 import { Flex, Box, Link, Text } from 'rebass'
 
 const NavBar = () => (
-  <Text fontFamily="body">
+  <Text fontSize={2} fontFamily="body">
     <Box width={1}>
       <Flex alignItems="center" py={3}>
         <Box>
@@ -23,11 +23,6 @@ const NavBar = () => (
         <Box pr={2}>
           <Link as={GLink} to="/blog" color="black">
             blog
-          </Link>
-        </Box>
-        <Box pr={2}>
-          <Link as={GLink} to="/blog" color="black">
-            photos
           </Link>
         </Box>
       </Flex>

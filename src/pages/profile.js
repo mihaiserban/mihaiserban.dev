@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 
 const profile = () => (
   <Layout>
-    <Text fontFamily="body" lineHeight="body">
+    <Text fontFamily="body">
       <SEO />
 
       <Box pt={80}>
@@ -15,7 +15,7 @@ const profile = () => (
       </Box>
 
       <Box width={1}>
-        <Text fontSize={2}>
+        <Text fontSize={2} lineHeight="body">
           I'm a self taught web developer who loves all things tech. This blog serves as a medium to get me more
           involved in the industry, talk about the projects I'm working on, as well as post other random musings. I'm a
           huge movie buff, gaming nerd, and coffee lover. When I'm not in front of a screen, I'm most likely reading a

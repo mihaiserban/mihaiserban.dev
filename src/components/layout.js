@@ -6,21 +6,23 @@ import reset from 'styled-reset'
 import Footer from './footer'
 import NavBar from './navbar'
 
-import 'typeface-work-sans'
-import 'typeface-source-sans-pro'
-
 const blue = '#07c'
 const lightgray = '#f6f6ff'
 
 const theme = {
   fonts: {
-    sansSerif: 'typeface-work-sans',
-    sourceSans: 'Source Sans Pro',
+    heading: 'Rubik',
+    body: 'Lato',
+  },
+  lineHeights: {
+    heading: 1.25,
+    body: 1.667,
   },
   colors: {
     blue,
     lightgray,
   },
+  fontSizes: [12, 14, 18, 20, 24, 32, 48, 64, 72],
   buttons: {
     primary: {
       color: '#fff',
@@ -60,8 +62,8 @@ const GlobalStyle = createGlobalStyle`
 const Wrapper = styled(Box)`
   max-width: 560px;
   margin: 0 auto;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 19px;
+  padding-right: 19px;
 `
 
 const Layout = ({ children }) => (

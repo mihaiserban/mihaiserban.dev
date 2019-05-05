@@ -4,7 +4,7 @@ import { Flex, Box, Link, Text } from 'rebass'
 const CURRENT_YEAR = new Date().getFullYear()
 
 const Footer = () => (
-  <Text fontFamily="sourceSans">
+  <Text fontFamily="body">
     <Flex as="footer" py={40}>
       <Box>
         <Text>&copy; {CURRENT_YEAR}</Text>

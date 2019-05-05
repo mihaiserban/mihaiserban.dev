@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import { Box } from 'rebass'
+import { Box, Text } from 'rebass'
 
 import Markdown from '../components/markdown'
 import Layout from '../components/layout'
@@ -14,18 +14,22 @@ const Template = ({ data }) => {
     <Layout>
       <SEO />
       <article>
-        <Box width={1} pt={[20, 80]} pb={4}>
-          <PageHeader
-            pb={4}
-            title={data.contentfulBlogPost.title}
-            subTitle={`Written on ${data.contentfulBlogPost.date}`}
+        <>
+          <Box width={1} pt={[20, 80]} pb={4}>
+            <Text fontFamily="heading" lineHeight="heading">
+              <PageHeader
+                pb={4}
+                title={data.contentfulBlogPost.title}
+                subTitle={`Written on ${data.contentfulBlogPost.date}`}
+              />
+            </Text>
+          </Box>
+          <Markdown
+            dangerouslySetInnerHTML={{
+              __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
+            }}
           />
-        </Box>
-        <Markdown
-          dangerouslySetInnerHTML={{
-            __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
-          }}
-        />
+        </>
       </article>
     </Layout>
   )

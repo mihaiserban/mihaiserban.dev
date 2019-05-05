@@ -11,9 +11,9 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <Text fontFamily="sourceSans">
+      <Text fontFamily="body">
         <Box width={1} pt={[20, 80]}>
-          <Heading fontSize={6} pb={4}>
+          <Heading fontFamily="heading" fontSize={6} pb={4}>
             Blog
           </Heading>
         </Box>

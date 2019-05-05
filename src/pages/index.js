@@ -10,14 +10,14 @@ const Index = () => (
       <SEO />
       <Box width={1} mt={[40, 80]}>
         <Flex flexDirection="column">
-          <Heading fontFamily="sourceSans" fontSize={6} pb={3}>
+          <Heading fontFamily="heading" fontSize={6} pb={3}>
             You've reached the personal blog of Jon Leopard
           </Heading>
         </Flex>
       </Box>
       <Box>
         <Flex flexDirection="column">
-          <Text fontFamily="sourceSans" fontSize={4}>
+          <Text fontFamily="body" fontSize={4}>
             a web developer based in Paris 🇫🇷
           </Text>
         </Flex>

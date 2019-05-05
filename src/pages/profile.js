@@ -5,17 +5,17 @@ import Layout from '../components/layout'
 
 const profile = () => (
   <Layout>
-    <Text fontFamily="sourceSans">
+    <Text fontFamily="body" lineHeight="body">
       <SEO />
 
       <Box pt={80}>
-        <Heading fontFamily="sourceSans" fontSize={6} mb={4}>
+        <Heading fontFamily="heading" fontSize={6} mb={4}>
           Profile
         </Heading>
       </Box>
 
       <Box width={1}>
-        <Text fontSize={3}>
+        <Text fontSize={2}>
           I'm a self taught web developer who loves all things tech. This blog serves as a medium to get me more
           involved in the industry, talk about the projects I'm working on, as well as post other random musings. I'm a
           huge movie buff, gaming nerd, and coffee lover. When I'm not in front of a screen, I'm most likely reading a
@@ -32,7 +32,7 @@ const profile = () => (
       </Box>
 
       <Box width={1} mt={80}>
-        <Heading fontSize={[5, 4]} mb={3}>
+        <Heading fontFamily="heading" fontSize={[5, 4]} mb={3}>
           Projects
         </Heading>
       </Box>
@@ -81,7 +81,7 @@ const profile = () => (
       </Flex>
 
       <Box width={1} mt={80}>
-        <Heading fontSize={[5, 4]} mb={3}>
+        <Heading fontFamily="heading" fontSize={[5, 4]} mb={3}>
           Skills
         </Heading>
       </Box>
@@ -105,7 +105,7 @@ const profile = () => (
       </Flex>
 
       <Box width={1} mt={80}>
-        <Heading fontSize={[5, 4]} pb={3}>
+        <Heading fontFamily="heading" fontSize={[5, 4]} pb={3}>
           Experience
         </Heading>
       </Box>
@@ -153,7 +153,7 @@ const profile = () => (
       </Flex>
 
       <Box width={1} mt={80}>
-        <Heading fontSize={[5, 4]} pb={3}>
+        <Heading fontFamily="heading" fontSize={[5, 4]} pb={3}>
           Certifications
         </Heading>
       </Box>

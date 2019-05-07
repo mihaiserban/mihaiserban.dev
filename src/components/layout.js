@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { createGlobalStyle, ThemeProvider, css } from 'styled-components'
 import { Flex, Box } from 'rebass'
 import reset from 'styled-reset'
+import { useTransition, animated } from 'react-spring'
 
 import Footer from './footer'
 import NavBar from './navbar'
@@ -59,30 +60,41 @@ const Wrapper = styled(Box)`
   padding-right: 19px;
 `
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <Wrapper>
-      <>
-        <Flex
-          flexDirection="column"
-          css={css`
-            min-height: 100vh;
-          `}
-        >
-          <NavBar />
-          <GlobalStyle />
-          <Box
+const Layout = ({ children }) => {
+  const [toggle, set] = useState(false)
+  const transitions = useTransition(toggle, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
+
+  return transitions.map(({ item, props, key }) => (
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <>
+          <Flex
+            flexDirection="column"
             css={css`
-              flex-grow: 1;
+              min-height: 100vh;
             `}
           >
-            {children}
-          </Box>
-          <Footer />
-        </Flex>
-      </>
-    </Wrapper>
-  </ThemeProvider>
-)
+            <NavBar />
+            <GlobalStyle />
+            <Box
+              css={css`
+                flex-grow: 1;
+              `}
+            >
+              <animated.div key={key} style={props}>
+                {children}
+              </animated.div>
+            </Box>
+            <Footer />
+          </Flex>
+        </>
+      </Wrapper>
+    </ThemeProvider>
+  ))
+}
 
 export default Layout

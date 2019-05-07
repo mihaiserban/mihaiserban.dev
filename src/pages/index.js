@@ -11,7 +11,8 @@ const Index = () => (
       <Box width={1} mt={[40, 80]}>
         <Flex flexDirection="column">
           <Heading fontFamily="heading" fontSize={6} pb={3}>
-            You've reached the personal blog of Jon Leopard
+            You've reached the personal blog of
+            <br /> Jon Leopard
           </Heading>
         </Flex>
       </Box>

@@ -74,7 +74,7 @@ const Layout = ({ children }) => {
     leave: { opacity: 0 },
   })
 
-  return transitions.map(({ item, props, key }) => (
+  return (
     <ThemeProvider theme={theme}>
       <Wrapper>
         <>
@@ -91,16 +91,18 @@ const Layout = ({ children }) => {
                 flex-grow: 1;
               `}
             >
-              <animated.div key={key} style={props}>
-                {children}
-              </animated.div>
+              {transitions.map(({ item, key, props }) => (
+                <animated.div key={key} style={props}>
+                  {children}
+                </animated.div>
+              ))}
             </Box>
             <Footer />
           </Flex>
         </>
       </Wrapper>
     </ThemeProvider>
-  ))
+  )
 }
 
 export default Layout

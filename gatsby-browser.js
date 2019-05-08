@@ -5,5 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-require('typeface-rubik')
-require('typeface-lato')
+
+// I put these in the layout.js component instead
+// require('typeface-rubik')
+// require('typeface-lato')

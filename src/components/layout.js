@@ -4,9 +4,15 @@ import { Flex, Box } from 'rebass'
 import reset from 'styled-reset'
 import { useTransition, animated } from 'react-spring'
 
+// Fonts
+import Rubik from 'typeface-rubik'
+import Lato from 'typeface-lato'
+
+// Components
 import Footer from './footer'
 import NavBar from './navbar'
 
+// Colors
 const pink = '#ff88f4'
 const purple = '#a771e7'
 const black = '#000'

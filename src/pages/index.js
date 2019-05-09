@@ -7,7 +7,6 @@ import Layout from '../components/layout'
 const Index = () => (
   <>
     <Layout>
-      <SEO />
       <Box width={1} mt={[40, 80]}>
         <Flex flexDirection="column">
           <Heading fontFamily="heading" fontSize={6} pb={3}>

@@ -9,6 +9,7 @@ import Rubik from 'typeface-rubik'
 import Lato from 'typeface-lato'
 
 // Components
+import SEO from './SEO'
 import Footer from './footer'
 import NavBar from './navbar'
 
@@ -75,9 +76,10 @@ const Layout = ({ children }) => {
   })
 
   return (
-    <ThemeProvider theme={theme}>
-      <Wrapper>
-        <>
+    <>
+      <SEO />
+      <ThemeProvider theme={theme}>
+        <Wrapper>
           <Flex
             flexDirection="column"
             css={css`
@@ -99,9 +101,9 @@ const Layout = ({ children }) => {
             </Box>
             <Footer />
           </Flex>
-        </>
-      </Wrapper>
-    </ThemeProvider>
+        </Wrapper>
+      </ThemeProvider>
+    </>
   )
 }
 

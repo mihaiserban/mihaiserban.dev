@@ -15,12 +15,18 @@ module.exports = {
     // Adding various source folders to the GraphQL layer.
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
+      options: { 
         path: `${__dirname}/src/pages/`,
+        name: `pages`,
       },
     },
-
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/images/`,
+        name: `images`,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -96,6 +102,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
     'gatsby-transformer-json',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

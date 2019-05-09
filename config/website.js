@@ -10,9 +10,8 @@ module.exports = {
   siteDescription: 'A website that talks about nerd stuffs.',
   author: 'Jon Leopard', // Author for schema.org JSONLD
 
-  // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: '@jonlprd', // Twitter Username
-  ogSiteName: 'sirjon', // Facebook Site Name
+  ogSiteName: 'Jon Leopard', // Facebook Site Name
   ogLanguage: 'en_US', // Facebook Language
   googleAnalyticsID: '#',
 

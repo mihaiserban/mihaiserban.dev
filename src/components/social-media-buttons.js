@@ -23,7 +23,7 @@ const SocialMediaButtons = () => {
         <Box ml={-2} mt={2}>
           <Flex justifyContent="space-between">
             <Twitter
-              message={`${data.contentfulBlogPost.title} by @jonlprd |`}
+              message={`${data.contentfulBlogPost.title} by @jonlprd`}
               link={`https://jonleopard.com/${data.contentfulBlogPost.slug}`}
             />
             <Reddit link={`https://jonleopard.com/${data.contentfulBlogPost.slug}`} />

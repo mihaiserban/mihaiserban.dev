@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Flex, Box, Text } from 'rebass'
+import { Box, Text } from 'rebass'
 
 import Markdown from '../components/markdown'
 import Layout from '../components/layout'

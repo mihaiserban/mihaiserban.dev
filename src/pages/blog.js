@@ -3,14 +3,12 @@ import { Link as glink, graphql } from 'gatsby'
 import { Flex, Box, Text, Heading, Link } from 'rebass'
 
 import Layout from '../components/layout'
-import SEO from '../components/SEO'
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost
 
   return (
     <Layout>
-      <SEO />
       <Text fontFamily="body">
         <Box width={1} pt={[20, 80]}>
           <Heading fontFamily="heading" fontSize={6} pb={4}>

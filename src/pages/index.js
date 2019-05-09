@@ -1,7 +1,6 @@
 import React from 'react'
 import { Flex, Box, Text, Heading } from 'rebass'
 
-import SEO from '../components/SEO'
 import Layout from '../components/layout'
 
 const Index = () => (

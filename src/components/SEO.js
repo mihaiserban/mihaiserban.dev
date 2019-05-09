@@ -17,8 +17,6 @@ const Head = props => {
   const homeURL = `${config.siteUrl}${realPrefix}`
   const image = `${homeURL}/${config.siteLogo}`
 
-  console.log(homeURL)
-  console.log(image)
   // schema.org in JSONLD format
   // https://developers.google.com/search/docs/guides/intro-structured-data
   // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')

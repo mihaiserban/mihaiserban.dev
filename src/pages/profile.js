@@ -1,13 +1,11 @@
 import React from 'react'
 import { Flex, Box, Text, Link, Heading } from 'rebass'
-import SEO from '../components/SEO'
+
 import Layout from '../components/layout'
 
 const profile = () => (
   <Layout>
     <Text fontFamily="body">
-      <SEO />
-
       <Box pt={80}>
         <Heading fontFamily="heading" fontSize={6} mb={4}>
           Profile

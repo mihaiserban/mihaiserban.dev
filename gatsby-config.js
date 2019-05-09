@@ -15,7 +15,7 @@ module.exports = {
     // Adding various source folders to the GraphQL layer.
     {
       resolve: `gatsby-source-filesystem`,
-      options: { 
+      options: {
         path: `${__dirname}/src/pages/`,
         name: `pages`,
       },

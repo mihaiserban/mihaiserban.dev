@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
-import { Box, Text } from 'rebass'
+import { Twitter, Facebook, HackerNews, Reddit } from 'react-social-sharing'
+import { Flex, Box, Text } from 'rebass'
 
 import Markdown from '../components/markdown'
 import Layout from '../components/layout'
@@ -33,6 +33,22 @@ const Template = ({ data }) => {
           />
         </>
       </article>
+      <Box mt={4}>
+        <Text fontFamily="body" fontSize={2}>
+          Share this post ❤️
+        </Text>
+      </Box>
+      <Box ml={-2} mt={2}>
+        <Flex justifyContent="space-between">
+          <Twitter
+            message={`${data.contentfulBlogPost.title} by @jonlprd |`}
+            link={`https://jonleopard.com/${data.contentfulBlogPost.slug}`}
+          />
+          <Reddit link={`https://jonleopard.com/${data.contentfulBlogPost.slug}`} />
+          <Facebook link={`https://jonleopard.com/${data.contentfulBlogPost.slug}`} />
+          <HackerNews link={`https://jonleopard.com/${data.contentfulBlogPost.slug}`} />
+        </Flex>
+      </Box>
     </Layout>
   )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { Link as RebassLink } from 'rebass'
 
 const Link = ({ children, to, ...props }) => {
   const internal = /^\/(?!\/)/.test(to)
@@ -14,9 +13,9 @@ const Link = ({ children, to, ...props }) => {
   }
 
   return (
-    <RebassLink href={to} {...props}>
+    <a href={to} {...props}>
       {children}
-    </RebassLink>
+    </a>
   )
 }
 

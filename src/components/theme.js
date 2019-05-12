@@ -1,10 +1,4 @@
 const colors = {
-  text: '#000',
-  background: '#fff',
-  primary: '#00f',
-  secondary: '#00a',
-  gray: '#eee',
-  lightgray: '#fafafa',
   modes: {
     dark: {
       text: '#fff',

@@ -25,7 +25,7 @@ const SocialMediaButtons = () => {
           </Text>
         </Box>
         <Box ml={-2} mt={2}>
-          <Flex justifyContent="space-between">
+          <Flex justifyContent="space-between" flexWrap="wrap">
             <Twitter
               style={{ color: 'white' }}
               message={`${data.contentfulBlogPost.title} by ${config.userTwitter}`}

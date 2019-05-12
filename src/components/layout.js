@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+/* eslint-disable */
+// TODO: disabling until I can reconfigure rules
+import React, { useState, useEffect, useContext } from 'react'
 import styled, { createGlobalStyle, ThemeProvider, css } from 'styled-components'
 import { Flex, Box } from 'rebass'
+import merge from 'lodash.merge'
+import get from 'lodash.get'
 import reset from 'styled-reset'
 import { useTransition, animated } from 'react-spring'
 
@@ -9,56 +13,42 @@ import Rubik from 'typeface-rubik'
 import Lato from 'typeface-lato'
 
 // Components
+import theme from './theme'
 import SEO from './SEO'
 import Footer from './footer'
 import NavBar from './navbar'
 
-// Colors
-const pink = '#ff88f4'
-const purple = '#a771e7'
-const black = '#000'
-const lightgray = '#f6f6ff'
-
-const theme = {
-  fonts: {
-    heading: 'Rubik',
-    body: 'Lato',
-  },
-  lineHeights: {
-    heading: 1.25,
-    body: 1.667,
-  },
-  colors: {
-    pink,
-    purple,
-    black,
-    lightgray,
-  },
-  fontSizes: [12, 14, 18, 20, 24, 32, 48, 64, 72],
-}
-
-const GlobalStyle = createGlobalStyle`
- 
-  html {
-    background-color: ${props => props.theme.colors.lightgray};
-    margin: 0;
-    border: 0;
-    }
-
+const GlobalStyle = createGlobalStyle`  
   body {
+    transition-property: background-color, color;
+    transition-duration: .2s;
+    transition-timingFunction: ease-out;
+    color: ${props => props.theme.colors.text};
+    background-color: ${props => props.theme.colors.background};
     border: 0;
     margin: 0;
     padding: 0;
-
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
   
-  a {
+  a, a:visited {
     text-decoration: none;
-    color: ${props => props.theme.colors.purple};
-  }
+    color: ${props => props.theme.colors.primary}; 
+
   ${reset}
 }`
+
+// Create some context for other components
+export const Context = React.createContext()
+export const useAppContext = () => useContext(Context)
+
+// Color modes
+const modes = ['light', 'dark']
+
+const getTheme = mode =>
+  merge({}, theme, {
+    colors: get(theme.colors.modes, mode, theme.colors),
+  })
 
 const Wrapper = styled(Box)`
   max-width: 560px;
@@ -67,7 +57,39 @@ const Wrapper = styled(Box)`
   padding-right: 19px;
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
+  // Color mode hook
+  const [mode, setMode] = useState(modes[0])
+
+  const theme = getTheme(mode)
+  if (location) {
+    theme.colors = merge({}, theme.colors, colors)
+  }
+
+  useEffect(() => {
+    const initialMode = window.localStorage.getItem('mode') || modes[0]
+    if (initialMode && initialMode !== mode) {
+      setMode(initialMode)
+    }
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('mode', mode)
+  }, [mode])
+
+  const cycleMode = () => {
+    const i = (modes.indexOf(mode) + 1) % modes.length
+    setMode(modes[i])
+  }
+
+  const context = {
+    modes,
+    mode,
+    setMode,
+    cycleMode,
+  }
+
+  // Page transition hook
   const [toggle, set] = useState(false)
   const transitions = useTransition(toggle, null, {
     from: { opacity: 0 },
@@ -78,31 +100,33 @@ const Layout = ({ children }) => {
   return (
     <>
       <SEO />
-      <ThemeProvider theme={theme}>
-        <Wrapper>
-          <Flex
-            flexDirection="column"
-            css={css`
-              min-height: 100vh;
-            `}
-          >
-            <NavBar />
-            <GlobalStyle />
-            <Box
+      <Context.Provider value={context}>
+        <ThemeProvider theme={theme}>
+          <Wrapper>
+            <Flex
+              flexDirection="column"
               css={css`
-                flex-grow: 1;
+                min-height: 100vh;
               `}
             >
-              {transitions.map(({ item, key, props }) => (
-                <animated.div key={key} style={props}>
-                  {children}
-                </animated.div>
-              ))}
-            </Box>
-            <Footer />
-          </Flex>
-        </Wrapper>
-      </ThemeProvider>
+              <NavBar />
+              <GlobalStyle />
+              <Box
+                css={css`
+                  flex-grow: 1;
+                `}
+              >
+                {transitions.map(({ item, key, props }) => (
+                  <animated.div key={key} style={props}>
+                    {children}
+                  </animated.div>
+                ))}
+              </Box>
+              <Footer />
+            </Flex>
+          </Wrapper>
+        </ThemeProvider>
+      </Context.Provider>
     </>
   )
 }

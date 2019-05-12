@@ -5,6 +5,8 @@ import { Flex, Box, Text } from 'rebass'
 
 import config from '../../config/website'
 
+// Hard coded color: 'white' to resist color mode inheritance
+
 const SocialMediaButtons = () => {
   const data = useStaticQuery(graphql`
     query SocialButtonQuery {
@@ -25,12 +27,13 @@ const SocialMediaButtons = () => {
         <Box ml={-2} mt={2}>
           <Flex justifyContent="space-between">
             <Twitter
+              style={{ color: 'white' }}
               message={`${data.contentfulBlogPost.title} by ${config.userTwitter}`}
               link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`}
             />
-            <Reddit link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
-            <Facebook link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
-            <HackerNews link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
+            <Reddit style={{ color: 'white' }} link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
+            <Facebook style={{ color: 'white' }} link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
+            <HackerNews style={{ color: 'white' }} link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
           </Flex>
         </Box>
       </Box>

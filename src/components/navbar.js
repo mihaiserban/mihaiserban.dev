@@ -1,33 +1,48 @@
+/* eslint-disable */
+// TODO: disabling until I can reconfigure rules
 import React from 'react'
 import Baffle from 'baffle-react'
-import { Link as GLink } from 'gatsby'
-import { Flex, Box, Link, Text } from 'rebass'
+import { Flex, Box, Text } from 'rebass'
+import { Sun, Moon } from 'react-feather'
+import Link from './link'
+import { useAppContext } from './layout'
 
-const NavBar = () => (
-  <Text fontSize={2} fontFamily="body">
-    <Box width={1}>
-      <Flex alignItems="center" py={3}>
-        <Box>
-          <Link as={GLink} color="black" to="/">
-            <Text as={Baffle} obfuscate={false} speed={50} revealDelay={0} characters="10">
-              jonleopard.com ▌
+const NavBar = () => {
+  const state = useAppContext()
+
+  return (
+    <Text fontSize={2} fontFamily="body">
+      <Box width={1}>
+        <Flex alignItems="center" py={3}>
+          <Box>
+            <Link to="/">
+              <Baffle obfuscate={false} speed={30} revealDelay={0} characters="10">
+                jonleopard.com ▌
+              </Baffle>
+            </Link>
+          </Box>
+          <Box mx="auto" />
+          <Box pr={2}>
+            <Link to="/profile">profile</Link>
+          </Box>
+          <Box pr={2}>
+            <Link to="/blog">blog</Link>
+          </Box>
+          <Box ml={2}>
+            <Text
+              title="Toggle Color Mode"
+              onClick={e => {
+                e.preventDefault()
+                state.cycleMode()
+              }}
+            >
+              {state.mode === 'dark' ? <Sun size={28} /> : <Moon size={28} />}
             </Text>
-          </Link>
-        </Box>
-        <Box mx="auto" />
-        <Box pr={2}>
-          <Link as={GLink} to="/profile" color="black">
-            profile
-          </Link>
-        </Box>
-        <Box pr={2}>
-          <Link as={GLink} to="/blog" color="black">
-            blog
-          </Link>
-        </Box>
-      </Flex>
-    </Box>
-  </Text>
-)
+          </Box>
+        </Flex>
+      </Box>
+    </Text>
+  )
+}
 
 export default NavBar

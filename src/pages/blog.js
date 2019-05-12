@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link as glink, graphql } from 'gatsby'
-import { Flex, Box, Text, Heading, Link } from 'rebass'
+import { Flex, Box, Text, Heading } from 'rebass'
 
+import Link from '../components/link'
 import Layout from '../components/layout'
 
 const BlogIndex = ({ data }) => {

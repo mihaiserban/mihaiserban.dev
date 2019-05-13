@@ -31,7 +31,7 @@ const NavBar = () => {
         <Flex alignItems="center" py={3}>
           <Box width={1}>
             <Link to="/">
-              jonleopard.com
+            jonleopard.com
               <AnimatedBlock>
                 ▌
               </AnimatedBlock>

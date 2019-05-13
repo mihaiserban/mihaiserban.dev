@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styled, { createGlobalStyle, ThemeProvider, css } from 'styled-components'
 import { Flex, Box } from 'rebass'
-// import reset from 'styled-reset'
-//import { Reset } from 'styled-reset'
 import { normalize } from 'styled-normalize'
 import { merge, get } from 'lodash'
 import { useTransition, animated } from 'react-spring'

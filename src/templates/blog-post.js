@@ -16,12 +16,9 @@ const Template = ({ data }) => {
       <article>
         <>
           <Box width={1} pt={[20, 80]} pb={2}>
+            <Text size="10px">Written on {data.contentfulBlogPost.date}</Text>
             <Text fontFamily="heading" lineHeight="heading">
-              <PageHeader
-                pb={4}
-                title={data.contentfulBlogPost.title}
-                subTitle={`Written on ${data.contentfulBlogPost.date}`}
-              />
+              <PageHeader title={data.contentfulBlogPost.title} />
             </Text>
           </Box>
 

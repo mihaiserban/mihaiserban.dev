@@ -11,7 +11,7 @@ This is the source code for [jonleopard.com](https://jonleopard.com).
 2. `cd jonleopard.com && yarn && yarn dev`
 3. Site should now be running on http://localhost:8000
 
-#### Stack
+### Stack
 * Site Generator
   - [GatsbyJS](https://www.gatsbyjs.org/)
 * CMS

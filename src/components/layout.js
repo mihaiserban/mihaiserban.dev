@@ -3,9 +3,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styled, { createGlobalStyle, ThemeProvider, css } from 'styled-components'
 import { Flex, Box } from 'rebass'
-import merge from 'lodash.merge'
-import get from 'lodash.get'
-import reset from 'styled-reset'
+// import reset from 'styled-reset'
+//import { Reset } from 'styled-reset'
+import { normalize } from 'styled-normalize'
+import { merge, get } from 'lodash'
 import { useTransition, animated } from 'react-spring'
 
 // Fonts
@@ -35,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: ${props => props.theme.colors.primary}; 
 
-  ${reset}
+  ${normalize}
 }`
 
 // Create some context for other components

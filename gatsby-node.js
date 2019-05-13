@@ -1,5 +1,4 @@
 const _ = require(`lodash`)
-
 const slash = require(`slash`)
 const path = require('path')
 

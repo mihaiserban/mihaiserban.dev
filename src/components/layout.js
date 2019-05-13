@@ -1,6 +1,6 @@
 /* eslint-disable */
 // TODO: disabling until I can reconfigure rules
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useLayoutEffect, useContext } from 'react'
 import styled, { createGlobalStyle, ThemeProvider, css } from 'styled-components'
 import { Flex, Box } from 'rebass'
 import { normalize } from 'styled-normalize'
@@ -65,14 +65,14 @@ const Layout = ({ children, location }) => {
     theme.colors = merge({}, theme.colors, colors)
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const initialMode = window.localStorage.getItem('mode') || modes[0]
     if (initialMode && initialMode !== mode) {
       setMode(initialMode)
     }
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.localStorage.setItem('mode', mode)
   }, [mode])
 

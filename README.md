@@ -5,5 +5,16 @@
 
 This is the source code for [jonleopard.com](https://jonleopard.com)
 
-Requires node and gatsby to develop locally.
+#### What's inside?
+* Site Generator
+  - [GatsbyJS](https://www.gatsbyjs.org/)
+* CMS
+  - [Contentful](https://www.contentful.com/)
+* Styling 
+  - [Styled Components](https://www.styled-components.com/)
+  - [Rebass](https://rebassjs.org/)
+* Hosting 
+  - [Netlify](https://www.netlify.com/)
+* intel Pentium 4 HT inside
+
 

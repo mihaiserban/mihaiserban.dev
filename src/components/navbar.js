@@ -1,25 +1,41 @@
 /* eslint-disable */
 // TODO: disabling until I can reconfigure rules
-import React from 'react'
-import Baffle from 'baffle-react'
+import React, { useState } from 'react'
 import { Flex, Box, Text } from 'rebass'
+import styled, { keyframes } from 'styled-components'
 import { Sun, Moon } from 'react-feather'
 import Link from './link'
 import { useAppContext } from './layout'
 
+
+const fade = keyframes`
+  from {
+    opacity: 0;
+
+  to {
+      opacity: 1;
+    }
+`
+
+const AnimatedBlock = styled.div`
+  display: inline-block;
+  animation: ${fade} .5s alternate infinite;
+  
+`
+
 const NavBar = () => {
   const state = useAppContext()
-
   return (
     <Text fontSize={2} fontFamily="body">
       <Box width={1}>
         <Flex alignItems="center" py={3}>
-          <Box>
+          <Box width={1}>
             <Link to="/">
-              <Baffle obfuscate={false} speed={30} revealDelay={0} characters="10">
-                jonleopard.com ▌
-              </Baffle>
-            </Link>
+              jonleopard.com
+              <AnimatedBlock>
+                ▌
+              </AnimatedBlock>
+              </Link>
           </Box>
           <Box mx="auto" />
           <Box pr={2}>

@@ -2024,7 +2024,7 @@ bluebird@2.9.34:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.9.34.tgz#2f7b4ec80216328a9fddebdf69c8d4942feff7d8"
   integrity sha1-L3tOyAIWMoqf3evfacjUlC/v99g=
 
-bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.4:
+bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
   integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
@@ -5482,13 +5482,6 @@ gatsby-cli@^2.5.13:
     uuid "3.3.2"
     yargs "^12.0.5"
     yurnalist "^1.0.2"
-
-gatsby-codemods@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/gatsby-codemods/-/gatsby-codemods-1.0.11.tgz#d1635b93fc55f3df399a2c01b8b7fea94c75bdf2"
-  integrity sha512-xabvDXPTvgECJWgy3OEuigOjhKuACW2uSJSDVHBVEaONN7WNZN5c5R908FMUCrMtErs9xFYnGlOdS5LzU+gq3A==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
 
 gatsby-link@^2.1.1:
   version "2.1.1"

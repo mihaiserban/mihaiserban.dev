@@ -66,6 +66,22 @@ const Head = props => {
       },
       position: 1,
     },
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': `${homeURL}/profile`,
+        name: 'Profile',
+      },
+      position: 2,
+    },
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': `${homeURL}/blog`,
+        name: 'Blog',
+      },
+      position: 3,
+    },
   ]
 
   const breadcrumb = {

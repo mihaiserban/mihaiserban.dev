@@ -27,12 +27,22 @@ module.exports = {
         name: `images`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: process.env.GA_KEY,
+    //     head: true,
+    //     respectDNT: true,
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: process.env.GA_KEY,
+        // Puts tracking script in the head instead of the body
         head: true,
-        respectDNT: true,
+        // enable ip anonymization
+        anonymize: true,
       },
     },
     {

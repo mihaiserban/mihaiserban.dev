@@ -50,8 +50,8 @@ module.exports = {
       options: {
         siteId: '1',
         matomoUrl: 'https://jonleopard.matomo.cloud/',
-        siteUrl: 'https://jonleopard.com'
-      }
+        siteUrl: 'https://jonleopard.com',
+      },
     },
     {
       resolve: 'gatsby-plugin-manifest',

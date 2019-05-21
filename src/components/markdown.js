@@ -1,5 +1,5 @@
-import { Box } from 'rebass'
-import styled from 'styled-components'
+import { Box } from 'rebass';
+import styled from 'styled-components';
 
 // 33px = 1.65em;
 
@@ -53,9 +53,9 @@ Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
 
   code[class*='language-'],
   pre[class*='language-'] {
-    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
-      'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier,
-      monospace;
+    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+      'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
+      'Nimbus Mono L', 'Courier New', Courier, monospace;
     font-size: 16px;
     line-height: 1.375;
     direction: ltr;
@@ -217,6 +217,6 @@ Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
     background: -webkit-linear-gradient(left, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
     background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
   }
-`
+`;
 
-export default Markdown
+export default Markdown;

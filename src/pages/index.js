@@ -1,7 +1,7 @@
-import React from 'react'
-import { Flex, Box, Text, Heading } from 'rebass'
+import React from 'react';
+import { Flex, Box, Text, Heading } from 'rebass';
 
-import Layout from '../components/layout'
+import Layout from '../components/layout';
 
 const Index = () => (
   <>
@@ -10,7 +10,7 @@ const Index = () => (
         <Flex flexDirection="column">
           <Heading fontFamily="heading" fontSize={6} pb={3}>
             You've reached the personal blog of
-            <br /> Jon Leopard
+            <br /> Mihai Serban
           </Heading>
         </Flex>
       </Box>
@@ -22,7 +22,14 @@ const Index = () => (
         </Flex>
       </Box>
     </Layout>
+    <style jsx>
+      {`
+        .test {
+          background: red;
+        }
+      `}
+    </style>
   </>
-)
+);
 
-export default Index
+export default Index;

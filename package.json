@@ -1,21 +1,28 @@
 {
-  "name": "jonleopard.com",
-  "description": "source code for jonleopard.com",
-  "version": "2.0.0",
-  "author": "Jon Leopard <contact@jonleopard.com>",
+  "name": "mihaiserban.dev",
+  "description": "source code for mihaiserban.dev",
+  "version": "1.0.0",
+  "author": "Mihai Serban <contact@mihaiserban.dev>",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "precommit": "lint-staged",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "format": "prettier-eslint --write '**/*.{js,jsx}'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.5.5",
     "gatsby-cli": "^2.5.15",
     "gatsby-plugin-gtag": "^1.0.10",
-    "gatsby-plugin-manifest": "^2.1.1",
-    "gatsby-plugin-matomo": "^0.7.0",
     "gatsby-plugin-netlify": "^2.0.17",
     "gatsby-plugin-offline": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.37",
     "gatsby-plugin-sitemap": "^2.1.0",
     "gatsby-plugin-styled-components": "^3.0.7",
+    "gatsby-plugin-styled-jsx": "3.0.5",
     "gatsby-plugin-subfont": "^1.0.6",
     "gatsby-remark-prismjs": "^3.2.9",
     "gatsby-source-contentful": "^2.0.60",
@@ -37,7 +44,7 @@
     "rebass": "^3.1.0",
     "slash": "^3.0.0",
     "styled-components": "^4.2.0",
-    "styled-normalize": "^8.0.6",
+    "styled-jsx": "3.2.1",
     "typeface-lato": "^0.0.54",
     "typeface-rubik": "^0.0.72"
   },
@@ -45,15 +52,17 @@
     "babel-eslint": "^10.0.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.13.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "3.3.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
-    "prettier": "^1.17.1"
+    "prettier": "1.15.3",
+    "prettier-eslint": "8.8.2",
+    "prettier-eslint-cli": "4.7.1"
   },
   "husky": {
     "hooks": {
@@ -61,26 +70,17 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json}": [
-      "yarn run lint:fix",
+    "*.{js,json,css,md}": [
+      "prettier-eslint --write",
       "git add"
     ]
   },
   "keywords": [
-    "Jon Leopard",
+    "Mihai Serban",
     "gatsby",
     "blog",
     "static",
     "personal"
   ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
-    "precommit": "lint-staged",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
-    "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "license": "MIT"
 }

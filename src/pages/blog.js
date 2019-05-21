@@ -1,12 +1,12 @@
-import React from 'react'
-import { Link as glink, graphql } from 'gatsby'
-import { Flex, Box, Text, Heading } from 'rebass'
+import React from 'react';
+import { Link as glink, graphql } from 'gatsby';
+import { Flex, Box, Text, Heading } from 'rebass';
 
-import Link from '../components/link'
-import Layout from '../components/layout'
+import Link from '../components/link';
+import Layout from '../components/layout';
 
 const BlogIndex = ({ data }) => {
-  const { edges: posts } = data.allContentfulBlogPost
+  const { edges: posts } = data.allContentfulBlogPost;
 
   return (
     <Layout>
@@ -34,10 +34,10 @@ const BlogIndex = ({ data }) => {
         </Flex>
       </Text>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogIndexQuery {
@@ -52,4 +52,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

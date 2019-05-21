@@ -1,22 +1,29 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql, StaticQuery } from 'gatsby'
-import config from '../../config/website'
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql, StaticQuery } from 'gatsby';
 
 const Head = props => {
   const {
     data: {
+      contentfulAbout: {
+        name,
+        email,
+        twitter,
+        linkedIn,
+        github,
+        stackoverflow,
+        instagram,
+        goodreads,
+        image: imageObj,
+      },
+      contentfulSite,
       site: { buildTime },
     },
-  } = props
+  } = props;
 
-  const title = config.siteTitle
-  const description = config.siteDescription
-
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-  const homeURL = `${config.siteUrl}${realPrefix}`
-  const image = `${homeURL}${config.siteLogo}`
-
+  const title = contentfulSite.siteTitle;
+  const description = contentfulSite.siteDescription;
+  const image = imageObj.file.url;
   // schema.org in JSONLD format
   // https://developers.google.com/search/docs/guides/intro-structured-data
   // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')
@@ -24,28 +31,28 @@ const Head = props => {
   const schemaOrgWebPage = {
     '@context': 'http://schema.org',
     '@type': 'WebPage',
-    url: homeURL,
-    headline: config.siteHeadline,
+    url: contentfulSite.siteUrl,
+    headline: contentfulSite.siteHeadline,
     inLanguage: 'en',
-    mainEntityOfPage: homeURL,
-    description: config.siteDescription,
-    name: config.siteTitle,
+    mainEntityOfPage: contentfulSite.siteUrl,
+    description: contentfulSite.siteDescription,
+    name: contentfulSite.siteTitle,
     author: {
       '@type': 'Person',
-      name: config.author,
+      name: contentfulSite.author,
     },
     copyrightHolder: {
       '@type': 'Person',
-      name: config.author,
+      name: contentfulSite.author,
     },
     copyrightYear: '2019',
     creator: {
       '@type': 'Person',
-      name: config.author,
+      name: contentfulSite.author,
     },
     publisher: {
       '@type': 'Person',
-      name: config.author,
+      name: contentfulSite.author,
     },
     datePublished: '2019-01-17',
     dateModified: buildTime,
@@ -53,7 +60,7 @@ const Head = props => {
       '@type': 'ImageObject',
       url: image,
     },
-  }
+  };
 
   // Initial breadcrumb list
 
@@ -61,7 +68,7 @@ const Head = props => {
     {
       '@type': 'ListItem',
       item: {
-        '@id': homeURL,
+        '@id': contentfulSite.siteUrl,
         name: 'Homepage',
       },
       position: 1,
@@ -69,7 +76,7 @@ const Head = props => {
     {
       '@type': 'ListItem',
       item: {
-        '@id': `${homeURL}/profile`,
+        '@id': `${contentfulSite.siteUrl}/profile`,
         name: 'Profile',
       },
       position: 2,
@@ -77,12 +84,12 @@ const Head = props => {
     {
       '@type': 'ListItem',
       item: {
-        '@id': `${homeURL}/blog`,
+        '@id': `${contentfulSite.siteUrl}/blog`,
         name: 'Blog',
       },
       position: 3,
     },
-  ]
+  ];
 
   const breadcrumb = {
     '@context': 'http://schema.org',
@@ -90,30 +97,52 @@ const Head = props => {
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
     itemListElement,
-  }
+  };
 
   return (
     <Helmet>
-      <html lang={config.siteLanguage} />
-      <title>{title}</title>
-      <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
-      <meta name="Jon Leopard" content="jonleopard.com" />
-      <link rel="shortcut icon" href="favicon.ico" />
-      <meta name="msapplication-TileColor" content={config.backgroundColor} />
+      <html lang={contentfulSite.siteLanguage} />
+      <title>{contentfulSite.title}</title>
+      <link rel="apple-touch-icon" sizes="57x57" href="/favicons//apple-icon-57x57.png" />
+      <link rel="apple-touch-icon" sizes="60x60" href="/favicons//apple-icon-60x60.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="/favicons//apple-icon-72x72.png" />
+      <link rel="apple-touch-icon" sizes="76x76" href="/favicons//apple-icon-76x76.png" />
+      <link rel="apple-touch-icon" sizes="114x114" href="/favicons//apple-icon-114x114.png" />
+      <link rel="apple-touch-icon" sizes="120x120" href="/favicons//apple-icon-120x120.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="/favicons//apple-icon-144x144.png" />
+      <link rel="apple-touch-icon" sizes="152x152" href="/favicons//apple-icon-152x152.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicons//apple-icon-180x180.png" />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/favicons//android-icon-192x192.png"
+      />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicons//favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="96x96" href="/favicons//favicon-96x96.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicons//favicon-16x16.png" />
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="msapplication-TileImage" content="/favicons//ms-icon-144x144.png" />
+      <meta name="theme-color" content="#ffffff" />
+      <link rel="shortcut icon" href="/favicon.ico" />
       <meta name="msapplication-config" content="browserconfig.xml" />
+
+      <meta name="Mihai Serban" content="mihaiserban.dev" />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      <meta property="og:locale" content={config.ogLanguage} />
-      <meta property="og:site_name" content={config.ogSiteName} />
+      <meta property="og:locale" content={contentfulSite.ogLanguage} />
+      <meta property="og:site_name" content={contentfulSite.ogSiteName} />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:image:alt" content={description} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={config.userTwitter ? config.userTwitter : ''} />
+      <meta
+        name="twitter:creator"
+        content={contentfulSite.userTwitter ? contentfulSite.userTwitter : ''}
+      />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
@@ -121,17 +150,57 @@ const Head = props => {
       <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>
       <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
     </Helmet>
-  )
-}
+  );
+};
 
-const SEO = props => <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+const SEO = props => (
+  <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+);
 
-export default SEO
+export default SEO;
 
 const querySEO = graphql`
-  query SEO {
+  query About {
+    contentfulAbout {
+      name
+      description
+      email
+      twitter
+      linkedIn
+      github
+      stackoverflow
+      instagram
+      goodreads
+      image {
+        file {
+          url
+          fileName
+          contentType
+        }
+      }
+    }
+    contentfulSite {
+      siteTitle
+      siteTitleAlt
+      siteTitleShort
+      siteHeadline
+      siteUrl
+      siteLanguage
+      siteDescription
+      author
+      ogSiteName
+      ogLanguage
+      userTwitter
+      siteLogo {
+        file {
+          url
+          fileName
+          contentType
+        }
+      }
+    }
     site {
       buildTime(formatString: "YYYY-MM-DD")
     }
   }
-`
+`;

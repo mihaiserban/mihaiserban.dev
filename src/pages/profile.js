@@ -1,8 +1,8 @@
-import React from 'react'
-import { Flex, Box, Text, Heading } from 'rebass'
+import React from 'react';
+import { Flex, Box, Text, Heading } from 'rebass';
 
-import Link from '../components/link'
-import Layout from '../components/layout'
+import Link from '../components/link';
+import Layout from '../components/layout';
 
 const profile = () => (
   <Layout>
@@ -15,10 +15,11 @@ const profile = () => (
 
       <Box width={1}>
         <Text fontSize={2} lineHeight="body">
-          I'm a self taught web developer who loves all things tech. This blog serves as a medium to get me more
-          involved in the industry, talk about the projects I'm working on, as well as post other random musings. I'm a
-          huge movie buff, gaming nerd, and coffee lover. When I'm not in front of a screen, I'm most likely reading a
-          good book or listening to music. Check out my{' '}
+          I'm a self taught web developer who loves all things tech. This blog serves as a medium to
+          get me more involved in the industry, talk about the projects I'm working on, as well as
+          post other random musings. I'm a huge movie buff, gaming nerd, and coffee lover. When I'm
+          not in front of a screen, I'm most likely reading a good book or listening to music. Check
+          out my{' '}
           <Link to="https://last.fm/user/crunkmastafunk" target="_blank" rel="noopener noreferrer">
             last.fm
           </Link>{' '}
@@ -42,7 +43,11 @@ const profile = () => (
             <span role="img" aria-label="Moon">
               🌙{' '}
             </span>
-            <Link href="https://github.com/jonleopard/lunarphase" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://github.com/jonleopard/lunarphase"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               moonphase.space
             </Link>
           </Text>
@@ -54,7 +59,11 @@ const profile = () => (
             <span role="img" aria-label="Tools">
               🛠{' '}
             </span>
-            <Link href="https://github.com/jonleopard/dotfiles" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://github.com/jonleopard/dotfiles"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               dotfiles
             </Link>
           </Text>
@@ -66,7 +75,11 @@ const profile = () => (
             <span role="img" aria-label="Hat">
               🎓{' '}
             </span>
-            <Link href="https://github.com/jonleopard/dotfiles" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://github.com/jonleopard/dotfiles"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               dotfile Starter
             </Link>
           </Text>
@@ -200,6 +213,6 @@ const profile = () => (
       </Flex>
     </Text>
   </Layout>
-)
+);
 
-export default profile
+export default profile;

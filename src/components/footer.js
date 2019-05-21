@@ -1,24 +1,37 @@
-import React from 'react'
-import { Flex, Box, Text } from 'rebass'
+import React from 'react';
+import { Flex, Box, Text } from 'rebass';
 
-import Link from './link'
+import Link from './link';
 
-const CURRENT_YEAR = new Date().getFullYear()
+const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => (
   <Text fontSize={[1, 2]} fontFamily="body">
     <Flex as="footer" py={40}>
       <Box>
-        <Text>&copy; {CURRENT_YEAR}</Text>
+        <Text>
+          &copy;
+          {CURRENT_YEAR}
+        </Text>
       </Box>
       <Box mx="auto" />
       <Box pr={2}>
-        <Link target="_blank" rel="noopener noreferrer me" href="https://github.com/jonleopard" itemProp="sameAs">
+        <Link
+          target="_blank"
+          rel="noopener noreferrer me"
+          href="https://github.com/mihaiserban"
+          itemProp="sameAs"
+        >
           github
         </Link>
       </Box>
       <Box pr={2}>
-        <Link target="_blank" rel="noopener noreferrer me" href="https://twitter.com/jonlprd" itemProp="sameAs">
+        <Link
+          target="_blank"
+          rel="noopener noreferrer me"
+          href="https://twitter.com/MihaiSerban"
+          itemProp="sameAs"
+        >
           twitter
         </Link>
       </Box>
@@ -26,29 +39,14 @@ const Footer = () => (
         <Link
           target="_blank"
           rel="noopener noreferrer me"
-          href="https://stackoverflow.com/users/10541736/jon-leopard"
+          href="https://stackoverflow.com/users/2259635/mihai-serban"
           itemProp="sameAs"
         >
           stack overflow
         </Link>
       </Box>
-      <Box pr={2}>
-        <Link target="_blank" rel="noopener noreferrer me" href="https://t.me/hiJon" itemProp="sameAs">
-          telegram
-        </Link>
-      </Box>
-      <Box pr={2}>
-        <Link
-          target="_blank"
-          rel="noopener noreferrer me"
-          href="https://keybase.io/jonleopard/pgp_keys.asc"
-          itemProp="sameAs"
-        >
-          gpg
-        </Link>
-      </Box>
     </Flex>
   </Text>
-)
+);
 
-export default Footer
+export default Footer;

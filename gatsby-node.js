@@ -1,9 +1,9 @@
-const _ = require(`lodash`)
-const slash = require(`slash`)
-const path = require('path')
+const _ = require(`lodash`);
+const slash = require(`slash`);
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions
+  const { createPage, createRedirect } = actions;
 
   // Redirects
   const redirectBatch = [
@@ -35,7 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
       f: `/dotfile-management-with-gnu-stow`,
       t: `/blog/dotfile-management-with-gnu-stow`,
     },
-  ]
+  ];
 
   redirectBatch.forEach(({ f, t }) => {
     createRedirect({
@@ -43,10 +43,10 @@ exports.createPages = ({ graphql, actions }) => {
       redirectInBrowser: true,
       toPath: t,
       isPermanent: true,
-    })
+    });
     // Uncomment next line to see forEach in action during build
     // console.log(`\nRedirecting:\n${f}\nTo:\n${t}\n`)
-  })
+  });
 
   return graphql(
     `
@@ -63,11 +63,11 @@ exports.createPages = ({ graphql, actions }) => {
     `
   ).then(result => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
     // Grab template for blog posts
-    const blogTemplate = path.resolve(`./src/templates/blog-post.js`)
+    const blogTemplate = path.resolve(`./src/templates/blog-post.js`);
     // For each result, create a page.
     _.each(result.data.allContentfulBlogPost.edges, edge => {
       createPage({
@@ -77,7 +77,7 @@ exports.createPages = ({ graphql, actions }) => {
           slug: edge.node.slug,
           id: edge.node.id,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

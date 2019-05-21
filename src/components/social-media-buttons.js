@@ -1,9 +1,7 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { Twitter, Facebook, HackerNews, Reddit } from 'react-social-sharing'
-import { Flex, Box, Text } from 'rebass'
-
-import config from '../../config/website'
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Twitter, Facebook, HackerNews, Reddit } from 'react-social-sharing';
+import { Flex, Box, Text } from 'rebass';
 
 // Hard coded color: 'white' to resist color mode inheritance
 
@@ -14,8 +12,12 @@ const SocialMediaButtons = () => {
         title
         slug
       }
+      contentfulSite {
+        siteUrl
+        userTwitter
+      }
     }
-  `)
+  `);
   return (
     <>
       <Box my={3}>
@@ -28,17 +30,26 @@ const SocialMediaButtons = () => {
           <Flex justifyContent="space-between" flexWrap="wrap">
             <Twitter
               style={{ color: 'white' }}
-              message={`${data.contentfulBlogPost.title} by ${config.userTwitter}`}
-              link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`}
+              message={`${data.contentfulBlogPost.title} by ${data.contentfulSite.userTwitter}`}
+              link={`${data.contentfulSite.siteUrl}/blog/${data.contentfulBlogPost.slug}`}
             />
-            <Reddit style={{ color: 'white' }} link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
-            <Facebook style={{ color: 'white' }} link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
-            <HackerNews style={{ color: 'white' }} link={`${config.siteUrl}/blog/${data.contentfulBlogPost.slug}`} />
+            <Reddit
+              style={{ color: 'white' }}
+              link={`${data.contentfulSite.siteUrl}/blog/${data.contentfulBlogPost.slug}`}
+            />
+            <Facebook
+              style={{ color: 'white' }}
+              link={`${data.contentfulSite.siteUrl}/blog/${data.contentfulBlogPost.slug}`}
+            />
+            <HackerNews
+              style={{ color: 'white' }}
+              link={`${data.contentfulSite.siteUrl}/blog/${data.contentfulBlogPost.slug}`}
+            />
           </Flex>
         </Box>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default SocialMediaButtons
+export default SocialMediaButtons;

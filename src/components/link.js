@@ -6,14 +6,14 @@ const Link = ({ children, to, ...props }) => {
 
   if (internal) {
     return (
-      <GatsbyLink to={to} {...props}>
+      <GatsbyLink to={to} {...props} style={{ width: 'fit-content' }}>
         {children}
       </GatsbyLink>
     );
   }
 
   return (
-    <a href={to} {...props}>
+    <a href={to} {...props} style={{ width: 'fit-content' }}>
       {children}
     </a>
   );

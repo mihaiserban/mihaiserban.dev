@@ -11,7 +11,7 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <Text fontFamily="body">
-        <Box width={1} pt={[20, 80]}>
+        <Box width={1}>
           <Heading fontFamily="heading" fontSize={6} pb={4}>
             Blog
           </Heading>

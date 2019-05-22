@@ -100,3 +100,59 @@ Not supports in Firefox and IE */
 ::-webkit-scrollbar-button {
   display: none;
 }
+
+.f-reset {
+  font-size: 1rem;
+}
+.f0 {
+  font-size: 1.802032470703125em;
+}
+.f1 {
+  font-size: 1.601806640625em;
+}
+.f2 {
+  font-size: 1.423828125em;
+}
+.f3 {
+  font-size: 1.265625em;
+}
+.f4 {
+  font-size: 1.125em;
+}
+.f5 {
+  font-size: 0.8888888888888888em;
+}
+.f6 {
+  font-size: 0.7901234567901234em;
+}
+.fw1 {
+  font-weight: 100;
+}
+.fw2 {
+  font-weight: 200;
+}
+.fw3 {
+  font-weight: 300;
+}
+.fw4 {
+  font-weight: 400;
+}
+.fw5 {
+  font-weight: 500;
+}
+.fw6 {
+  font-weight: 600;
+}
+.fw7 {
+  font-weight: 700;
+}
+.fw8 {
+  font-weight: 800;
+}
+.fw9 {
+  font-weight: 900;
+}
+
+bold {
+  font-weight: 600;
+}

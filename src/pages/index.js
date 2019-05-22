@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 const Index = () => (
   <>
     <Layout>
-      <Box width={1} mt={[40, 80]}>
+      <Box width={1}>
         <Flex flexDirection="column">
           <Heading fontFamily="heading" fontSize={6} pb={3}>
             You've reached the personal blog of

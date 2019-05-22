@@ -1,12 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Text } from 'rebass';
 
 import Markdown from '../components/markdown';
 import Layout from '../components/layout';
 import SEO from '../components/SEO';
-import PageHeader from '../components/page-header';
-import SocialMediaButtons from '../components/social-media-buttons';
+
+import { H1 } from '../components/text/headings';
 
 const Template = ({ data }) => {
   if (!data) return null;
@@ -15,17 +14,13 @@ const Template = ({ data }) => {
       <SEO />
       <article>
         <>
-          <Box width={1} pt={[20, 80]} pb={2}>
-            <Text size="10px">
+          <div className="flex-parent flex-parent--column">
+            <span>
               Written on
               {data.contentfulBlogPost.date}
-            </Text>
-            <Text fontFamily="heading" lineHeight="heading">
-              <PageHeader title={data.contentfulBlogPost.title} />
-            </Text>
-          </Box>
-
-          <SocialMediaButtons />
+            </span>
+            <H1>{data.contentfulBlogPost.title}</H1>
+          </div>
           <Markdown
             dangerouslySetInnerHTML={{
               __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
@@ -35,7 +30,6 @@ const Template = ({ data }) => {
           />
         </>
       </article>
-      <SocialMediaButtons />
     </Layout>
   );
 };

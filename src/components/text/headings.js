@@ -8,7 +8,6 @@ const H1 = ({ children, ...props }) => (
       {`
         font-size: 1.8rem;
         font-weight: 400;
-        margin-top: 0;
       `}
     </style>
   </h1>
@@ -61,7 +60,6 @@ const H5 = ({ children, ...props }) => (
       {`
         font-size: 1rem;
         font-weight: 700;
-        margin-top: 2rem;
       `}
     </style>
   </h5>

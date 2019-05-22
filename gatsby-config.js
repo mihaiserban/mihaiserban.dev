@@ -3,6 +3,9 @@ require('dotenv').config({
 });
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://mihaiserban.dev`,
+  },
   plugins: [
     'gatsby-plugin-styled-jsx',
     // Adding various source folders to the GraphQL layer.

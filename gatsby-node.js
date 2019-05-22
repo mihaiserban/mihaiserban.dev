@@ -59,6 +59,14 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allContentfulProject {
+          edges {
+            node {
+              slug
+              id
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -73,6 +81,20 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: `/blog/${edge.node.slug}/`,
         component: slash(blogTemplate),
+        context: {
+          slug: edge.node.slug,
+          id: edge.node.id,
+        },
+      });
+    });
+
+    // Grab template for blog posts
+    const projectTemplate = path.resolve(`./src/templates/project.js`);
+    // For each result, create a page.
+    _.each(result.data.allContentfulProject.edges, edge => {
+      createPage({
+        path: `/project/${edge.node.slug}/`,
+        component: slash(projectTemplate),
         context: {
           slug: edge.node.slug,
           id: edge.node.id,

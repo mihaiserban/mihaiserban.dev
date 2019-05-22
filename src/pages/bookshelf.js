@@ -24,13 +24,21 @@ const Page = ({ data }) => {
           contact@mihaiserban.dev
         </a>
       </p>
-      <ul className="flex-parent flex-parent--column mt16">
+      <ul className="flex-parent flex-parent--column mt16 list">
         {books.map(book => (
           <Link to={book.url}>
             <li className={classNames({ fw6: book.favorite })}>{book.title}</li>
           </Link>
         ))}
       </ul>
+      <style jsx>
+        {`
+          .list {
+            padding-left: 18px;
+            list-style: square;
+          }
+        `}
+      </style>
     </Layout>
   );
 };
@@ -39,7 +47,7 @@ export default Page;
 
 export const pageQuery = graphql`
   query BooksQuery {
-    allContentfulBook(sort: { fields: [createdAt], order: DESC }) {
+    allContentfulBook(sort: { fields: [title], order: ASC }) {
       nodes {
         id
         title

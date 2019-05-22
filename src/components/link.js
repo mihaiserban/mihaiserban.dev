@@ -4,7 +4,6 @@ import { Link as GatsbyLink } from 'gatsby';
 const Link = ({ children, to, ...props }) => {
   const internal = /^\/(?!\/)/.test(to);
 
-  console.log(to, internal);
   if (internal) {
     return (
       <GatsbyLink to={to} {...props} style={{ width: 'fit-content' }}>

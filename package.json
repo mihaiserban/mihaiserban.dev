@@ -12,7 +12,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.18",
+    "@fortawesome/free-brands-svg-icons": "5.8.2",
+    "@fortawesome/free-solid-svg-icons": "5.8.2",
+    "@fortawesome/react-fontawesome": "0.1.4",
     "babel-plugin-styled-components": "^1.10.0",
+    "classnames": "2.2.6",
     "gatsby": "^2.5.5",
     "gatsby-cli": "^2.5.15",
     "gatsby-plugin-gtag": "^1.0.10",

@@ -6,8 +6,6 @@ import { useTransition, animated } from "react-spring";
 // Components
 import About from "./about";
 import SEO from "./SEO";
-import Footer from "./footer";
-import NavBar from "./navbar";
 
 // Create some context for other components
 export const Context = React.createContext();
@@ -25,22 +23,38 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <SEO />
-      <div className="flex-parent flex-parent--row flex-parent--center-main flex-parent--wrap mt64">
-        <About />
-
-        <div className="flex-parent flex-parent--column">
-          <NavBar />
-
-          <div>
-            {transitions.map(({ item, key, props }) => (
-              <animated.div key={key} style={props}>
-                {children}
-              </animated.div>
-            ))}
+      <div className="flex-parent flex-parent--center-main p32">
+        <div className="flex-parent flex-parent--row flex-parent--wrap mt32">
+          <About />
+          <div className="divider ml32 mr32" />
+          <div className="flex-parent flex-parent--column content">
+            <div>
+              {transitions.map(({ item, key, props }) => (
+                <animated.div key={key} style={props}>
+                  {children}
+                </animated.div>
+              ))}
+            </div>
           </div>
-          <Footer />
         </div>
       </div>
+      <style jsx>{`
+        .divider {
+          background: linear-gradient(180deg, #e6e6e6 0, #e6e6e6 48%, #fff);
+          width: 0.0625rem;
+          height: 540px;
+          bottom: 0;
+        }
+        .content {
+          max-width: 80%;
+          width: 700px;
+        }
+        @media screen and (max-width: 1032px) {
+          .divider {
+            display: none;
+          }
+        }
+      `}</style>
     </>
   );
 };

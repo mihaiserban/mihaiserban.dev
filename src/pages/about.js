@@ -6,12 +6,29 @@ import Link from '../components/link';
 import Layout from '../components/layout';
 import { H1, H2 } from '../components/text/headings';
 
+const startCareer = new Date('2010-05-01');
+
+function diffYears(dt1, dt2) {
+  return dt2.getFullYear() - dt1.getFullYear();
+}
+
 const Page = ({ data }) => {
   const { nodes: technologies } = data.allContentfulTechnologies;
 
+  const carrerSpan = diffYears(startCareer, new Date());
+
   return (
     <Layout>
-      <H1 className="mt16">Technologies</H1>
+      <H1 className="mt16">About me</H1>
+      <div className="flex-parent flex-parent--column flex-parent--wrap mt16">
+        <p>Hi! I’m Mihai, a Software Engineer from Cluj-Napoca, Romania.</p>
+        <p>
+          I've been practicing my craft for the last&nbsp;
+          <bold>{carrerSpan} years</bold>.
+        </p>
+        <p>In my free time I enjoy practicing my latte art and catching Pokemon of course!</p>
+      </div>
+      <H2 className="mt16">Technologies</H2>
       <div className="flex-parent flex-parent--row flex-parent--wrap mt16">
         {technologies.map(tech => (
           <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">

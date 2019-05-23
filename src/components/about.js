@@ -74,7 +74,7 @@ const About = props => {
       </p>
 
       <div className="flex-parent flex-parent--column mt32">
-        <Link to="/" className={classNames('menuLink mt4', { active: currentPath === '/' })}>
+        <Link to="/" className={classNames('menuLink mt4', { active: currentPath === '' })}>
           Blog
         </Link>
         <Link to="/about" className={classNames('menuLink', { active: currentPath === '/about' })}>

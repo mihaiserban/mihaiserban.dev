@@ -52,6 +52,7 @@ const About = props => {
 
   const currentPath = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '');
 
+  console.log(currentPath);
   return (
     <div className="flex-parent flex-parent--column container">
       <Link to="/">
@@ -62,12 +63,14 @@ const About = props => {
         <Link to="/" className="mt32">
           <span style={{ color: 'black' }}>{name}</span>
         </Link>
-        <AnimatedBlock>▌</AnimatedBlock>
       </H2>
       <p className="mt8">
-        <FontAwesomeIcon icon={faMapMarkerAlt} /> {location}
+        <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" /> {location}
       </p>
-      <p className="mt8">Software engineer in constant search for new and exciting technologies.</p>
+      <p className="mt8">
+        Software engineer in constant search for new and exciting technologies
+        <AnimatedBlock>▌</AnimatedBlock>
+      </p>
       <p className="mt16">
         Want to hire me for your next project?{' '}
         <a href="mailto:contact@mihaiserban.dev?subject=I would like to hire you">Get in touch.</a>

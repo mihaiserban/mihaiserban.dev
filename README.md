@@ -1,4 +1,4 @@
-# [mihaiserban.dev](https://mihaiserban.dev) [![Netlify Status](https://api.netlify.com/api/v1/badges/a338d3cc-3557-4f9d-a507-74bb2f11ba0f/deploy-status)](https://app.netlify.com/sites/jonleopard/deploys) [![CircleCI](https://circleci.com/gh/jonleopard/mihaiserban.dev/tree/master.svg?style=svg)](https://circleci.com/gh/jonleopard/mihaiserban.dev/tree/master)
+# [mihaiserban.dev](https://mihaiserban.dev) [![Netlify Status](https://api.netlify.com/api/v1/badges/593ff779-529e-4ed8-8970-6f711558ce31/deploy-status)](https://app.netlify.com/sites/fervent-dijkstra-a2a30d/deploys)
 
 This is the source code for [mihaiserban.dev](https://mihaiserban.dev).
 

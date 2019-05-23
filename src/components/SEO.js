@@ -163,7 +163,6 @@ const querySEO = graphql`
   query About {
     contentfulAbout {
       name
-      description
       email
       twitter
       linkedIn

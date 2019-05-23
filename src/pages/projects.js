@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link as glink, graphql } from 'gatsby';
-import { Flex, Box } from 'rebass';
 
 import Link from '../components/link';
 import Layout from '../components/layout';
@@ -11,18 +10,16 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout>
-      <Box width={1}>
-        <H1>Projects</H1>
-      </Box>
-      <Flex flexDirection="column">
-        <Box>
-          {projects.map(({ node: project }) => (
+      <H1>Projects</H1>
+      <div className="flex-parent flex-parent--column mt32">
+        {projects.map(({ node: project }) => (
+          <div>
             <Link as={glink} to={`/project/${project.slug}`} color="black">
               {project.title}
             </Link>
-          ))}
-        </Box>
-      </Flex>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 };

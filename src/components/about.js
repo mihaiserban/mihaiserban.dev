@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
+import classNames from 'classnames';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,6 +12,8 @@ import {
   faInstagram,
   faGoodreads,
 } from '@fortawesome/free-brands-svg-icons';
+
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { H1, H2, H3, H4, H5 } from './text/headings';
 import Link from './link';
@@ -34,7 +37,6 @@ const About = props => {
     data: {
       contentfulAbout: {
         name,
-        description,
         email,
         twitter,
         linkedIn,
@@ -43,9 +45,12 @@ const About = props => {
         instagram,
         goodreads,
         image,
+        location,
       },
     },
   } = props;
+
+  const currentPath = window.location.pathname.replace(/\/$/, '');
 
   return (
     <div className="flex-parent flex-parent--column container">
@@ -59,20 +64,39 @@ const About = props => {
         </Link>
         <AnimatedBlock>▌</AnimatedBlock>
       </H2>
-      <p>{description}</p>
+      <p className="mt8">
+        <FontAwesomeIcon icon={faMapMarkerAlt} /> {location}
+      </p>
+      <p className="mt8">Software engineer in constant search for new and exciting technologies.</p>
+      <p className="mt16">
+        Want to hire me for your next project?{' '}
+        <a href="mailto:contact@mihaiserban.dev?subject=I would like to hire you">Get in touch.</a>
+      </p>
 
-      <Link to="/about" className="mt8">
-        About me
-      </Link>
-      <Link to="/blog" className="mt8">
-        Blog
-      </Link>
-      <Link to="/bookshelf" className="mt8">
-        Bookshelf
-      </Link>
-      <Link to="/projects" className="mt8">
-        Projects
-      </Link>
+      <div className="flex-parent flex-parent--column mt32">
+        <Link to="/" className={classNames('menuLink mt4', { active: currentPath === '/' })}>
+          Blog
+        </Link>
+        <Link to="/about" className={classNames('menuLink', { active: currentPath === '/about' })}>
+          About me
+        </Link>
+        <Link
+          to="/bookshelf"
+          className={classNames('menuLink mt4', {
+            active: currentPath === '/bookshelf',
+          })}
+        >
+          Bookshelf
+        </Link>
+        <Link
+          to="/projects"
+          className={classNames('menuLink mt4', {
+            active: currentPath === '/projects',
+          })}
+        >
+          Projects
+        </Link>
+      </div>
 
       <div className="mt32 flex-parent flex-parent--row flex-parent--wrap">
         <Link to={twitter}>
@@ -129,6 +153,17 @@ const About = props => {
           .socialIcon:hover {
             color: #2195ff;
           }
+          :global(.menuLink) {
+            color: #222;
+            border-bottom: 1px solid transparent;
+          }
+          :global(.menuLink:hover) {
+            color: #2195ff;
+            border-bottom: 1px solid #2195ff;
+          }
+          :global(.active) {
+            border-bottom: 1px solid #222;
+          }
         `}
       </style>
     </div>
@@ -145,7 +180,6 @@ const queryAbout = graphql`
   query AboutQuery {
     contentfulAbout {
       name
-      description
       email
       twitter
       linkedIn
@@ -160,6 +194,7 @@ const queryAbout = graphql`
           contentType
         }
       }
+      location
     }
   }
 `;

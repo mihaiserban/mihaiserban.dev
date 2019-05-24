@@ -11,6 +11,7 @@ import {
   faStackOverflow,
   faInstagram,
   faGoodreads,
+  faMedium,
 } from '@fortawesome/free-brands-svg-icons';
 
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +45,7 @@ const About = props => {
         stackoverflow,
         instagram,
         goodreads,
+        medium,
         image,
         location,
       },
@@ -76,12 +78,13 @@ const About = props => {
       </p>
 
       <div className="flex-parent flex-parent--column mt32">
-        <Link to="/" className={classNames('menuLink mt4', { active: currentPath === '' })}>
-          Blog
-        </Link>
-        <Link to="/about" className={classNames('menuLink', { active: currentPath === '/about' })}>
+        <Link to="/" className={classNames('menuLink', { active: currentPath === '' })}>
           About me
         </Link>
+        <Link to={medium} className={classNames('menuLink mt4')}>
+          Blog
+        </Link>
+
         <Link
           to="/bookshelf"
           className={classNames('menuLink mt4', {
@@ -121,12 +124,17 @@ const About = props => {
             <FontAwesomeIcon icon={faStackOverflow} />
           </div>
         </Link>
-        <Link to={instagram} className="ml8">
+        <Link to={medium} className="ml8">
+          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <FontAwesomeIcon icon={faMedium} />
+          </div>
+        </Link>
+        <Link to={instagram} className="mt8">
           <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
             <FontAwesomeIcon icon={faInstagram} />
           </div>
         </Link>
-        <Link to={goodreads} className="mt8">
+        <Link to={goodreads} className="mt8 ml8">
           <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
             <FontAwesomeIcon icon={faGoodreads} />
           </div>
@@ -189,6 +197,7 @@ const queryAbout = graphql`
       stackoverflow
       instagram
       goodreads
+      medium
       image {
         file {
           url

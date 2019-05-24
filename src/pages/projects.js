@@ -11,43 +11,45 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout>
-      <H1>Projects</H1>
-      <div className="flex-parent flex-parent--column mt32">
-        {projects.map(({ node: project }, index) => {
-          if (project.hidden && project.hidden === true) return;
-          return (
-            <div className="flex-parent flex-parent--column">
-              <div className="flex-parent flex-parent--row">
-                {project.previewImage &&
-                  project.previewImage.file.contentType.indexOf('image') !== -1 && (
-                    <Link as={glink} to={`/project/${project.slug}`}>
-                      <img
-                        className="image mr24"
-                        src={project.previewImage.file.url}
-                        alt={project.previewImage.title}
-                      />
+      <div className="pl32 pr32">
+        <H1>Projects</H1>
+        <div className="flex-parent flex-parent--column mt32">
+          {projects.map(({ node: project }, index) => {
+            if (project.hidden && project.hidden === true) return;
+            return (
+              <div className="flex-parent flex-parent--column">
+                <div className="flex-parent flex-parent--row">
+                  {project.previewImage &&
+                    project.previewImage.file.contentType.indexOf('image') !== -1 && (
+                      <Link as={glink} to={`/project/${project.slug}`}>
+                        <img
+                          className="image mr24"
+                          src={project.previewImage.file.url}
+                          alt={project.previewImage.title}
+                        />
+                      </Link>
+                    )}
+                  <div className="flex-parent flex-parent--column">
+                    <Link as={glink} to={`/project/${project.slug}`} className="projectLink">
+                      <H3>{project.title}</H3>
                     </Link>
-                  )}
-                <div className="flex-parent flex-parent--column">
-                  <Link as={glink} to={`/project/${project.slug}`} className="projectLink">
-                    <H3>{project.title}</H3>
-                  </Link>
-                  <span className="fw2 f6 mt4">
-                    {project.startDate} -
+                    <span className="fw2 f6 mt4">
+                      {project.startDate} -
 {project.endDate}
-                  </span>
-                  <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
-                    {project.technologies.map(({ title }) => (
-                      <span className="tag fw2 f6">{title}</span>
-                    ))}
+                    </span>
+                    <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+                      {project.technologies.map(({ title }) => (
+                        <span className="tag fw2 f6">{title}</span>
+                      ))}
+                    </div>
+                    <p className="mt8">{project.body.childMarkdownRemark.excerpt}</p>
                   </div>
-                  <p className="mt8">{project.body.childMarkdownRemark.excerpt}</p>
                 </div>
+                {index < projects.length - 1 && <div className="divider mb32 mt32" />}
               </div>
-              {index < projects.length - 1 && <div className="divider mb32 mt32" />}
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
       <style jsx>
         {`

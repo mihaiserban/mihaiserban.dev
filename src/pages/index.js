@@ -19,23 +19,25 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <H1 className="mt16">About me</H1>
-      <div className="flex-parent flex-parent--column flex-parent--wrap mt16">
-        <p>Hi! I’m Mihai, a Software Engineer from Cluj-Napoca, Romania.</p>
-        <p>
-          I've been practicing my craft for the last&nbsp;
-          <bold>{carrerSpan} years</bold>.
-        </p>
-        <p>In my free time I enjoy practicing my latte art and catching Pokemon of course!</p>
-      </div>
-      <H2 className="mt16">Technologies</H2>
-      <div className="flex-parent flex-parent--row flex-parent--wrap mt16">
-        {technologies.map(tech => (
-          <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
-            <img src={tech.image.file.url} alt={tech.title} className="image" />
-            <span className="text mt16">{tech.title}</span>
-          </div>
-        ))}
+      <div className="pl32 pr32">
+        <H1>About me</H1>
+        <div className="flex-parent flex-parent--column flex-parent--wrap mt16">
+          <p>Hi! I’m Mihai, a Software Engineer from Cluj-Napoca, Romania.</p>
+          <p>
+            I've been practicing my craft for the last&nbsp;
+            <bold>{carrerSpan} years</bold>.
+          </p>
+          <p>In my free time I enjoy practicing my latte art and catching Pokemon of course!</p>
+        </div>
+        <H2 className="mt16">Technologies</H2>
+        <div className="flex-parent flex-parent--row flex-parent--wrap mt16">
+          {technologies.map(tech => (
+            <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
+              <img src={tech.image.file.url} alt={tech.title} className="image" />
+              <span className="text mt16">{tech.title}</span>
+            </div>
+          ))}
+        </div>
       </div>
       <style jsx>
         {`

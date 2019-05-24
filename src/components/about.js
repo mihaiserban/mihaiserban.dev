@@ -35,6 +35,7 @@ const AnimatedBlock = styled.div`
 
 const About = props => {
   const {
+    width,
     data: {
       contentfulAbout: {
         name,
@@ -55,95 +56,112 @@ const About = props => {
   const currentPath = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '');
 
   return (
-    <div className="flex-parent flex-parent--column container">
-      <Link to="/">
-        <img src={image.file.url} className="image" />
-      </Link>
-
-      <H2 className="mt8">
-        <Link to="/" className="mt32">
-          <span style={{ color: 'black' }}>{name}</span>
-        </Link>
-      </H2>
-      <p className="mt8">
-        <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" /> {location}
-      </p>
-      <p className="mt8">
-        Software engineer in constant search for new and exciting technologies
-        <AnimatedBlock>▌</AnimatedBlock>
-      </p>
-      <p className="mt16">
-        Want to hire me for your next project?{' '}
-        <a href="mailto:contact@mihaiserban.dev?subject=I would like to hire you">Get in touch.</a>
-      </p>
-
-      <div className="flex-parent flex-parent--column mt32">
-        <Link to="/" className={classNames('menuLink', { active: currentPath === '' })}>
-          About me
-        </Link>
-        <Link to={medium} className={classNames('menuLink mt4')}>
-          Blog
+    <div className="flex-parent flex-parent--row wrapper">
+      <div className="flex-parent flex-parent--column container">
+        <Link to="/">
+          <img src={image.file.url} className="image" />
         </Link>
 
-        <Link
-          to="/bookshelf"
-          className={classNames('menuLink mt4', {
-            active: currentPath === '/bookshelf',
-          })}
-        >
-          Bookshelf
-        </Link>
-        <Link
-          to="/projects"
-          className={classNames('menuLink mt4', {
-            active: currentPath === '/projects',
-          })}
-        >
-          Projects
-        </Link>
-      </div>
+        <H2 className="mt8">
+          <Link to="/" className="mt32">
+            <span style={{ color: 'black' }}>{name}</span>
+          </Link>
+        </H2>
+        <p className="mt8">
+          <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" /> {location}
+        </p>
+        <p className="mt8">
+          Software engineer in constant search for new and exciting technologies
+          <AnimatedBlock>▌</AnimatedBlock>
+        </p>
+        <p className="mt16">
+          Want to hire me for your next project?{' '}
+          <a href="mailto:contact@mihaiserban.dev?subject=I would like to hire you">
+            Get in touch.
+          </a>
+        </p>
 
-      <div className="mt32 flex-parent flex-parent--row flex-parent--wrap">
-        <Link to={twitter}>
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faTwitter} />
-          </div>
-        </Link>
-        <Link to={linkedIn} className="ml8">
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faLinkedin} />
-          </div>
-        </Link>
-        <Link to={github} className="ml8">
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faGithub} />
-          </div>
-        </Link>
-        <Link to={stackoverflow} className="ml8">
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faStackOverflow} />
-          </div>
-        </Link>
-        <Link to={medium} className="ml8">
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faMedium} />
-          </div>
-        </Link>
-        <Link to={instagram} className="mt8">
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faInstagram} />
-          </div>
-        </Link>
-        <Link to={goodreads} className="mt8 ml8">
-          <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
-            <FontAwesomeIcon icon={faGoodreads} />
-          </div>
-        </Link>
+        <div className="flex-parent flex-parent--column mt32">
+          <Link to="/" className={classNames('menuLink', { active: currentPath === '' })}>
+            About me
+          </Link>
+          <Link to={medium} className={classNames('menuLink mt4')}>
+            Blog
+          </Link>
+
+          <Link
+            to="/bookshelf"
+            className={classNames('menuLink mt4', {
+              active: currentPath === '/bookshelf',
+            })}
+          >
+            Bookshelf
+          </Link>
+          <Link
+            to="/projects"
+            className={classNames('menuLink mt4', {
+              active: currentPath === '/projects',
+            })}
+          >
+            Projects
+          </Link>
+        </div>
+
+        <div className="mt32 flex-parent flex-parent--row flex-parent--wrap">
+          <Link to={twitter}>
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faTwitter} />
+            </div>
+          </Link>
+          <Link to={linkedIn} className="ml8">
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </div>
+          </Link>
+          <Link to={github} className="ml8">
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faGithub} />
+            </div>
+          </Link>
+          <Link to={stackoverflow} className="ml8">
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faStackOverflow} />
+            </div>
+          </Link>
+          <Link to={medium} className="ml8">
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faMedium} />
+            </div>
+          </Link>
+          <Link to={instagram} className="mt8">
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faInstagram} />
+            </div>
+          </Link>
+          <Link to={goodreads} className="mt8 ml8">
+            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+              <FontAwesomeIcon icon={faGoodreads} />
+            </div>
+          </Link>
+        </div>
       </div>
       <style jsx>
         {`
-          .container {
-            width: 240px;
+          .wrapper {
+            width: ${width}px;
+          }
+          .wrapper:after {
+            content: '';
+            background: linear-gradient(180deg, #e6e6e6 0, #e6e6e6 48%, #fff);
+            min-height: 540px;
+            width: 1px;
+            min-width: 1px;
+            bottom: 0;
+          }
+          @media screen and (max-width: 1003px) {
+            .wrapper:after {
+              display: none;
+            }
           }
           .image {
             width: 75px;

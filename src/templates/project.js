@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import ReactPlayer from 'react-player';
 
 import Markdown from '../components/markdown';
 import Layout from '../components/layout';
@@ -38,10 +39,13 @@ const Template = ({ data }) => {
             {project.images.map((image, index) => (
               <>
                 {image.file.contentType.indexOf('video') !== -1 ? (
-                  <video controls className="video-container mb24" autoPlay={false} muted={false}>
-                    <source type={image.file.contentType} src={`${image.file.url}`} />
-                    Your browser does not support the video tag.
-                  </video>
+                  <ReactPlayer
+                    url={image.file.url}
+                    controls
+                    width="100%"
+                    height="auto"
+                    className="mb24"
+                  />
                 ) : (
                   <img className="image mb24" src={image.file.url} alt={image.title} />
                 )}

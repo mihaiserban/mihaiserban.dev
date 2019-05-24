@@ -8,24 +8,28 @@ const Markdown = styled(Box)`
     font-size: 37px;
     line-height: 57px;
     margin-bottom: 30px;
-    font-family: 'Rubik';
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   h2 {
     font-size: 29px;
     line-height: 46px;
-    font-family: 'Rubik';
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   h3 {
     font-size: 23px;
     font-weight: 500;
     line-height: 37px;
-    font-family: 'Rubik';
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   p {
-    font-family: 'Lato';
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 18px;
     line-height: 1.667em;
     text-align: justify;
@@ -35,11 +39,13 @@ const Markdown = styled(Box)`
 
   ul {
     list-style-type: circle;
-    font-family: 'Lato';
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 18px;
   }
   li {
-    font-family: 'Lato';
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 18px;
   }
 

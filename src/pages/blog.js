@@ -10,29 +10,31 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout>
-      <Text fontFamily="body">
-        <Box width={1}>
-          <Heading fontFamily="heading" fontSize={6} pb={4}>
-            Blog
-          </Heading>
-        </Box>
-        <Flex flexDirection="column">
-          <Box>
-            {posts.map(({ node: post }) => (
-              <Text fontSize={2} key={post.title} mb={3}>
-                <Link as={glink} to={`/blog/${post.slug}`} color="black">
-                  {post.title}
-                </Link>
-                <Box pt={2}>
-                  <Text fontSize={1} dateTime={post.date}>
-                    {post.date}
-                  </Text>
-                </Box>
-              </Text>
-            ))}
+      <div className="pl32 pr32">
+        <Text fontFamily="body">
+          <Box width={1}>
+            <Heading fontFamily="heading" fontSize={6} pb={4}>
+              Blog
+            </Heading>
           </Box>
-        </Flex>
-      </Text>
+          <Flex flexDirection="column">
+            <Box>
+              {posts.map(({ node: post }) => (
+                <Text fontSize={2} key={post.title} mb={3}>
+                  <Link as={glink} to={`/blog/${post.slug}`} color="black">
+                    {post.title}
+                  </Link>
+                  <Box pt={2}>
+                    <Text fontSize={1} dateTime={post.date}>
+                      {post.date}
+                    </Text>
+                  </Box>
+                </Text>
+              ))}
+            </Box>
+          </Flex>
+        </Text>
+      </div>
     </Layout>
   );
 };

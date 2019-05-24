@@ -14,7 +14,7 @@ const Template = ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <article>
+      <article className="pl32 pr32">
         <div>
           <div className="flex-parent flex-parent--column">
             <H1>{project.title}</H1>

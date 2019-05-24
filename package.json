@@ -35,7 +35,6 @@
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
-    "instafeed-lite": "^1.0.10",
     "is-absolute-url": "^3.0.0",
     "lodash": "^4.17.11",
     "prismjs": "^1.16.0",
@@ -43,15 +42,11 @@
     "react-dom": "^16.8.6",
     "react-feather": "^1.1.6",
     "react-helmet": "^5.2.1",
-    "react-instafeed": "^1.0.0",
-    "react-social-sharing": "^3.0.1",
     "react-spring": "^8.0.20",
     "rebass": "^3.1.0",
     "slash": "^3.0.0",
     "styled-components": "^4.2.0",
-    "styled-jsx": "3.2.1",
-    "typeface-lato": "^0.0.54",
-    "typeface-rubik": "^0.0.72"
+    "styled-jsx": "3.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

@@ -52,7 +52,6 @@ const About = props => {
 
   const currentPath = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '');
 
-  console.log(currentPath);
   return (
     <div className="flex-parent flex-parent--column container">
       <Link to="/">

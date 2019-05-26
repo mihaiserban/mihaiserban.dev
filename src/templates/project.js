@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import ReactPlayer from 'react-player';
 
+import Lightbox from 'react-image-lightbox';
 import Markdown from '../components/markdown';
 import Layout from '../components/layout';
 import SEO from '../components/SEO';
 
-import { H1 } from '../components/text/headings';
+import { H1, H5 } from '../components/text/headings';
+
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 
 const Template = ({ data }) => {
   if (!data) return null;
+
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
   const project = data.contentfulProject;
+
+  const filteredImages = project.images.filter(
+    image => image.file.contentType.indexOf('image') !== -1
+  );
+  const filteredVideos = project.images.filter(
+    image => image.file.contentType.indexOf('video') !== -1
+  );
+  const images = filteredImages.map(image => image.file.url);
+
   return (
     <Layout>
       <SEO />
@@ -33,25 +49,49 @@ const Template = ({ data }) => {
               __html: project.body.childMarkdownRemark.html,
             }}
             id="top"
-            className="content"
+            className="content mt16"
           />
           <div className="flex-parent flex-parent--column flex-parent--center-main">
-            {project.images.map((image, index) => (
+            {filteredVideos.length > 0 && (
               <>
-                {image.file.contentType.indexOf('video') !== -1 ? (
+                <H5 className="mb16">Video</H5>
+                {filteredVideos.map(image => (
                   <ReactPlayer
                     url={image.file.url}
                     controls
                     width="100%"
                     height="auto"
-                    className="mb24"
+                    className="mb24 noselect"
                   />
-                ) : (
-                  <img className="image mb24" src={image.file.url} alt={image.title} />
-                )}
+                ))}
               </>
-            ))}
+            )}
+            {filteredImages.length > 0 && (
+              <>
+                <H5 className="mb16">Images</H5>
+                <img
+                  className="image mb24"
+                  src={filteredImages[0].file.url}
+                  alt={filteredImages[0].title}
+                  onClick={() => setIsOpen(true)}
+                />
+              </>
+            )}
           </div>
+          {isOpen && (
+            <Lightbox
+              mainSrc={images[photoIndex]}
+              nextSrc={images[(photoIndex + 1) % images.length]}
+              prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+              onCloseRequest={() => setIsOpen(false)}
+              onMovePrevRequest={() =>
+                setPhotoIndex((photoIndex + images.length - 1) % images.length)
+              }
+              onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % images.length)}
+              imagePadding={64}
+              enableZoom={false}
+            />
+          )}
         </div>
       </article>
       <style jsx>
@@ -64,6 +104,7 @@ const Template = ({ data }) => {
             max-width: 100%;
             height: auto;
             object-fit: contain;
+            cursor: pointer;
           }
           .tags {
             margin-left: -4px;

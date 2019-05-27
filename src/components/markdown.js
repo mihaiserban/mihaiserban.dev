@@ -4,6 +4,11 @@ import styled from 'styled-components';
 // 33px = 1.65em;
 
 const Markdown = styled(Box)`
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   h1 {
     font-size: 37px;
     line-height: 57px;
@@ -30,11 +35,10 @@ const Markdown = styled(Box)`
   p {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
       Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 18px;
     line-height: 1.667em;
     text-align: justify;
     hyphens: auto;
-    padding-bottom: 19px;
+    padding-bottom: 16px;
   }
 
   ul {

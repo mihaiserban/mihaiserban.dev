@@ -49,6 +49,7 @@ const About = props => {
         medium,
         image,
         location,
+        description,
       },
     },
   } = props;
@@ -71,7 +72,7 @@ const About = props => {
           <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" /> {location}
         </p>
         <p className="mt8">
-          Software engineer in constant search for new and exciting technologies
+          {description}
           <AnimatedBlock>▌</AnimatedBlock>
         </p>
         <p className="mt16">
@@ -212,6 +213,7 @@ const queryAbout = graphql`
     contentfulAbout {
       name
       email
+      description
       twitter
       linkedIn
       github

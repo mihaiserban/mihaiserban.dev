@@ -6,6 +6,8 @@ import Link from '../components/link';
 import Layout from '../components/layout';
 import { H1, H2 } from '../components/text/headings';
 
+import Markdown from '../components/markdown';
+
 const startCareer = new Date('2010-05-01');
 
 function diffYears(dt1, dt2) {
@@ -14,33 +16,30 @@ function diffYears(dt1, dt2) {
 
 const Page = ({ data }) => {
   const { nodes: technologies } = data.allContentfulTechnologies;
-  const { platforms } = data.contentfulAbout;
+  const { platforms, body } = data.contentfulAbout;
 
-  const carrerSpan = diffYears(startCareer, new Date());
-
+  console.log(body);
   return (
     <Layout>
       <div>
         <H1>About me</H1>
-        <div className="flex-parent flex-parent--column flex-parent--wrap mt16">
-          <p>Hi! I’m Mihai, a Software Engineer from Cluj-Napoca, Romania.</p>
-          <p>
-            I've been practicing my craft for the last&nbsp;
-            <bold>{carrerSpan} years</bold>.
-          </p>
-          <p>In my free time I enjoy practicing my latte art and catching Pokemon of course!</p>
-        </div>
+        <Markdown
+          className="mt16"
+          dangerouslySetInnerHTML={{
+            __html: body.childMarkdownRemark.html,
+          }}
+        />
         <H2 className="mt16">Platforms</H2>
-        <div className="tags flex-parent flex-parent--row flex-parent--wrap mt16">
+        <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
           {platforms.map(({ title }) => (
             <span className="tag fw2 f6">{title}</span>
           ))}
         </div>
         <H2 className="mt16">Technologies</H2>
-        <div className="flex-parent flex-parent--row flex-parent--wrap mt16">
+        <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
           {technologies.map(tech => (
             <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
-              <img src={tech.image.file.url} alt={tech.title} className="image" />
+              <img srcSet={tech.image.fluid.srcSet} alt={tech.title} className="image" />
               <span className="text mt16">{tech.title}</span>
             </div>
           ))}
@@ -49,11 +48,11 @@ const Page = ({ data }) => {
       <style jsx>
         {`
           .imageContainer {
-            width: 100px;
+            width: 120px;
             height: auto;
             margin-top: 16px;
             margin-bottom: 16px;
-            margin-left: -25px;
+            margin-left: -35px;
           }
           .image {
             width: 50px;
@@ -96,16 +95,27 @@ export const pageQuery = graphql`
         id
         title
       }
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
     allContentfulTechnologies(sort: { fields: [createdAt], order: DESC }) {
       nodes {
         id
         title
+
         image {
-          file {
-            url
-            fileName
-            contentType
+          fluid(maxWidth: 980) {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
           }
         }
       }

@@ -10,7 +10,7 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pl32 pr32">
+      <div>
         <Text fontFamily="body">
           <Box width={1}>
             <Heading fontFamily="heading" fontSize={6} pb={4}>

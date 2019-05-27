@@ -11,7 +11,7 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pl32 pr32">
+      <div>
         <H1>Bookshelf</H1>
         <p className="mt16">
           I enjoy reading/listening to books and always curious what others are reading. Mostly I

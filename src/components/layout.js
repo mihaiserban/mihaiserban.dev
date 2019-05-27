@@ -25,7 +25,7 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <SEO />
-      <div className="flex-parent flex-parent--center-main p32">
+      <div className="flex-parent flex-parent--center-main p32 flex-parent--wrap layout">
         <div className="about">
           <About width={sideMenuWidth} />
         </div>
@@ -43,6 +43,20 @@ const Layout = ({ children, location }) => {
         .content {
           max-width: 80%;
           width: 700px;
+        }
+        .content {
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+        @media screen and (max-width: 1003px) {
+          .layout {
+            justify-content: left;
+          }
+          .content {
+            padding-top: 32px;
+            padding-left: 0px;
+            padding-right: 0px;
+          }
         }
       `}</style>
     </>

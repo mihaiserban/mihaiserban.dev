@@ -11,7 +11,7 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pl32 pr32">
+      <div>
         <H1>Projects</H1>
         <div className="flex-parent flex-parent--column mt32">
           {projects.map(({ node: project }, index) => {
@@ -55,7 +55,8 @@ const BlogIndex = ({ data }) => {
         {`
           .image {
             width: 200px;
-            height: 200px;
+            max-height: 200px;
+            height: auto;
             object-fit: contain;
           }
           .tags {

@@ -14,7 +14,7 @@ import {
   faMedium,
 } from '@fortawesome/free-brands-svg-icons';
 
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { H1, H2, H3, H4, H5 } from './text/headings';
 import Link from './link';
@@ -87,6 +87,7 @@ const About = props => {
           </Link>
           <Link to={medium} className={classNames('menuLink mt4')}>
             Blog
+            <FontAwesomeIcon icon={faExternalLinkAlt} className="ml8" />
           </Link>
 
           <Link

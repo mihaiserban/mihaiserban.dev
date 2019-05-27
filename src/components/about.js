@@ -107,7 +107,7 @@ const About = props => {
           </Link>
         </div>
 
-        <div className="mt32 flex-parent flex-parent--row flex-parent--wrap">
+        <div className="mt32 flex-parent flex-parent--row">
           <Link to={twitter}>
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faTwitter} />
@@ -128,17 +128,19 @@ const About = props => {
               <FontAwesomeIcon icon={faStackOverflow} />
             </div>
           </Link>
-          <Link to={medium} className="ml8">
+        </div>
+        <div className="mt8 flex-parent flex-parent--row">
+          <Link to={medium}>
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faMedium} />
             </div>
           </Link>
-          <Link to={instagram} className="mt8">
+          <Link to={instagram} className="ml8">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faInstagram} />
             </div>
           </Link>
-          <Link to={goodreads} className="mt8 ml8">
+          <Link to={goodreads} className="ml8">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faGoodreads} />
             </div>

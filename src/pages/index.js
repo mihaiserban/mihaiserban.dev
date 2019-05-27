@@ -19,7 +19,7 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pl32 pr32">
+      <div>
         <H1>About me</H1>
         <div className="flex-parent flex-parent--column flex-parent--wrap mt16">
           <p>Hi! I’m Mihai, a Software Engineer from Cluj-Napoca, Romania.</p>

@@ -18,7 +18,7 @@ import 'react-image-lightbox/style.css'; // This only needs to be imported once 
 
 const Template = ({ data }) => {
   if (!data) return null;
-  console.log(data);
+
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 

@@ -14,6 +14,7 @@ function diffYears(dt1, dt2) {
 
 const Page = ({ data }) => {
   const { nodes: technologies } = data.allContentfulTechnologies;
+  const { platforms } = data.contentfulAbout;
 
   const carrerSpan = diffYears(startCareer, new Date());
 
@@ -29,6 +30,12 @@ const Page = ({ data }) => {
           </p>
           <p>In my free time I enjoy practicing my latte art and catching Pokemon of course!</p>
         </div>
+        <H2 className="mt16">Platforms</H2>
+        <div className="tags flex-parent flex-parent--row flex-parent--wrap mt16">
+          {platforms.map(({ title }) => (
+            <span className="tag fw2 f6">{title}</span>
+          ))}
+        </div>
         <H2 className="mt16">Technologies</H2>
         <div className="flex-parent flex-parent--row flex-parent--wrap mt16">
           {technologies.map(tech => (
@@ -42,16 +49,17 @@ const Page = ({ data }) => {
       <style jsx>
         {`
           .imageContainer {
-            width: 130px;
+            width: 100px;
             height: auto;
             margin-top: 16px;
             margin-bottom: 16px;
+            margin-left: -25px;
           }
           .image {
             width: 50px;
             height: 50px;
             object-fit: contain;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 6px;
+            border: 1px solid #e6e6e6;
           }
           .text {
             font-size: 0.8rem;
@@ -60,6 +68,18 @@ const Page = ({ data }) => {
             letter-spacing: 0.5px;
             opacity: 0.8;
             text-align: center;
+          }
+          .tags {
+            margin-left: -4px;
+          }
+          .tag {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 8px;
+            padding-right: 8px;
+            border: 1px solid #e6e6e6;
+            border-radius: 15px;
+            margin: 4px;
           }
         `}
       </style>
@@ -71,6 +91,12 @@ export default Page;
 
 export const pageQuery = graphql`
   query AboutPageQuery {
+    contentfulAbout {
+      platforms {
+        id
+        title
+      }
+    }
     allContentfulTechnologies(sort: { fields: [createdAt], order: DESC }) {
       nodes {
         id

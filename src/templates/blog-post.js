@@ -12,7 +12,7 @@ const Template = ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <article className="pl32 pr32">
+      <article>
         <>
           <div className="flex-parent flex-parent--column">
             <span>

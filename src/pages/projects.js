@@ -37,12 +37,16 @@ const BlogIndex = ({ data }) => {
                       {project.startDate} -
 {project.endDate}
                     </span>
-                    <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
-                      {project.technologies.map(({ title }) => (
-                        <span className="tag fw2 f6">{title}</span>
-                      ))}
-                    </div>
-                    <p className="mt8">{project.body.childMarkdownRemark.excerpt}</p>
+                    {project.technologies !== null && (
+                      <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+                        {project.technologies.map(({ title }) => (
+                          <span className="tag fw2 f6">{title}</span>
+                        ))}
+                      </div>
+                    )}
+                    {project.context && (
+                      <p className="mt8">{project.context.childMarkdownRemark.excerpt}</p>
+                    )}
                   </div>
                 </div>
                 {index < projects.length - 1 && <div className="divider mb32 mt32" />}
@@ -101,7 +105,7 @@ export const pageQuery = graphql`
           slug
           id
           hidden
-          body {
+          context {
             childMarkdownRemark {
               html
               timeToRead

@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import ReactPlayer from 'react-player';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+
 import Lightbox from 'react-image-lightbox';
 import Markdown from '../components/markdown';
 import Layout from '../components/layout';
 import SEO from '../components/SEO';
+
+import Link from '../components/link';
 
 import { H1, H5 } from '../components/text/headings';
 
@@ -13,7 +18,7 @@ import 'react-image-lightbox/style.css'; // This only needs to be imported once 
 
 const Template = ({ data }) => {
   if (!data) return null;
-
+  console.log(data);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,8 +37,13 @@ const Template = ({ data }) => {
       <SEO />
       <article>
         <div>
-          <div className="flex-parent flex-parent--column">
+          <div className="flex-parent flex-parent--row flex-parent--center-cross">
             <H1>{project.title}</H1>
+            {project.url !== null && (
+              <Link to={project.url} className="ml16">
+                <FontAwesomeIcon icon={faExternalLinkAlt} color="#222" />
+              </Link>
+            )}
           </div>
           <span className="fw2 f6 mt4">
             {project.startDate} -
@@ -185,6 +195,7 @@ export const pageQuery = graphql`
       title
       slug
       id
+      url
       context {
         childMarkdownRemark {
           html

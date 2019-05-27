@@ -39,45 +39,96 @@ const Template = ({ data }) => {
             {project.startDate} -
 {project.endDate}
           </span>
-          <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
-            {project.technologies.map(({ title }) => (
-              <span className="tag fw2 f6">{title}</span>
-            ))}
-          </div>
-          <Markdown
-            dangerouslySetInnerHTML={{
-              __html: project.body.childMarkdownRemark.html,
-            }}
-            id="top"
-            className="content mt16"
-          />
-          <div className="flex-parent flex-parent--column flex-parent--center-main">
-            {filteredVideos.length > 0 && (
-              <>
-                <H5 className="mb16">Video</H5>
-                {filteredVideos.map(image => (
-                  <ReactPlayer
-                    url={image.file.url}
-                    controls
-                    width="100%"
-                    height="auto"
-                    className="mb24 noselect"
-                  />
+
+          {project.context !== null && (
+            <div className="flex-parent flex-parent--column mt16">
+              <H5>Context</H5>
+              <Markdown
+                dangerouslySetInnerHTML={{
+                  __html: project.context.childMarkdownRemark.html,
+                }}
+                id="top"
+                className="content"
+              />
+            </div>
+          )}
+
+          {project.technologies !== null && (
+            <div className="flex-parent flex-parent--column mt16">
+              <H5>Technologies</H5>
+              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+                {project.technologies.map(({ title }) => (
+                  <span className="tag fw2 f6">{title}</span>
                 ))}
-              </>
-            )}
-            {filteredImages.length > 0 && (
-              <>
-                <H5 className="mb16">Images</H5>
-                <img
-                  className="image mb24"
-                  src={filteredImages[0].file.url}
-                  alt={filteredImages[0].title}
-                  onClick={() => setIsOpen(true)}
-                />
-              </>
-            )}
-          </div>
+              </div>
+            </div>
+          )}
+
+          {project.industries !== null && (
+            <div className="flex-parent flex-parent--column mt16">
+              <H5>Industry</H5>
+              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+                {project.industries.map(({ title }) => (
+                  <span className="tag fw2 f6">{title}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project.platforms !== null && (
+            <div className="flex-parent flex-parent--column mt16">
+              <H5>Platforms</H5>
+              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+                {project.platforms.map(({ title }) => (
+                  <span className="tag fw2 f6">{title}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project.responsabilities !== null && (
+            <div className="flex-parent flex-parent--column mt16">
+              <H5>Responsabilities</H5>
+              <Markdown
+                dangerouslySetInnerHTML={{
+                  __html: project.responsabilities.childMarkdownRemark.html,
+                }}
+                id="top"
+                className="content"
+              />
+            </div>
+          )}
+
+          {(filteredVideos.length > 0 || filteredImages.length > 0) && (
+            <div className="flex-parent flex-parent--column flex-parent--center-main mt16">
+              {filteredVideos.length > 0 && (
+                <>
+                  <H5 className="mb16">Video</H5>
+                  {filteredVideos.map(image => (
+                    <ReactPlayer
+                      url={image.file.url}
+                      controls
+                      width="100%"
+                      height="auto"
+                      className="mb24 noselect"
+                    />
+                  ))}
+                </>
+              )}
+              {filteredImages.length > 0 && (
+                <>
+                  <H5 className="mb16">Gallery</H5>
+                  <img
+                    className="image mb24"
+                    src={filteredImages[0].file.url}
+                    alt={filteredImages[0].title}
+                    onClick={() => setIsOpen(true)}
+                  />
+                </>
+              )}
+            </div>
+          )}
+
           {isOpen && (
             <Lightbox
               mainSrc={images[photoIndex]}
@@ -134,7 +185,14 @@ export const pageQuery = graphql`
       title
       slug
       id
-      body {
+      context {
+        childMarkdownRemark {
+          html
+          timeToRead
+          excerpt
+        }
+      }
+      responsabilities {
         childMarkdownRemark {
           html
           timeToRead
@@ -156,6 +214,12 @@ export const pageQuery = graphql`
         }
       }
       technologies {
+        title
+      }
+      platforms {
+        title
+      }
+      industries {
         title
       }
     }

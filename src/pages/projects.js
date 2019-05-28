@@ -26,6 +26,9 @@ const BlogIndex = ({ data }) => {
                           className="imageProjects mr24"
                           fixed={project.previewImage.fixed}
                           alt={project.previewImage.title}
+                          imgStyle={{
+                            objectFit: 'contain',
+                          }}
                         />
                       </Link>
                     )}
@@ -67,20 +70,26 @@ const BlogIndex = ({ data }) => {
             padding-bottom: 3px;
             padding-left: 8px;
             padding-right: 8px;
-            border: 1px solid #e6e6e6;
+            border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
           }
           .divider {
             width: 100%;
             height: 1px;
-            background: #e6e6e6;
+            background: linear-gradient(
+              to right,
+              transparent 0%,
+              var(--separator-color) 30%,
+              var(--separator-color) 70%,
+              transparent 100%
+            );
           }
           :global(.projectLink) {
-            color: #222;
+            color: var(--primary-color);
           }
           :global(.projectLink:hover) {
-            color: #1e56a9;
+            color: var(--textLink);
           }
           :global(.imageProjects) {
             width: 200px;

@@ -18,7 +18,7 @@ const BlogIndex = ({ data }) => {
             if (project.hidden && project.hidden === true) return null;
             return (
               <div className="flex-parent flex-parent--column" key={project.id}>
-                <div className="flex-parent flex-parent--row">
+                <div className="flex-parent flex-parent--row projectContainer">
                   {project.previewImage &&
                     project.previewImage.file.contentType.indexOf('image') !== -1 && (
                       <Link as={glink} to={`/project/${project.slug}`}>
@@ -59,12 +59,6 @@ const BlogIndex = ({ data }) => {
       </div>
       <style jsx>
         {`
-          :global(.imageProjects) {
-            width: 200px;
-            max-height: 200px;
-            height: auto;
-            object-fit: contain;
-          }
           .tags {
             margin-left: -4px;
           }
@@ -88,12 +82,21 @@ const BlogIndex = ({ data }) => {
           :global(.projectLink:hover) {
             color: #1e56a9;
           }
+          :global(.imageProjects) {
+            width: 200px;
+            max-height: 200px;
+            height: auto;
+            object-fit: contain;
+          }
           /* If the screen size is 600px wide or less, hide the element */
           @media only screen and (max-width: 600px) {
             :global(.imageProjects) {
               width: 140px;
               max-height: 140px;
               margin-right: 16px;
+            }
+            .projectContainer {
+              flex-direction: column;
             }
           }
         `}

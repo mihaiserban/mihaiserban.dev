@@ -6,6 +6,7 @@ import { useTransition, animated } from "react-spring";
 // Components
 import About from "./about";
 import SEO from "./SEO";
+import Link from "./link";
 
 // Create some context for other components
 export const Context = React.createContext();
@@ -29,13 +30,30 @@ const Layout = ({ children, location }) => {
         <div className="about">
           <About width={sideMenuWidth} />
         </div>
-        <div className="flex-parent flex-parent--column content">
+        <div className="flex-parent flex-parent--column flex-parent--center-cross content">
           <div>
             {transitions.map(({ item, key, props }) => (
               <animated.div key={key} style={props}>
                 {children}
               </animated.div>
             ))}
+          </div>
+          <div className="flex-parent flex-parent--row flex-parent--center-cross mt32">
+            <img
+              className="smallImage"
+              alt="gatsby"
+              src="http://images.ctfassets.net/usz05rcag1x3/3xrfXp4jzSWda6PfiuAlzW/2ec950b6b4d7dc5a4ca7a2e6c026697f/gatsby.png?w=225&h=225&q=50"
+            />
+            &nbsp; + &nbsp;
+            <img
+              className="smallImage"
+              alt="gatsby"
+              src="http://images.ctfassets.net/usz05rcag1x3/5hgOPLAFzhBe5LVS66skmY/ea72f74698a547ecc8bf7ac4469cecb9/contentful.png?w=266&h=300&q=50"
+            />
+            &nbsp; = ❤️
+            <Link to="https://github.com/mihaiserban/mihaiserban.dev" className="ml4">
+              [Source code]
+            </Link>
           </div>
         </div>
       </div>
@@ -47,6 +65,10 @@ const Layout = ({ children, location }) => {
         .content {
           padding-left: 32px;
           padding-right: 32px;
+        }
+        .smallImage {
+          width: 14px;
+          height: auto;
         }
         @media screen and (max-width: 1003px) {
           .layout {

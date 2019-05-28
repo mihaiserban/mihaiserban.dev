@@ -35,7 +35,7 @@ const Page = ({ data }) => {
           <H2>Education</H2>
           <div className="flex-parent flex-parent--column">
             {education.map(item => (
-              <div key={item.title}>
+              <div key={item.title} className="flex-parent flex-parent--column">
                 <span className="mt8">{item.title}</span>
                 <span className="fw2 f6 mt4">
                   {item.startDate} -
@@ -73,7 +73,7 @@ const Page = ({ data }) => {
           <H2>Experience</H2>
           <div className="flex-parent flex-parent--column">
             {sortedExperience.map(item => (
-              <div key={item.company}>
+              <div className="flex-parent flex-parent--column" key={item.company}>
                 <span className="mt16">{item.company}</span>
                 <span className="fw2 f6 mt4">
                   {item.startDate} -

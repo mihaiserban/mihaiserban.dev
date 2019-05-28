@@ -16,8 +16,9 @@ function diffYears(dt1, dt2) {
 
 const Page = ({ data }) => {
   const { nodes: technologies } = data.allContentfulTechnologies;
-  const { platforms, body } = data.contentfulAbout;
+  const { platforms, body, education, experience } = data.contentfulAbout;
 
+  const sortedExperience = experience.sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
   console.log(body);
   return (
     <Layout>
@@ -29,20 +30,58 @@ const Page = ({ data }) => {
             __html: body.childMarkdownRemark.html,
           }}
         />
-        <H2 className="mt16">Platforms</H2>
-        <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
-          {platforms.map(({ title }) => (
-            <span className="tag fw2 f6">{title}</span>
-          ))}
+        <div className="flex-parent flex-parent--column mt16">
+          <H2>Platforms</H2>
+          <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+            {platforms.map(({ title }) => (
+              <span className="tag fw2 f6">{title}</span>
+            ))}
+          </div>
         </div>
-        <H2 className="mt16">Technologies</H2>
-        <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
-          {technologies.map(tech => (
-            <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
-              <img srcSet={tech.image.fluid.srcSet} alt={tech.title} className="image" />
-              <span className="text mt16">{tech.title}</span>
-            </div>
-          ))}
+        <div className="flex-parent flex-parent--column mt16">
+          <H2>Technologies</H2>
+          <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
+            {technologies.map(tech => (
+              <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
+                <img srcSet={tech.image.fluid.srcSet} alt={tech.title} className="image" />
+                <span className="text mt16">{tech.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex-parent flex-parent--column mt16">
+          <H2>Education</H2>
+          <div className="flex-parent flex-parent--column mt8">
+            {education.map(item => (
+              <>
+                <span className="mt16">{item.title}</span>
+                <span className="fw2 f6 mt4">
+                  {item.startDate} -
+{item.endDate}
+                </span>
+              </>
+            ))}
+          </div>
+        </div>
+        <div className="flex-parent flex-parent--column mt16">
+          <H2>Experience</H2>
+          <div className="flex-parent flex-parent--column mt8">
+            {sortedExperience.map(item => (
+              <>
+                <span className="mt16">{item.company}</span>
+                <span className="fw2 f6 mt4">
+                  {item.startDate} -
+{item.endDate}
+                  <div
+                    className="mt16"
+                    dangerouslySetInnerHTML={{
+                      __html: item.jobDescription.childMarkdownRemark.html,
+                    }}
+                  />
+                </span>
+              </>
+            ))}
+          </div>
         </div>
       </div>
       <style jsx>
@@ -99,6 +138,23 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      experience {
+        id
+        company
+        jobDescription {
+          childMarkdownRemark {
+            html
+          }
+        }
+        startDate(formatString: "DD MMMM YYYY")
+        endDate(formatString: "DD MMMM YYYY")
+      }
+      education {
+        id
+        title
+        startDate(formatString: "DD MMMM YYYY")
+        endDate(formatString: "DD MMMM YYYY")
       }
     }
     allContentfulTechnologies(sort: { fields: [createdAt], order: DESC }) {

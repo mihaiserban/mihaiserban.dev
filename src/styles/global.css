@@ -32,13 +32,13 @@ body {
 html,
 body {
   background-color: #fff;
-  color: #111;
+  color: #222;
   height: 100%;
   width: 100vw;
 }
 
 ::selection {
-  background-color: #0076ff;
+  background-color: #1e56a9;
   color: #fff;
 }
 [role="grid"]:focus {
@@ -57,12 +57,12 @@ p {
   margin: 0;
 }
 a {
-  color: #2195ff;
+  color: #1e56a9;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 a:hover {
-  color: #68b5fb;
+  opacity: 0.8;
 }
 iframe {
   width: 100%;

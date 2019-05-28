@@ -59,6 +59,7 @@ body {
 
 ::selection {
   background-color: var(--textLink);
+  color: white;
 }
 [role="grid"]:focus {
   outline: none;

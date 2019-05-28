@@ -17,7 +17,7 @@ const Page = ({ data }) => {
           I enjoy reading/listening to books and always curious what others are reading. Mostly I
           enjoy reading from categories such as Science Fiction or Personal Development. I thought
           I’d share my bookshelf here with you. The books that I particularly enjoyed are marked{' '}
-          <bold>bold</bold>. The list is not in a particular order.
+          <span className="bold">bold</span>. The list is not in a particular order.
         </p>
         <p className="mt8">
           If you want to suggest a book send me an email at{' '}
@@ -27,7 +27,7 @@ const Page = ({ data }) => {
         </p>
         <ul className="flex-parent flex-parent--column mt16 list">
           {books.map(book => (
-            <Link to={book.url}>
+            <Link to={book.url} key={book.id}>
               <li className={classNames({ fw6: book.favorite })}>{book.title}</li>
             </Link>
           ))}

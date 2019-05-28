@@ -68,7 +68,9 @@ const Template = ({ data }) => {
               <H5>Technologies</H5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                 {project.technologies.map(({ title }) => (
-                  <span className="tag fw2 f6">{title}</span>
+                  <span className="tag fw2 f6" key={title}>
+                    {title}
+                  </span>
                 ))}
               </div>
             </div>
@@ -79,7 +81,9 @@ const Template = ({ data }) => {
               <H5>Industry</H5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                 {project.industries.map(({ title }) => (
-                  <span className="tag fw2 f6">{title}</span>
+                  <span className="tag fw2 f6" key={title}>
+                    {title}
+                  </span>
                 ))}
               </div>
             </div>
@@ -90,7 +94,9 @@ const Template = ({ data }) => {
               <H5>Platforms</H5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                 {project.platforms.map(({ title }) => (
-                  <span className="tag fw2 f6">{title}</span>
+                  <span className="tag fw2 f6" key={title}>
+                    {title}
+                  </span>
                 ))}
               </div>
             </div>
@@ -116,6 +122,7 @@ const Template = ({ data }) => {
                   <H5 className="mb16">Video</H5>
                   {filteredVideos.map(image => (
                     <ReactPlayer
+                      key={image.file.url}
                       url={image.file.url}
                       controls
                       width="100%"

@@ -2,6 +2,10 @@
 
 This is the source code for [mihaiserban.dev](https://mihaiserban.dev).
 
+### Lighthouse audit score
+
+![alt text](https://user-images.githubusercontent.com/3420526/58484418-b255e180-816a-11e9-9f6a-9bc607ba1b14.png "Lighthouse audit score")
+
 ### Requirements for local development
 
 - [Node](https://nodejs.org/en/) (I'm using v8.12.0)

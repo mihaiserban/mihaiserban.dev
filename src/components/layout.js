@@ -56,6 +56,7 @@ const Layout = ({ children, location }) => {
             padding-top: 32px;
             padding-left: 0px;
             padding-right: 0px;
+            max-width: 100%;
           }
         }
       `}</style>

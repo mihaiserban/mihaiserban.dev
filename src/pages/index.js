@@ -35,13 +35,13 @@ const Page = ({ data }) => {
           <H2>Education</H2>
           <div className="flex-parent flex-parent--column">
             {education.map(item => (
-              <>
+              <div key={item.title}>
                 <span className="mt8">{item.title}</span>
                 <span className="fw2 f6 mt4">
                   {item.startDate} -
 {item.endDate}
                 </span>
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -49,7 +49,9 @@ const Page = ({ data }) => {
           <H2>Platforms</H2>
           <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
             {platforms.map(({ title }) => (
-              <span className="tag fw2 f6">{title}</span>
+              <span className="tag fw2 f6" key={title}>
+                {title}
+              </span>
             ))}
           </div>
         </div>
@@ -57,7 +59,10 @@ const Page = ({ data }) => {
           <H2>Technologies</H2>
           <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
             {technologies.map(tech => (
-              <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
+              <div
+                className="flex-parent flex-parent--column flex-parent--center-cross imageContainer"
+                key={tech.title}
+              >
                 <Img fluid={tech.image.fluid} alt={tech.title} className="imageTech" />
                 <span className="text mt16">{tech.title}</span>
               </div>
@@ -68,7 +73,7 @@ const Page = ({ data }) => {
           <H2>Experience</H2>
           <div className="flex-parent flex-parent--column">
             {sortedExperience.map(item => (
-              <>
+              <div key={item.company}>
                 <span className="mt16">{item.company}</span>
                 <span className="fw2 f6 mt4">
                   {item.startDate} -
@@ -80,7 +85,7 @@ const Page = ({ data }) => {
                     }}
                   />
                 </span>
-              </>
+              </div>
             ))}
           </div>
         </div>

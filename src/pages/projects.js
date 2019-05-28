@@ -15,9 +15,9 @@ const BlogIndex = ({ data }) => {
         <H1>Projects</H1>
         <div className="flex-parent flex-parent--column mt32">
           {projects.map(({ node: project }, index) => {
-            if (project.hidden && project.hidden === true) return;
+            if (project.hidden && project.hidden === true) return null;
             return (
-              <div className="flex-parent flex-parent--column">
+              <div className="flex-parent flex-parent--column" key={project.id}>
                 <div className="flex-parent flex-parent--row">
                   {project.previewImage &&
                     project.previewImage.file.contentType.indexOf('image') !== -1 && (
@@ -40,7 +40,9 @@ const BlogIndex = ({ data }) => {
                     {project.technologies !== null && (
                       <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                         {project.technologies.map(({ title }) => (
-                          <span className="tag fw2 f6">{title}</span>
+                          <span className="tag fw2 f6" key={title}>
+                            {title}
+                          </span>
                         ))}
                       </div>
                     )}

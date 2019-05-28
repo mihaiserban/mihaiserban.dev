@@ -77,10 +77,10 @@ const About = props => {
           />{' '}
           {location}
         </p>
-        <p className="mt8">
+        <span className="mt8">
           {description}
           <AnimatedBlock>▌</AnimatedBlock>
-        </p>
+        </span>
         <p className="mt16">
           Want to hire me for your next project?{' '}
           <a href="mailto:contact@mihaiserban.dev?subject=I would like to hire you">

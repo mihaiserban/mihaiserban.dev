@@ -3,7 +3,6 @@ import { graphql, StaticQuery } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
 import classNames from 'classnames';
 import Img from 'gatsby-image';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter,
@@ -17,6 +16,7 @@ import {
 
 import { faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
+import ThemeToggler from './themeToggler';
 import { H1, H2, H3, H4, H5 } from './text/headings';
 import Link from './link';
 
@@ -66,7 +66,7 @@ const About = props => {
 
         <H2 className="mt8">
           <Link to="/" className="mt32" aria-label="Home">
-            <span style={{ color: '#222' }}>{name}</span>
+            <span style={{ color: 'var(--primary-color)' }}>{name}</span>
           </Link>
         </H2>
         <p className="mt8">
@@ -77,11 +77,11 @@ const About = props => {
           />{' '}
           {location}
         </p>
-        <span className="mt8">
+        <span className="mt8 description">
           {description}
           <AnimatedBlock>▌</AnimatedBlock>
         </span>
-        <p className="mt16">
+        <p className="mt16 description">
           Want to hire me for your next project?{' '}
           <a href="mailto:contact@mihaiserban.dev?subject=I would like to hire you">
             Get in touch.
@@ -164,15 +164,26 @@ const About = props => {
             </div>
           </Link>
         </div>
+        <div className="mt16">
+          <ThemeToggler />
+        </div>
       </div>
       <style jsx>
         {`
+          .description {
+            color: var(--secondary-color);
+          }
           .wrapper {
             width: ${width}px;
           }
           .wrapper:after {
             content: '';
-            background: linear-gradient(180deg, #e6e6e6 0, #e6e6e6 48%, #fff);
+            background: linear-gradient(
+              180deg,
+              var(--separator-color) 0,
+              var(--separator-color) 48%,
+              var(--bg)
+            );
             min-height: 540px;
             width: 1px;
             min-width: 1px;
@@ -192,25 +203,25 @@ const About = props => {
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            border: 1px solid #b6b6b6;
-            color: #222;
+            border: 1px solid var(--separator-color);
+            color: var(--primary-color);
             cursor: pointer;
             -webkit-transition: all 0.3s; /* Safari */
             transition: all 0.3s;
           }
           .socialIcon:hover {
-            color: #1e56a9;
+            color: var(--textLink);
           }
           :global(.menuLink) {
-            color: #222;
+            color: var(--primary-color);
             border-bottom: 1px solid transparent;
           }
           :global(.menuLink:hover) {
-            color: #1e56a9;
-            border-bottom: 1px solid #1e56a9;
+            color: var(--textLink);
+            border-bottom: 1px solid var(--textLink);
           }
           :global(.active) {
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--primary-color);
           }
         `}
       </style>

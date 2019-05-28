@@ -63,7 +63,12 @@ const Page = ({ data }) => {
                 className="flex-parent flex-parent--column flex-parent--center-cross imageContainer"
                 key={tech.title}
               >
-                <Img fluid={tech.image.fluid} alt={tech.title} className="imageTech" />
+                <Img
+                  fluid={tech.image.fluid}
+                  alt={tech.title}
+                  className="imageTech"
+                  imgStyle={{ objectFit: 'contain', background: 'var(--alternate-bg)' }}
+                />
                 <span className="text mt16">{tech.title}</span>
               </div>
             ))}
@@ -103,7 +108,7 @@ const Page = ({ data }) => {
             width: 50px;
             height: 50px;
             object-fit: contain;
-            border: 1px solid #e6e6e6;
+            border: 1px solid var(--separator-color);
           }
           .text {
             font-size: 0.8rem;
@@ -121,7 +126,7 @@ const Page = ({ data }) => {
             padding-bottom: 3px;
             padding-left: 8px;
             padding-right: 8px;
-            border: 1px solid #e6e6e6;
+            border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
           }

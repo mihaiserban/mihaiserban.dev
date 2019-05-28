@@ -41,7 +41,7 @@ const Template = ({ data }) => {
             <H1>{project.title}</H1>
             {project.url !== null && (
               <Link to={project.url} className="ml16">
-                <FontAwesomeIcon icon={faExternalLinkAlt} color="#222" />
+                <FontAwesomeIcon icon={faExternalLinkAlt} color="var(--primary-color)" />
               </Link>
             )}
           </div>
@@ -182,7 +182,7 @@ const Template = ({ data }) => {
             padding-bottom: 3px;
             padding-left: 8px;
             padding-right: 8px;
-            border: 1px solid #e6e6e6;
+            border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
           }

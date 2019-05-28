@@ -8,6 +8,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-styled-jsx',
+    'gatsby-plugin-dark-mode',
     // Adding various source folders to the GraphQL layer.
     {
       resolve: `gatsby-source-filesystem`,

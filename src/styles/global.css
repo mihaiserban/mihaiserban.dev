@@ -10,6 +10,25 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+body {
+  --bg: white;
+  --alternate-bg: transparent;
+  --primary-color: #222;
+  --secondary-color: rgb(96, 96, 96);
+  --textLink: #1e56a9;
+  --separator-color: #e6e6e6;
+}
+
+body.dark {
+  --bg: #000;
+  --alternate-bg: white;
+  --primary-color: white;
+  --secondary-color: #aaaaaa;
+  --textLink: #3ea6ff;
+  --separator-color: #e6e6e6;
+}
+
 body {
   position: relative;
   line-height: 1.65;
@@ -28,18 +47,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+
+  background-color: var(--bg);
+  color: var(--primary-color);
 }
 html,
 body {
-  background-color: #fff;
-  color: #222;
   height: 100%;
   width: 100vw;
 }
 
 ::selection {
-  background-color: #1e56a9;
-  color: #fff;
+  background-color: var(--textLink);
 }
 [role="grid"]:focus {
   outline: none;
@@ -57,7 +76,7 @@ p {
   margin: 0;
 }
 a {
-  color: #1e56a9;
+  color: var(--textLink);
   text-decoration: none;
   transition: all 0.2s ease;
 }

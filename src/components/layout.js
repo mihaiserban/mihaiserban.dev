@@ -54,7 +54,7 @@ const Layout = ({ children, location }) => {
             <img
               className="smallImage"
               alt="netlify"
-              src="http://images.ctfassets.net/usz05rcag1x3/3N5hID2Er4NG6Bw15u0xWa/57c71b3ef3c46ca45d29de3b91f1d9a9/logomark.png?w=60&h=60&q=50"
+              src="https://images.ctfassets.net/usz05rcag1x3/3N5hID2Er4NG6Bw15u0xWa/57c71b3ef3c46ca45d29de3b91f1d9a9/logomark.png?w=60&h=60&q=50"
             />
             &nbsp; = ❤️
             <Link to="https://github.com/mihaiserban/mihaiserban.dev" className="ml4">

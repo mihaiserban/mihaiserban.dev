@@ -86,6 +86,14 @@ const BlogIndex = ({ data }) => {
           :global(.projectLink:hover) {
             color: #2195ff;
           }
+          /* If the screen size is 600px wide or less, hide the element */
+          @media only screen and (max-width: 600px) {
+            .image {
+              width: 140px;
+              max-height: 140px;
+              margin-right: 16px;
+            }
+          }
         `}
       </style>
     </Layout>

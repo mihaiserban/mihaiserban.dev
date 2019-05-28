@@ -42,7 +42,7 @@ const Layout = ({ children, location }) => {
             <img
               className="smallImage"
               alt="gatsby"
-              src="https://images.ctfassets.net/usz05rcag1x3/3xrfXp4jzSWda6PfiuAlzW/2ec950b6b4d7dc5a4ca7a2e6c026697f/gatsby.png?w=1200&h=1200&q=90"
+              src="https://images.ctfassets.net/usz05rcag1x3/3xrfXp4jzSWda6PfiuAlzW/d9406ab839570d55c77ebae5bc611685/gatsby-logo.png?w=1200&h=1200&q=90"
             />
             &nbsp; + &nbsp;
             <img

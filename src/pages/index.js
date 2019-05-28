@@ -19,7 +19,7 @@ const Page = ({ data }) => {
   const { platforms, body, education, experience } = data.contentfulAbout;
 
   const sortedExperience = experience.sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
-  console.log(body);
+
   return (
     <Layout>
       <div>

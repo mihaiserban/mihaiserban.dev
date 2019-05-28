@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as glink, graphql } from 'gatsby';
-import classNames from 'classnames';
+import Img from 'gatsby-image';
 
 import Link from '../components/link';
 import Layout from '../components/layout';
@@ -22,9 +22,9 @@ const BlogIndex = ({ data }) => {
                   {project.previewImage &&
                     project.previewImage.file.contentType.indexOf('image') !== -1 && (
                       <Link as={glink} to={`/project/${project.slug}`}>
-                        <img
-                          className="image mr24"
-                          srcSet={project.previewImage.fixed.srcSetWebp}
+                        <Img
+                          className="imageProjects mr24"
+                          fixed={project.previewImage.fixed}
                           alt={project.previewImage.title}
                         />
                       </Link>
@@ -57,7 +57,7 @@ const BlogIndex = ({ data }) => {
       </div>
       <style jsx>
         {`
-          .image {
+          :global(.imageProjects) {
             width: 200px;
             max-height: 200px;
             height: auto;
@@ -88,7 +88,7 @@ const BlogIndex = ({ data }) => {
           }
           /* If the screen size is 600px wide or less, hide the element */
           @media only screen and (max-width: 600px) {
-            .image {
+            :global(.imageProjects) {
               width: 140px;
               max-height: 140px;
               margin-right: 16px;
@@ -125,7 +125,13 @@ export const pageQuery = graphql`
             file {
               contentType
             }
-            fixed(width: 400, quality: 90) {
+            fixed(width: 200, quality: 90) {
+              base64
+              width
+              height
+              src
+              srcSet
+              srcWebp
               srcSetWebp
             }
           }
@@ -134,7 +140,13 @@ export const pageQuery = graphql`
             file {
               contentType
             }
-            fixed(width: 400, quality: 90) {
+            fixed(width: 200, quality: 90) {
+              base64
+              width
+              height
+              src
+              srcSet
+              srcWebp
               srcSetWebp
             }
           }

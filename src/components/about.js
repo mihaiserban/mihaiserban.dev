@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
 import classNames from 'classnames';
+import Img from 'gatsby-image';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -60,7 +61,7 @@ const About = props => {
     <div className="flex-parent flex-parent--row wrapper">
       <div className="flex-parent flex-parent--column container">
         <Link to="/" aria-label="Home">
-          <img srcSet={image.fixed.srcSetWebp} className="image" alt="Headshot Mihai Serban" />
+          <Img fixed={image.fixed} className="image" alt="Headshot Mihai Serban" />
         </Link>
 
         <H2 className="mt8">
@@ -182,7 +183,7 @@ const About = props => {
               display: none;
             }
           }
-          .image {
+          :global(.image) {
             width: 75px;
             height: 75px;
             border-radius: 50%;
@@ -238,6 +239,12 @@ const queryAbout = graphql`
       medium
       image {
         fixed(width: 150, quality: 90) {
+          base64
+          width
+          height
+          src
+          srcSet
+          srcWebp
           srcSetWebp
         }
       }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as glink, graphql } from 'gatsby';
 import classNames from 'classnames';
+import Img from 'gatsby-image';
 
 import Link from '../components/link';
 import Layout from '../components/layout';
@@ -57,7 +58,7 @@ const Page = ({ data }) => {
           <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
             {technologies.map(tech => (
               <div className="flex-parent flex-parent--column flex-parent--center-cross imageContainer">
-                <img srcSet={tech.image.fluid.srcSet} alt={tech.title} className="image" />
+                <Img fluid={tech.image.fluid} alt={tech.title} className="imageTech" />
                 <span className="text mt16">{tech.title}</span>
               </div>
             ))}
@@ -93,7 +94,7 @@ const Page = ({ data }) => {
             margin-bottom: 16px;
             margin-left: -35px;
           }
-          .image {
+          :global(.imageTech) {
             width: 50px;
             height: 50px;
             object-fit: contain;

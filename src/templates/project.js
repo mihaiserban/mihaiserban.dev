@@ -32,7 +32,6 @@ const Template = ({ data }) => {
   );
   const images = filteredImages.map(image => image.file.url);
 
-  console.log(filteredImages);
   return (
     <Layout>
       <SEO />
@@ -130,8 +129,8 @@ const Template = ({ data }) => {
                 <>
                   <H5 className="mb16">Gallery</H5>
                   <img
-                    className="image mb24"
-                    src={filteredImages[0].fluid.srcWebp}
+                    className="imageProject mb24"
+                    src={filteredImages[0].file.url}
                     alt={filteredImages[0].title}
                     onClick={() => setIsOpen(true)}
                   />
@@ -162,7 +161,7 @@ const Template = ({ data }) => {
             width: 100%;
             height: auto;
           }
-          .image {
+          .imageProject {
             max-width: 100%;
             height: auto;
             object-fit: contain;
@@ -217,18 +216,12 @@ export const pageQuery = graphql`
           url
           contentType
         }
-        fluid(maxWidth: 2000) {
-          srcWebp
-        }
       }
       previewImage {
         title
         file {
           url
           contentType
-        }
-        fluid(maxWidth: 2000) {
-          srcWebp
         }
       }
       technologies {

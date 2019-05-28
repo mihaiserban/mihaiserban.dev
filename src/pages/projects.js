@@ -24,7 +24,7 @@ const BlogIndex = ({ data }) => {
                       <Link as={glink} to={`/project/${project.slug}`}>
                         <img
                           className="image mr24"
-                          src={project.previewImage.file.url}
+                          srcSet={project.previewImage.fixed.srcSetWebp}
                           alt={project.previewImage.title}
                         />
                       </Link>
@@ -84,7 +84,7 @@ const BlogIndex = ({ data }) => {
             color: #222;
           }
           :global(.projectLink:hover) {
-            color: #2195ff;
+            color: #1e56a9;
           }
           /* If the screen size is 600px wide or less, hide the element */
           @media only screen and (max-width: 600px) {
@@ -123,15 +123,19 @@ export const pageQuery = graphql`
           images {
             title
             file {
-              url
               contentType
+            }
+            fixed(width: 400, quality: 90) {
+              srcSetWebp
             }
           }
           previewImage {
             title
             file {
-              url
               contentType
+            }
+            fixed(width: 400, quality: 90) {
+              srcSetWebp
             }
           }
           technologies {

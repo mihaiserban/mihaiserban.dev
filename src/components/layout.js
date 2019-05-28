@@ -42,22 +42,26 @@ const Layout = ({ children, location }) => {
             <img
               className="smallImage"
               alt="gatsby"
-              src="https://images.ctfassets.net/usz05rcag1x3/3xrfXp4jzSWda6PfiuAlzW/2ec950b6b4d7dc5a4ca7a2e6c026697f/gatsby.png?w=60&h=60&q=50"
+              src="https://images.ctfassets.net/usz05rcag1x3/3xrfXp4jzSWda6PfiuAlzW/2ec950b6b4d7dc5a4ca7a2e6c026697f/gatsby.png?w=1200&h=1200&q=90&fm=webp"
             />
             &nbsp; + &nbsp;
             <img
               className="smallImage"
               alt="gatsby"
-              src="https://images.ctfassets.net/usz05rcag1x3/5hgOPLAFzhBe5LVS66skmY/ea72f74698a547ecc8bf7ac4469cecb9/contentful.png?w=60&h=60&q=50"
+              src="https://images.ctfassets.net/usz05rcag1x3/5hgOPLAFzhBe5LVS66skmY/ea72f74698a547ecc8bf7ac4469cecb9/contentful.png?w=120&h=120&q=90&fm=webp"
             />
             &nbsp; + &nbsp;
             <img
               className="smallImage"
               alt="netlify"
-              src="https://images.ctfassets.net/usz05rcag1x3/3N5hID2Er4NG6Bw15u0xWa/57c71b3ef3c46ca45d29de3b91f1d9a9/logomark.png?w=60&h=60&q=50"
+              src="https://images.ctfassets.net/usz05rcag1x3/3N5hID2Er4NG6Bw15u0xWa/57c71b3ef3c46ca45d29de3b91f1d9a9/logomark.png?w=120&h=120&q=90&fm=webp"
             />
             &nbsp; = ❤️
-            <Link to="https://github.com/mihaiserban/mihaiserban.dev" className="ml4">
+            <Link
+              to="https://github.com/mihaiserban/mihaiserban.dev"
+              className="ml4"
+              aria-label="Source code for mihaiserban.dev"
+            >
               [Source code]
             </Link>
           </div>

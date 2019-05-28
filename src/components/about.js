@@ -59,17 +59,22 @@ const About = props => {
   return (
     <div className="flex-parent flex-parent--row wrapper">
       <div className="flex-parent flex-parent--column container">
-        <Link to="/">
-          <img src={image.file.url} className="image" />
+        <Link to="/" aria-label="Home">
+          <img srcSet={image.fixed.srcSetWebp} className="image" alt="Headshot Mihai Serban" />
         </Link>
 
         <H2 className="mt8">
-          <Link to="/" className="mt32">
-            <span style={{ color: 'black' }}>{name}</span>
+          <Link to="/" className="mt32" aria-label="Home">
+            <span style={{ color: '#222' }}>{name}</span>
           </Link>
         </H2>
         <p className="mt8">
-          <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" /> {location}
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            size="sm"
+            style={{ width: '11px', height: '14px' }}
+          />{' '}
+          {location}
         </p>
         <p className="mt8">
           {description}
@@ -83,15 +88,24 @@ const About = props => {
         </p>
 
         <div className="flex-parent flex-parent--column mt32">
-          <Link to="/" className={classNames('menuLink', { active: currentPath === '' })}>
+          <Link
+            to="/"
+            aria-label="Home"
+            className={classNames('menuLink', { active: currentPath === '' })}
+          >
             About me
           </Link>
-          <Link to={medium} className={classNames('menuLink mt4')}>
+          <Link
+            aria-label="Head over to my Medium blog"
+            to={medium}
+            className={classNames('menuLink mt4')}
+          >
             Blog
             <FontAwesomeIcon icon={faExternalLinkAlt} className="ml8" />
           </Link>
 
           <Link
+            aria-label="Head over to my Bookshelf page"
             to="/bookshelf"
             className={classNames('menuLink mt4', {
               active: currentPath === '/bookshelf',
@@ -100,6 +114,7 @@ const About = props => {
             Bookshelf
           </Link>
           <Link
+            aria-label="Head over to my projects page"
             to="/projects"
             className={classNames('menuLink mt4', {
               active: currentPath === '/projects',
@@ -110,39 +125,39 @@ const About = props => {
         </div>
 
         <div className="mt32 flex-parent flex-parent--row">
-          <Link to={twitter}>
+          <Link to={twitter} aria-label="Head over to my Twitter">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faTwitter} />
             </div>
           </Link>
-          <Link to={linkedIn} className="ml8">
+          <Link to={linkedIn} className="ml8" aria-label="Head over to my LinkedIn">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faLinkedin} />
             </div>
           </Link>
-          <Link to={github} className="ml8">
+          <Link to={github} className="ml8" aria-label="Head over to my Github">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faGithub} />
             </div>
           </Link>
-          <Link to={stackoverflow} className="ml8">
+          <Link to={stackoverflow} className="ml8" aria-label="Head over to my StackOverflow">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faStackOverflow} />
             </div>
           </Link>
         </div>
         <div className="mt8 flex-parent flex-parent--row">
-          <Link to={medium}>
+          <Link to={medium} aria-label="Head over to my Medium blog">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faMedium} />
             </div>
           </Link>
-          <Link to={instagram} className="ml8">
+          <Link to={instagram} className="ml8" aria-label="Head over to my Instagram">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faInstagram} />
             </div>
           </Link>
-          <Link to={goodreads} className="ml8">
+          <Link to={goodreads} className="ml8" aria-label="Head over to my Goodreads">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faGoodreads} />
             </div>
@@ -183,15 +198,15 @@ const About = props => {
             transition: all 0.3s;
           }
           .socialIcon:hover {
-            color: #2195ff;
+            color: #1e56a9;
           }
           :global(.menuLink) {
             color: #222;
             border-bottom: 1px solid transparent;
           }
           :global(.menuLink:hover) {
-            color: #2195ff;
-            border-bottom: 1px solid #2195ff;
+            color: #1e56a9;
+            border-bottom: 1px solid #1e56a9;
           }
           :global(.active) {
             border-bottom: 1px solid #222;
@@ -222,10 +237,8 @@ const queryAbout = graphql`
       goodreads
       medium
       image {
-        file {
-          url
-          fileName
-          contentType
+        fixed(width: 150, quality: 90) {
+          srcSetWebp
         }
       }
       location

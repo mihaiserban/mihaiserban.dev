@@ -31,6 +31,20 @@ const Page = ({ data }) => {
           }}
         />
         <div className="flex-parent flex-parent--column mt16">
+          <H2>Education</H2>
+          <div className="flex-parent flex-parent--column">
+            {education.map(item => (
+              <>
+                <span className="mt8">{item.title}</span>
+                <span className="fw2 f6 mt4">
+                  {item.startDate} -
+{item.endDate}
+                </span>
+              </>
+            ))}
+          </div>
+        </div>
+        <div className="flex-parent flex-parent--column mt16">
           <H2>Platforms</H2>
           <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
             {platforms.map(({ title }) => (
@@ -50,22 +64,8 @@ const Page = ({ data }) => {
           </div>
         </div>
         <div className="flex-parent flex-parent--column mt16">
-          <H2>Education</H2>
-          <div className="flex-parent flex-parent--column mt8">
-            {education.map(item => (
-              <>
-                <span className="mt16">{item.title}</span>
-                <span className="fw2 f6 mt4">
-                  {item.startDate} -
-{item.endDate}
-                </span>
-              </>
-            ))}
-          </div>
-        </div>
-        <div className="flex-parent flex-parent--column mt16">
           <H2>Experience</H2>
-          <div className="flex-parent flex-parent--column mt8">
+          <div className="flex-parent flex-parent--column">
             {sortedExperience.map(item => (
               <>
                 <span className="mt16">{item.company}</span>

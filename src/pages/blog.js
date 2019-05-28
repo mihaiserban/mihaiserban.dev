@@ -21,7 +21,7 @@ const BlogIndex = ({ data }) => {
             <Box>
               {posts.map(({ node: post }) => (
                 <Text fontSize={2} key={post.title} mb={3}>
-                  <Link as={glink} to={`/blog/${post.slug}`} color="black">
+                  <Link as={glink} to={`/blog/${post.slug}`} color="#222">
                     {post.title}
                   </Link>
                   <Box pt={2}>

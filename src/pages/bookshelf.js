@@ -21,7 +21,7 @@ const Page = ({ data }) => {
         </p>
         <p className="mt8">
           If you want to suggest a book send me an email at{' '}
-          <a href="mailto:contact@mihaiserban.dev?subject=Book recommendation">
+          <a href="mailto:mihaiserban2@gmail.com?subject=Book recommendation">
             contact@mihaiserban.dev
           </a>
         </p>

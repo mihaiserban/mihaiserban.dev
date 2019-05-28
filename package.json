@@ -2,7 +2,7 @@
   "name": "mihaiserban.dev",
   "description": "source code for mihaiserban.dev",
   "version": "1.0.0",
-  "author": "Mihai Serban <contact@mihaiserban.dev>",
+  "author": "Mihai Serban <mihaiserban2@gmail.com",
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",

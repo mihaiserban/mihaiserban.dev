@@ -7,6 +7,7 @@ import { useTransition, animated } from "react-spring";
 import About from "./about";
 import SEO from "./SEO";
 import Link from "./link";
+import ThemeToggler from "./themeToggler";
 
 // Create some context for other components
 export const Context = React.createContext();
@@ -31,13 +32,17 @@ const Layout = ({ children, location }) => {
           <About width={sideMenuWidth} />
         </div>
         <div className="flex-parent flex-parent--column flex-parent--center-cross content">
-          <div>
+          <div className="contentContainer">
             {transitions.map(({ item, key, props }) => (
               <animated.div key={key} style={props}>
                 {children}
               </animated.div>
             ))}
+            <div className="themeToggler">
+              <ThemeToggler />
+            </div>
           </div>
+
           <div className="flex-parent flex-parent--row flex-parent--center-cross mt32">
             <img
               className="smallImage"
@@ -72,6 +77,9 @@ const Layout = ({ children, location }) => {
           max-width: 80%;
           width: 700px;
         }
+        .contentContainer {
+          position: relative;
+        }
         .content {
           padding-left: 32px;
           padding-right: 32px;
@@ -79,6 +87,11 @@ const Layout = ({ children, location }) => {
         .smallImage {
           width: 14px;
           height: auto;
+        }
+        .themeToggler {
+          position: absolute;
+          right: 0;
+          top: 16px;
         }
         @media screen and (max-width: 1003px) {
           .layout {

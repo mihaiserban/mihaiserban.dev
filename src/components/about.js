@@ -16,7 +16,6 @@ import {
 
 import { faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
-import ThemeToggler from './themeToggler';
 import { H1, H2, H3, H4, H5 } from './text/headings';
 import Link from './link';
 
@@ -161,9 +160,6 @@ const About = props => {
               <FontAwesomeIcon icon={faGoodreads} />
             </div>
           </Link>
-        </div>
-        <div className="mt16">
-          <ThemeToggler />
         </div>
       </div>
       <style jsx>

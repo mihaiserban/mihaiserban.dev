@@ -21,7 +21,7 @@ const Page = ({ data }) => {
         </p>
         <p className="mt8">
           If you want to suggest a book send me an{' '}
-          <a href={`mailto:${process.env.EMAIL}?subject=Book recommendation`}>email.</a>
+          <a href={`mailto:${process.env.GATSBY_EMAIL}?subject=Book recommendation`}>email.</a>
         </p>
         <ul className="flex-parent flex-parent--column mt16 list">
           {books.map(book => (

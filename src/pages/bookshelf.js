@@ -20,10 +20,8 @@ const Page = ({ data }) => {
           <span className="bold">bold</span>. The list is not in a particular order.
         </p>
         <p className="mt8">
-          If you want to suggest a book send me an email at{' '}
-          <a href="mailto:mihaiserban2@gmail.com?subject=Book recommendation">
-            contact@mihaiserban.dev
-          </a>
+          If you want to suggest a book send me an{' '}
+          <a href={`mailto:${process.env.EMAIL}?subject=Book recommendation`}>email.</a>
         </p>
         <ul className="flex-parent flex-parent--column mt16 list">
           {books.map(book => (

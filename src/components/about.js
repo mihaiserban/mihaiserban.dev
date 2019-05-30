@@ -82,7 +82,7 @@ const About = props => {
         </span>
         <p className="mt16 description">
           Want to hire me for your next project?{' '}
-          <a href="mailto:mihaiserban2@gmail.com?subject=I would like to hire you">Get in touch.</a>
+          <a href={`mailto:${process.env.EMAIL}?subject=I would like to hire you`}>Get in touch.</a>
         </p>
 
         <div className="flex-parent flex-parent--column mt32">

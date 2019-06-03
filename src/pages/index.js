@@ -19,8 +19,6 @@ const Page = ({ data }) => {
   const { nodes: technologies } = data.allContentfulTechnologies;
   const { platforms, body, education, experience } = data.contentfulAbout;
 
-  const sortedExperience = experience.sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
-
   return (
     <Layout>
       <div>
@@ -67,7 +65,10 @@ const Page = ({ data }) => {
                   fluid={tech.image.fluid}
                   alt={tech.title}
                   className="imageTech"
-                  imgStyle={{ objectFit: 'contain', background: 'var(--alternate-bg)' }}
+                  imgStyle={{
+                    objectFit: 'contain',
+                    background: 'var(--alternate-bg)',
+                  }}
                 />
                 <span className="text mt16">{tech.title}</span>
               </div>
@@ -77,15 +78,21 @@ const Page = ({ data }) => {
         <div className="flex-parent flex-parent--column mt16">
           <H2>Experience</H2>
           <div className="flex-parent flex-parent--column">
-            {sortedExperience.map(item => (
+            {experience.map(item => (
               <div className="flex-parent flex-parent--column" key={item.company}>
                 <span className="mt16">
-                  {item.title} -
-{item.company}
+                  {item.title}
+                  {item.company && (
+                    <>
+                      {' '}
+                      &nbsp;-&nbsp;
+                      {item.company}
+                    </>
+                  )}
                 </span>
                 <span className="fw2 f6 mt4">
-                  {item.startDate} -
-{item.endDate}
+                  {item.startDate} &nbsp;-&nbsp;
+                  {item.endDate && <> {item.endDate}</>}
                   <div
                     className="mt16"
                     dangerouslySetInnerHTML={{

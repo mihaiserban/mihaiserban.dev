@@ -24,16 +24,16 @@ module.exports = {
         name: `images`,
       },
     },
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingId: process.env.GA_KEY,
-        // Puts tracking script in the head instead of the body
-        head: true,
-        // enable ip anonymization
-        anonymize: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-gtag`,
+    //   options: {
+    //     trackingId: process.env.GA_KEY,
+    //     // Puts tracking script in the head instead of the body
+    //     head: true,
+    //     // enable ip anonymization
+    //     anonymize: true,
+    //   },
+    // },
     {
       resolve: 'gatsby-source-contentful',
       options: {

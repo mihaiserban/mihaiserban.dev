@@ -84,7 +84,6 @@ const Page = ({ data }) => {
                   {item.title}
                   {item.company && (
                     <>
-                      {' '}
                       &nbsp;-&nbsp;
                       {item.company}
                     </>

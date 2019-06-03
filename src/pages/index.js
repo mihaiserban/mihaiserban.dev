@@ -79,7 +79,10 @@ const Page = ({ data }) => {
           <div className="flex-parent flex-parent--column">
             {sortedExperience.map(item => (
               <div className="flex-parent flex-parent--column" key={item.company}>
-                <span className="mt16">{item.company}</span>
+                <span className="mt16">
+                  {item.title} -
+{item.company}
+                </span>
                 <span className="fw2 f6 mt4">
                   {item.startDate} -
 {item.endDate}
@@ -152,6 +155,7 @@ export const pageQuery = graphql`
       }
       experience {
         id
+        title
         company
         jobDescription {
           childMarkdownRemark {

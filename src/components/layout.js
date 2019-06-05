@@ -79,6 +79,7 @@ const Layout = ({ children, location }) => {
         }
         .contentContainer {
           position: relative;
+          width: 100%;
         }
         .content {
           padding-left: 32px;

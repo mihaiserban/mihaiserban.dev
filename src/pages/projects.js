@@ -65,14 +65,14 @@ const BlogIndex = ({ data }) => {
             margin-left: -4px;
           }
           .tag {
-            padding-top: 4px;
-            padding-bottom: 4px;
+            padding-top: 2px;
+            padding-bottom: 2px;
             padding-left: 12px;
             padding-right: 12px;
             border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
-            font-size: 14px;
+            font-size: 12px;
           }
           .divider {
             width: 100%;

@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 
 import Link from '../components/link';
 import Layout from '../components/layout';
-import { H1, H3 } from '../components/text/headings';
 
 const BlogIndex = ({ data }) => {
   const { edges: projects } = data.allContentfulProject;
@@ -12,7 +11,7 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <div>
-        <H1>Projects</H1>
+        <h1>Projects</h1>
         <div className="flex-parent flex-parent--column mt32">
           {projects.map(({ node: project }, index) => {
             if (project.hidden && project.hidden === true) return null;
@@ -34,16 +33,16 @@ const BlogIndex = ({ data }) => {
                     )}
                   <div className="flex-parent flex-parent--column">
                     <Link as={glink} to={`/project/${project.slug}`} className="projectLink">
-                      <H3>{project.title}</H3>
+                      <h3>{project.title}</h3>
                     </Link>
-                    <span className="fw2 f6 mt4">
+                    <span className="mt4">
                       {project.startDate} -
 {project.endDate}
                     </span>
                     {project.technologies !== null && (
                       <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                         {project.technologies.map(({ title }) => (
-                          <span className="tag fw2 f6" key={title}>
+                          <span className="tag" key={title}>
                             {title}
                           </span>
                         ))}
@@ -66,13 +65,14 @@ const BlogIndex = ({ data }) => {
             margin-left: -4px;
           }
           .tag {
-            padding-top: 3px;
-            padding-bottom: 3px;
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 12px;
+            padding-right: 12px;
             border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
+            font-size: 14px;
           }
           .divider {
             width: 100%;

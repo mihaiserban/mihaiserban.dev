@@ -67,8 +67,7 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p {
+h6 {
   margin: 0;
 }
 a {
@@ -90,6 +89,18 @@ svg {
 svg path,
 svg circle {
   shape-rendering: geometricprecision;
+}
+
+img {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
 }
 
 /* Customize website's scrollbar like Mac OS

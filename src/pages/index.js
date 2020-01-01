@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link as glink, graphql } from 'gatsby';
-import classNames from 'classnames';
 import Img from 'gatsby-image';
 
 import Link from '../components/link';
@@ -32,9 +31,10 @@ const Page = ({ data }) => {
             {education.map(item => (
               <div key={item.title} className="flex-parent flex-parent--column">
                 <span className="mt8">{item.title}</span>
-                <span className="mt4">
-                  {item.startDate} -
-{item.endDate}
+                <span className="mt4 italic">
+                  {item.startDate}
+                  &nbsp;-&nbsp;
+                  {item.endDate}
                 </span>
               </div>
             ))}
@@ -128,14 +128,14 @@ const Page = ({ data }) => {
             margin-left: -4px;
           }
           .tag {
-            padding-top: 4px;
-            padding-bottom: 4px;
+            padding-top: 2px;
+            padding-bottom: 2px;
             padding-left: 12px;
             padding-right: 12px;
             border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
-            font-size: 14px;
+            font-size: 12px;
           }
         `}
       </style>

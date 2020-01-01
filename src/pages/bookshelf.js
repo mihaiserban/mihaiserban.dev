@@ -25,7 +25,7 @@ const Page = ({ data }) => {
         <ul className="flex-parent flex-parent--column mt16 list">
           {books.map(book => (
             <Link to={book.url} key={book.id}>
-              <li className={classNames({ fw6: book.favorite })}>{book.title}</li>
+              <li className={classNames({ bold: book.favorite })}>{book.title}</li>
             </Link>
           ))}
         </ul>
@@ -34,7 +34,11 @@ const Page = ({ data }) => {
         {`
           .list {
             padding-left: 0px;
-            list-style: square;
+            margin: 0px;
+            list-style: none;
+          }
+          .list li {
+            margin: 0px;
           }
         `}
       </style>

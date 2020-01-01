@@ -5,9 +5,6 @@ import Img from 'gatsby-image';
 
 import Link from '../components/link';
 import Layout from '../components/layout';
-import { H1, H2 } from '../components/text/headings';
-
-import Markdown from '../components/markdown';
 
 const startCareer = new Date('2010-05-01');
 
@@ -22,20 +19,20 @@ const Page = ({ data }) => {
   return (
     <Layout>
       <div>
-        <H1>About me</H1>
-        <Markdown
+        <h1>About me</h1>
+        <div
           className="mt16"
           dangerouslySetInnerHTML={{
             __html: body.childMarkdownRemark.html,
           }}
         />
         <div className="flex-parent flex-parent--column mt16">
-          <H2>Education</H2>
+          <h2>Education</h2>
           <div className="flex-parent flex-parent--column">
             {education.map(item => (
               <div key={item.title} className="flex-parent flex-parent--column">
                 <span className="mt8">{item.title}</span>
-                <span className="fw2 f6 mt4">
+                <span className="mt4">
                   {item.startDate} -
 {item.endDate}
                 </span>
@@ -44,17 +41,17 @@ const Page = ({ data }) => {
           </div>
         </div>
         <div className="flex-parent flex-parent--column mt16">
-          <H2>Platforms</H2>
+          <h2>Platforms</h2>
           <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
             {platforms.map(({ title }) => (
-              <span className="tag fw2 f6" key={title}>
+              <span className="tag" key={title}>
                 {title}
               </span>
             ))}
           </div>
         </div>
         <div className="flex-parent flex-parent--column mt16">
-          <H2>Technologies</H2>
+          <h2>Technologies</h2>
           <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
             {technologies.map(tech => (
               <div
@@ -76,11 +73,11 @@ const Page = ({ data }) => {
           </div>
         </div>
         <div className="flex-parent flex-parent--column mt16">
-          <H2>Experience</H2>
+          <h2>Experience</h2>
           <div className="flex-parent flex-parent--column">
             {experience.map(item => (
               <div className="flex-parent flex-parent--column" key={item.company}>
-                <span className="mt16">
+                <h5 className="mt16">
                   {item.title}
                   {item.company && (
                     <>
@@ -88,17 +85,17 @@ const Page = ({ data }) => {
                       {item.company}
                     </>
                   )}
-                </span>
-                <span className="fw2 f6 mt4">
+                </h5>
+                <span className="mt4 italic">
                   {item.startDate} &nbsp;-&nbsp;
                   {item.endDate && <> {item.endDate}</>}
-                  <div
-                    className="mt16"
-                    dangerouslySetInnerHTML={{
-                      __html: item.jobDescription.childMarkdownRemark.html,
-                    }}
-                  />
                 </span>
+                <div
+                  className="mt16"
+                  dangerouslySetInnerHTML={{
+                    __html: item.jobDescription.childMarkdownRemark.html,
+                  }}
+                />
               </div>
             ))}
           </div>
@@ -131,13 +128,14 @@ const Page = ({ data }) => {
             margin-left: -4px;
           }
           .tag {
-            padding-top: 3px;
-            padding-bottom: 3px;
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 12px;
+            padding-right: 12px;
             border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
+            font-size: 14px;
           }
         `}
       </style>

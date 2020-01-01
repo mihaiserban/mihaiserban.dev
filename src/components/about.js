@@ -16,7 +16,6 @@ import {
 
 import { faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { H1, H2, H3, H4, H5 } from './text/headings';
 import Link from './link';
 
 const fade = keyframes`
@@ -63,11 +62,11 @@ const About = props => {
           <Img fixed={image.fixed} className="image" alt="Headshot Mihai Serban" />
         </Link>
 
-        <H2 className="mt8">
+        <h2 className="mt8">
           <Link to="/" className="mt32" aria-label="Home">
             <span style={{ color: 'var(--primary-color)' }}>{name}</span>
           </Link>
-        </H2>
+        </h2>
         <p className="mt8">
           <FontAwesomeIcon
             icon={faMapMarkerAlt}

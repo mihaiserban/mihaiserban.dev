@@ -6,13 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Lightbox from 'react-image-lightbox';
-import Markdown from '../components/markdown';
 import Layout from '../components/layout';
 import SEO from '../components/SEO';
 
 import Link from '../components/link';
-
-import { H1, H5 } from '../components/text/headings';
 
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 
@@ -38,22 +35,22 @@ const Template = ({ data }) => {
       <article>
         <div>
           <div className="flex-parent flex-parent--row flex-parent--center-cross">
-            <H1>{project.title}</H1>
+            <h1>{project.title}</h1>
             {project.url !== null && (
               <Link to={project.url} className="ml16">
                 <FontAwesomeIcon icon={faExternalLinkAlt} color="var(--primary-color)" />
               </Link>
             )}
           </div>
-          <span className="fw2 f6 mt4">
+          <span className="mt4">
             {project.startDate} -
 {project.endDate}
           </span>
 
           {project.context !== null && (
             <div className="flex-parent flex-parent--column mt16">
-              <H5>Context</H5>
-              <Markdown
+              <h5>Context</h5>
+              <div
                 dangerouslySetInnerHTML={{
                   __html: project.context.childMarkdownRemark.html,
                 }}
@@ -65,10 +62,10 @@ const Template = ({ data }) => {
 
           {project.technologies !== null && (
             <div className="flex-parent flex-parent--column mt16">
-              <H5>Technologies</H5>
+              <h5>Technologies</h5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                 {project.technologies.map(({ title }) => (
-                  <span className="tag fw2 f6" key={title}>
+                  <span className="tag" key={title}>
                     {title}
                   </span>
                 ))}
@@ -78,10 +75,10 @@ const Template = ({ data }) => {
 
           {project.industries !== null && (
             <div className="flex-parent flex-parent--column mt16">
-              <H5>Industry</H5>
+              <h5>Industry</h5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                 {project.industries.map(({ title }) => (
-                  <span className="tag fw2 f6" key={title}>
+                  <span className="tag" key={title}>
                     {title}
                   </span>
                 ))}
@@ -91,10 +88,10 @@ const Template = ({ data }) => {
 
           {project.platforms !== null && (
             <div className="flex-parent flex-parent--column mt16">
-              <H5>Platforms</H5>
+              <h5>Platforms</h5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
                 {project.platforms.map(({ title }) => (
-                  <span className="tag fw2 f6" key={title}>
+                  <span className="tag" key={title}>
                     {title}
                   </span>
                 ))}
@@ -104,8 +101,8 @@ const Template = ({ data }) => {
 
           {project.responsabilities !== null && (
             <div className="flex-parent flex-parent--column mt16">
-              <H5>Responsabilities</H5>
-              <Markdown
+              <h5>Responsabilities</h5>
+              <div
                 dangerouslySetInnerHTML={{
                   __html: project.responsabilities.childMarkdownRemark.html,
                 }}
@@ -119,7 +116,7 @@ const Template = ({ data }) => {
             <div className="flex-parent flex-parent--column flex-parent--center-main mt16">
               {filteredVideos.length > 0 && (
                 <>
-                  <H5 className="mb16">Video</H5>
+                  <h5 className="mb16">Video</h5>
                   {filteredVideos.map(image => (
                     <ReactPlayer
                       key={image.file.url}
@@ -134,7 +131,7 @@ const Template = ({ data }) => {
               )}
               {filteredImages.length > 0 && (
                 <>
-                  <H5 className="mb16">Gallery</H5>
+                  <h5 className="mb16">Gallery</h5>
                   <img
                     className="imageProject mb24"
                     src={filteredImages[0].file.url}
@@ -178,13 +175,14 @@ const Template = ({ data }) => {
             margin-left: -4px;
           }
           .tag {
-            padding-top: 3px;
-            padding-bottom: 3px;
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 12px;
+            padding-right: 12px;
             border: 1px solid var(--separator-color);
             border-radius: 15px;
             margin: 4px;
+            font-size: 14px;
           }
         `}
       </style>

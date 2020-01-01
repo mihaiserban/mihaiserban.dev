@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import Link from '../components/link';
 import Layout from '../components/layout';
-import { H1 } from '../components/text/headings';
 
 const Page = ({ data }) => {
   const { nodes: books } = data.allContentfulBook;
@@ -12,7 +11,7 @@ const Page = ({ data }) => {
   return (
     <Layout>
       <div>
-        <H1>Bookshelf</H1>
+        <h1>Bookshelf</h1>
         <p className="mt16">
           I enjoy reading/listening to books and always curious what others are reading. Mostly I
           enjoy reading from categories such as Science Fiction or Personal Development. I thought
@@ -34,7 +33,7 @@ const Page = ({ data }) => {
       <style jsx>
         {`
           .list {
-            padding-left: 18px;
+            padding-left: 0px;
             list-style: square;
           }
         `}

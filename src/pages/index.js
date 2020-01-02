@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link as glink, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import React from "react";
+import { Link as glink, graphql } from "gatsby";
+import Img from "gatsby-image";
 
-import Link from '../components/link';
-import Layout from '../components/layout';
+import Link from "../components/link";
+import Layout from "../components/layout";
 
-const startCareer = new Date('2010-05-01');
+const startCareer = new Date("2010-05-01");
 
 function diffYears(dt1, dt2) {
   return dt2.getFullYear() - dt1.getFullYear();
@@ -22,7 +22,7 @@ const Page = ({ data }) => {
         <div
           className="mt16"
           dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.html,
+            __html: body.childMarkdownRemark.html
           }}
         />
         <div className="flex-parent flex-parent--column mt16">
@@ -63,8 +63,8 @@ const Page = ({ data }) => {
                   alt={tech.title}
                   className="imageTech"
                   imgStyle={{
-                    objectFit: 'contain',
-                    background: 'var(--alternate-bg)',
+                    objectFit: "contain",
+                    background: "var(--alternate-bg)"
                   }}
                 />
                 <span className="text mt16">{tech.title}</span>
@@ -76,7 +76,10 @@ const Page = ({ data }) => {
           <h2>Experience</h2>
           <div className="flex-parent flex-parent--column">
             {experience.map(item => (
-              <div className="flex-parent flex-parent--column" key={item.company}>
+              <div
+                className="flex-parent flex-parent--column"
+                key={item.company}
+              >
                 <h5 className="mt16">
                   {item.title}
                   {item.company && (
@@ -88,12 +91,12 @@ const Page = ({ data }) => {
                 </h5>
                 <span className="mt4 italic">
                   {item.startDate} &nbsp;-&nbsp;
-                  {item.endDate && <> {item.endDate}</>}
+                  {item.endDate ? <>{item.endDate}</> : <>present</>}
                 </span>
                 <div
                   className="mt16"
                   dangerouslySetInnerHTML={{
-                    __html: item.jobDescription.childMarkdownRemark.html,
+                    __html: item.jobDescription.childMarkdownRemark.html
                   }}
                 />
               </div>

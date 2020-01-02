@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { graphql } from 'gatsby';
-import ReactPlayer from 'react-player';
+import React, { useState } from "react";
+import { graphql } from "gatsby";
+import ReactPlayer from "react-player";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-import Lightbox from 'react-image-lightbox';
-import Layout from '../components/layout';
-import SEO from '../components/SEO';
+import Lightbox from "react-image-lightbox";
+import Layout from "../components/layout";
+import SEO from "../components/SEO";
 
-import Link from '../components/link';
+import Link from "../components/link";
 
-import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 const Template = ({ data }) => {
   if (!data) return null;
@@ -22,10 +22,10 @@ const Template = ({ data }) => {
   const project = data.contentfulProject;
 
   const filteredImages = project.images.filter(
-    image => image.file.contentType.indexOf('image') !== -1
+    image => image.file.contentType.indexOf("image") !== -1
   );
   const filteredVideos = project.images.filter(
-    image => image.file.contentType.indexOf('video') !== -1
+    image => image.file.contentType.indexOf("video") !== -1
   );
   const images = filteredImages.map(image => image.file.url);
 
@@ -38,13 +38,16 @@ const Template = ({ data }) => {
             <h1>{project.title}</h1>
             {project.url !== null && (
               <Link to={project.url} className="ml16">
-                <FontAwesomeIcon icon={faExternalLinkAlt} color="var(--primary-color)" />
+                <FontAwesomeIcon
+                  icon={faExternalLinkAlt}
+                  color="var(--primary-color)"
+                />
               </Link>
             )}
           </div>
           <span className="mt4">
-            {project.startDate} -
-{project.endDate}
+            {project.startDate} &nbsp;-&nbsp;
+            {project.endDate ? <>{project.endDate}</> : <>present</>}
           </span>
 
           {project.context !== null && (
@@ -52,7 +55,7 @@ const Template = ({ data }) => {
               <h5>Context</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: project.context.childMarkdownRemark.html,
+                  __html: project.context.childMarkdownRemark.html
                 }}
                 id="top"
                 className="content"
@@ -104,7 +107,7 @@ const Template = ({ data }) => {
               <h5>Responsabilities</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: project.responsabilities.childMarkdownRemark.html,
+                  __html: project.responsabilities.childMarkdownRemark.html
                 }}
                 id="top"
                 className="content"
@@ -124,7 +127,7 @@ const Template = ({ data }) => {
                       controls
                       width="100%"
                       height="auto"
-                      className="mb24 noselect"
+                      className="mb24 noselect video"
                     />
                   ))}
                 </>
@@ -152,9 +155,11 @@ const Template = ({ data }) => {
               onMovePrevRequest={() =>
                 setPhotoIndex((photoIndex + images.length - 1) % images.length)
               }
-              onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % images.length)}
+              onMoveNextRequest={() =>
+                setPhotoIndex((photoIndex + 1) % images.length)
+              }
               imagePadding={64}
-              enableZoom={false}
+              enableZoom={true}
             />
           )}
         </div>
@@ -168,8 +173,13 @@ const Template = ({ data }) => {
           .imageProject {
             max-width: 100%;
             height: auto;
-            object-fit: contain;
+            max-height: 50vw;
+            object-fit: cover;
             cursor: pointer;
+            border: 1px solid var(--separator-color);
+          }
+          :global(.video) {
+            border: 1px solid var(--separator-color);
           }
           .tags {
             margin-left: -4px;

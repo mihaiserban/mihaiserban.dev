@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link as glink, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import React from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
 
-import Link from '../components/link';
-import Layout from '../components/layout';
+import Link from "../components/link";
+import Layout from "../components/layout";
 
 const BlogIndex = ({ data }) => {
   const { edges: projects } = data.allContentfulProject;
@@ -19,25 +19,37 @@ const BlogIndex = ({ data }) => {
               <div className="flex-parent flex-parent--column" key={project.id}>
                 <div className="flex-parent flex-parent--row projectContainer">
                   {project.previewImage &&
-                    project.previewImage.file.contentType.indexOf('image') !== -1 && (
-                      <Link as={glink} to={`/project/${project.slug}`}>
-                        <Img
-                          className="imageProjects mr24"
-                          fixed={project.previewImage.fixed}
-                          alt={project.previewImage.title}
-                          imgStyle={{
-                            objectFit: 'contain',
-                          }}
-                        />
+                    project.previewImage.file.contentType.indexOf("image") !==
+                      -1 && (
+                      <Link to={`/project/${project.slug}`} className=" mr24">
+                        {project.previewImage.localFile.extension === "svg" ? (
+                          <img
+                            className="imageProjects"
+                            style={{ objectFit: "fill" }}
+                            src={project.previewImage.localFile.publicURL}
+                          />
+                        ) : (
+                          <Img
+                            className="imageProjects"
+                            fixed={project.previewImage.fixed}
+                            alt={project.previewImage.title}
+                            imgStyle={{
+                              objectFit: "contain"
+                            }}
+                          />
+                        )}
                       </Link>
                     )}
                   <div className="flex-parent flex-parent--column">
-                    <Link as={glink} to={`/project/${project.slug}`} className="projectLink">
+                    <Link
+                      to={`/project/${project.slug}`}
+                      className="projectLink"
+                    >
                       <h3>{project.title}</h3>
                     </Link>
                     <span className="mt4">
-                      {project.startDate} -
-{project.endDate}
+                      {project.startDate} &nbsp;-&nbsp;
+                      {project.endDate ? <>{project.endDate}</> : <>present</>}
                     </span>
                     {project.technologies !== null && (
                       <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
@@ -49,11 +61,15 @@ const BlogIndex = ({ data }) => {
                       </div>
                     )}
                     {project.context && (
-                      <p className="mt8">{project.context.childMarkdownRemark.excerpt}</p>
+                      <p className="mt8">
+                        {project.context.childMarkdownRemark.excerpt}
+                      </p>
                     )}
                   </div>
                 </div>
-                {index < projects.length - 1 && <div className="divider mb32 mt32" />}
+                {index < projects.length - 1 && (
+                  <div className="divider mb32 mt32" />
+                )}
               </div>
             );
           })}
@@ -92,6 +108,7 @@ const BlogIndex = ({ data }) => {
             color: var(--textLink);
           }
           :global(.imageProjects) {
+            min-width: 200px;
             width: 200px;
             max-height: 200px;
             height: auto;
@@ -162,6 +179,10 @@ export const pageQuery = graphql`
               srcSet
               srcWebp
               srcSetWebp
+            }
+            localFile {
+              extension
+              publicURL
             }
           }
           technologies {

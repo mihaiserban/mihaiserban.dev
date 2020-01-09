@@ -169,7 +169,10 @@ const Page = () => {
           <li>AirPods</li>
           <li>iPhone X</li>
           <li>
-            <a href="https://www.samsung.com/us/business/products/computing/monitors/800-series/cj890-series-43-curved-lc43j890dknxza/">
+            <a
+              target="_blank"
+              href="https://www.samsung.com/us/business/products/computing/monitors/800-series/cj890-series-43-curved-lc43j890dknxza/"
+            >
               C43J890DKN - 43" Samsung Super Ultra-Wide Monitor
             </a>{" "}
             - with USB-C support ❤️

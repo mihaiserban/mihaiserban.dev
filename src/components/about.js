@@ -1,9 +1,9 @@
-import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
-import styled, { keyframes } from 'styled-components';
-import classNames from 'classnames';
-import Img from 'gatsby-image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
+import styled, { keyframes } from "styled-components";
+import classNames from "classnames";
+import Img from "gatsby-image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
   faLinkedin,
@@ -11,12 +11,15 @@ import {
   faStackOverflow,
   faInstagram,
   faGoodreads,
-  faMedium,
-} from '@fortawesome/free-brands-svg-icons';
+  faMedium
+} from "@fortawesome/free-brands-svg-icons";
 
-import { faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMapMarkerAlt,
+  faExternalLinkAlt
+} from "@fortawesome/free-solid-svg-icons";
 
-import Link from './link';
+import Link from "./link";
 
 const fade = keyframes`
   from {
@@ -48,31 +51,37 @@ const About = props => {
         medium,
         image,
         location,
-        description,
-      },
-    },
+        description
+      }
+    }
   } = props;
 
-  const currentPath = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '');
+  const currentPath =
+    typeof window !== "undefined" &&
+    window.location.pathname.replace(/\/$/, "");
 
   return (
     <div className="flex-parent flex-parent--row wrapper">
       <div className="flex-parent flex-parent--column container">
         <Link to="/" aria-label="Home">
-          <Img fixed={image.fixed} className="image" alt="Headshot Mihai Serban" />
+          <Img
+            fixed={image.fixed}
+            className="image"
+            alt="Headshot Mihai Serban"
+          />
         </Link>
 
         <h2 className="mt8">
           <Link to="/" className="mt32" aria-label="Home">
-            <span style={{ color: 'var(--primary-color)' }}>{name}</span>
+            <span style={{ color: "var(--primary-color)" }}>{name}</span>
           </Link>
         </h2>
         <p className="mt8">
           <FontAwesomeIcon
             icon={faMapMarkerAlt}
             size="sm"
-            style={{ width: '11px', height: '14px' }}
-          />{' '}
+            style={{ width: "11px", height: "14px" }}
+          />{" "}
           {location}
         </p>
         <span className="mt8 description">
@@ -80,8 +89,10 @@ const About = props => {
           <AnimatedBlock>▌</AnimatedBlock>
         </span>
         <p className="mt16 description">
-          Want to hire me for your next project?{' '}
-          <a href={`mailto:${process.env.GATSBY_EMAIL}?subject=I would like to hire you`}>
+          Want to hire me for your next project?{" "}
+          <a
+            href={`mailto:${process.env.GATSBY_EMAIL}?subject=I would like to hire you`}
+          >
             Get in touch.
           </a>
         </p>
@@ -90,14 +101,14 @@ const About = props => {
           <Link
             to="/"
             aria-label="Home"
-            className={classNames('menuLink', { active: currentPath === '' })}
+            className={classNames("menuLink", { active: currentPath === "" })}
           >
             About me
           </Link>
           <Link
             aria-label="Head over to my Medium blog"
             to={medium}
-            className={classNames('menuLink mt4')}
+            className={classNames("menuLink mt4")}
           >
             Blog
             <FontAwesomeIcon icon={faExternalLinkAlt} className="ml8" />
@@ -106,8 +117,8 @@ const About = props => {
           <Link
             aria-label="Head over to my Bookshelf page"
             to="/bookshelf"
-            className={classNames('menuLink mt4', {
-              active: currentPath === '/bookshelf',
+            className={classNames("menuLink mt4", {
+              active: currentPath === "/bookshelf"
             })}
           >
             Bookshelf
@@ -115,11 +126,20 @@ const About = props => {
           <Link
             aria-label="Head over to my projects page"
             to="/projects"
-            className={classNames('menuLink mt4', {
-              active: currentPath === '/projects',
+            className={classNames("menuLink mt4", {
+              active: currentPath === "/projects"
             })}
           >
             Projects
+          </Link>
+          <Link
+            aria-label="Head over to my tech stack page"
+            to="/uses"
+            className={classNames("menuLink mt4", {
+              active: currentPath === "/uses"
+            })}
+          >
+            Uses
           </Link>
         </div>
 
@@ -129,7 +149,11 @@ const About = props => {
               <FontAwesomeIcon icon={faTwitter} />
             </div>
           </Link>
-          <Link to={linkedIn} className="ml8" aria-label="Head over to my LinkedIn">
+          <Link
+            to={linkedIn}
+            className="ml8"
+            aria-label="Head over to my LinkedIn"
+          >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faLinkedin} />
             </div>
@@ -139,7 +163,11 @@ const About = props => {
               <FontAwesomeIcon icon={faGithub} />
             </div>
           </Link>
-          <Link to={stackoverflow} className="ml8" aria-label="Head over to my StackOverflow">
+          <Link
+            to={stackoverflow}
+            className="ml8"
+            aria-label="Head over to my StackOverflow"
+          >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faStackOverflow} />
             </div>
@@ -151,12 +179,20 @@ const About = props => {
               <FontAwesomeIcon icon={faMedium} />
             </div>
           </Link>
-          <Link to={instagram} className="ml8" aria-label="Head over to my Instagram">
+          <Link
+            to={instagram}
+            className="ml8"
+            aria-label="Head over to my Instagram"
+          >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faInstagram} />
             </div>
           </Link>
-          <Link to={goodreads} className="ml8" aria-label="Head over to my Goodreads">
+          <Link
+            to={goodreads}
+            className="ml8"
+            aria-label="Head over to my Goodreads"
+          >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faGoodreads} />
             </div>
@@ -172,7 +208,7 @@ const About = props => {
             width: ${width}px;
           }
           .wrapper:after {
-            content: '';
+            content: "";
             background: linear-gradient(
               180deg,
               var(--separator-color) 0,
@@ -225,7 +261,10 @@ const About = props => {
 };
 
 const SEO = props => (
-  <StaticQuery query={queryAbout} render={data => <About {...props} data={data} />} />
+  <StaticQuery
+    query={queryAbout}
+    render={data => <About {...props} data={data} />}
+  />
 );
 
 export default SEO;

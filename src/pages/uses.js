@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as glink, graphql } from "gatsby";
 import classNames from "classnames";
+import Img from "gatsby-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
@@ -139,6 +140,11 @@ const Page = () => {
             </a>
           </li>
           <li>
+            <a href="https://www.figma.com/" target="_blank">
+              Figma
+            </a>
+          </li>
+          <li>
             <a href="https://www.discordapp.com" target="_blank">
               Discord
             </a>
@@ -189,6 +195,7 @@ const Page = () => {
           <li>Storage - 2x Kingston A400 480 GB 2.5" Solid State Drive </li>
           <li>Video Card - Sapphire Radeon RX 580 8 GB PULSE Video Card </li>
         </ul>
+        <img src="/images/desk.jpg" alt="Battle station" />
       </div>
       <style jsx>
         {`

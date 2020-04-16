@@ -195,7 +195,11 @@ const Page = () => {
           <li>Storage - 2x Kingston A400 480 GB 2.5" Solid State Drive </li>
           <li>Video Card - Sapphire Radeon RX 580 8 GB PULSE Video Card </li>
         </ul>
-        <img src="/images/desk.jpg" alt="Battle station" />
+        <img
+          src="/images/desk.jpg"
+          alt="Battle station"
+          className="deskSetup"
+        />
       </div>
       <style jsx>
         {`

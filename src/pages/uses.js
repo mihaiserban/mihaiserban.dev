@@ -187,8 +187,8 @@ const Page = () => {
         <h3>PC Build</h3>
         <ul className="list">
           <li>Case - NZXT H510</li>
-          <li>CPU - AMD Ryzen 7 2700X 3.7 GHz 8-Core Processor</li>
-          <li>Motherboard - Gigabyte B450 AORUS M Micro ATX AM4 </li>
+          <li>CPU - Intel i5 9600KF</li>
+          <li>Motherboard - Gigabyte Z390 Designare</li>
           <li>
             Memory - Kingston HyperX Predator RGB 16 GB (2 x 8 GB) DDR4-3200
           </li>

@@ -1,3 +1,34 @@
+/* ./src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "-apple-system BlinkMacSystemFont Segoe UI Roboto Oxygen Ubuntu Cantarell Fira Sans Droid Sans Helvetica Neue sans-serif";
+  }
+  h1 {
+    @apply text-3xl;
+    @apply font-normal;
+  }
+  h2 {
+    @apply text-2xl;
+    @apply font-medium;
+  }
+  h3 {
+    @apply text-xl;
+    @apply font-semibold;
+  }
+  h4 {
+    @apply text-lg;
+    @apply font-semibold;
+  }
+  h5 {
+    @apply text-base;
+    @apply font-bold;
+  }
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
@@ -127,14 +158,6 @@ Not supports in Firefox and IE */
   display: none;
 }
 
-.bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style: italic;
-}
-
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -143,4 +166,8 @@ Not supports in Firefox and IE */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+.md-remark > p {
+  margin-bottom: 1rem;
 }

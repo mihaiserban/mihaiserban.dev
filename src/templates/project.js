@@ -22,12 +22,12 @@ const Template = ({ data }) => {
   const project = data.contentfulProject;
 
   const filteredImages = project.images.filter(
-    image => image.file.contentType.indexOf("image") !== -1
+    (image) => image.file.contentType.indexOf("image") !== -1
   );
   const filteredVideos = project.images.filter(
-    image => image.file.contentType.indexOf("video") !== -1
+    (image) => image.file.contentType.indexOf("video") !== -1
   );
-  const images = filteredImages.map(image => image.file.url);
+  const images = filteredImages.map((image) => image.file.url);
 
   return (
     <Layout>
@@ -37,7 +37,7 @@ const Template = ({ data }) => {
           <div className="flex-parent flex-parent--row flex-parent--center-cross">
             <h1>{project.title}</h1>
             {project.url !== null && (
-              <Link to={project.url} className="ml16">
+              <Link to={project.url} className="ml-16">
                 <FontAwesomeIcon
                   icon={faExternalLinkAlt}
                   color="var(--primary-color)"
@@ -45,28 +45,28 @@ const Template = ({ data }) => {
               </Link>
             )}
           </div>
-          <span className="mt4">
+          <span className="mt-4">
             {project.startDate} &nbsp;-&nbsp;
             {project.endDate ? <>{project.endDate}</> : <>present</>}
           </span>
 
           {project.context !== null && (
-            <div className="flex-parent flex-parent--column mt16">
+            <div className="flex-parent flex-parent--column mt-4">
               <h5>Context</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: project.context.childMarkdownRemark.html
+                  __html: project.context.childMarkdownRemark.html,
                 }}
                 id="top"
-                className="content"
+                className="md-remark"
               />
             </div>
           )}
 
           {project.technologies !== null && (
-            <div className="flex-parent flex-parent--column mt16">
+            <div className="flex-parent flex-parent--column mt-4">
               <h5>Technologies</h5>
-              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
                 {project.technologies.map(({ title }) => (
                   <span className="tag" key={title}>
                     {title}
@@ -77,9 +77,9 @@ const Template = ({ data }) => {
           )}
 
           {project.industries !== null && (
-            <div className="flex-parent flex-parent--column mt16">
+            <div className="flex-parent flex-parent--column mt-4">
               <h5>Industry</h5>
-              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
                 {project.industries.map(({ title }) => (
                   <span className="tag" key={title}>
                     {title}
@@ -90,9 +90,9 @@ const Template = ({ data }) => {
           )}
 
           {project.platforms !== null && (
-            <div className="flex-parent flex-parent--column mt16">
+            <div className="flex-parent flex-parent--column mt-4">
               <h5>Platforms</h5>
-              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
                 {project.platforms.map(({ title }) => (
                   <span className="tag" key={title}>
                     {title}
@@ -103,24 +103,24 @@ const Template = ({ data }) => {
           )}
 
           {project.responsabilities !== null && (
-            <div className="flex-parent flex-parent--column mt16">
+            <div className="flex-parent flex-parent--column mt-4">
               <h5>Responsabilities</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: project.responsabilities.childMarkdownRemark.html
+                  __html: project.responsabilities.childMarkdownRemark.html,
                 }}
                 id="top"
-                className="content"
+                className="md-remark"
               />
             </div>
           )}
 
           {(filteredVideos.length > 0 || filteredImages.length > 0) && (
-            <div className="flex-parent flex-parent--column flex-parent--center-main mt16">
+            <div className="flex-parent flex-parent--column flex-parent--center-main mt-4">
               {filteredVideos.length > 0 && (
                 <>
-                  <h5 className="mb16">Video</h5>
-                  {filteredVideos.map(image => (
+                  <h5 className="mb-4">Video</h5>
+                  {filteredVideos.map((image) => (
                     <ReactPlayer
                       key={image.file.url}
                       url={image.file.url}
@@ -134,7 +134,7 @@ const Template = ({ data }) => {
               )}
               {filteredImages.length > 0 && (
                 <>
-                  <h5 className="mb16">Gallery</h5>
+                  <h5 className="mb-4">Gallery</h5>
                   <img
                     className="imageProject mb24"
                     src={filteredImages[0].file.url}

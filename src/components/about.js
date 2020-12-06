@@ -11,12 +11,12 @@ import {
   faStackOverflow,
   faInstagram,
   faGoodreads,
-  faMedium
+  faMedium,
 } from "@fortawesome/free-brands-svg-icons";
 
 import {
   faMapMarkerAlt,
-  faExternalLinkAlt
+  faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "./link";
@@ -35,7 +35,7 @@ const AnimatedBlock = styled.div`
   animation: ${fade} 0.5s alternate infinite;
 `;
 
-const About = props => {
+const About = (props) => {
   const {
     width,
     data: {
@@ -51,9 +51,9 @@ const About = props => {
         medium,
         image,
         location,
-        description
-      }
-    }
+        description,
+      },
+    },
   } = props;
 
   const currentPath =
@@ -71,12 +71,12 @@ const About = props => {
           />
         </Link>
 
-        <h2 className="mt8">
-          <Link to="/" className="mt32" aria-label="Home">
+        <h2 className="mt-2">
+          <Link to="/" className="mt-8" aria-label="Home">
             <span style={{ color: "var(--primary-color)" }}>{name}</span>
           </Link>
         </h2>
-        <p className="mt8">
+        <p className="mt-2">
           <FontAwesomeIcon
             icon={faMapMarkerAlt}
             size="sm"
@@ -84,11 +84,11 @@ const About = props => {
           />{" "}
           {location}
         </p>
-        <span className="mt8 description">
+        <span className="mt-2 description">
           {description}
           <AnimatedBlock>▌</AnimatedBlock>
         </span>
-        <p className="mt16 description">
+        <p className="mt-4 description">
           Want to hire me for your next project?{" "}
           <a
             href={`mailto:${process.env.GATSBY_EMAIL}?subject=I would like to hire you`}
@@ -97,7 +97,7 @@ const About = props => {
           </a>
         </p>
 
-        <div className="flex-parent flex-parent--column mt32">
+        <div className="flex-parent flex-parent--column mt-8">
           <Link
             to="/"
             aria-label="Home"
@@ -108,17 +108,17 @@ const About = props => {
           <Link
             aria-label="Head over to my Medium blog"
             to={medium}
-            className={classNames("menuLink mt4")}
+            className={classNames("menuLink mt-1")}
           >
             Blog
-            <FontAwesomeIcon icon={faExternalLinkAlt} className="ml8" />
+            <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2.5" />
           </Link>
 
           <Link
             aria-label="Head over to my Bookshelf page"
             to="/bookshelf"
-            className={classNames("menuLink mt4", {
-              active: currentPath === "/bookshelf"
+            className={classNames("menuLink mt-1", {
+              active: currentPath === "/bookshelf",
             })}
           >
             Bookshelf
@@ -126,8 +126,8 @@ const About = props => {
           <Link
             aria-label="Head over to my projects page"
             to="/projects"
-            className={classNames("menuLink mt4", {
-              active: currentPath === "/projects"
+            className={classNames("menuLink mt-1", {
+              active: currentPath === "/projects",
             })}
           >
             Projects
@@ -135,15 +135,15 @@ const About = props => {
           <Link
             aria-label="Head over to my tech stack page"
             to="/uses"
-            className={classNames("menuLink mt4", {
-              active: currentPath === "/uses"
+            className={classNames("menuLink mt-1", {
+              active: currentPath === "/uses",
             })}
           >
             Uses
           </Link>
         </div>
 
-        <div className="mt32 flex-parent flex-parent--row">
+        <div className="mt-8 flex-parent flex-parent--row">
           <Link to={twitter} aria-label="Head over to my Twitter">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faTwitter} />
@@ -151,21 +151,25 @@ const About = props => {
           </Link>
           <Link
             to={linkedIn}
-            className="ml8"
+            className="ml-4"
             aria-label="Head over to my LinkedIn"
           >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faLinkedin} />
             </div>
           </Link>
-          <Link to={github} className="ml8" aria-label="Head over to my Github">
+          <Link
+            to={github}
+            className="ml-4"
+            aria-label="Head over to my Github"
+          >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faGithub} />
             </div>
           </Link>
           <Link
             to={stackoverflow}
-            className="ml8"
+            className="ml-4"
             aria-label="Head over to my StackOverflow"
           >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
@@ -173,7 +177,7 @@ const About = props => {
             </div>
           </Link>
         </div>
-        <div className="mt8 flex-parent flex-parent--row">
+        <div className="mt-2 flex-parent flex-parent--row">
           <Link to={medium} aria-label="Head over to my Medium blog">
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
               <FontAwesomeIcon icon={faMedium} />
@@ -181,7 +185,7 @@ const About = props => {
           </Link>
           <Link
             to={instagram}
-            className="ml8"
+            className="ml-4"
             aria-label="Head over to my Instagram"
           >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
@@ -190,7 +194,7 @@ const About = props => {
           </Link>
           <Link
             to={goodreads}
-            className="ml8"
+            className="ml-4"
             aria-label="Head over to my Goodreads"
           >
             <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
@@ -260,10 +264,10 @@ const About = props => {
   );
 };
 
-const SEO = props => (
+const SEO = (props) => (
   <StaticQuery
     query={queryAbout}
-    render={data => <About {...props} data={data} />}
+    render={(data) => <About {...props} data={data} />}
   />
 );
 

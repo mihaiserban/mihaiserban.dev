@@ -20,18 +20,18 @@ const Page = ({ data }) => {
       <div>
         <h1>About me</h1>
         <div
-          className="mt16"
+          className="mt-4 md-remark"
           dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.html
+            __html: body.childMarkdownRemark.html,
           }}
         />
-        <div className="flex-parent flex-parent--column mt16">
+        <div className="flex-parent flex-parent--column mt-4">
           <h2>Education</h2>
           <div className="flex-parent flex-parent--column">
-            {education.map(item => (
+            {education.map((item) => (
               <div key={item.title} className="flex-parent flex-parent--column">
-                <span className="mt8">{item.title}</span>
-                <span className="mt4 italic">
+                <span className="mt-2">{item.title}</span>
+                <span className="mt-4 italic">
                   {item.startDate}
                   &nbsp;-&nbsp;
                   {item.endDate}
@@ -40,9 +40,9 @@ const Page = ({ data }) => {
             ))}
           </div>
         </div>
-        <div className="flex-parent flex-parent--column mt16">
+        <div className="flex-parent flex-parent--column mt-4">
           <h2>Platforms</h2>
-          <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+          <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
             {platforms.map(({ title }) => (
               <span className="tag" key={title}>
                 {title}
@@ -50,10 +50,10 @@ const Page = ({ data }) => {
             ))}
           </div>
         </div>
-        <div className="flex-parent flex-parent--column mt16">
+        <div className="flex-parent flex-parent--column mt-4">
           <h2>Technologies</h2>
-          <div className="flex-parent flex-parent--row flex-parent--wrap mt8">
-            {technologies.map(tech => (
+          <div className="flex-parent flex-parent--row flex-parent--wrap mt-2">
+            {technologies.map((tech) => (
               <div
                 className="flex-parent flex-parent--column flex-parent--center-cross imageContainer"
                 key={tech.title}
@@ -64,23 +64,23 @@ const Page = ({ data }) => {
                   className="imageTech"
                   imgStyle={{
                     objectFit: "contain",
-                    background: "var(--alternate-bg)"
+                    background: "var(--alternate-bg)",
                   }}
                 />
-                <span className="text mt16">{tech.title}</span>
+                <span className="text mt-4">{tech.title}</span>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex-parent flex-parent--column mt16">
+        <div className="flex-parent flex-parent--column mt-4">
           <h2>Experience</h2>
           <div className="flex-parent flex-parent--column">
-            {experience.map(item => (
+            {experience.map((item) => (
               <div
                 className="flex-parent flex-parent--column"
                 key={item.company}
               >
-                <h5 className="mt16">
+                <h5 className="mt-4">
                   {item.title}
                   {item.company && (
                     <>
@@ -89,14 +89,14 @@ const Page = ({ data }) => {
                     </>
                   )}
                 </h5>
-                <span className="mt4 italic">
+                <span className="mt-4 italic">
                   {item.startDate} &nbsp;-&nbsp;
                   {item.endDate ? <>{item.endDate}</> : <>present</>}
                 </span>
                 <div
-                  className="mt16"
+                  className="mt-4 md-remark"
                   dangerouslySetInnerHTML={{
-                    __html: item.jobDescription.childMarkdownRemark.html
+                    __html: item.jobDescription.childMarkdownRemark.html,
                   }}
                 />
               </div>
@@ -111,7 +111,7 @@ const Page = ({ data }) => {
             height: auto;
             margin-top: 16px;
             margin-bottom: 16px;
-            margin-left: -35px;
+            margin-left: -32px;
           }
           :global(.imageTech) {
             width: 50px;

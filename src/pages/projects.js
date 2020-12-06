@@ -12,7 +12,7 @@ const BlogIndex = ({ data }) => {
     <Layout>
       <div>
         <h1>Projects</h1>
-        <div className="flex-parent flex-parent--column mt32">
+        <div className="flex-parent flex-parent--column mt-8">
           {projects.map(({ node: project }, index) => {
             if (project.hidden && project.hidden === true) return null;
             return (
@@ -21,7 +21,7 @@ const BlogIndex = ({ data }) => {
                   {project.previewImage &&
                     project.previewImage.file.contentType.indexOf("image") !==
                       -1 && (
-                      <Link to={`/project/${project.slug}`} className=" mr24">
+                      <Link to={`/project/${project.slug}`} className=" mr-24">
                         {project.previewImage.localFile.extension === "svg" ? (
                           <img
                             className="imageProjects"
@@ -34,7 +34,7 @@ const BlogIndex = ({ data }) => {
                             fixed={project.previewImage.fixed}
                             alt={project.previewImage.title}
                             imgStyle={{
-                              objectFit: "contain"
+                              objectFit: "contain",
                             }}
                           />
                         )}
@@ -47,12 +47,12 @@ const BlogIndex = ({ data }) => {
                     >
                       <h3>{project.title}</h3>
                     </Link>
-                    <span className="mt4">
+                    <p className="mt-2">
                       {project.startDate} &nbsp;-&nbsp;
                       {project.endDate ? <>{project.endDate}</> : <>present</>}
-                    </span>
+                    </p>
                     {project.technologies !== null && (
-                      <div className="tags flex-parent flex-parent--row flex-parent--wrap mt8">
+                      <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
                         {project.technologies.map(({ title }) => (
                           <span className="tag" key={title}>
                             {title}
@@ -61,14 +61,14 @@ const BlogIndex = ({ data }) => {
                       </div>
                     )}
                     {project.context && (
-                      <p className="mt8">
+                      <p className="mt-2">
                         {project.context.childMarkdownRemark.excerpt}
                       </p>
                     )}
                   </div>
                 </div>
                 {index < projects.length - 1 && (
-                  <div className="divider mb32 mt32" />
+                  <div className="divider mb-8 mt-8" />
                 )}
               </div>
             );

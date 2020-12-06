@@ -1,21 +1,22 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 });
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://mihaiserban.dev`
+    siteUrl: `https://mihaiserban.dev`,
   },
   plugins: [
     "gatsby-plugin-styled-jsx",
     "gatsby-plugin-dark-mode",
+    "gatsby-plugin-postcss",
     // Adding various source folders to the GraphQL layer.
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages/`,
-        name: `pages`
-      }
+        name: `pages`,
+      },
     },
     {
       resolve: `gatsby-plugin-gtag`,
@@ -24,16 +25,16 @@ module.exports = {
         // Puts tracking script in the head instead of the body
         head: true,
         // enable ip anonymization
-        anonymize: true
-      }
+        anonymize: true,
+      },
     },
     {
       resolve: "gatsby-source-contentful",
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID || "",
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
-        downloadLocal: true
-      }
+        downloadLocal: true,
+      },
     },
 
     {
@@ -62,11 +63,11 @@ module.exports = {
               // setting this to '{ sh: "bash" }' will let you use
               // the language "sh" which will highlight using the
               // bash highlighter.
-              aliases: {}
-            }
-          }
-        ]
-      }
+              aliases: {},
+            },
+          },
+        ],
+      },
     },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
@@ -82,15 +83,9 @@ module.exports = {
         headers: {
           "/*.js": ["cache-control: public, max-age=31536000, immutable"],
           "/*.css": ["cache-control: public, max-age=31536000, immutable"],
-          "/sw.js": ["cache-control: public, max-age=0, must-revalidate"]
-        }
-      }
+          "/sw.js": ["cache-control: public, max-age=0, must-revalidate"],
+        },
+      },
     },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    }
-  ]
+  ],
 };

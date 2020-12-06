@@ -27,7 +27,7 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <SEO />
-      <div className="flex-parent flex-parent--center-main p32 flex-parent--wrap layout">
+      <div className="flex-parent flex-parent--center-main p-8 flex-parent--wrap layout">
         <div className="about">
           <About width={sideMenuWidth} />
         </div>
@@ -43,7 +43,7 @@ const Layout = ({ children, location }) => {
             </div>
           </div>
 
-          <div className="flex-parent flex-parent--row flex-parent--center-cross mt32">
+          <div className="flex-parent flex-parent--row flex-parent--center-cross mt-8">
             <img
               className="smallImage"
               alt="gatsby"
@@ -64,7 +64,7 @@ const Layout = ({ children, location }) => {
             &nbsp; = ❤️
             <Link
               to="https://github.com/mihaiserban/mihaiserban.dev"
-              className="ml4"
+              className="ml-4"
               aria-label="Source code for mihaiserban.dev"
             >
               [Source code]

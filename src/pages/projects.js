@@ -48,7 +48,7 @@ const ProjectsIndex = ({ data }) => {
                     >
                       <h3>{project.title}</h3>
                     </Link>
-                    <p className="mt-1">
+                    <p className="mt-1 text-sm text-secondary-color min-w-32">
                       {project.startDate} &nbsp;-&nbsp;
                       {project.endDate ? <>{project.endDate}</> : <>present</>}
                     </p>

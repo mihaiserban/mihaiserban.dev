@@ -32,7 +32,7 @@ const Page = ({ data }) => {
             {education.map((item) => (
               <div key={item.title} className="flex flex-col">
                 <span className="mt-2">{item.title}</span>
-                <span className="mt-4 italic">
+                <span className="mt-1 text-sm text-secondary-color min-w-32">
                   {item.startDate}
                   &nbsp;-&nbsp;
                   {item.endDate}
@@ -46,6 +46,34 @@ const Page = ({ data }) => {
           <div className="tags flex flex-row flex-wrap mt-2">
             {platforms.map(({ title }) => (
               <Tag key={title}>{title}</Tag>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col mt-4">
+          <h2>Experience</h2>
+          <div className="flex flex-col">
+            {experience.map((item) => (
+              <div className="flex flex-col mt-8" key={item.company}>
+                <h5>
+                  {item.title}
+                  {item.company && (
+                    <>
+                      &nbsp;-&nbsp;
+                      {item.company}
+                    </>
+                  )}
+                </h5>
+                <span className="mt-1 text-sm text-secondary-color min-w-32">
+                  {item.startDate} &nbsp;-&nbsp;
+                  {item.endDate ? <>{item.endDate}</> : <>present</>}
+                </span>
+                <div
+                  className="mt-4 md-remark"
+                  dangerouslySetInnerHTML={{
+                    __html: item.jobDescription.childMarkdownRemark.html,
+                  }}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -67,34 +95,6 @@ const Page = ({ data }) => {
                   }}
                 />
                 <span className="text mt-4">{tech.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col mt-4">
-          <h2>Experience</h2>
-          <div className="flex flex-col">
-            {experience.map((item) => (
-              <div className="flex flex-col mt-8" key={item.company}>
-                <h5>
-                  {item.title}
-                  {item.company && (
-                    <>
-                      &nbsp;-&nbsp;
-                      {item.company}
-                    </>
-                  )}
-                </h5>
-                <span className="mt-1 italic">
-                  {item.startDate} &nbsp;-&nbsp;
-                  {item.endDate ? <>{item.endDate}</> : <>present</>}
-                </span>
-                <div
-                  className="mt-4 md-remark"
-                  dangerouslySetInnerHTML={{
-                    __html: item.jobDescription.childMarkdownRemark.html,
-                  }}
-                />
               </div>
             ))}
           </div>

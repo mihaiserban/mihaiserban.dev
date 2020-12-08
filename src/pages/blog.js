@@ -18,34 +18,16 @@ const BlogIndex = ({ data }) => {
           {blogs.map(({ node: blog }, index) => {
             if (blogs.hidden && blogs.hidden === true) return null;
             return (
-              <div className="flex flex-col mb-6" key={blog.id}>
+              <div className="flex flex-col mb-8" key={blog.id}>
                 <div className="flex flex-row projectContainer">
-                  {blog.previewImage &&
-                    blog.previewImage.file.contentType.indexOf("image") !==
-                      -1 && (
-                      <Link to={`/blog/${blog.slug}`} className=" mr-24">
-                        {blog.previewImage.localFile.extension === "svg" ? (
-                          <img
-                            className="imageProjects"
-                            style={{ objectFit: "fill" }}
-                            src={blog.previewImage.localFile.publicURL}
-                          />
-                        ) : (
-                          <Img
-                            className="imageProjects"
-                            fixed={blog.previewImage.fixed}
-                            alt={blog.previewImage.title}
-                            imgStyle={{
-                              objectFit: "contain",
-                            }}
-                          />
-                        )}
-                      </Link>
-                    )}
                   <div className="flex flex-col">
-                    <p>{blog.date}</p>
+                    <p className="text-sm text-secondary-color min-w-32">
+                      {blog.date}
+                    </p>
                     <Link to={`/blog/${blog.slug}`} className="blogLink mt-1">
-                      <h4>{blog.title}</h4>
+                      <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100">
+                        {blog.title}
+                      </h4>
                     </Link>
 
                     {blog.tags && (
@@ -55,17 +37,11 @@ const BlogIndex = ({ data }) => {
                         ))}
                       </div>
                     )}
-                    <p className="mt-2">
+                    <p className="text-gray-600 dark:text-gray-400 mt-2">
                       {blog.body.childMarkdownRemark.excerpt}
                     </p>
-                    <Link to={`/blog/${blog.slug}`} className="blogLink mt-4">
-                      <p>Read more</p>
-                    </Link>
                   </div>
                 </div>
-                {index < blogs.length - 1 && (
-                  <div className="divider mb-8 mt-8" />
-                )}
               </div>
             );
           })}

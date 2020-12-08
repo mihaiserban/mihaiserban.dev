@@ -109,3 +109,8 @@ Not supports in Firefox and IE */
 .md-remark > p {
   margin-bottom: 1rem;
 }
+
+.md-remark > ul {
+  list-style: disc;
+  list-style-position: inside;
+}

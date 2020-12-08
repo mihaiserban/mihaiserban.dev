@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
+import Tag from "../components/tag";
 
 const BlogIndex = ({ data }) => {
   const { edges: projects } = data.allContentfulProject;
@@ -47,16 +48,14 @@ const BlogIndex = ({ data }) => {
                     >
                       <h3>{project.title}</h3>
                     </Link>
-                    <p className="mt-2">
+                    <p className="mt-1">
                       {project.startDate} &nbsp;-&nbsp;
                       {project.endDate ? <>{project.endDate}</> : <>present</>}
                     </p>
                     {project.technologies !== null && (
                       <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
                         {project.technologies.map(({ title }) => (
-                          <span className="tag" key={title}>
-                            {title}
-                          </span>
+                          <Tag key={title}>{title}</Tag>
                         ))}
                       </div>
                     )}
@@ -79,16 +78,6 @@ const BlogIndex = ({ data }) => {
         {`
           .tags {
             margin-left: -4px;
-          }
-          .tag {
-            padding-top: 2px;
-            padding-bottom: 2px;
-            padding-left: 12px;
-            padding-right: 12px;
-            border: 1px solid var(--separator-color);
-            border-radius: 15px;
-            margin: 4px;
-            font-size: 12px;
           }
           .divider {
             width: 100%;

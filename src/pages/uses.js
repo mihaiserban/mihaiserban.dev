@@ -14,8 +14,8 @@ const Page = () => {
         <p className="mt-4">
           Here you'll find the software and hardware that help me be productive.
         </p>
-        <h3>Editors + Terminal</h3>
-        <ul className="list">
+        <h3 className="mt-4">Editors + Terminal</h3>
+        <ul className="list-disc list-inside mt-1">
           <li>
             <a href="https://code.visualstudio.com/" target="_blank">
               Visual Studio Code
@@ -31,8 +31,8 @@ const Page = () => {
           </li>
           <li>Safari as my main browser. Chrome for web development.</li>
         </ul>
-        <h3>VSCode Extensions</h3>
-        <ul className="list">
+        <h3 className="mt-4">VSCode Extensions</h3>
+        <ul className="list-disc list-inside mt-1">
           <li>
             <a
               href="https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark"
@@ -108,8 +108,8 @@ const Page = () => {
             contents, auto preview and more)
           </li>
         </ul>
-        <h3>Desktop Apps</h3>
-        <ul className="list">
+        <h3 className="mt-4">Desktop Apps</h3>
+        <ul className="list-disc list-inside mt-1">
           <li>
             <a href="https://www.lastpass.com/" target="_blank">
               LastPass
@@ -165,8 +165,8 @@ const Page = () => {
             - time tracking for my freelancing work
           </li>
         </ul>
-        <h3>Hardware</h3>
-        <ul className="list">
+        <h3 className="mt-4">Hardware</h3>
+        <ul className="list-disc list-inside mt-1">
           <li>AirPods</li>
           <li>iPhone 11</li>
           <li>
@@ -179,49 +179,49 @@ const Page = () => {
             - with USB-C support ❤️
           </li>
         </ul>
-        <h3>PC Build</h3>
-        <p>
+        <h3 className="mt-4">PC Build</h3>
+        <p className="mt-1">
           A Hackintosh I made for fun. Dual boot with Windows and Mac OS Big
           Sur. Working OpenCore config on{" "}
           <a href="https://github.com/mihaiserban/hackintosh_z390_designare_coffee_lake">
             GitHub
           </a>
         </p>
-        <table class="pcpp-part-list">
+        <table className="table-auto mt-4">
           <thead>
             <tr>
-              <th>Type</th>
-              <th>Item</th>
+              <th className="border px-4 py-2">Type</th>
+              <th className="border px-4 py-2">Item</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="pcpp-part-list-type">CPU</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">CPU</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/MBMwrH/intel-core-i5-9600kf-37-ghz-6-core-processor-bx80684i59600kf">
                   Intel Core i5-9600KF 3.7 GHz 6-Core Processor
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">CPU Cooler</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">CPU Cooler</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/dMVG3C/noctua-nh-u12s-chromaxblack-55-cfm-cpu-cooler-nh-u12s-chromaxblack">
                   Noctua NH-U12S chromax.black 55 CFM CPU Cooler
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Motherboard</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Motherboard</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/ycL48d/gigabyte-z390-designare-atx-lga1151-motherboard-z390-designare">
                   Gigabyte Z390 DESIGNARE ATX LGA1151 Motherboard
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Memory</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Memory</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/rpsmP6/kingston-hyperx-predator-rgb-16-gb-2-x-8-gb-ddr4-3200-memory-hx432c16pb3ak216">
                   Kingston HyperX Predator RGB 16 GB (2 x 8 GB) DDR4-3200 CL16
                   Memory
@@ -229,40 +229,40 @@ const Page = () => {
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Storage</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Storage</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/TwWfrH/samsung-970-evo-plus-500-gb-m2-2280-nvme-solid-state-drive-mz-v7s500bam">
                   Samsung 970 Evo Plus 500 GB M.2-2280 NVME Solid State Drive
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Storage</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Storage</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/Zxw7YJ/samsung-970-evo-plus-1-tb-m2-2280-nvme-solid-state-drive-mz-v7s1t0bam">
                   Samsung 970 Evo Plus 1 TB M.2-2280 NVME Solid State Drive
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Video Card</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Video Card</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/WGLwrH/sapphire-radeon-rx-5700-xt-8-gb-nitro-video-card-11293-03-40g">
                   Sapphire Radeon RX 5700 XT 8 GB NITRO+ Video Card
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Case</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Case</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/6Cyqqs/nzxt-h510-atx-mid-tower-case-ca-h510b-w1">
                   NZXT H510 ATX Mid Tower Case
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Power Supply</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Power Supply</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/VgQG3C/corsair-rmx-2018-850w-80-gold-certified-fully-modular-atx-power-supply-cp-9020180-na">
                   Corsair RMx (2018) 850 W 80+ Gold Certified Fully Modular ATX
                   Power Supply
@@ -270,24 +270,24 @@ const Page = () => {
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Wireless Network Adapter</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Wireless Network Adapter</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/BJ97YJ/fenvi-fv-t919-none-wi-fi-adapter-fv-t919">
                   fenvi FV-T919 PCIe x1 802.11a/b/g/n/ac Wi-Fi Adapter
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Monitor</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Monitor</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/yCc48d/samsung-lc43j890dknxza-430-3840x1200-120hz-monitor-lc43j890dknxza">
                   Samsung LC43J890DKNXZA 43.0" 3840x1200 120 Hz Monitor
                 </a>
               </td>
             </tr>
             <tr>
-              <td class="pcpp-part-list-type">Mouse</td>
-              <td class="pcpp-part-list-item">
+              <td className="border px-4 py-2">Mouse</td>
+              <td className="border px-4 py-2">
                 <a href="https://pcpartpicker.com/product/6qwkcf/glorious-pc-gaming-race-model-d-wired-optical-mouse-gd-white">
                   Glorious PC Gaming Race MODEL D Wired Optical Mouse
                 </a>
@@ -298,21 +298,9 @@ const Page = () => {
         <img
           src="/images/desk.jpg"
           alt="Battle station"
-          className="deskSetup"
+          className="deskSetup mt-8"
         />
       </div>
-      <style jsx>
-        {`
-          .list {
-            padding-left: 0px;
-            margin: 0px;
-            list-style-type: disc;
-          }
-          .list li {
-            margin: 0px;
-          }
-        `}
-      </style>
     </Layout>
   );
 };

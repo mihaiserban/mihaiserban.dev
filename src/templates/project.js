@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
 import ReactPlayer from "react-player";
+import Lightbox from "react-image-lightbox";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-import Lightbox from "react-image-lightbox";
 import Layout from "../components/layout";
 import SEO from "../components/SEO";
-
+import Tag from "../components/tag";
 import Link from "../components/link";
 
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
@@ -37,7 +37,7 @@ const Template = ({ data }) => {
           <div className="flex-parent flex-parent--row flex-parent--center-cross">
             <h1>{project.title}</h1>
             {project.url !== null && (
-              <Link to={project.url} className="ml-16">
+              <Link to={project.url} className="ml-4">
                 <FontAwesomeIcon
                   icon={faExternalLinkAlt}
                   color="var(--primary-color)"
@@ -45,7 +45,7 @@ const Template = ({ data }) => {
               </Link>
             )}
           </div>
-          <span className="mt-4">
+          <span className="mt-2">
             {project.startDate} &nbsp;-&nbsp;
             {project.endDate ? <>{project.endDate}</> : <>present</>}
           </span>
@@ -58,7 +58,7 @@ const Template = ({ data }) => {
                   __html: project.context.childMarkdownRemark.html,
                 }}
                 id="top"
-                className="md-remark"
+                className="md-remark mt-2"
               />
             </div>
           )}
@@ -81,9 +81,7 @@ const Template = ({ data }) => {
               <h5>Industry</h5>
               <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
                 {project.industries.map(({ title }) => (
-                  <span className="tag" key={title}>
-                    {title}
-                  </span>
+                  <Tag key={title}>{title}</Tag>
                 ))}
               </div>
             </div>
@@ -110,7 +108,7 @@ const Template = ({ data }) => {
                   __html: project.responsabilities.childMarkdownRemark.html,
                 }}
                 id="top"
-                className="md-remark"
+                className="md-remark mt-2"
               />
             </div>
           )}
@@ -127,7 +125,7 @@ const Template = ({ data }) => {
                       controls
                       width="100%"
                       height="auto"
-                      className="mb24 noselect video"
+                      className="mb-8 noselect video"
                     />
                   ))}
                 </>
@@ -136,7 +134,7 @@ const Template = ({ data }) => {
                 <>
                   <h5 className="mb-4">Gallery</h5>
                   <img
-                    className="imageProject mb24"
+                    className="imageProject mb-8"
                     src={filteredImages[0].file.url}
                     alt={filteredImages[0].title}
                     onClick={() => setIsOpen(true)}
@@ -183,16 +181,6 @@ const Template = ({ data }) => {
           }
           .tags {
             margin-left: -4px;
-          }
-          .tag {
-            padding-top: 2px;
-            padding-bottom: 2px;
-            padding-left: 12px;
-            padding-right: 12px;
-            border: 1px solid var(--separator-color);
-            border-radius: 15px;
-            margin: 4px;
-            font-size: 12px;
           }
         `}
       </style>

@@ -29,18 +29,6 @@
   }
 }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  margin-right: calc(-1 * (100vw - 100%));
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
 body {
   --bg: white;
   --alternate-bg: transparent;
@@ -60,47 +48,21 @@ body.dark {
 }
 
 body {
-  position: relative;
-  line-height: 1.65;
-  border: 0;
-  margin: 0;
-  padding: 0;
   -webkit-font-smoothing: antialiased;
   min-width: 320px;
-  direction: ltr;
   font-feature-settings: "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-
   background-color: var(--bg);
   color: var(--primary-color);
-}
-html,
-body {
-  height: 100%;
-  width: 100vw;
 }
 
 ::selection {
   background-color: var(--textLink);
   color: white;
 }
-[role="grid"]:focus {
-  outline: none;
-}
-svg {
-  text-rendering: optimizeLegibility;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
+
 a {
   color: var(--textLink);
   text-decoration: none;
@@ -108,30 +70,6 @@ a {
 }
 a:hover {
   opacity: 0.8;
-}
-iframe {
-  width: 100%;
-  border: none;
-}
-
-svg {
-  shape-rendering: crispEdges;
-}
-svg path,
-svg circle {
-  shape-rendering: geometricprecision;
-}
-
-img {
-  max-width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 0;
 }
 
 /* Customize website's scrollbar like Mac OS

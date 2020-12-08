@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
+import Tag from "../components/tag";
 
 const startCareer = new Date("2010-05-01");
 
@@ -44,9 +45,7 @@ const Page = ({ data }) => {
           <h2>Platforms</h2>
           <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
             {platforms.map(({ title }) => (
-              <span className="tag" key={title}>
-                {title}
-              </span>
+              <Tag key={title}>{title}</Tag>
             ))}
           </div>
         </div>
@@ -77,10 +76,10 @@ const Page = ({ data }) => {
           <div className="flex-parent flex-parent--column">
             {experience.map((item) => (
               <div
-                className="flex-parent flex-parent--column"
+                className="flex-parent flex-parent--column mt-8"
                 key={item.company}
               >
-                <h5 className="mt-4">
+                <h5>
                   {item.title}
                   {item.company && (
                     <>
@@ -89,7 +88,7 @@ const Page = ({ data }) => {
                     </>
                   )}
                 </h5>
-                <span className="mt-4 italic">
+                <span className="mt-1 italic">
                   {item.startDate} &nbsp;-&nbsp;
                   {item.endDate ? <>{item.endDate}</> : <>present</>}
                 </span>
@@ -129,16 +128,6 @@ const Page = ({ data }) => {
           }
           .tags {
             margin-left: -4px;
-          }
-          .tag {
-            padding-top: 2px;
-            padding-bottom: 2px;
-            padding-left: 12px;
-            padding-right: 12px;
-            border: 1px solid var(--separator-color);
-            border-radius: 15px;
-            margin: 4px;
-            font-size: 12px;
           }
         `}
       </style>

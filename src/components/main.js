@@ -1,8 +1,7 @@
-import React from 'react';
-import { Flex } from 'rebass';
+import React from "react";
 
-const main = props => (
-  <Flex as="main" flexDirection="column" alignItems={['center', 'flex-start']} {...props} />
+const main = (props) => (
+  <div className="flex flex-column content-start" {...props} />
 );
 
 export default main;

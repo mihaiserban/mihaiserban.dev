@@ -28,7 +28,7 @@ const Page = ({ data }) => {
             email.
           </a>
         </p>
-        <ul className="flex-parent flex-parent--column mt-4 list">
+        <ul className="flex flex-col mt-4 list">
           {books.map((book) => (
             <Link to={book.url} key={book.id}>
               <li className={classNames({ "font-bold": book.favorite })}>

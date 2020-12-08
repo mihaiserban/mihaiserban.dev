@@ -6,7 +6,7 @@ class ThemeTogglerComponent extends React.Component {
     return (
       <ThemeToggler>
         {({ theme, toggleTheme }) => (
-          <div className="flex-parent flex-parent--row flex-parent--center-cross">
+          <div className="flex flex-row items-center">
             <input
               type="checkbox"
               onChange={(e) => toggleTheme(e.target.checked ? "dark" : "light")}

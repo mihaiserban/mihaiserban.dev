@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 
 const Page = () => (
   <Layout>
-    <div className="flex-parent flex-parent--column container">
+    <div className="flex flex-col container">
       <h1>Design System</h1>
       <div className="mt-4">
         <h2>Headings</h2>

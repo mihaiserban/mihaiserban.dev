@@ -34,7 +34,7 @@ const Template = ({ data }) => {
       <SEO />
       <article>
         <div>
-          <div className="flex-parent flex-parent--row flex-parent--center-cross">
+          <div className="flex flex-row items-center">
             <h1>{project.title}</h1>
             {project.url !== null && (
               <Link to={project.url} className="ml-4">
@@ -51,7 +51,7 @@ const Template = ({ data }) => {
           </span>
 
           {project.context !== null && (
-            <div className="flex-parent flex-parent--column mt-4">
+            <div className="flex flex-col mt-4">
               <h5>Context</h5>
               <div
                 dangerouslySetInnerHTML={{
@@ -64,22 +64,20 @@ const Template = ({ data }) => {
           )}
 
           {project.technologies !== null && (
-            <div className="flex-parent flex-parent--column mt-4">
+            <div className="flex flex-col mt-4">
               <h5>Technologies</h5>
-              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
+              <div className="tags flex flex-row flex-wrap mt-2">
                 {project.technologies.map(({ title }) => (
-                  <span className="tag" key={title}>
-                    {title}
-                  </span>
+                  <Tag key={title}>{title}</Tag>
                 ))}
               </div>
             </div>
           )}
 
           {project.industries !== null && (
-            <div className="flex-parent flex-parent--column mt-4">
+            <div className="flex flex-col mt-4">
               <h5>Industry</h5>
-              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
+              <div className="tags flex flex-row flex-wrap mt-2">
                 {project.industries.map(({ title }) => (
                   <Tag key={title}>{title}</Tag>
                 ))}
@@ -88,20 +86,18 @@ const Template = ({ data }) => {
           )}
 
           {project.platforms !== null && (
-            <div className="flex-parent flex-parent--column mt-4">
+            <div className="flex flex-col mt-4">
               <h5>Platforms</h5>
-              <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
+              <div className="tags flex flex-row flex-wrap mt-2">
                 {project.platforms.map(({ title }) => (
-                  <span className="tag" key={title}>
-                    {title}
-                  </span>
+                  <Tag key={title}>{title}</Tag>
                 ))}
               </div>
             </div>
           )}
 
           {project.responsabilities !== null && (
-            <div className="flex-parent flex-parent--column mt-4">
+            <div className="flex flex-col mt-4">
               <h5>Responsabilities</h5>
               <div
                 dangerouslySetInnerHTML={{
@@ -114,7 +110,7 @@ const Template = ({ data }) => {
           )}
 
           {(filteredVideos.length > 0 || filteredImages.length > 0) && (
-            <div className="flex-parent flex-parent--column flex-parent--center-main mt-4">
+            <div className="flex flex-col justify-center mt-4">
               {filteredVideos.length > 0 && (
                 <>
                   <h5 className="mb-4">Video</h5>

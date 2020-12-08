@@ -26,11 +26,11 @@ const Page = ({ data }) => {
             __html: body.childMarkdownRemark.html,
           }}
         />
-        <div className="flex-parent flex-parent--column mt-4">
+        <div className="flex flex-col mt-4">
           <h2>Education</h2>
-          <div className="flex-parent flex-parent--column">
+          <div className="flex flex-col">
             {education.map((item) => (
-              <div key={item.title} className="flex-parent flex-parent--column">
+              <div key={item.title} className="flex flex-col">
                 <span className="mt-2">{item.title}</span>
                 <span className="mt-4 italic">
                   {item.startDate}
@@ -41,20 +41,20 @@ const Page = ({ data }) => {
             ))}
           </div>
         </div>
-        <div className="flex-parent flex-parent--column mt-4">
+        <div className="flex flex-col mt-4">
           <h2>Platforms</h2>
-          <div className="tags flex-parent flex-parent--row flex-parent--wrap mt-2">
+          <div className="tags flex flex-row flex-wrap mt-2">
             {platforms.map(({ title }) => (
               <Tag key={title}>{title}</Tag>
             ))}
           </div>
         </div>
-        <div className="flex-parent flex-parent--column mt-4">
+        <div className="flex flex-col mt-4">
           <h2>Technologies</h2>
-          <div className="flex-parent flex-parent--row flex-parent--wrap mt-2">
+          <div className="flex flex-row flex-wrap mt-2">
             {technologies.map((tech) => (
               <div
-                className="flex-parent flex-parent--column flex-parent--center-cross imageContainer"
+                className="flex flex-col imageContainer items-center"
                 key={tech.title}
               >
                 <Img
@@ -71,14 +71,11 @@ const Page = ({ data }) => {
             ))}
           </div>
         </div>
-        <div className="flex-parent flex-parent--column mt-4">
+        <div className="flex flex-col mt-4">
           <h2>Experience</h2>
-          <div className="flex-parent flex-parent--column">
+          <div className="flex flex-col">
             {experience.map((item) => (
-              <div
-                className="flex-parent flex-parent--column mt-8"
-                key={item.company}
-              >
+              <div className="flex flex-col mt-8" key={item.company}>
                 <h5>
                   {item.title}
                   {item.company && (

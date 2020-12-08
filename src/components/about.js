@@ -61,8 +61,8 @@ const About = (props) => {
     window.location.pathname.replace(/\/$/, "");
 
   return (
-    <div className="flex-parent flex-parent--row wrapper">
-      <div className="flex-parent flex-parent--column container">
+    <div className="flex flex-row wrapper">
+      <div className="flex flex-col container">
         <Link to="/" aria-label="Home">
           <Img
             fixed={image.fixed}
@@ -97,7 +97,7 @@ const About = (props) => {
           </a>
         </p>
 
-        <div className="flex-parent flex-parent--column mt-8">
+        <div className="flex flex-col mt-8">
           <Link
             to="/"
             aria-label="Home"
@@ -143,9 +143,9 @@ const About = (props) => {
           </Link>
         </div>
 
-        <div className="mt-8 flex-parent flex-parent--row">
+        <div className="mt-8 flex flex-row">
           <Link to={twitter} aria-label="Head over to my Twitter">
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faTwitter} />
             </div>
           </Link>
@@ -154,7 +154,7 @@ const About = (props) => {
             className="ml-4"
             aria-label="Head over to my LinkedIn"
           >
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faLinkedin} />
             </div>
           </Link>
@@ -163,7 +163,7 @@ const About = (props) => {
             className="ml-4"
             aria-label="Head over to my Github"
           >
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faGithub} />
             </div>
           </Link>
@@ -172,14 +172,14 @@ const About = (props) => {
             className="ml-4"
             aria-label="Head over to my StackOverflow"
           >
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faStackOverflow} />
             </div>
           </Link>
         </div>
-        <div className="mt-2 flex-parent flex-parent--row">
+        <div className="mt-2 flex flex-row">
           <Link to={medium} aria-label="Head over to my Medium blog">
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faMedium} />
             </div>
           </Link>
@@ -188,7 +188,7 @@ const About = (props) => {
             className="ml-4"
             aria-label="Head over to my Instagram"
           >
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faInstagram} />
             </div>
           </Link>
@@ -197,7 +197,7 @@ const About = (props) => {
             className="ml-4"
             aria-label="Head over to my Goodreads"
           >
-            <div className="socialIcon flex-parent flex-parent--center-cross flex-parent--center-main">
+            <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faGoodreads} />
             </div>
           </Link>

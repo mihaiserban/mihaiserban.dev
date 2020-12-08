@@ -45,7 +45,7 @@ const Template = ({ data }) => {
               </Link>
             )}
           </div>
-          <span className="mt-2">
+          <span className="mt-2 text-sm text-secondary-color min-w-32">
             {project.startDate} &nbsp;-&nbsp;
             {project.endDate ? <>{project.endDate}</> : <>present</>}
           </span>

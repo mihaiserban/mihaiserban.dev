@@ -94,7 +94,7 @@ const Layout = ({ children, location }) => {
         .themeToggler {
           position: absolute;
           right: 0;
-          top: 16px;
+          top: 0px;
         }
         @media screen and (max-width: 1003px) {
           .layout {

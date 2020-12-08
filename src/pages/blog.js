@@ -6,34 +6,35 @@ import Link from "../components/link";
 import Layout from "../components/layout";
 import Tag from "../components/tag";
 
-const ProjectsIndex = ({ data }) => {
-  const { edges: projects } = data.allContentfulProject;
+const BlogIndex = ({ data }) => {
+  console.log(data);
+  const { edges: blogs } = data.allContentfulBlogPost;
 
   return (
     <Layout>
       <div>
-        <h1>Projects</h1>
+        <h1>Blog</h1>
         <div className="flex flex-col mt-8">
-          {projects.map(({ node: project }, index) => {
-            if (project.hidden && project.hidden === true) return null;
+          {blogs.map(({ node: blog }, index) => {
+            if (blogs.hidden && blogs.hidden === true) return null;
             return (
-              <div className="flex flex-col" key={project.id}>
+              <div className="flex flex-col mb-6" key={blog.id}>
                 <div className="flex flex-row projectContainer">
-                  {project.previewImage &&
-                    project.previewImage.file.contentType.indexOf("image") !==
+                  {blog.previewImage &&
+                    blog.previewImage.file.contentType.indexOf("image") !==
                       -1 && (
-                      <Link to={`/project/${project.slug}`} className=" mr-24">
-                        {project.previewImage.localFile.extension === "svg" ? (
+                      <Link to={`/blog/${blog.slug}`} className=" mr-24">
+                        {blog.previewImage.localFile.extension === "svg" ? (
                           <img
                             className="imageProjects"
                             style={{ objectFit: "fill" }}
-                            src={project.previewImage.localFile.publicURL}
+                            src={blog.previewImage.localFile.publicURL}
                           />
                         ) : (
                           <Img
                             className="imageProjects"
-                            fixed={project.previewImage.fixed}
-                            alt={project.previewImage.title}
+                            fixed={blog.previewImage.fixed}
+                            alt={blog.previewImage.title}
                             imgStyle={{
                               objectFit: "contain",
                             }}
@@ -42,31 +43,27 @@ const ProjectsIndex = ({ data }) => {
                       </Link>
                     )}
                   <div className="flex flex-col">
-                    <Link
-                      to={`/project/${project.slug}`}
-                      className="projectLink"
-                    >
-                      <h3>{project.title}</h3>
+                    <p>{blog.date}</p>
+                    <Link to={`/blog/${blog.slug}`} className="blogLink mt-1">
+                      <h4>{blog.title}</h4>
                     </Link>
-                    <p className="mt-1">
-                      {project.startDate} &nbsp;-&nbsp;
-                      {project.endDate ? <>{project.endDate}</> : <>present</>}
-                    </p>
-                    {project.technologies !== null && (
+
+                    {blog.tags && (
                       <div className="tags flex flex-row flex-wrap mt-2">
-                        {project.technologies.map(({ title }) => (
-                          <Tag key={title}>{title}</Tag>
+                        {blog.tags.map(({ tag }) => (
+                          <Tag key={tag}>{tag}</Tag>
                         ))}
                       </div>
                     )}
-                    {project.context && (
-                      <p className="mt-2">
-                        {project.context.childMarkdownRemark.excerpt}
-                      </p>
-                    )}
+                    <p className="mt-2">
+                      {blog.body.childMarkdownRemark.excerpt}
+                    </p>
+                    <Link to={`/blog/${blog.slug}`} className="blogLink mt-4">
+                      <p>Read more</p>
+                    </Link>
                   </div>
                 </div>
-                {index < projects.length - 1 && (
+                {index < blogs.length - 1 && (
                   <div className="divider mb-8 mt-8" />
                 )}
               </div>
@@ -90,10 +87,10 @@ const ProjectsIndex = ({ data }) => {
               transparent 100%
             );
           }
-          :global(.projectLink) {
+          :global(.blogLink) {
             color: var(--primary-color);
           }
-          :global(.projectLink:hover) {
+          :global(.blogLink:hover) {
             color: var(--textLink);
           }
           :global(.imageProjects) {
@@ -120,39 +117,23 @@ const ProjectsIndex = ({ data }) => {
   );
 };
 
-export default ProjectsIndex;
+export default BlogIndex;
 
 export const pageQuery = graphql`
-  query ProjectsIndexQuery {
-    allContentfulProject(sort: { fields: [endDate], order: DESC }) {
+  query BlogsIndexQuery {
+    allContentfulBlogPost(sort: { fields: [date], order: DESC }) {
       edges {
         node {
-          startDate(formatString: "DD MMMM YYYY")
-          endDate(formatString: "DD MMMM YYYY")
+          date(formatString: "DD MMMM YYYY")
           title
           slug
           id
           hidden
-          context {
+          body {
             childMarkdownRemark {
               html
               timeToRead
-              excerpt
-            }
-          }
-          images {
-            title
-            file {
-              contentType
-            }
-            fixed(width: 200, quality: 90) {
-              base64
-              width
-              height
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
+              excerpt(pruneLength: 200)
             }
           }
           previewImage {
@@ -173,9 +154,6 @@ export const pageQuery = graphql`
               extension
               publicURL
             }
-          }
-          technologies {
-            title
           }
         }
       }

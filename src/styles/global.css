@@ -107,10 +107,24 @@ Not supports in Firefox and IE */
 }
 
 .md-remark > p {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .md-remark > ul {
   list-style: disc;
   list-style-position: inside;
+}
+
+.md-remark > ol {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+.md-remark > .gatsby-highlight {
+  margin-bottom: 2rem;
+  background-color: rgba(242, 242, 242, 1);
+}
+
+.md-remark > .gatsby-highlight > pre {
+  white-space: pre-wrap;
 }

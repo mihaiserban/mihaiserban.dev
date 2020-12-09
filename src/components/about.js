@@ -14,10 +14,7 @@ import {
   faMedium,
 } from "@fortawesome/free-brands-svg-icons";
 
-import {
-  faMapMarkerAlt,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "./link";
 
@@ -100,20 +97,20 @@ const About = (props) => {
         <div className="flex flex-col mt-8">
           <Link
             to="/"
-            aria-label="Home"
+            aria-label="Blog"
             className={classNames("menuLink", { active: currentPath === "" })}
+          >
+            Blog
+          </Link>
+          <Link
+            to="/about"
+            aria-label="About me"
+            className={classNames("menuLink", {
+              active: currentPath === "/about",
+            })}
           >
             About me
           </Link>
-          <Link
-            aria-label="Head over to my Medium blog"
-            to={medium}
-            className={classNames("menuLink mt-1")}
-          >
-            Blog
-            <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2.5" />
-          </Link>
-
           <Link
             aria-label="Head over to my Bookshelf page"
             to="/bookshelf"

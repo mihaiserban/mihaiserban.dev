@@ -5,12 +5,14 @@ import Img from "gatsby-image";
 import Link from "../components/link";
 import Layout from "../components/layout";
 import Tag from "../components/tag";
+import SEO from "../components/SEO";
 
 const ProjectsIndex = ({ data }) => {
   const { edges: projects } = data.allContentfulProject;
 
   return (
     <Layout>
+      <SEO title="Projects - Mihai Serban" />
       <div>
         <h1>Projects</h1>
         <div className="flex flex-col mt-8">

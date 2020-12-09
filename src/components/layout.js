@@ -5,7 +5,6 @@ import { useTransition, animated } from "react-spring";
 
 // Components
 import About from "./about";
-import SEO from "./SEO";
 import Link from "./link";
 import ThemeToggler from "./themeToggler";
 
@@ -26,7 +25,6 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
-      <SEO />
       <div className="flex justify-center p-8 flex-wrap layout">
         <div className="about">
           <About width={sideMenuWidth} />

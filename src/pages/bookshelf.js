@@ -4,12 +4,14 @@ import classNames from "classnames";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
+import SEO from "../components/SEO";
 
 const Page = ({ data }) => {
   const { nodes: books } = data.allContentfulBook;
 
   return (
     <Layout>
+      <SEO title="Bookshelf - Mihai Serban" />
       <div>
         <h1>Bookshelf</h1>
         <p className="mt-4">

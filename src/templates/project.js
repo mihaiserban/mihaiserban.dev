@@ -31,7 +31,12 @@ const Template = ({ data }) => {
 
   return (
     <Layout>
-      <SEO />
+      <SEO
+        title={`${project.title} - ${project.platforms
+          .map((el) => el.title)
+          .join(", ")} - Mihai Serban`}
+        description={project.context.childMarkdownRemark.excerpt}
+      />
       <article>
         <div>
           <div className="flex flex-row items-center">

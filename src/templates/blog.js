@@ -9,7 +9,6 @@ import Layout from "../components/layout";
 import SEO from "../components/SEO";
 import Tag from "../components/tag";
 import Link from "../components/link";
-import { readingTime } from "../utils/utils";
 
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
@@ -22,7 +21,7 @@ const Blog = ({ data }) => {
 
   return (
     <Layout>
-      <SEO />
+      <SEO title={blog.title} description={blog.description} />
       <article>
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           {blog.title}
@@ -76,6 +75,7 @@ export const pageQuery = graphql`
       id
       slug
       title
+      description
       date(formatString: "DD MMMM YYYY")
       body {
         childMarkdownRemark {

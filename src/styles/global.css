@@ -106,41 +106,6 @@ Not supports in Firefox and IE */
                                   supported by Chrome and Opera */
 }
 
-.md-remark > * {
-  margin-bottom: 2rem;
-}
-
-.md-remark > ul {
-  list-style: disc;
-  list-style-position: inside;
-}
-
-.md-remark > ol {
-  list-style: decimal;
-  list-style-position: inside;
-}
-
-.md-remark > .gatsby-highlight {
-  margin-bottom: 2rem;
-}
-
-.md-remark > .gatsby-highlight,
-code {
-  background-color: rgba(242, 242, 242, 1);
-}
-
-.md-remark code {
-  padding: 2px 4px;
-}
-
-.md-remark > * > pre {
-  padding: 20px;
-}
-
-.md-remark > .gatsby-highlight > pre {
-  white-space: pre-wrap;
-}
-
 .text-secondary-color {
   color: var(--secondary-color);
 }

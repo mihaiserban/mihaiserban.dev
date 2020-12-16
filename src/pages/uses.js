@@ -169,7 +169,7 @@ const Page = () => {
         </ul>
         <h3 className="mt-4">Hardware</h3>
         <ul className="list-disc list-inside mt-1">
-          <li>AirPods</li>
+          <li>Sony QC 35 II headphones</li>
           <li>iPhone 11</li>
           <li>
             <a

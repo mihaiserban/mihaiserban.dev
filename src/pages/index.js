@@ -15,7 +15,8 @@ const Index = ({ data }) => {
     <Layout>
       <SEO title="Blog - Mihai Serban" />
       <div>
-        <div className="flex flex-col">
+        <h1>Blog</h1>
+        <div className="flex flex-col mt-8">
           {blogs.map(({ node: blog }, index) => {
             if (blogs.hidden && blogs.hidden === true) return null;
             return (

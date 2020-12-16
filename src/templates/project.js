@@ -51,7 +51,7 @@ const Template = ({ data }) => {
             )}
           </div>
           <span className="mt-2 text-sm text-secondary-color min-w-32">
-            {project.startDate} &nbsp;-&nbsp;
+            {project.startDate}&nbsp;-&nbsp;
             {project.endDate ? <>{project.endDate}</> : <>present</>}
           </span>
 
@@ -62,8 +62,7 @@ const Template = ({ data }) => {
                 dangerouslySetInnerHTML={{
                   __html: project.context.childMarkdownRemark.html,
                 }}
-                id="top"
-                className="md-remark mt-2"
+                className="md-remark"
               />
             </div>
           )}
@@ -108,8 +107,7 @@ const Template = ({ data }) => {
                 dangerouslySetInnerHTML={{
                   __html: project.responsabilities.childMarkdownRemark.html,
                 }}
-                id="top"
-                className="md-remark mt-2"
+                className="md-remark"
               />
             </div>
           )}

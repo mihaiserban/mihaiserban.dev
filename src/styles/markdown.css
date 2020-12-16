@@ -1,7 +1,3 @@
-.md-remark > * {
-  margin-bottom: 2rem;
-}
-
 .md-remark ul {
   list-style: disc;
   list-style-position: inside;
@@ -13,7 +9,7 @@
 }
 
 .md-remark > * {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 /* code block */

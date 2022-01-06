@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
@@ -32,9 +32,9 @@ const ProjectsIndex = ({ data }) => {
                             src={project.previewImage.localFile.publicURL}
                           />
                         ) : (
-                          <Img
+                          <GatsbyImage
                             className="imageProjects"
-                            fixed={project.previewImage.fixed}
+                            image={project.previewImage.gatsbyImageData}
                             alt={project.previewImage.title}
                             imgStyle={{
                               objectFit: "contain",
@@ -147,30 +147,14 @@ export const pageQuery = graphql`
             file {
               contentType
             }
-            fixed(width: 200, quality: 90) {
-              base64
-              width
-              height
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-            }
+            gatsbyImageData(width: 200)
           }
           previewImage {
             title
             file {
               contentType
             }
-            fixed(width: 200, quality: 90) {
-              base64
-              width
-              height
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-            }
+            gatsbyImageData(width: 200)
             localFile {
               extension
               publicURL

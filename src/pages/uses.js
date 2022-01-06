@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as glink, graphql } from "gatsby";
 import classNames from "classnames";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";

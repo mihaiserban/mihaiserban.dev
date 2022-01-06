@@ -25,7 +25,8 @@ const ProjectsIndex = ({ data }) => {
                     project.previewImage.file.contentType.indexOf("image") !==
                       -1 && (
                       <Link to={`/project/${project.slug}`} className=" mr-24">
-                        {project.previewImage.localFile.extension === "svg" ? (
+                        {project.previewImage.localFile &&
+                        project.previewImage.localFile.extension === "svg" ? (
                           <img
                             className="imageProjects"
                             style={{ objectFit: "fill" }}

@@ -142,13 +142,6 @@ export const pageQuery = graphql`
               excerpt
             }
           }
-          images {
-            title
-            file {
-              contentType
-            }
-            gatsbyImageData(width: 200)
-          }
           previewImage {
             title
             file {

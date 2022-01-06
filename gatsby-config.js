@@ -10,6 +10,9 @@ module.exports = {
     "gatsby-plugin-styled-jsx",
     "gatsby-plugin-dark-mode",
     "gatsby-plugin-postcss",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
+    "gatsby-transformer-sharp",
     // Adding various source folders to the GraphQL layer.
     {
       resolve: `gatsby-source-filesystem`,
@@ -36,7 +39,6 @@ module.exports = {
         downloadLocal: true,
       },
     },
-
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -70,22 +72,19 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     "gatsby-transformer-json",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
     `gatsby-plugin-subfont`,
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          "/*.js": ["cache-control: public, max-age=31536000, immutable"],
-          "/*.css": ["cache-control: public, max-age=31536000, immutable"],
-          "/sw.js": ["cache-control: public, max-age=0, must-revalidate"],
-        },
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-netlify`,
+    //   options: {
+    //     headers: {
+    //       "/*.js": ["cache-control: public, max-age=31536000, immutable"],
+    //       "/*.css": ["cache-control: public, max-age=31536000, immutable"],
+    //       "/sw.js": ["cache-control: public, max-age=0, must-revalidate"],
+    //     },
+    //   },
+    // },
   ],
 };

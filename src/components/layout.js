@@ -17,7 +17,7 @@ const sideMenuWidth = 240;
 const Layout = ({ children, location }) => {
   // Page transition hook
   const [toggle, set] = useState(false);
-  const transitions = useTransition(toggle, null, {
+  const transitions = useTransition(toggle, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -31,8 +31,8 @@ const Layout = ({ children, location }) => {
         </div>
         <div className="flex flex-col items-center content">
           <div className="contentContainer">
-            {transitions.map(({ item, key, props }) => (
-              <animated.div key={key} style={props}>
+            {transitions((styles, item, key) => (
+              <animated.div key={key} style={styles}>
                 {children}
               </animated.div>
             ))}

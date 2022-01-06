@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
@@ -32,10 +32,10 @@ const Index = ({ data }) => {
                       </h4>
                     </Link>
 
-                    {blog.tags && (
+                    {blog.tags != null && (
                       <div className="tags flex flex-row flex-wrap mt-2">
-                        {blog.tags.map(({ tag }) => (
-                          <Tag key={tag}>{tag}</Tag>
+                        {blog.tags.map((tag) => (
+                          <Tag key={tag.id}>{tag.title}</Tag>
                         ))}
                       </div>
                     )}
@@ -114,6 +114,10 @@ export const pageQuery = graphql`
               timeToRead
               excerpt(pruneLength: 200)
             }
+          }
+          tags {
+            title
+            id
           }
         }
       }

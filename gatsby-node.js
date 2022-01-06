@@ -1,5 +1,4 @@
 const _ = require(`lodash`);
-const slash = require(`slash`);
 const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
@@ -36,7 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
     _.each(result.data.allContentfulProject.edges, (edge) => {
       createPage({
         path: `/project/${edge.node.slug}/`,
-        component: slash(projectTemplate),
+        component: projectTemplate,
         context: {
           slug: edge.node.slug,
           id: edge.node.id,
@@ -49,7 +48,7 @@ exports.createPages = ({ graphql, actions }) => {
     _.each(result.data.allContentfulBlogPost.edges, (edge) => {
       createPage({
         path: `/blog/${edge.node.slug}/`,
-        component: slash(blogTemplate),
+        component: blogTemplate,
         context: {
           slug: edge.node.slug,
           id: edge.node.id,

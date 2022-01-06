@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
 import Tag from "../components/tag";
 import SEO from "../components/SEO";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const startCareer = new Date("2010-05-01");
 
@@ -111,8 +111,8 @@ const Page = ({ data }) => {
                 className="flex flex-col imageContainer items-center"
                 key={tech.title}
               >
-                <Img
-                  fluid={tech.image.fluid}
+                <GatsbyImage
+                  image={tech.image.gatsbyImageData}
                   alt={tech.title}
                   className="imageTech"
                   imgStyle={{
@@ -215,16 +215,7 @@ export const pageQuery = graphql`
         title
 
         image {
-          fluid(maxWidth: 980) {
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
-          }
+          gatsbyImageData(width: 980)
         }
       }
     }

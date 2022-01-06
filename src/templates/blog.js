@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -28,8 +28,8 @@ const Blog = ({ data }) => {
         </h1>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-8">
           <div className="flex items-center">
-            <Img
-              fixed={about.image.fixed}
+            <GatsbyImage
+              image={about.image.gatsbyImageData}
               className="headshot rounded-full"
               alt="Headshot Mihai Serban"
               style={{ width: "24px", height: "24px" }}
@@ -59,15 +59,7 @@ export const pageQuery = graphql`
   query BlogQuery($slug: String!) {
     contentfulAbout {
       image {
-        fixed(width: 200, quality: 200) {
-          base64
-          width
-          height
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-        }
+        gatsbyImageData(width: 200)
       }
       location
     }

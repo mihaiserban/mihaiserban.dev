@@ -2,7 +2,8 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import styled, { keyframes } from "styled-components";
 import classNames from "classnames";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
@@ -61,8 +62,8 @@ const About = (props) => {
     <div className="flex flex-row wrapper">
       <div className="flex flex-col container">
         <Link to="/" aria-label="Home">
-          <Img
-            fixed={image.fixed}
+          <GatsbyImage
+            image={image.gatsbyImageData}
             className="image"
             alt="Headshot Mihai Serban"
           />
@@ -227,8 +228,8 @@ const About = (props) => {
             }
           }
           :global(.image) {
-            width: 75px;
-            height: 75px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
           }
           .socialIcon {
@@ -284,16 +285,9 @@ const queryAbout = graphql`
       goodreads
       medium
       image {
-        fixed(width: 150, quality: 90) {
-          base64
-          width
-          height
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-        }
+        gatsbyImageData(width: 200)
       }
+
       location
     }
   }

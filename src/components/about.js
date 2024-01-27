@@ -1,23 +1,21 @@
-import React from "react";
-import { graphql, StaticQuery } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
+import {
+  faGithub,
+  faGoodreads,
+  faInstagram,
+  faLinkedin,
+  faMedium,
+  faStackOverflow,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import styled, { keyframes } from "styled-components";
-import classNames from "classnames";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTwitter,
-  faLinkedin,
-  faGithub,
-  faStackOverflow,
-  faInstagram,
-  faGoodreads,
-  faMedium,
-} from "@fortawesome/free-brands-svg-icons";
-
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-
+import { GatsbyImage } from "gatsby-plugin-image";
 import Link from "./link";
+import React from "react";
+import classNames from "classnames";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const fade = keyframes`
   from {
@@ -129,15 +127,6 @@ const About = (props) => {
             })}
           >
             Projects
-          </Link>
-          <Link
-            aria-label="Head over to my tech stack page"
-            to="/uses"
-            className={classNames("menuLink mt-1", {
-              active: currentPath === "/uses",
-            })}
-          >
-            Uses
           </Link>
         </div>
 

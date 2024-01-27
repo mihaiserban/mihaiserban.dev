@@ -1,6 +1,7 @@
-import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+
 import Helmet from "react-helmet";
-import { graphql, StaticQuery } from "gatsby";
+import React from "react";
 
 const Head = (props) => {
   const {
@@ -99,14 +100,6 @@ const Head = (props) => {
         name: "Projects",
       },
       position: 4,
-    },
-    {
-      "@type": "ListItem",
-      item: {
-        "@id": `${contentfulSite.siteUrl}/uses`,
-        name: "Uses",
-      },
-      position: 5,
     },
   ];
 

@@ -99,7 +99,7 @@ export default Index;
 
 export const pageQuery = graphql`
   query BlogsIndexQuery {
-    allContentfulBlogPost(sort: { fields: [date], order: DESC }) {
+    allContentfulBlogPost(sort: { date: DESC }) {
       edges {
         node {
           date(formatString: "DD MMMM YYYY")

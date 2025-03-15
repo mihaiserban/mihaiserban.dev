@@ -209,7 +209,7 @@ export const pageQuery = graphql`
         endDate(formatString: "DD MMMM YYYY")
       }
     }
-    allContentfulTechnologies(sort: { fields: [createdAt], order: DESC }) {
+    allContentfulTechnologies(sort: { createdAt: DESC }) {
       nodes {
         id
         title

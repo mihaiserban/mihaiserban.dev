@@ -7,7 +7,6 @@ module.exports = {
     siteUrl: `https://mihaiserban.dev`,
   },
   plugins: [
-    "gatsby-plugin-styled-jsx",
     "gatsby-plugin-dark-mode",
     "gatsby-plugin-postcss",
     "gatsby-plugin-sharp",
@@ -75,7 +74,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     "gatsby-transformer-json",
     "gatsby-plugin-styled-components",
-    `gatsby-plugin-subfont`,
     // {
     //   resolve: `gatsby-plugin-netlify`,
     //   options: {

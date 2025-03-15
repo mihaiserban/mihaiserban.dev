@@ -127,7 +127,7 @@ export default ProjectsIndex;
 
 export const pageQuery = graphql`
   query ProjectsIndexQuery {
-    allContentfulProject(sort: { fields: [endDate], order: DESC }) {
+    allContentfulProject(sort: { endDate: DESC }) {
       edges {
         node {
           startDate(formatString: "DD MMMM YYYY")

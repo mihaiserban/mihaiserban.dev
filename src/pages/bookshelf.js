@@ -59,7 +59,7 @@ export default Page;
 
 export const pageQuery = graphql`
   query BooksQuery {
-    allContentfulBook(sort: { fields: [title], order: ASC }) {
+    allContentfulBook(sort: { title: ASC }) {
       nodes {
         id
         title

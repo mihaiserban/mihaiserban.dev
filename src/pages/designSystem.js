@@ -3,6 +3,7 @@ import { Link as glink, graphql } from "gatsby";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
+import "../styles/scss/pages/designSystem.scss";
 
 const Page = () => (
   <Layout>
@@ -23,13 +24,6 @@ const Page = () => (
         <p>paragraph</p>
       </div>
     </div>
-    <style jsx>
-      {`
-        .container {
-          min-width: 100%;
-        }
-      `}
-    </style>
   </Layout>
 );
 

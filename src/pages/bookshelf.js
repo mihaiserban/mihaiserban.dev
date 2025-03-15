@@ -5,6 +5,7 @@ import classNames from "classnames";
 import Link from "../components/link";
 import Layout from "../components/layout";
 import SEO from "../components/SEO";
+import "../styles/scss/pages/bookshelf.scss";
 
 const Page = ({ data }) => {
   const { nodes: books } = data.allContentfulBook;
@@ -40,17 +41,6 @@ const Page = ({ data }) => {
           ))}
         </ul>
       </div>
-      <style jsx>
-        {`
-          .list {
-            padding-left: 0px;
-            list-style: none;
-          }
-          .list li {
-            margin: 0px;
-          }
-        `}
-      </style>
     </Layout>
   );
 };

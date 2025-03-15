@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import Tag from "../components/tag";
 import SEO from "../components/SEO";
 import { GatsbyImage } from "gatsby-plugin-image";
+import "../styles/scss/pages/about.scss";
 
 const startCareer = new Date("2010-05-01");
 
@@ -126,44 +127,6 @@ const Page = ({ data }) => {
           </div>
         </div>
       </div>
-      <style jsx>
-        {`
-          .imageContainer {
-            width: 120px;
-            height: auto;
-            margin-bottom: 16px;
-            margin-left: -32px;
-          }
-          :global(.imageTech) {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border: 1px solid var(--separator-color);
-          }
-          .text {
-            font-size: 0.8rem;
-            line-height: 1.3em;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            opacity: 0.8;
-            text-align: center;
-          }
-          .tags {
-            margin-left: -4px;
-          }
-          .divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(
-              to right,
-              transparent 0%,
-              var(--separator-color) 10%,
-              var(--separator-color) 90%,
-              transparent 100%
-            );
-          }
-        `}
-      </style>
     </Layout>
   );
 };

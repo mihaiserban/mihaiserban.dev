@@ -6,6 +6,7 @@ import Link from "../components/link";
 import Layout from "../components/layout";
 import Tag from "../components/tag";
 import SEO from "../components/SEO";
+import "../styles/scss/pages/projects.scss";
 
 const ProjectsIndex = ({ data }) => {
   const { edges: projects } = data.allContentfulProject;
@@ -77,48 +78,6 @@ const ProjectsIndex = ({ data }) => {
           })}
         </div>
       </div>
-      <style jsx>
-        {`
-          .tags {
-            margin-left: -4px;
-          }
-          .divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(
-              to right,
-              transparent 0%,
-              var(--separator-color) 30%,
-              var(--separator-color) 70%,
-              transparent 100%
-            );
-          }
-          :global(.projectLink) {
-            color: var(--primary-color);
-          }
-          :global(.projectLink:hover) {
-            color: var(--textLink);
-          }
-          :global(.imageProjects) {
-            min-width: 200px;
-            width: 200px;
-            max-height: 200px;
-            height: auto;
-            object-fit: contain;
-          }
-          /* If the screen size is 600px wide or less, hide the element */
-          @media only screen and (max-width: 600px) {
-            :global(.imageProjects) {
-              width: 140px;
-              max-height: 140px;
-              margin-right: 16px;
-            }
-            .projectContainer {
-              flex-direction: column;
-            }
-          }
-        `}
-      </style>
     </Layout>
   );
 };

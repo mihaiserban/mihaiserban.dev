@@ -10,7 +10,7 @@ import Layout from "../components/layout";
 import SEO from "../components/SEO";
 import Tag from "../components/tag";
 import Link from "../components/link";
-
+import "../styles/scss/templates/project.scss";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 const Template = ({ data }) => {
@@ -161,28 +161,6 @@ const Template = ({ data }) => {
           )}
         </div>
       </article>
-      <style jsx>
-        {`
-          .video-container {
-            width: 100%;
-            height: auto;
-          }
-          .imageProject {
-            max-width: 100%;
-            height: auto;
-            max-height: 50vw;
-            object-fit: cover;
-            cursor: pointer;
-            border: 1px solid var(--separator-color);
-          }
-          :global(.video) {
-            border: 1px solid var(--separator-color);
-          }
-          .tags {
-            margin-left: -4px;
-          }
-        `}
-      </style>
     </Layout>
   );
 };

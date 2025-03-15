@@ -1,0 +1,35 @@
+.content {
+  max-width: 80%;
+  width: 700px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.contentContainer {
+  position: relative;
+  width: 100%;
+}
+
+.smallImage {
+  width: 14px;
+  height: auto;
+}
+
+.themeToggler {
+  position: absolute;
+  right: 0;
+  top: 0px;
+}
+
+@media screen and (max-width: 1003px) {
+  .layout {
+    justify-content: left;
+  }
+  
+  .content {
+    padding-top: 32px;
+    padding-left: 0px;
+    padding-right: 0px;
+    max-width: 100%;
+  }
+}

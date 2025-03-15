@@ -7,6 +7,7 @@ import { useTransition, animated } from "react-spring";
 import About from "./about";
 import Link from "./link";
 import ThemeToggler from "./themeToggler";
+import "../styles/scss/components/layout.scss";
 
 // Create some context for other components
 export const Context = React.createContext();
@@ -72,40 +73,6 @@ const Layout = ({ children, location }) => {
           </div>
         </div>
       </div>
-      <style jsx>{`
-        .content {
-          max-width: 80%;
-          width: 700px;
-        }
-        .contentContainer {
-          position: relative;
-          width: 100%;
-        }
-        .content {
-          padding-left: 32px;
-          padding-right: 32px;
-        }
-        .smallImage {
-          width: 14px;
-          height: auto;
-        }
-        .themeToggler {
-          position: absolute;
-          right: 0;
-          top: 0px;
-        }
-        @media screen and (max-width: 1003px) {
-          .layout {
-            justify-content: left;
-          }
-          .content {
-            padding-top: 32px;
-            padding-left: 0px;
-            padding-right: 0px;
-            max-width: 100%;
-          }
-        }
-      `}</style>
     </>
   );
 };

@@ -1,0 +1,21 @@
+.video-container {
+  width: 100%;
+  height: auto;
+}
+
+.imageProject {
+  max-width: 100%;
+  height: auto;
+  max-height: 50vw;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid var(--separator-color);
+}
+
+.video {
+  border: 1px solid var(--separator-color);
+}
+
+.tags {
+  margin-left: -4px;
+}

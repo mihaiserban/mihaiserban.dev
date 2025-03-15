@@ -1,0 +1,40 @@
+.md-remark {
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+  }
+
+  ol {
+    list-style: decimal;
+    list-style-position: inside;
+  }
+
+  > * {
+    margin-top: 1rem;
+  }
+
+  pre {
+    padding: 20px;
+    white-space: pre-wrap;
+    border-radius: 4px;
+    background-color: rgba(242, 242, 242, 1);
+  }
+
+  code {
+    padding: 2px 4px;
+    background-color: rgba(242, 242, 242, 1);
+  }
+}
+
+.dark {
+  .md-remark {
+    pre {
+      border: 1px solid rgba(55, 65, 81, 1);
+      background-color: rgba(17, 24, 39, 1);
+    }
+
+    code {
+      background-color: rgba(17, 24, 39, 1);
+    }
+  }
+}

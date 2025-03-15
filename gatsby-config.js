@@ -8,6 +8,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-dark-mode",
+    "gatsby-plugin-sass",
     "gatsby-plugin-postcss",
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",

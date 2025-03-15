@@ -15,6 +15,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import Link from "./link";
 import React from "react";
 import classNames from "classnames";
+import "../styles/scss/components/about.scss";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const fade = keyframes`
@@ -57,7 +58,7 @@ const About = (props) => {
     window.location.pathname.replace(/\/$/, "");
 
   return (
-    <div className="flex flex-row wrapper">
+    <div className="flex flex-row wrapper" style={{ width: `${width}px` }}>
       <div className="flex flex-col container">
         <Link to="/" aria-label="Home">
           <GatsbyImage
@@ -190,63 +191,6 @@ const About = (props) => {
           </Link>
         </div>
       </div>
-      <style jsx>
-        {`
-          .description {
-            color: var(--secondary-color);
-          }
-          .wrapper {
-            width: ${width}px;
-          }
-          .wrapper:after {
-            content: "";
-            background: linear-gradient(
-              180deg,
-              var(--separator-color) 0,
-              var(--separator-color) 48%,
-              var(--bg)
-            );
-            min-height: 540px;
-            width: 1px;
-            min-width: 1px;
-            bottom: 0;
-          }
-          @media screen and (max-width: 1003px) {
-            .wrapper:after {
-              display: none;
-            }
-          }
-          :global(.image) {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-          }
-          .socialIcon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: 1px solid var(--separator-color);
-            color: var(--primary-color);
-            cursor: pointer;
-            -webkit-transition: all 0.3s; /* Safari */
-            transition: all 0.3s;
-          }
-          .socialIcon:hover {
-            color: var(--textLink);
-          }
-          :global(.menuLink) {
-            color: var(--primary-color);
-            border-bottom: 1px solid transparent;
-          }
-          :global(.menuLink:hover) {
-            color: var(--textLink);
-            border-bottom: 1px solid var(--textLink);
-          }
-          :global(.active) {
-            border-bottom: 1px solid var(--primary-color);
-          }
-        `}
-      </style>
     </div>
   );
 };

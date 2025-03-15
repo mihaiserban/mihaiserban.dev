@@ -1,0 +1,101 @@
+/* ./src/styles/scss/global.scss */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji";
+  }
+  h1 {
+    @apply text-3xl font-normal;
+  }
+  h2 {
+    @apply text-2xl font-medium;
+  }
+  h3 {
+    @apply text-xl font-semibold;
+  }
+  h4 {
+    @apply text-lg font-semibold;
+  }
+  h5 {
+    @apply text-base font-bold;
+  }
+}
+
+body {
+  --bg: white;
+  --alternate-bg: transparent;
+  --primary-color: #222;
+  --secondary-color: rgb(96, 96, 96);
+  --textLink: #1e56a9;
+  --separator-color: #e6e6e6;
+
+  &.dark {
+    --bg: #000;
+    --alternate-bg: white;
+    --primary-color: white;
+    --secondary-color: #aaaaaa;
+    --textLink: #3ea6ff;
+    --separator-color: #e6e6e6;
+  }
+
+  -webkit-font-smoothing: antialiased;
+  min-width: 320px;
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  color: var(--primary-color);
+}
+
+::selection {
+  background-color: var(--textLink);
+  color: white;
+}
+
+a {
+  color: var(--textLink);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+::-webkit-scrollbar {
+  width: 14px;
+
+  &-track {
+    box-shadow: inset 0 0 14px 14px transparent;
+    border: solid 4px transparent;
+  }
+
+  &-thumb {
+    box-shadow: inset 0 0 14px 14px #bbbbbe;
+    border: solid 4px transparent;
+    border-radius: 14px;
+  }
+
+  &-button {
+    display: none;
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.text-secondary-color {
+  color: var(--secondary-color);
+}

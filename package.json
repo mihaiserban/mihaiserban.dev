@@ -39,7 +39,7 @@
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "is-absolute-url": "^4.0.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "postcss": "^8.4.35",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",

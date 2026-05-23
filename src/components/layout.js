@@ -44,24 +44,7 @@ const Layout = ({ children, location }) => {
 
           <div className="flex justify-center mt-8">
             <div className="flex flex-row items-center">
-              <img
-                className="smallImage"
-                alt="gatsby"
-                src="https://images.ctfassets.net/usz05rcag1x3/3xrfXp4jzSWda6PfiuAlzW/d9406ab839570d55c77ebae5bc611685/gatsby-logo.png?w=1200&h=1200&q=90"
-              />
-              &nbsp; + &nbsp;
-              <img
-                className="smallImage"
-                alt="contentful"
-                src="https://images.ctfassets.net/usz05rcag1x3/5hgOPLAFzhBe5LVS66skmY/ea72f74698a547ecc8bf7ac4469cecb9/contentful.png?w=120&h=120&q=90"
-              />
-              &nbsp; + &nbsp;
-              <img
-                className="smallImage"
-                alt="netlify"
-                src="https://images.ctfassets.net/usz05rcag1x3/3N5hID2Er4NG6Bw15u0xWa/57c71b3ef3c46ca45d29de3b91f1d9a9/logomark.png?w=120&h=120&q=90"
-              />
-              &nbsp; = ❤️
+              Built with Gatsby + Netlify = ❤️
               <Link
                 to="https://github.com/mihaiserban/mihaiserban.dev"
                 className="ml-4"

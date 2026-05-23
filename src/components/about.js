@@ -35,7 +35,7 @@ const About = (props) => {
   const { width } = props;
   const data = useStaticQuery(queryAbout);
   const {
-    aboutJson: {
+    dataJson: {
       name,
       email,
       twitter,
@@ -197,7 +197,7 @@ export default About;
 
 const queryAbout = graphql`
   query AboutQuery {
-    aboutJson {
+    dataJson {
       name
       email
       description

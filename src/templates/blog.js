@@ -15,7 +15,7 @@ const Blog = ({ data }) => {
   if (!data) return null;
 
   const blog = data.markdownRemark;
-  const about = data.aboutJson;
+  const about = data.dataJson;
 
   return (
     <Layout>
@@ -55,12 +55,12 @@ export default Blog;
 
 export const pageQuery = graphql`
   query BlogQuery($slug: String!) {
-    aboutJson {
-      image {
-        publicURL
-      }
-      location
+  dataJson {
+    image {
+      publicURL
     }
+    location
+  }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id
       frontmatter {

@@ -6,7 +6,7 @@ import React from "react";
 const Head = (props) => {
   const {
     data: {
-      aboutJson: {
+      dataJson: {
         name,
         email,
         twitter,
@@ -16,8 +16,19 @@ const Head = (props) => {
         instagram,
         goodreads,
         image: imageObj,
+        siteTitle,
+        siteTitleAlt,
+        siteTitleShort,
+        siteHeadline,
+        siteUrl,
+        siteLanguage,
+        siteDescription,
+        author,
+        ogSiteName,
+        ogLanguage,
+        userTwitter,
+        siteLogo,
       },
-      siteJson,
       allTechnologiesJson: { nodes: technologies },
       site: { buildTime },
     },
@@ -25,36 +36,36 @@ const Head = (props) => {
     description,
   } = props;
 
-  const aTitle = title || siteJson.siteTitle;
-  const aDescription = description || siteJson.siteDescription;
+  const aTitle = title || siteTitle;
+  const aDescription = description || siteDescription;
   const image = imageObj.publicURL;
   const keywords = technologies.map((t) => t.title).join(", ");
 
   const schemaOrgWebPage = {
     "@context": "http://schema.org",
     "@type": "WebPage",
-    url: siteJson.siteUrl,
-    headline: siteJson.siteHeadline,
+    url: siteUrl,
+    headline: siteHeadline,
     inLanguage: "en",
-    mainEntityOfPage: siteJson.siteUrl,
-    description: siteJson.siteDescription,
-    name: siteJson.siteTitle,
+    mainEntityOfPage: siteUrl,
+    description: siteDescription,
+    name: siteTitle,
     author: {
       "@type": "Person",
-      name: siteJson.author,
+      name: author,
     },
     copyrightHolder: {
       "@type": "Person",
-      name: siteJson.author,
+      name: author,
     },
     copyrightYear: new Date().getFullYear(),
     creator: {
       "@type": "Person",
-      name: siteJson.author,
+      name: author,
     },
     publisher: {
       "@type": "Person",
-      name: siteJson.author,
+      name: author,
     },
     datePublished: "2019-01-17",
     dateModified: buildTime,
@@ -68,7 +79,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${siteJson.siteUrl}`,
+        "@id": `${siteUrl}`,
         name: "Blog",
       },
       position: 1,
@@ -76,7 +87,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${siteJson.siteUrl}/about`,
+        "@id": `${siteUrl}/about`,
         name: "About me",
       },
       position: 2,
@@ -84,7 +95,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${siteJson.siteUrl}/bookshelf`,
+        "@id": `${siteUrl}/bookshelf`,
         name: "Bookshelf",
       },
       position: 3,
@@ -92,7 +103,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${siteJson.siteUrl}/projects`,
+        "@id": `${siteUrl}/projects`,
         name: "Projects",
       },
       position: 4,
@@ -109,7 +120,7 @@ const Head = (props) => {
 
   return (
     <Helmet>
-      <html lang={siteJson.siteLanguage} />
+      <html lang={siteLanguage} />
       <title>{aTitle}</title>
       <link
         rel="apple-touch-icon"
@@ -194,8 +205,8 @@ const Head = (props) => {
       <meta name="description" content={aDescription} />
       <meta name="keywords" content={keywords} />
       <meta name="image" content={image} />
-      <meta property="og:locale" content={siteJson.ogLanguage} />
-      <meta property="og:site_name" content={siteJson.ogSiteName} />
+      <meta property="og:locale" content={ogLanguage} />
+      <meta property="og:site_name" content={ogSiteName} />
       <meta property="og:title" content={aTitle} />
       <meta property="og:type" content="website" />
       <meta property="og:description" content={aDescription} />
@@ -204,7 +215,7 @@ const Head = (props) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:creator"
-        content={siteJson.userTwitter ? siteJson.userTwitter : ""}
+        content={userTwitter ? userTwitter : ""}
       />
       <meta name="twitter:title" content={aTitle} />
       <meta name="twitter:description" content={aDescription} />
@@ -229,7 +240,7 @@ export default SEO;
 
 const querySEO = graphql`
   query SEOQuery {
-    aboutJson {
+    dataJson {
       name
       email
       twitter
@@ -241,8 +252,6 @@ const querySEO = graphql`
       image {
         publicURL
       }
-    }
-    siteJson {
       siteTitle
       siteTitleAlt
       siteTitleShort

@@ -8,7 +8,7 @@ import SEO from "../components/SEO";
 import "../styles/scss/pages/about.scss";
 
 const Page = ({ data }) => {
-  const { aboutJson } = data;
+  const { dataJson: aboutJson } = data;
   const { edges: experience } = data.allMarkdownRemark;
 
   return (
@@ -106,7 +106,7 @@ export default Page;
 
 export const pageQuery = graphql`
   query AboutPageQuery {
-    aboutJson {
+    dataJson {
       platforms
       body
       education {

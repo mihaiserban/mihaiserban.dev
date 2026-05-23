@@ -8,7 +8,7 @@ import SEO from "../components/SEO";
 import "../styles/scss/pages/about.scss";
 
 const Page = ({ data }) => {
-  const { dataJson: aboutJson, allEducationJson } = data;
+  const { markdownRemark: aboutMarkdown, allEducationJson } = data;
   const { edges: experience } = data.allMarkdownRemark;
 
   return (
@@ -19,7 +19,7 @@ const Page = ({ data }) => {
         <div
           className="mt-4 md-remark"
           dangerouslySetInnerHTML={{
-            __html: aboutJson.body,
+            __html: aboutMarkdown.html,
           }}
         />
         <div className="flex flex-col mt-6">
@@ -40,7 +40,7 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Platforms</h2>
           <div className="tags flex flex-row flex-wrap mt-2">
-            {aboutJson.platforms && aboutJson.platforms.map((title) => (
+            {aboutMarkdown.frontmatter.platforms && aboutMarkdown.frontmatter.platforms.map((title) => (
               <Tag key={title}>{title}</Tag>
             ))}
           </div>
@@ -106,10 +106,11 @@ export default Page;
 
 export const pageQuery = graphql`
   query AboutPageQuery {
-    dataJson {
-      platforms
-      body
-      image
+    markdownRemark(fileAbsolutePath: { regex: "/content/about/bio.md/" }) {
+      frontmatter {
+        platforms
+      }
+      html
     }
     allEducationJson(sort: { startDate: DESC }) {
       nodes {
@@ -119,7 +120,10 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/experience/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/experience/" }
+        frontmatter: { hidden: { ne: true } }
+      }
       sort: { frontmatter: { startDate: DESC } }
     ) {
       edges {

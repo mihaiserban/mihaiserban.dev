@@ -4,6 +4,7 @@ company: "ITBrainiacs (Apex-Edu & Telenav collaboration)"
 startDate: "2014-11-01T00:00+03:00"
 endDate: "2015-05-01T00:00+03:00"
 projects: null
+hidden: true
 ---
 
 __ITBrainiacs__ is a program developed by __Apex-Edu__ in collaboration with __Telenav__

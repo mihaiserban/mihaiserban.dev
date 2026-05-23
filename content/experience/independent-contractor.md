@@ -2,7 +2,7 @@
 title: Independent Contractor
 company: null
 startDate: "2017-11-29T00:00+03:00"
-endDate: "2019-07-01T00:00+02:00"
+endDate: "2021-11-01T00:00+02:00"
 projects:
   -
     slug: callsign

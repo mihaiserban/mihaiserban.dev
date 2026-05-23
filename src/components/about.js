@@ -35,18 +35,20 @@ const About = (props) => {
   const { width } = props;
   const data = useStaticQuery(queryAbout);
   const {
-    dataJson: {
-      name,
-      twitter,
-      linkedIn,
-      github,
-      stackoverflow,
-      instagram,
-      goodreads,
-      medium,
-      image,
-      location,
-      description,
+    markdownRemark: {
+      frontmatter: {
+        name,
+        twitter,
+        linkedIn,
+        github,
+        stackoverflow,
+        instagram,
+        goodreads,
+        medium,
+        image,
+        location,
+        description,
+      },
     },
   } = data;
 
@@ -58,11 +60,7 @@ const About = (props) => {
     <div className="flex flex-row wrapper" style={{ width: `${width}px` }}>
       <div className="flex flex-col container">
         <Link to="/" aria-label="Home">
-          <img
-            src={image}
-            className="image"
-            alt="Headshot Mihai Serban"
-          />
+          <img src={image} className="image" alt="Headshot Mihai Serban" />
         </Link>
 
         <h2 className="mt-2">
@@ -84,9 +82,7 @@ const About = (props) => {
         </span>
         <p className="mt-4 description">
           Want to hire me for your next project?{" "}
-          <a
-            href={`mailto:${process.env.GATSBY_EMAIL}?subject=I would like to hire you`}
-          >
+          <a href={`mailto:${process.env.GATSBY_EMAIL}?subject=Hey 👋`}>
             Get in touch.
           </a>
         </p>
@@ -196,18 +192,20 @@ export default About;
 
 const queryAbout = graphql`
   query AboutQuery {
-    dataJson {
-      name
-      description
-      twitter
-      linkedIn
-      github
-      stackoverflow
-      instagram
-      goodreads
-      medium
-      location
-      image
+    markdownRemark(fileAbsolutePath: { regex: "/content/about/bio.md/" }) {
+      frontmatter {
+        name
+        description
+        twitter
+        linkedIn
+        github
+        stackoverflow
+        instagram
+        goodreads
+        medium
+        location
+        image
+      }
     }
   }
 `;

@@ -8,7 +8,7 @@ const Blog = ({ data }) => {
   if (!data) return null;
 
   const blog = data.markdownRemark;
-  const about = data.dataJson;
+  const about = data.aboutBio;
 
   return (
     <Layout>
@@ -20,7 +20,7 @@ const Blog = ({ data }) => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-8">
           <div className="flex items-center">
             <img
-              src={about.image}
+              src={about.frontmatter.image}
               className="headshot rounded-full"
               alt="Headshot Mihai Serban"
               style={{ width: "24px", height: "24px" }}
@@ -48,9 +48,11 @@ export default Blog;
 
 export const pageQuery = graphql`
   query BlogQuery($slug: String!) {
-  dataJson {
-    image
-    location
+  aboutBio: markdownRemark(fileAbsolutePath: { regex: "/content/about/bio.md/" }) {
+    frontmatter {
+      image
+      location
+    }
   }
   markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id

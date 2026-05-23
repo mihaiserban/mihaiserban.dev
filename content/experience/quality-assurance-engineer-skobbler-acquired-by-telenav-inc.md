@@ -4,6 +4,7 @@ company: skobbler (acquired by Telenav Inc.)
 startDate: "2009-07-01T00:00+03:00"
 endDate: "2010-06-01T00:00+03:00"
 projects: null
+hidden: true
 ---
 
 __QA / Mobile Testing Responsibilities__

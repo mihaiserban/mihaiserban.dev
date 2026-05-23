@@ -45,8 +45,6 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-helmet": "^6.1.0",
-    "react-image-lightbox": "^5.1.4",
-    "react-player": "^2.14.1",
     "react-spring": "^9.7.3",
     "sass": "1.85.1",
     "sharp": "0.33.5",

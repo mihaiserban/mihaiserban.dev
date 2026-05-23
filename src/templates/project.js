@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { graphql } from "gatsby";
-import ReactPlayer from "react-player";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -9,20 +8,11 @@ import Layout from "../components/layout";
 import SEO from "../components/SEO";
 import Tag from "../components/tag";
 import Link from "../components/link";
-import "../styles/scss/templates/project.scss";
 
-// Lazy load Lightbox only on client side to avoid SSR issues
-let Lightbox = null;
-if (typeof window !== "undefined") {
-  Lightbox = require("react-image-lightbox").default;
-  require("react-image-lightbox/style.css");
-}
+import "../styles/scss/templates/project.scss";
 
 const Template = ({ data }) => {
   if (!data) return null;
-
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
 
   const project = data.markdownRemark;
 
@@ -109,12 +99,11 @@ const Template = ({ data }) => {
                 <>
                   <h5 className="mb-4">Video</h5>
                   {filteredVideos.map((videoUrl) => (
-                    <ReactPlayer
+                    <video
                       key={videoUrl}
-                      url={videoUrl}
+                      src={videoUrl}
                       controls
                       width="100%"
-                      height="auto"
                       className="mb-8 noselect video"
                     />
                   ))}
@@ -123,32 +112,17 @@ const Template = ({ data }) => {
               {filteredImages.length > 0 && (
                 <>
                   <h5 className="mb-4">Gallery</h5>
-                  <img
-                    className="imageProject mb-8"
-                    src={filteredImages[0]}
-                    alt={project.frontmatter.title}
-                    onClick={() => setIsOpen(true)}
-                  />
+                  {filteredImages.map((image, index) => (
+                    <img
+                      key={index}
+                      className="imageProject mb-8"
+                      src={image}
+                      alt={`${project.frontmatter.title} - ${index + 1}`}
+                    />
+                  ))}
                 </>
               )}
             </div>
-          )}
-
-          {isOpen && Lightbox && (
-            <Lightbox
-              mainSrc={images[photoIndex]}
-              nextSrc={images[(photoIndex + 1) % images.length]}
-              prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-              onCloseRequest={() => setIsOpen(false)}
-              onMovePrevRequest={() =>
-                setPhotoIndex((photoIndex + images.length - 1) % images.length)
-              }
-              onMoveNextRequest={() =>
-                setPhotoIndex((photoIndex + 1) % images.length)
-              }
-              imagePadding={64}
-              enableZoom={true}
-            />
           )}
         </div>
       </article>

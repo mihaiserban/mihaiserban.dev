@@ -9,8 +9,6 @@ tags: []
 
 Decided to upgrade upgrade my Windows drive on my dual boot Hackintosh. Here's how to do it from your Mac OS X drive.
 
-![nvme-drives](/images/blog/IMG_4666.jpg)
-
 Open your terminal. Run ```diskutil list``` to get the disk identifier you want to migrate.
 
 ```diskutil list```

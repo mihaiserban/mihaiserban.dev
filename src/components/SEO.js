@@ -6,16 +6,20 @@ import React from "react";
 const Head = (props) => {
   const {
     data: {
-      dataJson: {
-        name,
-        email,
-        twitter,
-        linkedIn,
-        github,
-        stackoverflow,
-        instagram,
-        goodreads,
-        image: imageObj,
+      about: {
+        frontmatter: {
+          name,
+          email,
+          twitter,
+          linkedIn,
+          github,
+          stackoverflow,
+          instagram,
+          goodreads,
+          image: imageObj,
+        },
+      },
+      siteMeta: {
         siteTitle,
         siteHeadline,
         siteUrl,
@@ -27,7 +31,7 @@ const Head = (props) => {
         userTwitter,
       },
       allTechnologiesJson: { nodes: technologies },
-      site: { buildTime },
+      buildInfo: { buildTime },
     },
     title,
     description,
@@ -237,16 +241,20 @@ export default SEO;
 
 const querySEO = graphql`
   query SEOQuery {
-    dataJson {
-      name
-      email
-      twitter
-      linkedIn
-      github
-      stackoverflow
-      instagram
-      goodreads
-      image
+    about: markdownRemark(fileAbsolutePath: { regex: "/content/about/bio.md/" }) {
+      frontmatter {
+        name
+        email
+        twitter
+        linkedIn
+        github
+        stackoverflow
+        instagram
+        goodreads
+        image
+      }
+    }
+    siteMeta: dataJson(jsonName: { eq: "site" }) {
       siteTitle
       siteTitleAlt
       siteTitleShort
@@ -259,12 +267,12 @@ const querySEO = graphql`
       ogLanguage
       userTwitter
     }
-      allTechnologiesJson {
+    allTechnologiesJson {
       nodes {
         title
       }
     }
-    site {
+    buildInfo: site {
       buildTime(formatString: "YYYY-MM-DD")
     }
   }

@@ -10,5 +10,6 @@
   "ogSiteName": "Mihai Serban",
   "ogLanguage": "en_US",
   "userTwitter": "@MihaiSerban",
-  "siteLogo": "/images/site-logo.jpg"
+  "siteLogo": "/images/site-logo.jpg",
+  "jsonName": "site"
 }

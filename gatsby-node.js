@@ -1,59 +1,59 @@
 const _ = require(`lodash`);
 const path = require("path");
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  return graphql(
-    `
-      {
-        allContentfulProject {
-          edges {
-            node {
+  const result = await graphql(`
+    {
+      projects: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+      ) {
+        edges {
+          node {
+            frontmatter {
               slug
-              id
-            }
-          }
-        }
-        allContentfulBlogPost {
-          edges {
-            node {
-              slug
-              id
             }
           }
         }
       }
-    `
-  ).then((result) => {
-    if (result.errors) {
-      throw result.errors;
+      blogs: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
     }
+  `);
 
-    const projectTemplate = path.resolve(`./src/templates/project.js`);
-    // For each result, create a page.
-    _.each(result.data.allContentfulProject.edges, (edge) => {
-      createPage({
-        path: `/project/${edge.node.slug}/`,
-        component: projectTemplate,
-        context: {
-          slug: edge.node.slug,
-          id: edge.node.id,
-        },
-      });
+  if (result.errors) {
+    throw result.errors;
+  }
+
+  const projectTemplate = path.resolve(`./src/templates/project.js`);
+  _.each(result.data.projects.edges, (edge) => {
+    createPage({
+      path: `/project/${edge.node.frontmatter.slug}/`,
+      component: projectTemplate,
+      context: {
+        slug: edge.node.frontmatter.slug,
+      },
     });
+  });
 
-    const blogTemplate = path.resolve(`./src/templates/blog.js`);
-    // For each result, create a page.
-    _.each(result.data.allContentfulBlogPost.edges, (edge) => {
-      createPage({
-        path: `/blog/${edge.node.slug}/`,
-        component: blogTemplate,
-        context: {
-          slug: edge.node.slug,
-          id: edge.node.id,
-        },
-      });
+  const blogTemplate = path.resolve(`./src/templates/blog.js`);
+  _.each(result.data.blogs.edges, (edge) => {
+    createPage({
+      path: `/blog/${edge.node.frontmatter.slug}/`,
+      component: blogTemplate,
+      context: {
+        slug: edge.node.frontmatter.slug,
+      },
     });
   });
 };

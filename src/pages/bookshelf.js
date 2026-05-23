@@ -8,7 +8,7 @@ import SEO from "../components/SEO";
 import "../styles/scss/pages/bookshelf.scss";
 
 const Page = ({ data }) => {
-  const { nodes: books } = data.allContentfulBook;
+  const { nodes: books } = data.allBooksJson;
 
   return (
     <Layout>
@@ -49,7 +49,7 @@ export default Page;
 
 export const pageQuery = graphql`
   query BooksQuery {
-    allContentfulBook(sort: { title: ASC }) {
+    allBooksJson(sort: { title: ASC }) {
       nodes {
         id
         title

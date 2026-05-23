@@ -6,7 +6,7 @@ import React from "react";
 const Head = (props) => {
   const {
     data: {
-      contentfulAbout: {
+      aboutJson: {
         name,
         email,
         twitter,
@@ -17,46 +17,44 @@ const Head = (props) => {
         goodreads,
         image: imageObj,
       },
-      contentfulSite,
+      siteJson,
+      allTechnologiesJson: { nodes: technologies },
       site: { buildTime },
     },
     title,
     description,
   } = props;
 
-  const aTitle = title || contentfulSite.siteTitle;
-  const aDescription = description || contentfulSite.siteDescription;
-  const image = imageObj.file.url;
-
-  // schema.org in JSONLD format
-  // https://developers.google.com/search/docs/guides/intro-structured-data
-  // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')
+  const aTitle = title || siteJson.siteTitle;
+  const aDescription = description || siteJson.siteDescription;
+  const image = imageObj.publicURL;
+  const keywords = technologies.map((t) => t.title).join(", ");
 
   const schemaOrgWebPage = {
     "@context": "http://schema.org",
     "@type": "WebPage",
-    url: contentfulSite.siteUrl,
-    headline: contentfulSite.siteHeadline,
+    url: siteJson.siteUrl,
+    headline: siteJson.siteHeadline,
     inLanguage: "en",
-    mainEntityOfPage: contentfulSite.siteUrl,
-    description: contentfulSite.siteDescription,
-    name: contentfulSite.siteTitle,
+    mainEntityOfPage: siteJson.siteUrl,
+    description: siteJson.siteDescription,
+    name: siteJson.siteTitle,
     author: {
       "@type": "Person",
-      name: contentfulSite.author,
+      name: siteJson.author,
     },
     copyrightHolder: {
       "@type": "Person",
-      name: contentfulSite.author,
+      name: siteJson.author,
     },
     copyrightYear: new Date().getFullYear(),
     creator: {
       "@type": "Person",
-      name: contentfulSite.author,
+      name: siteJson.author,
     },
     publisher: {
       "@type": "Person",
-      name: contentfulSite.author,
+      name: siteJson.author,
     },
     datePublished: "2019-01-17",
     dateModified: buildTime,
@@ -66,13 +64,11 @@ const Head = (props) => {
     },
   };
 
-  // Initial breadcrumb list
-
   const itemListElement = [
     {
       "@type": "ListItem",
       item: {
-        "@id": `${contentfulSite.siteUrl}`,
+        "@id": `${siteJson.siteUrl}`,
         name: "Blog",
       },
       position: 1,
@@ -80,7 +76,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${contentfulSite.siteUrl}/about`,
+        "@id": `${siteJson.siteUrl}/about`,
         name: "About me",
       },
       position: 2,
@@ -88,7 +84,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${contentfulSite.siteUrl}/bookshelf`,
+        "@id": `${siteJson.siteUrl}/bookshelf`,
         name: "Bookshelf",
       },
       position: 3,
@@ -96,7 +92,7 @@ const Head = (props) => {
     {
       "@type": "ListItem",
       item: {
-        "@id": `${contentfulSite.siteUrl}/projects`,
+        "@id": `${siteJson.siteUrl}/projects`,
         name: "Projects",
       },
       position: 4,
@@ -113,7 +109,7 @@ const Head = (props) => {
 
   return (
     <Helmet>
-      <html lang={contentfulSite.siteLanguage} />
+      <html lang={siteJson.siteLanguage} />
       <title>{aTitle}</title>
       <link
         rel="apple-touch-icon"
@@ -196,9 +192,10 @@ const Head = (props) => {
 
       <meta name="Mihai Serban" content="mihaiserban.dev" />
       <meta name="description" content={aDescription} />
+      <meta name="keywords" content={keywords} />
       <meta name="image" content={image} />
-      <meta property="og:locale" content={contentfulSite.ogLanguage} />
-      <meta property="og:site_name" content={contentfulSite.ogSiteName} />
+      <meta property="og:locale" content={siteJson.ogLanguage} />
+      <meta property="og:site_name" content={siteJson.ogSiteName} />
       <meta property="og:title" content={aTitle} />
       <meta property="og:type" content="website" />
       <meta property="og:description" content={aDescription} />
@@ -207,7 +204,7 @@ const Head = (props) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:creator"
-        content={contentfulSite.userTwitter ? contentfulSite.userTwitter : ""}
+        content={siteJson.userTwitter ? siteJson.userTwitter : ""}
       />
       <meta name="twitter:title" content={aTitle} />
       <meta name="twitter:description" content={aDescription} />
@@ -231,8 +228,8 @@ const SEO = (props) => (
 export default SEO;
 
 const querySEO = graphql`
-  query About {
-    contentfulAbout {
+  query SEOQuery {
+    aboutJson {
       name
       email
       twitter
@@ -242,14 +239,10 @@ const querySEO = graphql`
       instagram
       goodreads
       image {
-        file {
-          url
-          fileName
-          contentType
-        }
+        publicURL
       }
     }
-    contentfulSite {
+    siteJson {
       siteTitle
       siteTitleAlt
       siteTitleShort
@@ -262,11 +255,12 @@ const querySEO = graphql`
       ogLanguage
       userTwitter
       siteLogo {
-        file {
-          url
-          fileName
-          contentType
-        }
+        publicURL
+      }
+    }
+    allTechnologiesJson {
+      nodes {
+        title
       }
     }
     site {

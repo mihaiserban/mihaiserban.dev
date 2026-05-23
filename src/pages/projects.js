@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
@@ -9,7 +8,7 @@ import SEO from "../components/SEO";
 import "../styles/scss/pages/projects.scss";
 
 const ProjectsIndex = ({ data }) => {
-  const { edges: projects } = data.allContentfulProject;
+  const { edges: projects } = data.allMarkdownRemark;
 
   return (
     <Layout>
@@ -18,54 +17,41 @@ const ProjectsIndex = ({ data }) => {
         <h1>Projects</h1>
         <div className="flex flex-col mt-8">
           {projects.map(({ node: project }, index) => {
-            if (project.hidden && project.hidden === true) return null;
+            if (project.frontmatter.hidden && project.frontmatter.hidden === true) return null;
             return (
-              <div className="flex flex-col" key={project.id}>
+              <div className="flex flex-col" key={project.frontmatter.slug}>
                 <div className="flex flex-row projectContainer">
-                  {project.previewImage &&
-                    project.previewImage.file.contentType.indexOf("image") !==
-                      -1 && (
-                      <Link to={`/project/${project.slug}`} className=" mr-24">
-                        {project.previewImage.localFile &&
-                        project.previewImage.localFile.extension === "svg" ? (
-                          <img
-                            className="imageProjects"
-                            style={{ objectFit: "fill" }}
-                            src={project.previewImage.localFile.publicURL}
-                          />
-                        ) : (
-                          <GatsbyImage
-                            className="imageProjects"
-                            image={project.previewImage.gatsbyImageData}
-                            alt={project.previewImage.title}
-                            imgStyle={{
-                              objectFit: "contain",
-                            }}
-                          />
-                        )}
-                      </Link>
-                    )}
+                  {project.frontmatter.previewImage && (
+                    <Link to={`/project/${project.frontmatter.slug}`} className=" mr-24">
+                      <img
+                        className="imageProjects"
+                        style={{ objectFit: "fill" }}
+                        src={project.frontmatter.previewImage}
+                        alt={project.frontmatter.title}
+                      />
+                    </Link>
+                  )}
                   <div className="flex flex-col">
                     <Link
-                      to={`/project/${project.slug}`}
+                      to={`/project/${project.frontmatter.slug}`}
                       className="projectLink"
                     >
-                      <h3>{project.title}</h3>
+                      <h3>{project.frontmatter.title}</h3>
                     </Link>
                     <p className="mt-1 text-sm text-secondary-color min-w-32">
-                      {project.startDate}&nbsp;-&nbsp;
-                      {project.endDate ? <>{project.endDate}</> : <>present</>}
+                      {project.frontmatter.startDate}&nbsp;-&nbsp;
+                      {project.frontmatter.endDate ? <>{project.frontmatter.endDate}</> : <>present</>}
                     </p>
-                    {project.technologies !== null && (
+                    {project.frontmatter.technologies !== null && (
                       <div className="tags flex flex-row flex-wrap mt-2">
-                        {project.technologies.map(({ title }) => (
+                        {project.frontmatter.technologies.map((title) => (
                           <Tag key={title}>{title}</Tag>
                         ))}
                       </div>
                     )}
-                    {project.context && (
+                    {project.excerpt && (
                       <p className="mt-2">
-                        {project.context.childMarkdownRemark.excerpt}
+                        {project.excerpt}
                       </p>
                     )}
                   </div>
@@ -86,36 +72,22 @@ export default ProjectsIndex;
 
 export const pageQuery = graphql`
   query ProjectsIndexQuery {
-    allContentfulProject(sort: { endDate: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+      sort: { frontmatter: { endDate: DESC } }
+    ) {
       edges {
         node {
-          startDate(formatString: "DD MMMM YYYY")
-          endDate(formatString: "DD MMMM YYYY")
-          title
-          slug
-          id
-          hidden
-          context {
-            childMarkdownRemark {
-              html
-              timeToRead
-              excerpt
-            }
-          }
-          previewImage {
+          frontmatter {
+            startDate(formatString: "DD MMMM YYYY")
+            endDate(formatString: "DD MMMM YYYY")
             title
-            file {
-              contentType
-            }
-            gatsbyImageData(width: 200)
-            localFile {
-              extension
-              publicURL
-            }
+            slug
+            hidden
+            technologies
+            previewImage
           }
-          technologies {
-            title
-          }
+          excerpt
         }
       }
     }

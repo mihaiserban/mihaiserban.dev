@@ -19,30 +19,29 @@ const Template = ({ data }) => {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  const project = data.contentfulProject;
+  const project = data.markdownRemark;
 
-  const filteredImages = project.images.filter(
-    (image) => image.file.contentType.indexOf("image") !== -1
+  const filteredImages = project.frontmatter.gallery.filter(
+    (image) => image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.svg')
   );
-  const filteredVideos = project.images.filter(
-    (image) => image.file.contentType.indexOf("video") !== -1
+  const filteredVideos = project.frontmatter.gallery.filter(
+    (image) => image.endsWith('.mp4') || image.endsWith('.mov')
   );
-  const images = filteredImages.map((image) => image.file.url);
+  const images = filteredImages;
 
   return (
     <Layout>
       <SEO
-        title={`${project.title} - ${project.platforms
-          .map((el) => el.title)
+        title={`${project.frontmatter.title} - ${project.frontmatter.platforms
           .join(", ")} - Mihai Serban`}
-        description={project.context.childMarkdownRemark.excerpt}
+        description={project.excerpt}
       />
       <article>
         <div>
           <div className="flex flex-row items-center">
-            <h1>{project.title}</h1>
-            {project.url !== null && (
-              <Link to={project.url} className="ml-4">
+            <h1>{project.frontmatter.title}</h1>
+            {project.frontmatter.url !== null && (
+              <Link to={project.frontmatter.url} className="ml-4">
                 <FontAwesomeIcon
                   icon={faExternalLinkAlt}
                   color="var(--primary-color)"
@@ -51,64 +50,51 @@ const Template = ({ data }) => {
             )}
           </div>
           <span className="mt-2 text-sm text-secondary-color min-w-32">
-            {project.startDate}&nbsp;-&nbsp;
-            {project.endDate ? <>{project.endDate}</> : <>present</>}
+            {project.frontmatter.startDate}&nbsp;-&nbsp;
+            {project.frontmatter.endDate ? <>{project.frontmatter.endDate}</> : <>present</>}
           </span>
 
-          {project.context !== null && (
+          {project.html !== null && (
             <div className="flex flex-col mt-4">
-              <h5>Context</h5>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: project.context.childMarkdownRemark.html,
+                  __html: project.html,
                 }}
                 className="md-remark"
               />
             </div>
           )}
 
-          {project.technologies !== null && (
+          {project.frontmatter.technologies !== null && (
             <div className="flex flex-col mt-4">
               <h5>Technologies</h5>
               <div className="tags flex flex-row flex-wrap mt-2">
-                {project.technologies.map(({ title }) => (
+                {project.frontmatter.technologies.map((title) => (
                   <Tag key={title}>{title}</Tag>
                 ))}
               </div>
             </div>
           )}
 
-          {project.industries !== null && (
+          {project.frontmatter.industries !== null && project.frontmatter.industries.length > 0 && (
             <div className="flex flex-col mt-4">
               <h5>Industry</h5>
               <div className="tags flex flex-row flex-wrap mt-2">
-                {project.industries.map(({ title }) => (
+                {project.frontmatter.industries.map((title) => (
                   <Tag key={title}>{title}</Tag>
                 ))}
               </div>
             </div>
           )}
 
-          {project.platforms !== null && (
+          {project.frontmatter.platforms !== null && (
             <div className="flex flex-col mt-4">
               <h5>Platforms</h5>
               <div className="tags flex flex-row flex-wrap mt-2">
-                {project.platforms.map(({ title }) => (
+                {project.frontmatter.platforms.map((title) => (
                   <Tag key={title}>{title}</Tag>
                 ))}
               </div>
-            </div>
-          )}
-
-          {project.responsabilities !== null && (
-            <div className="flex flex-col mt-4">
-              <h5>Responsabilities</h5>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: project.responsabilities.childMarkdownRemark.html,
-                }}
-                className="md-remark"
-              />
             </div>
           )}
 
@@ -117,10 +103,10 @@ const Template = ({ data }) => {
               {filteredVideos.length > 0 && (
                 <>
                   <h5 className="mb-4">Video</h5>
-                  {filteredVideos.map((image) => (
+                  {filteredVideos.map((videoUrl) => (
                     <ReactPlayer
-                      key={image.file.url}
-                      url={image.file.url}
+                      key={videoUrl}
+                      url={videoUrl}
                       controls
                       width="100%"
                       height="auto"
@@ -134,8 +120,8 @@ const Template = ({ data }) => {
                   <h5 className="mb-4">Gallery</h5>
                   <img
                     className="imageProject mb-8"
-                    src={filteredImages[0].file.url}
-                    alt={filteredImages[0].title}
+                    src={filteredImages[0]}
+                    alt={project.frontmatter.title}
                     onClick={() => setIsOpen(true)}
                   />
                 </>
@@ -169,50 +155,21 @@ export default Template;
 
 export const pageQuery = graphql`
   query ProjectQuery($slug: String!) {
-    contentfulProject(slug: { eq: $slug }) {
-      startDate(formatString: "DD MMMM YYYY")
-      endDate(formatString: "DD MMMM YYYY")
-      title
-      slug
-      id
-      url
-      context {
-        childMarkdownRemark {
-          html
-          timeToRead
-          excerpt
-        }
-      }
-      responsabilities {
-        childMarkdownRemark {
-          html
-          timeToRead
-          excerpt
-        }
-      }
-      images {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      frontmatter {
+        startDate(formatString: "DD MMMM YYYY")
+        endDate(formatString: "DD MMMM YYYY")
         title
-        file {
-          url
-          contentType
-        }
+        slug
+        url
+        technologies
+        platforms
+        industries
+        gallery
+        previewImage
       }
-      previewImage {
-        title
-        file {
-          url
-          contentType
-        }
-      }
-      technologies {
-        title
-      }
-      platforms {
-        title
-      }
-      industries {
-        title
-      }
+      html
+      excerpt
     }
   }
 `;

@@ -27,7 +27,7 @@ const Blog = ({ data }) => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-8">
           <div className="flex items-center">
             <img
-              src={about.image.publicURL}
+              src={about.image}
               className="headshot rounded-full"
               alt="Headshot Mihai Serban"
               style={{ width: "24px", height: "24px" }}
@@ -56,9 +56,7 @@ export default Blog;
 export const pageQuery = graphql`
   query BlogQuery($slug: String!) {
   dataJson {
-    image {
-      publicURL
-    }
+    image
     location
   }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {

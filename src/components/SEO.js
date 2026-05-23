@@ -38,7 +38,7 @@ const Head = (props) => {
 
   const aTitle = title || siteTitle;
   const aDescription = description || siteDescription;
-  const image = imageObj.publicURL;
+  const image = imageObj;
   const keywords = technologies.map((t) => t.title).join(", ");
 
   const schemaOrgWebPage = {
@@ -249,9 +249,7 @@ const querySEO = graphql`
       stackoverflow
       instagram
       goodreads
-      image {
-        publicURL
-      }
+      image
       siteTitle
       siteTitleAlt
       siteTitleShort
@@ -263,9 +261,7 @@ const querySEO = graphql`
       ogSiteName
       ogLanguage
       userTwitter
-      siteLogo {
-        publicURL
-      }
+      siteLogo
     }
     allTechnologiesJson {
       nodes {

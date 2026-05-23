@@ -114,9 +114,7 @@ export const pageQuery = graphql`
         startDate(formatString: "DD MMMM YYYY")
         endDate(formatString: "DD MMMM YYYY")
       }
-      image {
-        publicURL
-      }
+      image
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/experience/" } }

@@ -60,7 +60,7 @@ const About = (props) => {
       <div className="flex flex-col container">
         <Link to="/" aria-label="Home">
           <img
-            src={image.publicURL}
+            src={image}
             className="image"
             alt="Headshot Mihai Serban"
           />
@@ -209,9 +209,7 @@ const queryAbout = graphql`
       goodreads
       medium
       location
-      image {
-        publicURL
-      }
+      image
     }
   }
 `;

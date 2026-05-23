@@ -8,7 +8,7 @@ import SEO from "../components/SEO";
 import "../styles/scss/pages/about.scss";
 
 const Page = ({ data }) => {
-  const { dataJson: aboutJson } = data;
+  const { dataJson: aboutJson, allEducationJson } = data;
   const { edges: experience } = data.allMarkdownRemark;
 
   return (
@@ -25,7 +25,7 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Education</h2>
           <div className="flex flex-col">
-            {aboutJson.education.map((item) => (
+            {allEducationJson.nodes.map((item) => (
               <div key={item.title} className="flex flex-col">
                 <span className="mt-2">{item.title}</span>
                 <span className="mt-1 text-sm text-secondary-color min-w-32">
@@ -109,12 +109,14 @@ export const pageQuery = graphql`
     dataJson {
       platforms
       body
-      education {
+      image
+    }
+    allEducationJson(sort: { startDate: DESC }) {
+      nodes {
         title
         startDate(formatString: "DD MMMM YYYY")
         endDate(formatString: "DD MMMM YYYY")
       }
-      image
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/experience/" } }

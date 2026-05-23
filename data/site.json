@@ -1,0 +1,14 @@
+{
+  "siteTitle": "Mihai Serban | Software Engineer",
+  "siteTitleAlt": "The personal website of Mihai Serban",
+  "siteTitleShort": "Mihai Serban",
+  "siteHeadline": "Full stack developer",
+  "siteUrl": "https://mihaiserban.dev",
+  "siteLanguage": "en",
+  "siteDescription": "A website that talks about technologies I find interesting.",
+  "author": "Mihai Serban",
+  "ogSiteName": "Mihai Serban",
+  "ogLanguage": "en_US",
+  "userTwitter": "@MihaiSerban",
+  "siteLogo": "/images/site-logo.jpg"
+}

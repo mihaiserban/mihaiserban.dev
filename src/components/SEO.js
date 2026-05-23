@@ -39,7 +39,7 @@ const Head = (props) => {
   const aTitle = title || siteTitle;
   const aDescription = description || siteDescription;
   const image = imageObj;
-  const keywords = technologies.join(", ");
+  const keywords = technologies.map((t) => t.title).join(", ");
 
   const schemaOrgWebPage = {
     "@context": "http://schema.org",
@@ -264,7 +264,9 @@ const querySEO = graphql`
       siteLogo
     }
       allTechnologiesJson {
-      nodes
+      nodes {
+        title
+      }
     }
     site {
       buildTime(formatString: "YYYY-MM-DD")

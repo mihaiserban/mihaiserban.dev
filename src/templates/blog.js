@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -15,37 +14,36 @@ import "react-image-lightbox/style.css"; // This only needs to be imported once 
 const Blog = ({ data }) => {
   if (!data) return null;
 
-  console.log(data);
-  const blog = data.contentfulBlogPost;
-  const about = data.contentfulAbout;
+  const blog = data.markdownRemark;
+  const about = data.aboutJson;
 
   return (
     <Layout>
-      <SEO title={blog.title} description={blog.description} />
+      <SEO title={blog.frontmatter.title} description={blog.frontmatter.description} />
       <article>
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          {blog.title}
+          {blog.frontmatter.title}
         </h1>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-8">
           <div className="flex items-center">
-            <GatsbyImage
-              image={about.image.gatsbyImageData}
+            <img
+              src={about.image.publicURL}
               className="headshot rounded-full"
               alt="Headshot Mihai Serban"
               style={{ width: "24px", height: "24px" }}
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
-              Serban Mihai / {blog.date}
+              Serban Mihai / {blog.frontmatter.date}
             </p>
           </div>
           <p className="text-sm text-secondary-color min-w-32 mt-2 md:mt-0">
-            ~{blog.body.childMarkdownRemark.timeToRead} min read
+            ~{blog.timeToRead} min read
           </p>
         </div>
         <div
           className="md-remark mt-8"
           dangerouslySetInnerHTML={{
-            __html: blog.body.childMarkdownRemark.html,
+            __html: blog.html,
           }}
         />
       </article>
@@ -57,25 +55,23 @@ export default Blog;
 
 export const pageQuery = graphql`
   query BlogQuery($slug: String!) {
-    contentfulAbout {
+    aboutJson {
       image {
-        gatsbyImageData(width: 200)
+        publicURL
       }
       location
     }
-    contentfulBlogPost(slug: { eq: $slug }) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id
-      slug
-      title
-      description
-      date(formatString: "DD MMMM YYYY")
-      body {
-        childMarkdownRemark {
-          html
-          timeToRead
-          excerpt
-        }
+      frontmatter {
+        slug
+        title
+        description
+        date(formatString: "DD MMMM YYYY")
       }
+      html
+      timeToRead
+      excerpt
     }
   }
 `;

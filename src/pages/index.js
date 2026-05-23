@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 import Link from "../components/link";
 import Layout from "../components/layout";
@@ -9,8 +8,7 @@ import SEO from "../components/SEO";
 import "../styles/scss/pages/index.scss";
 
 const Index = ({ data }) => {
-  console.log(data);
-  const { edges: blogs } = data.allContentfulBlogPost;
+  const { edges: blogs } = data.allMarkdownRemark;
 
   return (
     <Layout>
@@ -19,29 +17,29 @@ const Index = ({ data }) => {
         <h1>Blog</h1>
         <div className="flex flex-col mt-8">
           {blogs.map(({ node: blog }, index) => {
-            if (blogs.hidden && blogs.hidden === true) return null;
+            if (blog.frontmatter.hidden && blog.frontmatter.hidden === true) return null;
             return (
               <div className="flex flex-col mb-8" key={blog.id}>
                 <div className="flex flex-row projectContainer">
                   <div className="flex flex-col">
                     <p className="text-sm text-secondary-color min-w-32">
-                      {blog.date}
+                      {blog.frontmatter.date}
                     </p>
-                    <Link to={`/blog/${blog.slug}`} className="blogLink mt-1">
+                    <Link to={`/blog/${blog.frontmatter.slug}`} className="blogLink mt-1">
                       <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100">
-                        {blog.title}
+                        {blog.frontmatter.title}
                       </h4>
                     </Link>
 
-                    {blog.tags != null && (
+                    {blog.frontmatter.tags != null && (
                       <div className="tags flex flex-row flex-wrap mt-2">
-                        {blog.tags.map((tag) => (
-                          <Tag key={tag.id}>{tag.title}</Tag>
+                        {blog.frontmatter.tags.map((tag) => (
+                          <Tag key={tag}>{tag}</Tag>
                         ))}
                       </div>
                     )}
                     <p className="text-gray-600 dark:text-gray-400 mt-2">
-                      {blog.description}
+                      {blog.frontmatter.description}
                     </p>
                   </div>
                 </div>
@@ -58,26 +56,24 @@ export default Index;
 
 export const pageQuery = graphql`
   query BlogsIndexQuery {
-    allContentfulBlogPost(sort: { date: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      sort: { frontmatter: { date: DESC } }
+    ) {
       edges {
         node {
-          date(formatString: "DD MMMM YYYY")
-          title
-          description
-          slug
           id
-          hidden
-          body {
-            childMarkdownRemark {
-              html
-              timeToRead
-              excerpt(pruneLength: 200)
-            }
-          }
-          tags {
+          frontmatter {
+            date(formatString: "DD MMMM YYYY")
             title
-            id
+            description
+            slug
+            hidden
+            tags
           }
+          html
+          timeToRead
+          excerpt(pruneLength: 200)
         }
       }
     }

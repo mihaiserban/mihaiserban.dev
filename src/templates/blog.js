@@ -9,7 +9,6 @@ import SEO from "../components/SEO";
 import Tag from "../components/tag";
 import Link from "../components/link";
 
-import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 const Blog = ({ data }) => {
   if (!data) return null;

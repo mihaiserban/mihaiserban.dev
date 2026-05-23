@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import ReactPlayer from "react-player";
-import Lightbox from "react-image-lightbox";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +10,13 @@ import SEO from "../components/SEO";
 import Tag from "../components/tag";
 import Link from "../components/link";
 import "../styles/scss/templates/project.scss";
-import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+
+// Lazy load Lightbox only on client side to avoid SSR issues
+let Lightbox = null;
+if (typeof window !== "undefined") {
+  Lightbox = require("react-image-lightbox").default;
+  require("react-image-lightbox/style.css");
+}
 
 const Template = ({ data }) => {
   if (!data) return null;

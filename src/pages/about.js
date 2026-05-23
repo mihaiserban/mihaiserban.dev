@@ -25,7 +25,7 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Education</h2>
           <div className="flex flex-col">
-            {allEducationJson.nodes.map((item) => (
+            {allEducationJson && allEducationJson.nodes && allEducationJson.nodes.map((item) => (
               <div key={item.title} className="flex flex-col">
                 <span className="mt-2">{item.title}</span>
                 <span className="mt-1 text-sm text-secondary-color min-w-32">
@@ -40,7 +40,7 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Platforms</h2>
           <div className="tags flex flex-row flex-wrap mt-2">
-            {aboutJson.platforms.map((title) => (
+            {aboutJson.platforms && aboutJson.platforms.map((title) => (
               <Tag key={title}>{title}</Tag>
             ))}
           </div>
@@ -48,7 +48,7 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Experience</h2>
           <div className="flex flex-col">
-            {experience.map(({ node: item }, index) => (
+            {experience && experience.map(({ node: item }, index) => (
               <div className="flex flex-col mt-4" key={item.frontmatter.title + item.frontmatter.company}>
                 <h4>
                   {item.frontmatter.title}

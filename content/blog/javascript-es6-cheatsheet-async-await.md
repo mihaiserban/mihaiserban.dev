@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Async/Await](//images.ctfassets.net/usz05rcag1x3/3VssyYPOq5KiFbQVO9Mtv4/c3131ab32204a677bc04b3227b1f8cd4/1_U5MZoXlTOdyxlwf7XBqcHw.png)
+![ES6 Async/Await](/images/blog/1_U5MZoXlTOdyxlwf7XBqcHw.png)
 
 *   Async/await is a new way to write asynchronous code. Previous options for asynchronous code are callbacks and promises.
 *   Async/await is built on top of promises. It cannot be used with plain callbacks or node callbacks.

@@ -9,7 +9,7 @@ tags:
   - MongoDB
 ---
 
-![bitcoin](//images.ctfassets.net/usz05rcag1x3/9zlk9ToBPYDvfbB29Xxby/4cb4b137a3702fb5dce8f5e904c1cef7/0_m4PdT9e8rKaVnWvD.jpeg)
+![bitcoin](/images/blog/0_m4PdT9e8rKaVnWvD.jpeg)
 
 Cryptocurrency is known for having major price swings, big players often do what’s called a pump and dump. They come into the markets with billions of dollars, buy a lot of tokens and steadily increase the price, create FOMO (fear of missing out), buying pressure, and then dump the tokens at a higher price making a big profits.
 

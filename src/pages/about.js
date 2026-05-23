@@ -49,7 +49,7 @@ const Page = ({ data }) => {
           <h2>Experience</h2>
           <div className="flex flex-col">
             {experience && experience.map(({ node: item }, index) => (
-              <div className="flex flex-col mt-4" key={item.frontmatter.title + item.frontmatter.company}>
+              <div className="flex flex-col mt-4" key={item.frontmatter.title + '-' + (item.frontmatter.company || 'unknown')}>
                 <h4>
                   {item.frontmatter.title}
                   {item.frontmatter.company && (

@@ -9,7 +9,7 @@ tags:
   - ES6
 ---
 
-![ES6 array functions](//images.ctfassets.net/usz05rcag1x3/2rzu20Dx3dpklhqD8sffdX/b1750dd4d59e92addfc04b06d93756b2/1__1bFnrLKJfM9oDP_twk8Pg.png)
+![ES6 array functions](/images/blog/1__1bFnrLKJfM9oDP_twk8Pg.png)
 
 `**from**`
 

@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Classes](//images.ctfassets.net/usz05rcag1x3/6oQs38hrCgyWXGx9rUGW6W/fc571593eb78c8b0d92440e3d257a662/1_zdv7_BKFCrpmGwfPgu6j3A.png)
+![ES6 Classes](/images/blog/1_zdv7_BKFCrpmGwfPgu6j3A.png)
 
 Prior to ES6, we implemented Classes by creating a constructor function and adding properties by extending the prototype:
 

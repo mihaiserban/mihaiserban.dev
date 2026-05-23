@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Map snippet](//images.ctfassets.net/usz05rcag1x3/2zPO4jo3ePXBqn8fOr7Cdi/d015ad18408444fb53a7482c88f4591a/1_nK_beIXw-lIf1wTpd2kocg.png)
+![ES6 Map snippet](/images/blog/1_nK_beIXw-lIf1wTpd2kocg.png)
 
 ### Map
 

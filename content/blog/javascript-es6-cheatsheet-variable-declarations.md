@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![es6-variables](//images.ctfassets.net/usz05rcag1x3/1ITUBkdtoV9Rsv6oJkgpqB/9281518191ac285c31fa8d00b80d5c5b/1_T6qcNaaF8T0HedbwF2ZmyQ.png)
+![es6-variables](/images/blog/1_T6qcNaaF8T0HedbwF2ZmyQ.png)
 
 ES6 brought `let` and `const` with proper lexical scoping. `let` is the new `var`. Constants work just like `let`, but can’t be reassigned. `let` and `const` are block scoped. Therefore, referencing block-scoped identifiers before they are defined will produce a `ReferenceError`.
 

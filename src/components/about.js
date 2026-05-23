@@ -37,7 +37,6 @@ const About = (props) => {
   const {
     dataJson: {
       name,
-      email,
       twitter,
       linkedIn,
       github,
@@ -199,7 +198,6 @@ const queryAbout = graphql`
   query AboutQuery {
     dataJson {
       name
-      email
       description
       twitter
       linkedIn

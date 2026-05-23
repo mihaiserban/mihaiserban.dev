@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Promises](//images.ctfassets.net/usz05rcag1x3/2D7AeZPenTAUlhUsAMwd1P/a5468fb84bc9cfa93f951a8ab6225d37/1_AqkCUN-kD_fLefEFPnX2Uw.png)
+![ES6 Promises](/images/blog/1_AqkCUN-kD_fLefEFPnX2Uw.png)
 
 Promises are one of the most exciting additions to JavaScript ES6. Promises are a pattern that greatly simplifies asynchronous programming by making the code look synchronous and avoid problems associated with callbacks.
 

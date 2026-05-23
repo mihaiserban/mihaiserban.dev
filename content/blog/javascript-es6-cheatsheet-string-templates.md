@@ -9,7 +9,7 @@ tags:
   - ES6
 ---
 
-![string_templates](//images.ctfassets.net/usz05rcag1x3/1B6vPvz5GLvTTQz1qpUpEw/b748e1ce02176784b18093c85205020a/1_OxzGYSWzbivvvMcTkbjC9w.png)
+![string_templates](/images/blog/1_OxzGYSWzbivvvMcTkbjC9w.png)
 
 Template Strings use back-ticks (\`\`) rather than the single or double quotes we’re used to with regular strings. A template string could thus be written as follows:
 

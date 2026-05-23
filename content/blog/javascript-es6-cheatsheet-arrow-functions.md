@@ -9,7 +9,7 @@ tags:
   - ES6
 ---
 
-![ES6 Arrow functions](//images.ctfassets.net/usz05rcag1x3/4z3hhKmD5LLQU8byMF9PGd/cd6edf51a8ecec6654e0c367ae061b1c/1_zxHFGY9JpcDDsB5vAcNMtg.png)
+![ES6 Arrow functions](/images/blog/1_zxHFGY9JpcDDsB5vAcNMtg.png)
 
 Arrows are a function shorthand using the `=>` syntax. Arrow functions allow you to preserve the lexical value of `this`.
 

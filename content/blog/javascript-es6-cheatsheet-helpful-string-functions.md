@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 string functions](//images.ctfassets.net/usz05rcag1x3/302gI8GePMtY5oKpjiQb1l/ac71dada789df7dc23be674baef118ac/1_1FqOzjfkPr33etNp8oqYew.png)
+![ES6 string functions](/images/blog/1_1FqOzjfkPr33etNp8oqYew.png)
 
 ### .includes( )
 

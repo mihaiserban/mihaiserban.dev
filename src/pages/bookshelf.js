@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as glink, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import classNames from "classnames";
 
 import Link from "../components/link";

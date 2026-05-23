@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 getter and setter functions](//images.ctfassets.net/usz05rcag1x3/7d1WnzOzaxykzbLFKnfNSj/9cc9779dbf50af615938ec8659f60c28/1_rt1b55HKcfIWZQf-olDhbQ.png)
+![ES6 getter and setter functions](/images/blog/1_rt1b55HKcfIWZQf-olDhbQ.png)
 
 ES6 has started supporting getter and setter functions within classes. Using the following example:
 

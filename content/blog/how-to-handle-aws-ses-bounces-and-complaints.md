@@ -24,7 +24,7 @@ In case your API receives a Bounce/Complaint you should take steps to make sure 
 
 The following figure shows the process of sending an email via [AWS SES](http://aws.amazon.com/ses/).
 
-![AWS SES diagram](//images.ctfassets.net/usz05rcag1x3/5tAtHgpho4VTTmxbH6Lnf6/c8c0f1ee1e27da95182e230e4f079c94/1_pEz2kdAeiT6ljb32F6J9fw.png)
+![AWS SES diagram](/images/blog/1_pEz2kdAeiT6ljb32F6J9fw.png)
 
 If the sender request to SES succeds then it can expect one of the following outcomes:
 
@@ -36,7 +36,7 @@ If the sender request to SES succeds then it can expect one of the following out
 
 The following figure shows the process of handling bounce/complaints by using [AWS SNS](https://aws.amazon.com/sns) service.
 
-![AWS SES flow diagram](//images.ctfassets.net/usz05rcag1x3/5lew1CmPd0nFJwQ7hwkyhl/1b068434b8444b5ec4448efd29c3ad08/1_-eRHvZt-9R_R_7f6f0yCvw.png)
+![AWS SES flow diagram](/images/blog/1_-eRHvZt-9R_R_7f6f0yCvw.png)
 
 Bounce and complaint notifications are available by email or through Amazon Simple Notification Service (Amazon SNS). By default, these notifications are sent to you via email by a feature called _email feedback forwarding_.
 
@@ -48,17 +48,17 @@ Create the following topics in [AWS SNS](https://docs.aws.amazon.com/sns/latest/
 *   ses-complaints-topic-prod
 *   ses-deliveries-topic-prod (optional)
 
-![AWS SES create topic](//images.ctfassets.net/usz05rcag1x3/cM35RttIBAjjf6QhgGFmb/c66a0a300a093c7a55d1d8f23044725d/1_JZ8CVlRWquIv20SKnUIjHg.png)
+![AWS SES create topic](/images/blog/1_JZ8CVlRWquIv20SKnUIjHg.png)
 
 After creating each topic, you’ll receive a identity id is called **ARN,** which we need in the next step of creating a SNS subscription.
 
-![AWS SES topics](//images.ctfassets.net/usz05rcag1x3/AMWvBPQtgTc2xLGCZcvuz/7d65028b324f84b5dc8df664923d7146/1_sWjh8Qxn-o5wyqvI5Ipe3Q.png)
+![AWS SES topics](/images/blog/1_sWjh8Qxn-o5wyqvI5Ipe3Q.png)
 
 Head to **SNS Subscriptions** and create a SNS subscription for the bounce and complaint topics you’ve previously created.
 
 This is where we need to specify a Endpoint where we’ll receive notifications from each topic. Endpoint must be a **POST** method on your backend.
 
-![AWS SES create subscription](//images.ctfassets.net/usz05rcag1x3/2juCvjAicYttzS5A9ZveMM/bc34e6db7fffbf30f6c5c4290d7038d2/1__Bnw9nIcRwC4LjH9hd3Mow.png)
+![AWS SES create subscription](/images/blog/1__Bnw9nIcRwC4LjH9hd3Mow.png)
 
 Each Subscription needs to be confirmed, after creation they are in a **PendingConfirmation** state.
 
@@ -68,7 +68,7 @@ In the body received on our server we’ll find the SubscribeURL or Token which 
 
 Call sns.confirmSubscription() with the Token or copy pasting SubscribeURL into SNS Dashboard.
 
-![AWS SES confirm subscription url](//images.ctfassets.net/usz05rcag1x3/6wivFluGVIVfWof2BZwnmM/b6d08152ab1526c58921d132d2389c6d/1_T_bSIOjMnaOaHs9PwEevnw.png)
+![AWS SES confirm subscription url](/images/blog/1_T_bSIOjMnaOaHs9PwEevnw.png)
 
 > **I’ve provided the code to subscribe and confirm each endpoint on** [**Github**](https://gist.github.com/mihaiserban/8a03fd28e54cac8856dbdfebd95bd7b3)**.**
 
@@ -80,13 +80,13 @@ Go to the SES Managment Console -> Email Addresses -> Select email address, and 
 
 Edit configuration and select the SNS topic for each type of notification.
 
-![AWS SES notifications configuration](//images.ctfassets.net/usz05rcag1x3/n2dbfCY8pJvpHuvnWiFru/f73ac5afd1712a000a5a976232f116f2/1_k4fHq6CgGYUeXZjNmyXOLA.png)
+![AWS SES notifications configuration](/images/blog/1_k4fHq6CgGYUeXZjNmyXOLA.png)
 
 #### 3. Testing using [AWS Mailbox Simulator](https://aws.amazon.com/blogs/aws/mailbox-simulator-for-the-amazon-simple-email-service/)
 
 The AWS mailbox simulator can be found in SES Managment Console and provides a way to test the way your implementation handles scenarios like bounces and complaints.
 
-![AWS SES test email](//images.ctfassets.net/usz05rcag1x3/4ZZF0itQO6rd0THdZTUoVy/aa6c2e9966b6227af592113221a62552/1_Pydm3yb5aGuuRerVw6mxcQ.png)
+![AWS SES test email](/images/blog/1_Pydm3yb5aGuuRerVw6mxcQ.png)
 
 Mail sent to **success@simulator.amazonses.com** will be treated as delivered successfully.
 

@@ -17,8 +17,6 @@ const Head = (props) => {
         goodreads,
         image: imageObj,
         siteTitle,
-        siteTitleAlt,
-        siteTitleShort,
         siteHeadline,
         siteUrl,
         siteLanguage,
@@ -27,7 +25,6 @@ const Head = (props) => {
         ogSiteName,
         ogLanguage,
         userTwitter,
-        siteLogo,
       },
       allTechnologiesJson: { nodes: technologies },
       site: { buildTime },
@@ -261,7 +258,6 @@ const querySEO = graphql`
       ogSiteName
       ogLanguage
       userTwitter
-      siteLogo
     }
       allTechnologiesJson {
       nodes {

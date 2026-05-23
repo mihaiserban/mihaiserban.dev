@@ -9,7 +9,7 @@ tags:
   - Growth Hacking
 ---
 
-![twitter_stats](//images.ctfassets.net/usz05rcag1x3/IbHuiUOsibST8HqEbSNpE/4bd71a0406c11c00194602c5a3fe2e3d/1_T1DMihbZ4Pjc7v6UdxvX7w.png)
+![twitter_stats](/images/blog/1_T1DMihbZ4Pjc7v6UdxvX7w.png)
 
 > Twitter can sometimes can make you feel like you’re tweeting to a lonesome abyss.
 
@@ -35,15 +35,15 @@ In order to tweet to my twitter audience I’ve setup a workflow using the follo
 
 1. [Feedly](https://feedly.com/) let’s you find and subscribe to quality publications. Also can easily be plugged into services such as [Zapier](https://zapier.com/) or [IFTTT](https://ifttt.com/).
 
-![feedly_screen](//images.ctfassets.net/usz05rcag1x3/6oojKml48FRTQLDiTzHXkY/d6939a295731f2c8b794a45a53a6763f/1_wTj61rb3GZMKDcURL_aM5w.png)
+![feedly_screen](/images/blog/1_wTj61rb3GZMKDcURL_aM5w.png)
 
 2. [Zapier](https://zapier.com/) allows you to create jobs which check if a new article was published into a Feedly category and then automatically add it to my Buffer social media queue.
 
-![zapier_screenshot](//images.ctfassets.net/usz05rcag1x3/5z57fIFUDOwDpFqrilwRVw/6a9af9623582807b4cd5edde5a654fb4/1_4r3hfl0rWW51jG6CnTsSpQ.png)
+![zapier_screenshot](/images/blog/1_4r3hfl0rWW51jG6CnTsSpQ.png)
 
 3. [Buffer](https://buffer.com/) is the last piece of the puzzle. The service schedules content to be sent out to my social media profile. TIP: Make sure to keep that queue filled and review it once every couple of days. __Add hashtags, mention authors for extra engagment__ 👌
 
-![buffer_screenshot](//images.ctfassets.net/usz05rcag1x3/N4zUIug45jU2uSBAtvcVk/942b38271a33a521b87e34f8aa93232b/1_aZjiPD1cuhn92DtDVU8Q3g.png)
+![buffer_screenshot](/images/blog/1_aZjiPD1cuhn92DtDVU8Q3g.png)
 
 One takaway is that consitency is key… Building an audience takes time. Treat your Twitter profile like you were running a marathon, not a sprint.
 Let me know if you have any other tips for growing your social media presence 🙏🏻

@@ -134,7 +134,7 @@ const Template = ({ data }) => {
             </div>
           )}
 
-          {isOpen && (
+          {isOpen && Lightbox && (
             <Lightbox
               mainSrc={images[photoIndex]}
               nextSrc={images[(photoIndex + 1) % images.length]}

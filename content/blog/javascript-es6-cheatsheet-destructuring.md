@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Destructuring](//images.ctfassets.net/usz05rcag1x3/5rKbHE30uvWvt3N0aXzkDX/8214c3c49c646c3f482d042e83c4d112/1_YujTHdJ1Hx9AWIe0CalxPg.png)
+![ES6 Destructuring](/images/blog/1_YujTHdJ1Hx9AWIe0CalxPg.png)
 
 ### Destructuring
 

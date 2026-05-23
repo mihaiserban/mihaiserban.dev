@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 modules](//images.ctfassets.net/usz05rcag1x3/2bfb5hD4e0U4T9au7nZshf/311e66bdda6dd7cd213dfc430500c57f/1_AVuC2PTg3VOE6EEZTfnydw.png)
+![ES6 modules](/images/blog/1_AVuC2PTg3VOE6EEZTfnydw.png)
 
 Prior to ES6, we used libraries such as [Browserify](http://browserify.org/) to create modules on the client-side, and [require](https://nodejs.org/api/modules.html#modules_module_require_id) in **Node.js**. With ES6, we can now directly use modules of all types (AMD and CommonJS).
 

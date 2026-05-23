@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![Missing image example](//images.ctfassets.net/usz05rcag1x3/3BGS0iE0e1kF36GGRNjHrc/facb9644d2a97b05e6a85d0a93f38f55/1_xIlLqtM0dSTY3KZ03zckMg.png)
+![Missing image example](/images/blog/1_xIlLqtM0dSTY3KZ03zckMg.png)
 
 In one of my recent projects we encountered many images which were missing from our S3 bucket. When I see something like this it just makes me sick 😫.
 

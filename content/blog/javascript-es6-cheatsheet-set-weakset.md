@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Set](//images.ctfassets.net/usz05rcag1x3/uUp30zb0sPd5ZZAtIEBPi/17eafea6aae494fd411ee67b76c2045e/1_AJDn2sPnvaDVOHZo2F3Zaw.png)
+![ES6 Set](/images/blog/1_AJDn2sPnvaDVOHZo2F3Zaw.png)
 
 A `Set` is a collection for unique values. The values can be primitives or object references.
 

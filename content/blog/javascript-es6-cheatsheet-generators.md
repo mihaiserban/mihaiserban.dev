@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 generators](//images.ctfassets.net/usz05rcag1x3/2OZYreQMdDi4r73f65x5GA/8502ec96971dca124e3dae6a61a7f4c3/1_rwj0mwY2iJ391EP3EVb0PA.png)
+![ES6 generators](/images/blog/1_rwj0mwY2iJ391EP3EVb0PA.png)
 
 A `generator` is a function which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
 

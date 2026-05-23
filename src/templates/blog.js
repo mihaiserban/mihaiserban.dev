@@ -1,14 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { graphql } from "gatsby";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 import Layout from "../components/layout";
 import SEO from "../components/SEO";
-import Tag from "../components/tag";
-import Link from "../components/link";
-
 
 const Blog = ({ data }) => {
   if (!data) return null;
@@ -58,7 +52,7 @@ export const pageQuery = graphql`
     image
     location
   }
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+  markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id
       frontmatter {
         slug

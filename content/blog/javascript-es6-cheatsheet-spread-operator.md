@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-![ES6 Spread Operator](//images.ctfassets.net/usz05rcag1x3/7uWUyLh8aNvTyjAQxWrunz/5d90cbab47d85573a094a9324fde8a32/1_rA3qD8SBiE_BrmeWuufvYw.png)
+![ES6 Spread Operator](/images/blog/1_rA3qD8SBiE_BrmeWuufvYw.png)
 
 ### Spread Operator
 

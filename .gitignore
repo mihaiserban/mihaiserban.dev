@@ -6,6 +6,16 @@ yarn-error.log
 .env
 .env.development
 .env.production
+.env.*.local
+*.log
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+
+# AI/Editor tooling
+.codegraph/
 
 # Local Netlify folder
 .netlify

@@ -5,18 +5,11 @@ import Link from "../components/link";
 import Layout from "../components/layout";
 import Tag from "../components/tag";
 import SEO from "../components/SEO";
-import { GatsbyImage } from "gatsby-plugin-image";
 import "../styles/scss/pages/about.scss";
 
-const startCareer = new Date("2010-05-01");
-
-function diffYears(dt1, dt2) {
-  return dt2.getFullYear() - dt1.getFullYear();
-}
-
 const Page = ({ data }) => {
-  const { nodes: technologies } = data.allContentfulTechnologies;
-  const { platforms, body, education, experience } = data.contentfulAbout;
+  const { aboutJson } = data;
+  const { edges: experience } = data.allMarkdownRemark;
 
   return (
     <Layout>
@@ -26,13 +19,13 @@ const Page = ({ data }) => {
         <div
           className="mt-4 md-remark"
           dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.html,
+            __html: aboutJson.body,
           }}
         />
         <div className="flex flex-col mt-6">
           <h2>Education</h2>
           <div className="flex flex-col">
-            {education.map((item) => (
+            {aboutJson.education.map((item) => (
               <div key={item.title} className="flex flex-col">
                 <span className="mt-2">{item.title}</span>
                 <span className="mt-1 text-sm text-secondary-color min-w-32">
@@ -47,7 +40,7 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Platforms</h2>
           <div className="tags flex flex-row flex-wrap mt-2">
-            {platforms.map(({ title }) => (
+            {aboutJson.platforms.map((title) => (
               <Tag key={title}>{title}</Tag>
             ))}
           </div>
@@ -55,37 +48,37 @@ const Page = ({ data }) => {
         <div className="flex flex-col mt-6">
           <h2>Experience</h2>
           <div className="flex flex-col">
-            {experience.map((item, index) => (
-              <div className="flex flex-col mt-4" key={item.company}>
+            {experience.map(({ node: item }, index) => (
+              <div className="flex flex-col mt-4" key={item.frontmatter.title + item.frontmatter.company}>
                 <h4>
-                  {item.title}
-                  {item.company && (
+                  {item.frontmatter.title}
+                  {item.frontmatter.company && (
                     <>
                       &nbsp;-&nbsp;
-                      {item.company}
+                      {item.frontmatter.company}
                     </>
                   )}
                 </h4>
                 <span className="mt-1 text-sm text-secondary-color min-w-32">
-                  {item.startDate} &nbsp;-&nbsp;
-                  {item.endDate ? <>{item.endDate}</> : <>present</>}
+                  {item.frontmatter.startDate} &nbsp;-&nbsp;
+                  {item.frontmatter.endDate ? <>{item.frontmatter.endDate}</> : <>present</>}
                 </span>
                 <div
                   className="md-remark"
                   dangerouslySetInnerHTML={{
-                    __html: item.jobDescription.childMarkdownRemark.html,
+                    __html: item.html,
                   }}
                 />
-                {item.projects && item.projects.length > 0 && (
+                {item.frontmatter.projects && item.frontmatter.projects.length > 0 && (
                   <>
                     <h5 className="mt-4">Projects</h5>
                     <ul className="mt-1">
-                      {item.projects.map((project) => {
+                      {item.frontmatter.projects.map((project) => {
                         if (project.hidden && project.hidden === true) {
                           return null;
                         }
                         return (
-                          <li>
+                          <li key={project.slug}>
                             <div className="flex flex-row items-center">
                               <Link to={`/project/${project.slug}`}>
                                 <span>{project.title}</span>
@@ -104,28 +97,6 @@ const Page = ({ data }) => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col mt-6">
-          <h2>Technologies</h2>
-          <div className="flex flex-row flex-wrap mt-2">
-            {technologies.map((tech) => (
-              <div
-                className="flex flex-col imageContainer items-center"
-                key={tech.title}
-              >
-                <GatsbyImage
-                  image={tech.image.gatsbyImageData}
-                  alt={tech.title}
-                  className="imageTech"
-                  imgStyle={{
-                    objectFit: "contain",
-                    background: "var(--alternate-bg)",
-                  }}
-                />
-                <span className="text mt-2.5">{tech.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </Layout>
   );
@@ -135,50 +106,36 @@ export default Page;
 
 export const pageQuery = graphql`
   query AboutPageQuery {
-    contentfulAbout {
-      platforms {
-        id
-        title
-      }
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-      experience {
-        id
-        title
-        company
-        jobDescription {
-          childMarkdownRemark {
-            html
-          }
-        }
-        startDate(formatString: "DD MMMM YYYY")
-        endDate(formatString: "DD MMMM YYYY")
-        projects {
-          id
-          startDate(formatString: "DD MMMM YYYY")
-          endDate(formatString: "DD MMMM YYYY")
-          title
-          slug
-          hidden
-        }
-      }
+    aboutJson {
+      platforms
+      body
       education {
-        id
         title
         startDate(formatString: "DD MMMM YYYY")
         endDate(formatString: "DD MMMM YYYY")
+      }
+      image {
+        publicURL
       }
     }
-    allContentfulTechnologies(sort: { createdAt: DESC }) {
-      nodes {
-        id
-        title
-
-        image {
-          gatsbyImageData(width: 980)
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/experience/" } }
+      sort: { frontmatter: { startDate: DESC } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            company
+            startDate(formatString: "DD MMMM YYYY")
+            endDate(formatString: "DD MMMM YYYY")
+            projects {
+              slug
+              title
+              hidden
+            }
+          }
+          html
         }
       }
     }

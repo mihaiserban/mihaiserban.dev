@@ -1,4 +1,4 @@
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import {
   faGithub,
   faGoodreads,
@@ -11,7 +11,6 @@ import {
 import styled, { keyframes } from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GatsbyImage } from "gatsby-plugin-image";
 import Link from "./link";
 import React from "react";
 import classNames from "classnames";
@@ -21,10 +20,10 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 const fade = keyframes`
   from {
     opacity: 0;
-
+  }
   to {
-      opacity: 1;
-    }
+    opacity: 1;
+  }
 `;
 
 const AnimatedBlock = styled.div`
@@ -33,25 +32,24 @@ const AnimatedBlock = styled.div`
 `;
 
 const About = (props) => {
+  const { width } = props;
+  const data = useStaticQuery(queryAbout);
   const {
-    width,
-    data: {
-      contentfulAbout: {
-        name,
-        email,
-        twitter,
-        linkedIn,
-        github,
-        stackoverflow,
-        instagram,
-        goodreads,
-        medium,
-        image,
-        location,
-        description,
-      },
+    aboutJson: {
+      name,
+      email,
+      twitter,
+      linkedIn,
+      github,
+      stackoverflow,
+      instagram,
+      goodreads,
+      medium,
+      image,
+      location,
+      description,
     },
-  } = props;
+  } = data;
 
   const currentPath =
     typeof window !== "undefined" &&
@@ -61,8 +59,8 @@ const About = (props) => {
     <div className="flex flex-row wrapper" style={{ width: `${width}px` }}>
       <div className="flex flex-col container">
         <Link to="/" aria-label="Home">
-          <GatsbyImage
-            image={image.gatsbyImageData}
+          <img
+            src={image.publicURL}
             className="image"
             alt="Headshot Mihai Serban"
           />
@@ -195,18 +193,11 @@ const About = (props) => {
   );
 };
 
-const SEO = (props) => (
-  <StaticQuery
-    query={queryAbout}
-    render={(data) => <About {...props} data={data} />}
-  />
-);
-
-export default SEO;
+export default About;
 
 const queryAbout = graphql`
   query AboutQuery {
-    contentfulAbout {
+    aboutJson {
       name
       email
       description
@@ -217,11 +208,10 @@ const queryAbout = graphql`
       instagram
       goodreads
       medium
-      image {
-        gatsbyImageData(width: 200)
-      }
-
       location
+      image {
+        publicURL
+      }
     }
   }
 `;

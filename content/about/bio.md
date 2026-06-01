@@ -2,7 +2,7 @@
 name: "Mihai Serban"
 email: "contact@mihaiserban.dev"
 description: "Software engineer in constant search for new and exciting technologies"
-twitter: "https://twitter.com/MihaiSerban"
+twitter: "https://x.com/MihaiSerban"
 linkedIn: "https://www.linkedin.com/in/mihai-serban-38699943/"
 github: "https://github.com/mihaiserban"
 stackoverflow: "https://stackoverflow.com/users/2259635/mihai-serban"

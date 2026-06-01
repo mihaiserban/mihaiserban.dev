@@ -148,7 +148,7 @@ Output of our aggregation is an array of aggregated tickers at 5 minute interval
  ]
 ```
 
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://twitter.com/MihaiSerban), and share this with your friends 😀🙏🏻
+P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻
 
 References:
 

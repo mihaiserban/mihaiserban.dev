@@ -98,4 +98,4 @@ Mail sent to **complaint@simulator.amazonses.com** will simulate the case in whi
 
 Mail sent to **blacklist@simulator.amazonses.com** will cause Amazon SES to block the send attempt and return a [MessageRejected](http://docs.amazonwebservices.com/ses/latest/DeveloperGuide/Troubleshooting.MessageRejected.html) error containing an “Address Blacklisted” error message.
 
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://twitter.com/MihaiSerban), and share this with your friends 😀🙏🏻
+P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻

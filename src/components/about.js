@@ -6,7 +6,7 @@ import {
   faLinkedin,
   faMedium,
   faStackOverflow,
-  faTwitter,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import styled, { keyframes } from "styled-components";
 
@@ -125,9 +125,9 @@ const About = (props) => {
         </div>
 
         <div className="mt-8 flex flex-row">
-          <Link to={twitter} aria-label="Head over to my Twitter">
+          <Link to={twitter} aria-label="Head over to my X">
             <div className="socialIcon flex items-center justify-center">
-              <FontAwesomeIcon icon={faTwitter} />
+              <FontAwesomeIcon icon={faXTwitter} />
             </div>
           </Link>
           <Link

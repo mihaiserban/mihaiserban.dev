@@ -48,5 +48,5 @@ In order to tweet to my twitter audience I’ve setup a workflow using the follo
 One takaway is that consitency is key… Building an audience takes time. Treat your Twitter profile like you were running a marathon, not a sprint.
 Let me know if you have any other tips for growing your social media presence 🙏🏻
 
-See you on [Twitter](https://twitter.com/MihaiSerban) 
+See you on [Twitter](https://x.com/MihaiSerban) 
 Happy *#GrowthHacking*!

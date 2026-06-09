@@ -35,16 +35,56 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
           onChange={(e) => handleChange('height', Number(e.target.value))}
           className={inputClass}
         />
+      </div>
 
-        <label className={labelClass}>Margin (mm)</label>
-        <input
-          type="number"
-          min={0}
-          max={500}
-          value={settings.margin}
-          onChange={(e) => handleChange('margin', Number(e.target.value))}
-          className={inputClass}
-        />
+      <div className={groupClass}>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Margins (mm)</h3>
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="block text-xs font-medium mt-2">Top</label>
+            <input
+              type="number"
+              min={0}
+              max={500}
+              value={settings.marginTop}
+              onChange={(e) => handleChange('marginTop', Number(e.target.value))}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium mt-2">Bottom</label>
+            <input
+              type="number"
+              min={0}
+              max={500}
+              value={settings.marginBottom}
+              onChange={(e) => handleChange('marginBottom', Number(e.target.value))}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium mt-2">Left</label>
+            <input
+              type="number"
+              min={0}
+              max={500}
+              value={settings.marginLeft}
+              onChange={(e) => handleChange('marginLeft', Number(e.target.value))}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium mt-2">Right</label>
+            <input
+              type="number"
+              min={0}
+              max={500}
+              value={settings.marginRight}
+              onChange={(e) => handleChange('marginRight', Number(e.target.value))}
+              className={inputClass}
+            />
+          </div>
+        </div>
       </div>
 
       <div className={groupClass}>

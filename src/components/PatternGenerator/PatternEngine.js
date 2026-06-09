@@ -68,7 +68,7 @@ function getShapeArea(shapeType, size) {
     }
     case 'horizontalLine':
     case 'verticalLine':
-      return 0; // Lines have no area
+      return 0;
     default:
       return 0;
   }
@@ -89,7 +89,10 @@ export function generatePattern(options) {
   const {
     width,
     height,
-    margin,
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
     shapeType,
     shapeSize,
     spacing,
@@ -98,8 +101,8 @@ export function generatePattern(options) {
     randomization,
   } = options;
 
-  const availableWidth = Math.max(0, width - 2 * margin);
-  const availableHeight = Math.max(0, height - 2 * margin);
+  const availableWidth = Math.max(0, width - marginLeft - marginRight);
+  const availableHeight = Math.max(0, height - marginTop - marginBottom);
   const cellSize = shapeSize + spacing;
 
   if (cellSize <= 0 || availableWidth <= 0 || availableHeight <= 0) {
@@ -133,15 +136,15 @@ export function generatePattern(options) {
       const jitterX = (random() - 0.5) * jitterScale;
       const jitterY = (random() - 0.5) * jitterScale;
 
-      const baseX = margin + col * cellSize + shapeSize / 2;
-      const baseY = margin + row * cellSize + shapeSize / 2;
+      const baseX = marginLeft + col * cellSize + shapeSize / 2;
+      const baseY = marginTop + row * cellSize + shapeSize / 2;
 
       let x = baseX + jitterX;
       let y = baseY + jitterY;
 
       const halfSize = shapeSize / 2;
-      x = Math.max(margin + halfSize, Math.min(width - margin - halfSize, x));
-      y = Math.max(margin + halfSize, Math.min(height - margin - halfSize, y));
+      x = Math.max(marginLeft + halfSize, Math.min(width - marginRight - halfSize, x));
+      y = Math.max(marginTop + halfSize, Math.min(height - marginBottom - halfSize, y));
 
       shapes.push({
         type: shapeType,

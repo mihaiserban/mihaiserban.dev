@@ -9,7 +9,10 @@ import '../styles/scss/components/pattern-generator.scss';
 const DEFAULT_SETTINGS = {
   width: 1000,
   height: 2000,
-  margin: 50,
+  marginTop: 50,
+  marginBottom: 50,
+  marginLeft: 50,
+  marginRight: 50,
   shapeType: 'circle',
   shapeSize: 20,
   spacing: 40,
@@ -68,6 +71,10 @@ const DesignPatternPage = () => {
             width={settings.width}
             height={settings.height}
             shapes={shapes}
+            marginTop={settings.marginTop}
+            marginBottom={settings.marginBottom}
+            marginLeft={settings.marginLeft}
+            marginRight={settings.marginRight}
           />
         </div>
       </div>

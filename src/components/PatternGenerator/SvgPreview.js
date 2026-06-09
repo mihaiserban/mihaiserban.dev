@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-const SvgPreview = forwardRef(({ width, height, shapes }, ref) => {
+const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom, marginLeft, marginRight }, ref) => {
   const renderShape = (shape, index) => {
     const { type, x, y, size } = shape;
     const half = size / 2;
@@ -116,6 +116,11 @@ const SvgPreview = forwardRef(({ width, height, shapes }, ref) => {
     }
   };
 
+  const mt = marginTop || 0;
+  const mb = marginBottom || 0;
+  const ml = marginLeft || 0;
+  const mr = marginRight || 0;
+
   return (
     <div className="svg-preview-container">
       <svg
@@ -131,6 +136,50 @@ const SvgPreview = forwardRef(({ width, height, shapes }, ref) => {
           background: 'white',
         }}
       >
+        {/* Margin visualization */}
+        <rect
+          x={0}
+          y={0}
+          width={width}
+          height={mt}
+          fill="rgba(255, 200, 200, 0.3)"
+          stroke="none"
+        />
+        <rect
+          x={0}
+          y={height - mb}
+          width={width}
+          height={mb}
+          fill="rgba(255, 200, 200, 0.3)"
+          stroke="none"
+        />
+        <rect
+          x={0}
+          y={mt}
+          width={ml}
+          height={height - mt - mb}
+          fill="rgba(255, 200, 200, 0.3)"
+          stroke="none"
+        />
+        <rect
+          x={width - mr}
+          y={mt}
+          width={mr}
+          height={height - mt - mb}
+          fill="rgba(255, 200, 200, 0.3)"
+          stroke="none"
+        />
+        {/* Margin border lines */}
+        <rect
+          x={ml}
+          y={mt}
+          width={width - ml - mr}
+          height={height - mt - mb}
+          fill="none"
+          stroke="rgba(255, 100, 100, 0.5)"
+          strokeWidth="0.5"
+          strokeDasharray="5,5"
+        />
         {shapes.map((shape, index) => renderShape(shape, index))}
       </svg>
     </div>

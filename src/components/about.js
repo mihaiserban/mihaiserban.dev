@@ -122,6 +122,16 @@ const About = (props) => {
           >
             Projects
           </Link>
+          <p className="mt-4 bold">Apps</p>
+          <Link
+            aria-label="Head over to the design pattern generator"
+            to="/design-pattern"
+            className={classNames("menuLink mt-1", {
+              active: currentPath === "/design-pattern",
+            })}
+          >
+            Design Pattern Generator
+          </Link>
         </div>
 
         <div className="mt-8 flex flex-row">

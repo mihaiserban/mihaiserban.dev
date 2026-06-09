@@ -24,16 +24,16 @@ function getDensity(nx, ny, gradientType, opacity) {
       density = 1;
       break;
     case GRADIENT_TYPES.LEFT_TO_RIGHT:
-      density = nx;
-      break;
-    case GRADIENT_TYPES.RIGHT_TO_LEFT:
       density = 1 - nx;
       break;
+    case GRADIENT_TYPES.RIGHT_TO_LEFT:
+      density = nx;
+      break;
     case GRADIENT_TYPES.TOP_TO_BOTTOM:
-      density = ny;
+      density = 1 - ny;
       break;
     case GRADIENT_TYPES.BOTTOM_TO_TOP:
-      density = 1 - ny;
+      density = ny;
       break;
     case GRADIENT_TYPES.RADIAL: {
       const cx = 0.5;
@@ -112,12 +112,13 @@ function generateLinePattern(options, random, randomState) {
     if (rowHeight <= 0) return [];
 
     const maxRows = Math.floor((availableHeight + spacing) / rowHeight);
+    const totalHeight = maxRows * thick + (maxRows - 1) * spacing;
+    const offsetY = marginTop + (availableHeight - totalHeight) / 2;
 
     for (let row = 0; row < maxRows; row++) {
       const ny = maxRows > 1 ? row / (maxRows - 1) : 0.5;
-      const y = marginTop + row * rowHeight + thick / 2;
+      const y = offsetY + row * rowHeight + thick / 2;
       let cursorX = marginLeft;
-      let lineIndex = 0;
 
       while (cursorX < width - marginRight) {
         const nx = availableWidth > 0 ? (cursorX - marginLeft) / availableWidth : 0.5;
@@ -125,29 +126,31 @@ function generateLinePattern(options, random, randomState) {
 
         if (random() > density) {
           cursorX += minLen + spacing;
-          lineIndex++;
           continue;
         }
 
-        const lineLength = minLen + random() * (maxLen - minLen);
+        const maxAvail = (width - marginRight) - cursorX;
+        let lineLength = minLen + random() * (maxLen - minLen);
+        lineLength = Math.min(lineLength, maxAvail);
+        if (lineLength < minLen) break;
+
         const halfLen = lineLength / 2;
         const jitterX = randomization > 0 ? (random() - 0.5) * (randomization / 100) * spacing : 0;
         const jitterY = randomization > 0 ? (random() - 0.5) * (randomization / 100) * (thick * 0.5) : 0;
 
         let x = cursorX + halfLen + jitterX;
         x = Math.max(marginLeft + halfLen, Math.min(width - marginRight - halfLen, x));
-        const adjY = y + jitterY;
+        if (x - halfLen < cursorX) x = cursorX + halfLen;
 
         shapes.push({
           type: shapeType,
           x,
-          y: adjY,
+          y: y + jitterY,
           size: thick,
           lineLength,
         });
 
-        cursorX += lineLength + spacing;
-        lineIndex++;
+        cursorX = x + halfLen + spacing;
       }
     }
   } else {
@@ -155,12 +158,13 @@ function generateLinePattern(options, random, randomState) {
     if (colWidth <= 0) return [];
 
     const maxCols = Math.floor((availableWidth + spacing) / colWidth);
+    const totalWidth = maxCols * thick + (maxCols - 1) * spacing;
+    const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
 
     for (let col = 0; col < maxCols; col++) {
       const nx = maxCols > 1 ? col / (maxCols - 1) : 0.5;
-      const x = marginLeft + col * colWidth + thick / 2;
+      const x = offsetX + col * colWidth + thick / 2;
       let cursorY = marginTop;
-      let lineIndex = 0;
 
       while (cursorY < height - marginBottom) {
         const ny = availableHeight > 0 ? (cursorY - marginTop) / availableHeight : 0.5;
@@ -168,29 +172,31 @@ function generateLinePattern(options, random, randomState) {
 
         if (random() > density) {
           cursorY += minLen + spacing;
-          lineIndex++;
           continue;
         }
 
-        const lineLength = minLen + random() * (maxLen - minLen);
+        const maxAvail = (height - marginBottom) - cursorY;
+        let lineLength = minLen + random() * (maxLen - minLen);
+        lineLength = Math.min(lineLength, maxAvail);
+        if (lineLength < minLen) break;
+
         const halfLen = lineLength / 2;
         const jitterX = randomization > 0 ? (random() - 0.5) * (randomization / 100) * (thick * 0.5) : 0;
         const jitterY = randomization > 0 ? (random() - 0.5) * (randomization / 100) * spacing : 0;
 
         let y = cursorY + halfLen + jitterY;
         y = Math.max(marginTop + halfLen, Math.min(height - marginBottom - halfLen, y));
-        const adjX = x + jitterX;
+        if (y - halfLen < cursorY) y = cursorY + halfLen;
 
         shapes.push({
           type: shapeType,
-          x: adjX,
+          x: x + jitterX,
           y,
           size: thick,
           lineLength,
         });
 
-        cursorY += lineLength + spacing;
-        lineIndex++;
+        cursorY = y + halfLen + spacing;
       }
     }
   }

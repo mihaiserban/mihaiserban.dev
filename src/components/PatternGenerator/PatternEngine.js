@@ -75,7 +75,7 @@ export function calculateCoverage(shapes, width, height) {
   return Math.min(100, (totalShapeArea / canvasArea) * 100);
 }
 
-function generateLinePattern(options, random, randomState) {
+function generateLinePattern(options, random) {
   const {
     width,
     height,
@@ -214,18 +214,10 @@ export function generatePattern(options) {
     randomization,
   } = options;
 
-  const seed = options.seed || 12345;
-  let randomState = seed;
-
-  const random = () => {
-    randomState = (randomState * 16807 + 0) % 2147483647;
-    return (randomState - 1) / 2147483646;
-  };
-
   const isLine = shapeType === SHAPE_TYPES.HORIZONTAL_LINE || shapeType === SHAPE_TYPES.VERTICAL_LINE;
 
   if (isLine) {
-    return generateLinePattern(options, random, randomState);
+    return generateLinePattern(options, Math.random);
   }
 
   const availableWidth = Math.max(0, width - marginLeft - marginRight);
@@ -244,6 +236,7 @@ export function generatePattern(options) {
   const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
   const offsetY = marginTop + (availableHeight - totalHeight) / 2;
 
+  const random = Math.random;
   const shapes = [];
 
   for (let row = 0; row < rows; row++) {

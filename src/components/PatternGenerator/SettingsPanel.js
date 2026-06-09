@@ -1,7 +1,7 @@
 import React from 'react';
 import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
 
-const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, coverage }) => {
+const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shapeCount, coverage }) => {
   const handleChange = (key, value) => {
     const next = { ...settings, [key]: value };
     if (key === 'shapeType') {
@@ -245,6 +245,14 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
         >
           Download PDF
         </button>
+        {onReset && (
+          <button
+            onClick={onReset}
+            className="w-full px-2 py-1 mt-1 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline"
+          >
+            Reset to defaults
+          </button>
+        )}
       </div>
     </div>
   );

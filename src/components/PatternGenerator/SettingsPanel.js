@@ -113,7 +113,6 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
         >
           <option value={SHAPE_TYPES.CIRCLE}>Circle</option>
           <option value={SHAPE_TYPES.SQUARE}>Square</option>
-          <option value={SHAPE_TYPES.ROUNDED_RECTANGLE}>Rounded Rectangle</option>
           <option value={SHAPE_TYPES.HORIZONTAL_LINE}>Horizontal Line</option>
           <option value={SHAPE_TYPES.VERTICAL_LINE}>Vertical Line</option>
         </select>
@@ -147,6 +146,16 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
               onChange={(e) => handleChange('lineMaxLength', Number(e.target.value))}
               className={inputClass}
             />
+            <label className={labelClass}>Corner Radius (%)</label>
+            <input
+              type="range"
+              min={0}
+              max={50}
+              value={settings.lineCornerRadius != null ? settings.lineCornerRadius : 50}
+              onChange={(e) => handleChange('lineCornerRadius', Number(e.target.value))}
+              className="block w-full mt-1"
+            />
+            <div className="text-xs text-gray-500 text-right">{settings.lineCornerRadius != null ? settings.lineCornerRadius : 50}%</div>
           </>
         ) : (
           <>
@@ -159,6 +168,20 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
               onChange={(e) => handleShapeSizeChange('shapeSize', Number(e.target.value))}
               className={inputClass}
             />
+            {settings.shapeType === SHAPE_TYPES.SQUARE && (
+              <>
+                <label className={labelClass}>Corner Radius (%)</label>
+                <input
+                  type="range"
+                  min={0}
+                  max={50}
+                  value={settings.cornerRadius != null ? settings.cornerRadius : 0}
+                  onChange={(e) => handleChange('cornerRadius', Number(e.target.value))}
+                  className="block w-full mt-1"
+                />
+                <div className="text-xs text-gray-500 text-right">{settings.cornerRadius != null ? settings.cornerRadius : 0}%</div>
+              </>
+            )}
           </>
         )}
 

@@ -21,6 +21,8 @@ const DEFAULT_SETTINGS = {
   lineThickness: 30,
   lineMinLength: 100,
   lineMaxLength: 400,
+  cornerRadius: 0,
+  lineCornerRadius: 50,
   seed: 12345,
 };
 

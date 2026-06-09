@@ -1,7 +1,6 @@
 export const SHAPE_TYPES = {
   CIRCLE: 'circle',
   SQUARE: 'square',
-  ROUNDED_RECTANGLE: 'roundedRectangle',
   HORIZONTAL_LINE: 'horizontalLine',
   VERTICAL_LINE: 'verticalLine',
 };
@@ -56,7 +55,6 @@ function getShapeArea(shape) {
     case 'circle':
       return Math.PI * half * half;
     case 'square':
-    case 'roundedRectangle':
       return size * size;
     case 'horizontalLine':
     case 'verticalLine':
@@ -145,6 +143,7 @@ function generateLinePattern(options, random, randomState) {
           y,
           size: thick,
           lineLength,
+          cornerRadius: options.lineCornerRadius != null ? options.lineCornerRadius : 50,
         });
 
         cursorX = x + halfLen + spacing;
@@ -188,6 +187,7 @@ function generateLinePattern(options, random, randomState) {
           y,
           size: thick,
           lineLength,
+          cornerRadius: options.lineCornerRadius != null ? options.lineCornerRadius : 50,
         });
 
         cursorY = y + halfLen + spacing;
@@ -272,6 +272,7 @@ export function generatePattern(options) {
         x,
         y,
         size: shapeSize,
+        cornerRadius: shapeType === 'square' ? (options.cornerRadius || 0) : undefined,
       });
     }
   }

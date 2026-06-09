@@ -171,6 +171,7 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
           onChange={(e) => handleChange('spacing', Number(e.target.value))}
           className={inputClass}
         />
+        <div className="text-xs text-gray-400 leading-tight">Gap between shapes. Auto-sets to shape size when changing type or size.</div>
       </div>
 
       <div className={groupClass}>
@@ -185,6 +186,7 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
           className="block w-full mt-1"
         />
         <div className="text-xs text-gray-500 text-right">{settings.opacity}%</div>
+        <div className="text-xs text-gray-400 mt-1 leading-tight">Chance each cell gets a shape. 100% = every possible slot is filled.</div>
 
         <label className={labelClass}>Gradient Direction</label>
         <select
@@ -199,15 +201,17 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
           <option value={GRADIENT_TYPES.BOTTOM_TO_TOP}>Bottom to Top</option>
           <option value={GRADIENT_TYPES.RADIAL}>Radial</option>
         </select>
+        <div className="text-xs text-gray-400 mt-1 leading-tight">How density fades across the canvas. Uniform keeps it even everywhere.</div>
       </div>
 
       <div className={groupClass}>
         <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
           Shapes: {shapeCount}
         </div>
-        <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-          Coverage: {coverage.toFixed(2)}%
+        <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+          Cutout: {coverage.toFixed(2)}%
         </div>
+        <div className="text-xs text-gray-400 mb-2 leading-tight">Total area removed from sheet. Depends on shape size, spacing, and density.</div>
         <button
           onClick={onGenerate}
           className="w-full px-4 py-2 mb-2 bg-green-600 text-white rounded hover:bg-green-700 transition"

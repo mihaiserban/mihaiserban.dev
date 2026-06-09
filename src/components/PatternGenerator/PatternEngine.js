@@ -113,7 +113,6 @@ function generateLinePattern(options, random) {
     spacing,
     opacity,
     gradientType,
-    randomization,
     lineThickness,
     lineMinLength,
     lineMaxLength,
@@ -139,33 +138,26 @@ function generateLinePattern(options, random) {
     const maxRows = Math.floor((availableHeight + spacing) / rowHeight);
     const totalHeight = maxRows * thick + (maxRows - 1) * spacing;
     const offsetY = marginTop + (availableHeight - totalHeight) / 2;
-    const step = maxLen + spacing;
-    const maxCols = step > 0 ? Math.floor((availableWidth + spacing) / step) : 0;
-    if (maxRows === 0 || maxCols === 0) return [];
-
-    const target = Array.from({ length: maxRows }, (_, row) => {
-      const ny = maxRows > 1 ? row / (maxRows - 1) : 0.5;
-      return new Array(maxCols).fill(0).map((_, col) => {
-        const nx = maxCols > 1 ? col / (maxCols - 1) : 0.5;
-        return getTargetDensity(nx, ny, gradientType, densityMax);
-      });
-    });
-
-    const filled = ditherGrid(target, random);
 
     const shapes = [];
     for (let row = 0; row < maxRows; row++) {
       const ny = maxRows > 1 ? row / (maxRows - 1) : 0.5;
       const y = offsetY + row * rowHeight + thick / 2;
+      let cursorX = marginLeft;
 
-      for (let col = 0; col < maxCols; col++) {
-        if (!filled[row][col]) continue;
+      while (cursorX < width - marginRight) {
+        const nx = availableWidth > 0 ? (cursorX - marginLeft) / availableWidth : 0.5;
+        const density = getTargetDensity(nx, ny, gradientType, densityMax);
 
-        const cursorX = marginLeft + col * step;
+        if (random() > density) {
+          cursorX += minLen + spacing;
+          continue;
+        }
+
         const maxAvail = (width - marginRight) - cursorX;
         let lineLength = minLen + random() * (maxLen - minLen);
         lineLength = Math.min(lineLength, maxAvail);
-        if (lineLength < minLen) continue;
+        if (lineLength < minLen) break;
 
         const halfLen = lineLength / 2;
 
@@ -180,6 +172,8 @@ function generateLinePattern(options, random) {
           lineLength,
           cornerRadius,
         });
+
+        cursorX = x + halfLen + spacing;
       }
     }
     return shapes;
@@ -191,33 +185,26 @@ function generateLinePattern(options, random) {
   const maxCols = Math.floor((availableWidth + spacing) / colWidth);
   const totalWidth = maxCols * thick + (maxCols - 1) * spacing;
   const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
-  const step = maxLen + spacing;
-  const maxRows = step > 0 ? Math.floor((availableHeight + spacing) / step) : 0;
-  if (maxCols === 0 || maxRows === 0) return [];
-
-  const target = Array.from({ length: maxRows }, (_, row) => {
-    const ny = maxRows > 1 ? row / (maxRows - 1) : 0.5;
-    return new Array(maxCols).fill(0).map((_, col) => {
-      const nx = maxCols > 1 ? col / (maxCols - 1) : 0.5;
-      return getTargetDensity(nx, ny, gradientType, densityMax);
-    });
-  });
-
-  const filled = ditherGrid(target, random);
 
   const shapes = [];
   for (let col = 0; col < maxCols; col++) {
     const nx = maxCols > 1 ? col / (maxCols - 1) : 0.5;
     const x = offsetX + col * colWidth + thick / 2;
+    let cursorY = marginTop;
 
-    for (let row = 0; row < maxRows; row++) {
-      if (!filled[row][col]) continue;
+    while (cursorY < height - marginBottom) {
+      const ny = availableHeight > 0 ? (cursorY - marginTop) / availableHeight : 0.5;
+      const density = getTargetDensity(nx, ny, gradientType, densityMax);
 
-      const cursorY = marginTop + row * step;
+      if (random() > density) {
+        cursorY += minLen + spacing;
+        continue;
+      }
+
       const maxAvail = (height - marginBottom) - cursorY;
       let lineLength = minLen + random() * (maxLen - minLen);
       lineLength = Math.min(lineLength, maxAvail);
-      if (lineLength < minLen) continue;
+      if (lineLength < minLen) break;
 
       const halfLen = lineLength / 2;
 
@@ -232,6 +219,8 @@ function generateLinePattern(options, random) {
         lineLength,
         cornerRadius,
       });
+
+      cursorY = y + halfLen + spacing;
     }
   }
   return shapes;
@@ -250,7 +239,6 @@ export function generatePattern(options) {
     spacing,
     opacity,
     gradientType,
-    randomization,
   } = options;
 
   const isLine = shapeType === SHAPE_TYPES.HORIZONTAL_LINE || shapeType === SHAPE_TYPES.VERTICAL_LINE;

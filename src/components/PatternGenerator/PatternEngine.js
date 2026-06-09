@@ -77,6 +77,103 @@ export function calculateCoverage(shapes, width, height) {
   return Math.min(100, (totalShapeArea / canvasArea) * 100);
 }
 
+function generateLinePattern(options, random, randomState) {
+  const {
+    width,
+    height,
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    shapeType,
+    spacing,
+    opacity,
+    gradientType,
+    randomization,
+    lineThickness,
+    lineMinLength,
+    lineMaxLength,
+  } = options;
+
+  const isHorizontal = shapeType === SHAPE_TYPES.HORIZONTAL_LINE;
+  const thick = lineThickness || 30;
+  const minLen = lineMinLength || 100;
+  const maxLen = lineMaxLength || 400;
+
+  const availableWidth = Math.max(0, width - marginLeft - marginRight);
+  const availableHeight = Math.max(0, height - marginTop - marginBottom);
+
+  const shapes = [];
+
+  if (isHorizontal) {
+    const rowHeight = thick + spacing;
+    if (rowHeight <= 0 || availableHeight <= 0) return [];
+
+    const rows = Math.floor((availableHeight + spacing) / rowHeight);
+    const totalHeight = rows * thick + (rows - 1) * spacing;
+    const offsetY = marginTop + (availableHeight - totalHeight) / 2;
+
+    for (let row = 0; row < rows; row++) {
+      const ny = rows > 1 ? row / (rows - 1) : 0.5;
+      const nx = 0.5;
+      const density = getDensity(nx, ny, gradientType, opacity);
+
+      if (random() > density) continue;
+
+      const lineLength = minLen + random() * (maxLen - minLen);
+      const halfLen = lineLength / 2;
+      const jitterScaleX = (randomization / 100) * availableWidth * 0.5;
+      const jitterX = (random() - 0.5) * jitterScaleX;
+
+      const y = offsetY + row * rowHeight + thick / 2;
+      let x = marginLeft + availableWidth / 2 + jitterX;
+      x = Math.max(marginLeft + halfLen, Math.min(width - marginRight - halfLen, x));
+
+      shapes.push({
+        type: shapeType,
+        x,
+        y,
+        size: thick,
+        lineLength,
+      });
+    }
+  } else {
+    const colWidth = thick + spacing;
+    if (colWidth <= 0 || availableWidth <= 0) return [];
+
+    const cols = Math.floor((availableWidth + spacing) / colWidth);
+    const totalWidth = cols * thick + (cols - 1) * spacing;
+    const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
+
+    for (let col = 0; col < cols; col++) {
+      const nx = cols > 1 ? col / (cols - 1) : 0.5;
+      const ny = 0.5;
+      const density = getDensity(nx, ny, gradientType, opacity);
+
+      if (random() > density) continue;
+
+      const lineLength = minLen + random() * (maxLen - minLen);
+      const halfLen = lineLength / 2;
+      const jitterScaleY = (randomization / 100) * availableHeight * 0.5;
+      const jitterY = (random() - 0.5) * jitterScaleY;
+
+      const x = offsetX + col * colWidth + thick / 2;
+      let y = marginTop + availableHeight / 2 + jitterY;
+      y = Math.max(marginTop + halfLen, Math.min(height - marginBottom - halfLen, y));
+
+      shapes.push({
+        type: shapeType,
+        x,
+        y,
+        size: thick,
+        lineLength,
+      });
+    }
+  }
+
+  return shapes;
+}
+
 export function generatePattern(options) {
   const {
     width,
@@ -91,40 +188,8 @@ export function generatePattern(options) {
     opacity,
     gradientType,
     randomization,
-    lineThickness,
-    lineMinLength,
-    lineMaxLength,
   } = options;
 
-  const isLine = shapeType === SHAPE_TYPES.HORIZONTAL_LINE || shapeType === SHAPE_TYPES.VERTICAL_LINE;
-  const isHorizontalLine = shapeType === SHAPE_TYPES.HORIZONTAL_LINE;
-
-  const effectiveWidth = isLine
-    ? (isHorizontalLine ? (lineMaxLength || shapeSize) : (lineThickness || 2))
-    : shapeSize;
-  const effectiveHeight = isLine
-    ? (isHorizontalLine ? (lineThickness || 2) : (lineMaxLength || shapeSize))
-    : shapeSize;
-
-  const cellWidth = effectiveWidth + spacing;
-  const cellHeight = effectiveHeight + spacing;
-
-  const availableWidth = Math.max(0, width - marginLeft - marginRight);
-  const availableHeight = Math.max(0, height - marginTop - marginBottom);
-
-  if (cellWidth <= 0 || cellHeight <= 0 || availableWidth <= 0 || availableHeight <= 0) {
-    return [];
-  }
-
-  const cols = Math.floor((availableWidth + spacing) / cellWidth);
-  const rows = Math.floor((availableHeight + spacing) / cellHeight);
-
-  const totalWidth = cols * effectiveWidth + (cols - 1) * spacing;
-  const totalHeight = rows * effectiveHeight + (rows - 1) * spacing;
-  const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
-  const offsetY = marginTop + (availableHeight - totalHeight) / 2;
-
-  const shapes = [];
   const seed = options.seed || 12345;
   let randomState = seed;
 
@@ -133,9 +198,29 @@ export function generatePattern(options) {
     return (randomState - 1) / 2147483646;
   };
 
-  const minLen = lineMinLength != null ? lineMinLength : shapeSize;
-  const maxLen = lineMaxLength != null ? lineMaxLength : shapeSize;
-  const thick = lineThickness || 2;
+  const isLine = shapeType === SHAPE_TYPES.HORIZONTAL_LINE || shapeType === SHAPE_TYPES.VERTICAL_LINE;
+
+  if (isLine) {
+    return generateLinePattern(options, random, randomState);
+  }
+
+  const availableWidth = Math.max(0, width - marginLeft - marginRight);
+  const availableHeight = Math.max(0, height - marginTop - marginBottom);
+  const cellSize = shapeSize + spacing;
+
+  if (cellSize <= 0 || availableWidth <= 0 || availableHeight <= 0) {
+    return [];
+  }
+
+  const cols = Math.floor((availableWidth + spacing) / cellSize);
+  const rows = Math.floor((availableHeight + spacing) / cellSize);
+
+  const totalWidth = cols * shapeSize + (cols - 1) * spacing;
+  const totalHeight = rows * shapeSize + (rows - 1) * spacing;
+  const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
+  const offsetY = marginTop + (availableHeight - totalHeight) / 2;
+
+  const shapes = [];
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
@@ -152,44 +237,22 @@ export function generatePattern(options) {
       const jitterX = (random() - 0.5) * jitterScale;
       const jitterY = (random() - 0.5) * jitterScale;
 
-      const baseX = offsetX + col * cellWidth + effectiveWidth / 2;
-      const baseY = offsetY + row * cellHeight + effectiveHeight / 2;
+      const baseX = offsetX + col * cellSize + shapeSize / 2;
+      const baseY = offsetY + row * cellSize + shapeSize / 2;
 
       let x = baseX + jitterX;
       let y = baseY + jitterY;
 
-      if (isLine) {
-        const lineLength = minLen + random() * (maxLen - minLen);
+      const halfSize = shapeSize / 2;
+      x = Math.max(marginLeft + halfSize, Math.min(width - marginRight - halfSize, x));
+      y = Math.max(marginTop + halfSize, Math.min(height - marginBottom - halfSize, y));
 
-        if (isHorizontalLine) {
-          const halfLen = lineLength / 2;
-          x = Math.max(marginLeft + halfLen, Math.min(width - marginRight - halfLen, x));
-          y = Math.max(marginTop + thick / 2, Math.min(height - marginBottom - thick / 2, y));
-        } else {
-          const halfLen = lineLength / 2;
-          x = Math.max(marginLeft + thick / 2, Math.min(width - marginRight - thick / 2, x));
-          y = Math.max(marginTop + halfLen, Math.min(height - marginBottom - halfLen, y));
-        }
-
-        shapes.push({
-          type: shapeType,
-          x,
-          y,
-          size: thick,
-          lineLength,
-        });
-      } else {
-        const halfSize = shapeSize / 2;
-        x = Math.max(marginLeft + halfSize, Math.min(width - marginRight - halfSize, x));
-        y = Math.max(marginTop + halfSize, Math.min(height - marginBottom - halfSize, y));
-
-        shapes.push({
-          type: shapeType,
-          x,
-          y,
-          size: shapeSize,
-        });
-      }
+      shapes.push({
+        type: shapeType,
+        x,
+        y,
+        size: shapeSize,
+      });
     }
   }
 

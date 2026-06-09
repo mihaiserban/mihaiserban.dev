@@ -52,16 +52,19 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
       case 'horizontalLine': {
         const lineLen = shape.lineLength || size;
         const halfLen = lineLen / 2;
+        const h = size / 2;
         return (
-          <line
+          <rect
             key={key}
-            x1={x - halfLen}
-            y1={y}
-            x2={x + halfLen}
-            y2={y}
+            x={x - halfLen}
+            y={y - h}
+            width={lineLen}
+            height={size}
+            rx={h}
+            ry={h}
+            fill="none"
             stroke="black"
-            strokeWidth={size}
-            strokeLinecap="round"
+            strokeWidth="0.5"
           />
         );
       }
@@ -69,16 +72,19 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
       case 'verticalLine': {
         const lineLen = shape.lineLength || size;
         const halfLen = lineLen / 2;
+        const h = size / 2;
         return (
-          <line
+          <rect
             key={key}
-            x1={x}
-            y1={y - halfLen}
-            x2={x}
-            y2={y + halfLen}
+            x={x - h}
+            y={y - halfLen}
+            width={size}
+            height={lineLen}
+            rx={h}
+            ry={h}
+            fill="none"
             stroke="black"
-            strokeWidth={size}
-            strokeLinecap="round"
+            strokeWidth="0.5"
           />
         );
       }

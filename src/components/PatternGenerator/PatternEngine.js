@@ -139,7 +139,7 @@ function generateLinePattern(options, random) {
     const maxRows = Math.floor((availableHeight + spacing) / rowHeight);
     const totalHeight = maxRows * thick + (maxRows - 1) * spacing;
     const offsetY = marginTop + (availableHeight - totalHeight) / 2;
-    const step = minLen + spacing;
+    const step = maxLen + spacing;
     const maxCols = step > 0 ? Math.floor((availableWidth + spacing) / step) : 0;
     if (maxRows === 0 || maxCols === 0) return [];
 
@@ -164,7 +164,6 @@ function generateLinePattern(options, random) {
         const cursorX = marginLeft + col * step;
         const maxAvail = (width - marginRight) - cursorX;
         let lineLength = minLen + random() * (maxLen - minLen);
-        lineLength = Math.min(lineLength, step);
         lineLength = Math.min(lineLength, maxAvail);
         if (lineLength < minLen) continue;
 
@@ -192,7 +191,7 @@ function generateLinePattern(options, random) {
   const maxCols = Math.floor((availableWidth + spacing) / colWidth);
   const totalWidth = maxCols * thick + (maxCols - 1) * spacing;
   const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
-  const step = minLen + spacing;
+  const step = maxLen + spacing;
   const maxRows = step > 0 ? Math.floor((availableHeight + spacing) / step) : 0;
   if (maxCols === 0 || maxRows === 0) return [];
 
@@ -217,7 +216,6 @@ function generateLinePattern(options, random) {
       const cursorY = marginTop + row * step;
       const maxAvail = (height - marginBottom) - cursorY;
       let lineLength = minLen + random() * (maxLen - minLen);
-      lineLength = Math.min(lineLength, step);
       lineLength = Math.min(lineLength, maxAvail);
       if (lineLength < minLen) continue;
 

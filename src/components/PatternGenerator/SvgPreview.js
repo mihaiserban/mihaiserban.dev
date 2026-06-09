@@ -138,10 +138,12 @@ const SvgPreview = forwardRef(
               width={width}
               height={height}
               fill="white"
-              stroke="none"
+              stroke="black"
+              strokeWidth="1"
             />
 
             <rect
+              className="margin-guide"
               x={0}
               y={0}
               width={width}
@@ -150,6 +152,7 @@ const SvgPreview = forwardRef(
               stroke="none"
             />
             <rect
+              className="margin-guide"
               x={0}
               y={height - mb}
               width={width}
@@ -158,6 +161,7 @@ const SvgPreview = forwardRef(
               stroke="none"
             />
             <rect
+              className="margin-guide"
               x={0}
               y={mt}
               width={ml}
@@ -166,6 +170,7 @@ const SvgPreview = forwardRef(
               stroke="none"
             />
             <rect
+              className="margin-guide"
               x={width - mr}
               y={mt}
               width={mr}
@@ -179,9 +184,6 @@ const SvgPreview = forwardRef(
               width={width - ml - mr}
               height={height - mt - mb}
               fill="none"
-              stroke="rgba(255, 100, 100, 0.5)"
-              strokeWidth="0.5"
-              strokeDasharray="5,5"
             />
 
             {/* Dimension: Width */}
@@ -201,24 +203,8 @@ const SvgPreview = forwardRef(
               points={`${width},${dimBotY} ${width - ARROW_SIZE},${dimBotY - ARROW_SIZE} ${width - ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
               fill={DIM_COLOR}
             />
-            <line
-              x1={0}
-              y1={dimBotY - 8}
-              x2={0}
-              y2={0}
-              stroke={DIM_COLOR}
-              strokeWidth={DIM_STROKE}
-              strokeDasharray="2,2"
-            />
-            <line
-              x1={width}
-              y1={dimBotY - 8}
-              x2={width}
-              y2={0}
-              stroke={DIM_COLOR}
-              strokeWidth={DIM_STROKE}
-              strokeDasharray="2,2"
-            />
+            <line x1={0} y1={dimBotY - 8} x2={0} y2={0} />
+            <line x1={width} y1={dimBotY - 8} x2={width} y2={0} />
             <text
               x={width / 2}
               y={dimBotY + DIM_FONT}
@@ -247,24 +233,8 @@ const SvgPreview = forwardRef(
               points={`${dimLeftX},${height} ${dimLeftX - ARROW_SIZE},${height - ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${height - ARROW_SIZE}`}
               fill={DIM_COLOR}
             />
-            <line
-              x1={dimLeftX - 8}
-              y1={0}
-              x2={0}
-              y2={0}
-              stroke={DIM_COLOR}
-              strokeWidth={DIM_STROKE}
-              strokeDasharray="2,2"
-            />
-            <line
-              x1={dimLeftX - 8}
-              y1={height}
-              x2={0}
-              y2={height}
-              stroke={DIM_COLOR}
-              strokeWidth={DIM_STROKE}
-              strokeDasharray="2,2"
-            />
+            <line x1={dimLeftX - 8} y1={0} x2={0} y2={0} />
+            <line x1={dimLeftX - 8} y1={height} x2={0} y2={height} />
             <text
               x={dimLeftX - 7}
               y={height / 2}

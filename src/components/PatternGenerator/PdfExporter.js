@@ -7,11 +7,24 @@ export async function exportToPdf(svgElement, filename, widthMm, heightMm) {
 
   const clone = svgElement.cloneNode(true);
 
-  clone.querySelectorAll('.svg-guides').forEach((el) => el.remove());
+  clone.querySelectorAll('.margin-guide').forEach((el) => el.remove());
 
-  clone.setAttribute('viewBox', `0 0 ${widthMm} ${heightMm}`);
-  clone.setAttribute('width', widthMm);
-  clone.setAttribute('height', heightMm);
+  const vbParts = (svgElement.getAttribute('viewBox') || '').split(/[\s,]+/);
+  const vbX = parseFloat(vbParts[0]) || 0;
+  const vbY = parseFloat(vbParts[1]) || 0;
+  const vbW = parseFloat(vbParts[2]) || widthMm;
+  const vbH = parseFloat(vbParts[3]) || heightMm;
+
+  const PAD = 50;
+  const newVbX = vbX - PAD;
+  const newVbY = vbY - PAD;
+  const newVbW = vbW + PAD * 2;
+  const newVbH = vbH + PAD * 2;
+
+  clone.setAttribute('viewBox', `${newVbX} ${newVbY} ${newVbW} ${newVbH}`);
+  clone.setAttribute('width', newVbW);
+  clone.setAttribute('height', newVbH);
+
   clone.style.maxWidth = null;
   clone.style.maxHeight = null;
   clone.style.border = null;
@@ -19,8 +32,8 @@ export async function exportToPdf(svgElement, filename, widthMm, heightMm) {
 
   const pdf = new jsPDF({
     unit: 'mm',
-    format: [widthMm, heightMm],
-    orientation: widthMm > heightMm ? 'landscape' : 'portrait',
+    format: [newVbW, newVbH],
+    orientation: newVbW > newVbH ? 'landscape' : 'portrait',
     compress: true,
   });
 
@@ -28,8 +41,8 @@ export async function exportToPdf(svgElement, filename, widthMm, heightMm) {
   await svg2pdf(clone, pdf, {
     x: 0,
     y: 0,
-    width: widthMm,
-    height: heightMm,
+    width: newVbW,
+    height: newVbH,
   });
 
   pdf.save(filename);

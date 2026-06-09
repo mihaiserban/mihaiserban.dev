@@ -122,6 +122,7 @@ const About = (props) => {
           >
             Projects
           </Link>
+          <p className="mt-4 bold">Apps</p>
           <Link
             aria-label="Head over to the design pattern generator"
             to="/design-pattern"
@@ -129,7 +130,7 @@ const About = (props) => {
               active: currentPath === "/design-pattern",
             })}
           >
-            Pattern Generator
+            Design Pattern Generator
           </Link>
         </div>
 

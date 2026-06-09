@@ -1,10 +1,13 @@
-import React, { useState, useRef, useMemo, useCallback } from 'react';
-import { ArrowLeft } from 'react-feather';
-import SettingsPanel from '../components/PatternGenerator/SettingsPanel';
-import SvgPreview from '../components/PatternGenerator/SvgPreview';
-import { generatePattern, calculateCoverage } from '../components/PatternGenerator/PatternEngine';
-import { exportToPdf } from '../components/PatternGenerator/PdfExporter';
-import '../styles/scss/components/pattern-generator.scss';
+import React, { useState, useRef, useMemo, useCallback } from "react";
+import { ArrowLeft } from "react-feather";
+import SettingsPanel from "../components/PatternGenerator/SettingsPanel";
+import SvgPreview from "../components/PatternGenerator/SvgPreview";
+import {
+  generatePattern,
+  calculateCoverage,
+} from "../components/PatternGenerator/PatternEngine";
+import { exportToPdf } from "../components/PatternGenerator/PdfExporter";
+import "../styles/scss/components/pattern-generator.scss";
 
 const DEFAULT_SETTINGS = {
   width: 1000,
@@ -13,11 +16,11 @@ const DEFAULT_SETTINGS = {
   marginBottom: 50,
   marginLeft: 50,
   marginRight: 50,
-  shapeType: 'circle',
+  shapeType: "circle",
   shapeSize: 20,
   spacing: 40,
   opacity: 50,
-  gradientType: 'uniform',
+  gradientType: "uniform",
   lineThickness: 30,
   lineMinLength: 100,
   lineMaxLength: 400,
@@ -31,21 +34,32 @@ const DesignPatternPage = () => {
   const svgRef = useRef(null);
 
   const shapes = useMemo(() => generatePattern(settings), [settings]);
-  const coverage = useMemo(() => calculateCoverage(shapes, settings.width, settings.height), [shapes, settings.width, settings.height]);
+  const coverage = useMemo(
+    () => calculateCoverage(shapes, settings.width, settings.height),
+    [shapes, settings.width, settings.height],
+  );
 
   const handleExport = useCallback(async () => {
     if (!svgRef.current) return;
     try {
       const filename = `pattern-${settings.width}x${settings.height}.pdf`;
-      await exportToPdf(svgRef.current, filename, settings.width, settings.height);
+      await exportToPdf(
+        svgRef.current,
+        filename,
+        settings.width,
+        settings.height,
+      );
     } catch (error) {
-      console.error('PDF export failed:', error);
-      alert('PDF export failed. Please try again.');
+      console.error("PDF export failed:", error);
+      alert("PDF export failed. Please try again.");
     }
   }, [settings]);
 
   const handleGenerate = useCallback(() => {
-    setSettings((prev) => ({ ...prev, seed: Math.floor(Math.random() * 2147483647) }));
+    setSettings((prev) => ({
+      ...prev,
+      seed: Math.floor(Math.random() * 2147483647),
+    }));
   }, []);
 
   return (
@@ -53,7 +67,7 @@ const DesignPatternPage = () => {
       <div className="pattern-generator-header">
         <a href="/" className="pattern-back-button">
           <ArrowLeft size={20} />
-          <span>Back to site</span>
+          <span>mihaiserban.dev</span>
         </a>
         <h1 className="pattern-generator-title">Design Pattern Generator</h1>
         <div className="pattern-generator-spacer" />

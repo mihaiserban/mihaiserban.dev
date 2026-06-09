@@ -16,6 +16,7 @@ const DEFAULT_SETTINGS = {
   opacity: 50,
   gradientType: 'vertical',
   randomization: 30,
+  seed: 12345,
 };
 
 const DesignPatternPage = () => {
@@ -35,6 +36,10 @@ const DesignPatternPage = () => {
     }
   }, [settings]);
 
+  const handleGenerate = useCallback(() => {
+    setSettings((prev) => ({ ...prev, seed: Math.floor(Math.random() * 2147483647) }));
+  }, []);
+
   return (
     <div className="pattern-generator-standalone">
       <div className="pattern-generator-header">
@@ -51,6 +56,7 @@ const DesignPatternPage = () => {
             settings={settings}
             onChange={setSettings}
             onExport={handleExport}
+            onGenerate={handleGenerate}
             shapeCount={shapes.length}
           />
         </div>

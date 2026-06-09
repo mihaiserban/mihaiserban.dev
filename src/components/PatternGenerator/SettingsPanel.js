@@ -1,7 +1,7 @@
 import React from 'react';
 import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
 
-const SettingsPanel = ({ settings, onChange, onExport, shapeCount }) => {
+const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount }) => {
   const handleChange = (key, value) => {
     onChange({ ...settings, [key]: value });
   };
@@ -125,6 +125,12 @@ const SettingsPanel = ({ settings, onChange, onExport, shapeCount }) => {
         <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
           Shapes: {shapeCount}
         </div>
+        <button
+          onClick={onGenerate}
+          className="w-full px-4 py-2 mb-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+        >
+          Generate New Pattern
+        </button>
         <button
           onClick={onExport}
           className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"

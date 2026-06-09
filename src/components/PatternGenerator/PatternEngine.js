@@ -64,7 +64,7 @@ export function generatePattern(options) {
   const rows = Math.floor(availableHeight / cellSize);
 
   const shapes = [];
-  const seed = 12345;
+  const seed = options.seed || 12345;
   let randomState = seed;
 
   const random = () => {

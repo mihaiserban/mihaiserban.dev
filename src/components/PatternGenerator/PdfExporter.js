@@ -1,10 +1,21 @@
 import { jsPDF } from 'jspdf';
-import { svg2pdf } from 'svg2pdf.js';
 
 export async function exportToPdf(svgElement, filename, widthMm, heightMm) {
   if (!svgElement) {
     throw new Error('No SVG element provided');
   }
+
+  const clone = svgElement.cloneNode(true);
+
+  clone.querySelectorAll('.svg-guides').forEach((el) => el.remove());
+
+  clone.setAttribute('viewBox', `0 0 ${widthMm} ${heightMm}`);
+  clone.setAttribute('width', widthMm);
+  clone.setAttribute('height', heightMm);
+  clone.style.maxWidth = null;
+  clone.style.maxHeight = null;
+  clone.style.border = null;
+  clone.style.background = null;
 
   const pdf = new jsPDF({
     unit: 'mm',
@@ -13,7 +24,8 @@ export async function exportToPdf(svgElement, filename, widthMm, heightMm) {
     compress: true,
   });
 
-  await svg2pdf(svgElement, pdf, {
+  const { svg2pdf } = await import('svg2pdf.js');
+  await svg2pdf(clone, pdf, {
     x: 0,
     y: 0,
     width: widthMm,

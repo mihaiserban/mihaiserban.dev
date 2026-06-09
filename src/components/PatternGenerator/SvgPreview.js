@@ -131,151 +131,152 @@ const SvgPreview = forwardRef(
             background: "white",
           }}
         >
-          <rect
-            x={0}
-            y={0}
-            width={width}
-            height={height}
-            fill="white"
-            stroke="none"
-          />
+          <g className="svg-guides">
+            <rect
+              x={0}
+              y={0}
+              width={width}
+              height={height}
+              fill="white"
+              stroke="none"
+            />
 
-          <rect
-            x={0}
-            y={0}
-            width={width}
-            height={mt}
-            fill="rgba(255, 200, 200, 0.3)"
-            stroke="none"
-          />
-          <rect
-            x={0}
-            y={height - mb}
-            width={width}
-            height={mb}
-            fill="rgba(255, 200, 200, 0.3)"
-            stroke="none"
-          />
-          <rect
-            x={0}
-            y={mt}
-            width={ml}
-            height={height - mt - mb}
-            fill="rgba(255, 200, 200, 0.3)"
-            stroke="none"
-          />
-          <rect
-            x={width - mr}
-            y={mt}
-            width={mr}
-            height={height - mt - mb}
-            fill="rgba(255, 200, 200, 0.3)"
-            stroke="none"
-          />
-          <rect
-            x={ml}
-            y={mt}
-            width={width - ml - mr}
-            height={height - mt - mb}
-            fill="none"
-            stroke="rgba(255, 100, 100, 0.5)"
-            strokeWidth="0.5"
-            strokeDasharray="5,5"
-          />
+            <rect
+              x={0}
+              y={0}
+              width={width}
+              height={mt}
+              fill="rgba(255, 200, 200, 0.3)"
+              stroke="none"
+            />
+            <rect
+              x={0}
+              y={height - mb}
+              width={width}
+              height={mb}
+              fill="rgba(255, 200, 200, 0.3)"
+              stroke="none"
+            />
+            <rect
+              x={0}
+              y={mt}
+              width={ml}
+              height={height - mt - mb}
+              fill="rgba(255, 200, 200, 0.3)"
+              stroke="none"
+            />
+            <rect
+              x={width - mr}
+              y={mt}
+              width={mr}
+              height={height - mt - mb}
+              fill="rgba(255, 200, 200, 0.3)"
+              stroke="none"
+            />
+            <rect
+              x={ml}
+              y={mt}
+              width={width - ml - mr}
+              height={height - mt - mb}
+              fill="none"
+              stroke="rgba(255, 100, 100, 0.5)"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
 
-          {/* Dimension: Width */}
-          <line
-            x1={0}
-            y1={dimBotY}
-            x2={width}
-            y2={dimBotY}
-            stroke={DIM_COLOR}
-            strokeWidth={DIM_STROKE}
-          />
-          <polygon
-            points={`0,${dimBotY} ${ARROW_SIZE},${dimBotY - ARROW_SIZE} ${ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
-            fill={DIM_COLOR}
-          />
-          <polygon
-            points={`${width},${dimBotY} ${width - ARROW_SIZE},${dimBotY - ARROW_SIZE} ${width - ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
-            fill={DIM_COLOR}
-          />
-          <line
-            x1={0}
-            y1={dimBotY - 8}
-            x2={0}
-            y2={0}
-            stroke={DIM_COLOR}
-            strokeWidth={DIM_STROKE}
-            strokeDasharray="2,2"
-          />
-          <line
-            x1={width}
-            y1={dimBotY - 8}
-            x2={width}
-            y2={0}
-            stroke={DIM_COLOR}
-            strokeWidth={DIM_STROKE}
-            strokeDasharray="2,2"
-          />
-          <text
-            x={width / 2}
-            y={dimBotY + DIM_FONT}
-            textAnchor="middle"
-            fontSize={DIM_FONT}
-            fill={DIM_COLOR}
-            fontFamily="sans-serif"
-          >
-            {width} mm
-          </text>
+            {/* Dimension: Width */}
+            <line
+              x1={0}
+              y1={dimBotY}
+              x2={width}
+              y2={dimBotY}
+              stroke={DIM_COLOR}
+              strokeWidth={DIM_STROKE}
+            />
+            <polygon
+              points={`0,${dimBotY} ${ARROW_SIZE},${dimBotY - ARROW_SIZE} ${ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
+              fill={DIM_COLOR}
+            />
+            <polygon
+              points={`${width},${dimBotY} ${width - ARROW_SIZE},${dimBotY - ARROW_SIZE} ${width - ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
+              fill={DIM_COLOR}
+            />
+            <line
+              x1={0}
+              y1={dimBotY - 8}
+              x2={0}
+              y2={0}
+              stroke={DIM_COLOR}
+              strokeWidth={DIM_STROKE}
+              strokeDasharray="2,2"
+            />
+            <line
+              x1={width}
+              y1={dimBotY - 8}
+              x2={width}
+              y2={0}
+              stroke={DIM_COLOR}
+              strokeWidth={DIM_STROKE}
+              strokeDasharray="2,2"
+            />
+            <text
+              x={width / 2}
+              y={dimBotY + DIM_FONT}
+              textAnchor="middle"
+              fontSize={DIM_FONT}
+              fill={DIM_COLOR}
+              fontFamily="sans-serif"
+            >
+              {width} mm
+            </text>
 
-          {/* Dimension: Height */}
-          <line
-            x1={dimLeftX}
-            y1={0}
-            x2={dimLeftX}
-            y2={height}
-            stroke={DIM_COLOR}
-            strokeWidth={DIM_STROKE}
-          />
-          <polygon
-            points={`${dimLeftX},0 ${dimLeftX - ARROW_SIZE},${ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${ARROW_SIZE}`}
-            fill={DIM_COLOR}
-          />
-          <polygon
-            points={`${dimLeftX},${height} ${dimLeftX - ARROW_SIZE},${height - ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${height - ARROW_SIZE}`}
-            fill={DIM_COLOR}
-          />
-          <line
-            x1={dimLeftX - 8}
-            y1={0}
-            x2={0}
-            y2={0}
-            stroke={DIM_COLOR}
-            strokeWidth={DIM_STROKE}
-            strokeDasharray="2,2"
-          />
-          <line
-            x1={dimLeftX - 8}
-            y1={height}
-            x2={0}
-            y2={height}
-            stroke={DIM_COLOR}
-            strokeWidth={DIM_STROKE}
-            strokeDasharray="2,2"
-          />
-          <text
-            x={dimLeftX - 7}
-            y={height / 2}
-            textAnchor="middle"
-            fontSize={DIM_FONT}
-            fill={DIM_COLOR}
-            fontFamily="sans-serif"
-            transform={`rotate(-90, ${dimLeftX - 7}, ${height / 2})`}
-          >
-            {height} mm
-          </text>
-
+            {/* Dimension: Height */}
+            <line
+              x1={dimLeftX}
+              y1={0}
+              x2={dimLeftX}
+              y2={height}
+              stroke={DIM_COLOR}
+              strokeWidth={DIM_STROKE}
+            />
+            <polygon
+              points={`${dimLeftX},0 ${dimLeftX - ARROW_SIZE},${ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${ARROW_SIZE}`}
+              fill={DIM_COLOR}
+            />
+            <polygon
+              points={`${dimLeftX},${height} ${dimLeftX - ARROW_SIZE},${height - ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${height - ARROW_SIZE}`}
+              fill={DIM_COLOR}
+            />
+            <line
+              x1={dimLeftX - 8}
+              y1={0}
+              x2={0}
+              y2={0}
+              stroke={DIM_COLOR}
+              strokeWidth={DIM_STROKE}
+              strokeDasharray="2,2"
+            />
+            <line
+              x1={dimLeftX - 8}
+              y1={height}
+              x2={0}
+              y2={height}
+              stroke={DIM_COLOR}
+              strokeWidth={DIM_STROKE}
+              strokeDasharray="2,2"
+            />
+            <text
+              x={dimLeftX - 7}
+              y={height / 2}
+              textAnchor="middle"
+              fontSize={DIM_FONT}
+              fill={DIM_COLOR}
+              fontFamily="sans-serif"
+              transform={`rotate(-90, ${dimLeftX - 7}, ${height / 2})`}
+            >
+              {height} mm
+            </text>
+          </g>
           {shapes.map((shape, index) => renderShape(shape, index))}
         </svg>
       </div>

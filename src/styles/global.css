@@ -29,7 +29,7 @@
   }
 }
 
-body {
+html {
   --bg: white;
   --alternate-bg: transparent;
   --primary-color: #222;
@@ -38,7 +38,7 @@ body {
   --separator-color: #e6e6e6;
 }
 
-body.dark {
+html.dark {
   --bg: #000;
   --alternate-bg: white;
   --primary-color: white;

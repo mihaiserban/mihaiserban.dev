@@ -15,9 +15,7 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
   };
 
   const handleShapeSizeChange = (key, value) => {
-    const next = { ...settings, [key]: value };
-    next.spacing = value;
-    onChange(next);
+    onChange({ ...settings, [key]: value });
   };
 
   const inputClass = "block w-full mt-1 px-2 py-1 border rounded text-sm bg-white dark:bg-gray-800 dark:text-white";

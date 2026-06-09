@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 
-const ARROW_SIZE = 5;
-const DIM_COLOR = "#555";
-const DIM_STROKE = "0.4";
+const ARROW_SIZE = 10;
+const DIM_COLOR = "#000000";
+const DIM_STROKE = "1";
 const DIM_FONT = 40;
 const DIM_PAD = 28;
 
@@ -29,7 +29,7 @@ const SvgPreview = forwardRef(
               ry={half}
               fill="none"
               stroke="black"
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
           );
         }
@@ -49,7 +49,7 @@ const SvgPreview = forwardRef(
               ry={r}
               fill="none"
               stroke="black"
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
           );
         }
@@ -71,7 +71,7 @@ const SvgPreview = forwardRef(
               ry={r}
               fill="none"
               stroke="black"
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
           );
         }
@@ -93,7 +93,7 @@ const SvgPreview = forwardRef(
               ry={r}
               fill="none"
               stroke="black"
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
           );
         }
@@ -220,7 +220,7 @@ const SvgPreview = forwardRef(
           />
           <text
             x={width / 2}
-            y={dimBotY - 5}
+            y={dimBotY + DIM_FONT}
             textAnchor="middle"
             fontSize={DIM_FONT}
             fill={DIM_COLOR}

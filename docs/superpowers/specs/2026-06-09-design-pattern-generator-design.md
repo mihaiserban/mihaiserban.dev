@@ -36,9 +36,9 @@ A standalone page within the existing Gatsby site that generates decorative CNC/
 3. **For each cell `(row, col)`:**
    - Compute normalized position `(nx, ny)` within [0, 1].
    - Compute target density based on gradient direction and opacity:
-     - *Horizontal:* `density = opacity * nx`
-     - *Vertical:* `density = opacity * ny`
-     - *Radial:* `density = opacity * (1 - distance_from_center)` (or `distance_from_center` — user configurable invert)
+     - _Horizontal:_ `density = opacity * nx`
+     - _Vertical:_ `density = opacity * ny`
+     - _Radial:_ `density = opacity * (1 - distance_from_center)` (or `distance_from_center` — user configurable invert)
    - Roll a random number in [0, 1]. If it exceeds `density`, skip the cell.
    - If not skipped, compute position with random jitter:
      - `jitterX = (random - 0.5) * randomizationFactor * spacing`
@@ -111,7 +111,7 @@ PdfExporter reads SVG DOM → calls svg2pdf.js → downloads PDF
 
 ## Integration
 
-- Add a new Gatsby page at `/src/pages/design-pattern.js`.
+- Add a new Gatsby page at `/src/pages/design-pattern-generator.js`.
 - Add a link in the site navigation if desired.
 - Install new npm packages: `jspdf`, `svg2pdf.js`.
 

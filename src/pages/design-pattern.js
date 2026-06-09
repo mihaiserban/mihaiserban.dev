@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo, useCallback } from 'react';
-import Layout from '../components/layout';
+import { ArrowLeft } from 'react-feather';
 import SettingsPanel from '../components/PatternGenerator/SettingsPanel';
 import SvgPreview from '../components/PatternGenerator/SvgPreview';
 import { generatePattern } from '../components/PatternGenerator/PatternEngine';
@@ -36,28 +36,34 @@ const DesignPatternPage = () => {
   }, [settings]);
 
   return (
-    <Layout>
-      <div className="pattern-generator-page">
-        <div className="pattern-generator-layout">
-          <div className="pattern-settings">
-            <SettingsPanel
-              settings={settings}
-              onChange={setSettings}
-              onExport={handleExport}
-              shapeCount={shapes.length}
-            />
-          </div>
-          <div className="pattern-preview">
-            <SvgPreview
-              ref={svgRef}
-              width={settings.width}
-              height={settings.height}
-              shapes={shapes}
-            />
-          </div>
+    <div className="pattern-generator-standalone">
+      <div className="pattern-generator-header">
+        <a href="/" className="pattern-back-button">
+          <ArrowLeft size={20} />
+          <span>Back to site</span>
+        </a>
+        <h1 className="pattern-generator-title">Design Pattern Generator</h1>
+        <div className="pattern-generator-spacer" />
+      </div>
+      <div className="pattern-generator-layout">
+        <div className="pattern-settings">
+          <SettingsPanel
+            settings={settings}
+            onChange={setSettings}
+            onExport={handleExport}
+            shapeCount={shapes.length}
+          />
+        </div>
+        <div className="pattern-preview">
+          <SvgPreview
+            ref={svgRef}
+            width={settings.width}
+            height={settings.height}
+            shapes={shapes}
+          />
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

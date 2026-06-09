@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useCallback } from "react";
+import React, { useRef, useMemo, useCallback } from "react";
 import { ArrowLeft } from "react-feather";
 import SettingsPanel from "../components/PatternGenerator/SettingsPanel";
 import SvgPreview from "../components/PatternGenerator/SvgPreview";
@@ -7,6 +7,7 @@ import {
   calculateCoverage,
 } from "../components/PatternGenerator/PatternEngine";
 import { exportToPdf } from "../components/PatternGenerator/PdfExporter";
+import usePersistedSettings from "../components/PatternGenerator/usePersistedSettings";
 import "../styles/scss/components/pattern-generator.scss";
 
 const DEFAULT_SETTINGS = {
@@ -20,17 +21,19 @@ const DEFAULT_SETTINGS = {
   shapeSize: 20,
   spacing: 40,
   opacity: 50,
-  gradientType: "uniform",
+  gradientType: "topToBottom",
   lineThickness: 30,
   lineMinLength: 100,
   lineMaxLength: 400,
   cornerRadius: 0,
   lineCornerRadius: 50,
-  seed: 12345,
 };
 
 const DesignPatternPage = () => {
-  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  const [settings, setSettings, resetSettings] = usePersistedSettings(
+    DEFAULT_SETTINGS,
+    "settings.v1",
+  );
   const svgRef = useRef(null);
 
   const shapes = useMemo(() => generatePattern(settings), [settings]);
@@ -48,6 +51,7 @@ const DesignPatternPage = () => {
         filename,
         settings.width,
         settings.height,
+        settings,
       );
     } catch (error) {
       console.error("PDF export failed:", error);
@@ -58,9 +62,10 @@ const DesignPatternPage = () => {
   const handleGenerate = useCallback(() => {
     setSettings((prev) => ({
       ...prev,
-      seed: Math.floor(Math.random() * 2147483647),
+      _generation: Date.now(),
     }));
   }, []);
+
 
   return (
     <div className="pattern-generator-standalone">
@@ -77,6 +82,7 @@ const DesignPatternPage = () => {
           <SettingsPanel
             settings={settings}
             onChange={setSettings}
+            onReset={resetSettings}
             onExport={handleExport}
             onGenerate={handleGenerate}
             shapeCount={shapes.length}

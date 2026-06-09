@@ -8,6 +8,7 @@ import {
 } from "../components/PatternGenerator/PatternEngine";
 import { exportToPdf } from "../components/PatternGenerator/PdfExporter";
 import usePersistedSettings from "../components/PatternGenerator/usePersistedSettings";
+import ThemeTogglerComponent from "../components/themeToggler";
 import "../styles/scss/components/pattern-generator.scss";
 
 const DEFAULT_SETTINGS = {
@@ -75,7 +76,9 @@ const DesignPatternPage = () => {
           <span>mihaiserban.dev</span>
         </a>
         <h1 className="pattern-generator-title">Design Pattern Generator</h1>
-        <div className="pattern-generator-spacer" />
+        <div className="pattern-generator-header-actions">
+          <ThemeTogglerComponent />
+        </div>
       </div>
       <div className="pattern-generator-layout">
         <div className="pattern-settings">

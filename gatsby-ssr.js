@@ -18,16 +18,10 @@ void function () {
   function applyToRoot(newTheme) {
     var html = document.documentElement
     var body = document.body
-    if (html.classList.contains(newTheme)) {
-      // already there
-    } else {
-      html.classList.add(newTheme)
-    }
-    if (body.classList.contains(newTheme)) {
-      // already there
-    } else {
-      body.classList.add(newTheme)
-    }
+    html.classList.remove('dark', 'light')
+    body.classList.remove('dark', 'light')
+    html.classList.add(newTheme)
+    body.classList.add(newTheme)
   }
 
   function setTheme(newTheme) {

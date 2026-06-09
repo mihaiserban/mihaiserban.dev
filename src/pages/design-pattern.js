@@ -9,16 +9,19 @@ import '../styles/scss/components/pattern-generator.scss';
 const DEFAULT_SETTINGS = {
   width: 1000,
   height: 2000,
-  marginTop: 50,
-  marginBottom: 50,
-  marginLeft: 50,
-  marginRight: 50,
+  marginTop: 0,
+  marginBottom: 0,
+  marginLeft: 0,
+  marginRight: 0,
   shapeType: 'circle',
   shapeSize: 20,
   spacing: 40,
   opacity: 50,
   gradientType: 'uniform',
   randomization: 30,
+  lineThickness: 2,
+  lineMinLength: 20,
+  lineMaxLength: 80,
   seed: 12345,
 };
 

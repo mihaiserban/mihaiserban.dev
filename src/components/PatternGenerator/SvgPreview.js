@@ -3,7 +3,6 @@ import React, { forwardRef } from 'react';
 const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom, marginLeft, marginRight }, ref) => {
   const renderShape = (shape, index) => {
     const { type, x, y, size } = shape;
-    const half = size / 2;
     const key = `shape-${index}`;
 
     switch (type) {
@@ -13,7 +12,7 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
             key={key}
             cx={x}
             cy={y}
-            r={half}
+            r={size / 2}
             fill="none"
             stroke="black"
             strokeWidth="0.5"
@@ -24,8 +23,8 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
         return (
           <rect
             key={key}
-            x={x - half}
-            y={y - half}
+            x={x - size / 2}
+            y={y - size / 2}
             width={size}
             height={size}
             fill="none"
@@ -38,8 +37,8 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
         return (
           <rect
             key={key}
-            x={x - half}
-            y={y - half}
+            x={x - size / 2}
+            y={y - size / 2}
             width={size}
             height={size}
             rx={size * 0.2}
@@ -50,66 +49,39 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
           />
         );
 
-      case 'triangle': {
-        const h = (size * Math.sqrt(3)) / 2;
-        const points = [
-          `${x},${y - h / 2}`,
-          `${x - half},${y + h / 2}`,
-          `${x + half},${y + h / 2}`,
-        ].join(' ');
-        return (
-          <polygon
-            key={key}
-            points={points}
-            fill="none"
-            stroke="black"
-            strokeWidth="0.5"
-          />
-        );
-      }
-
-      case 'hexagon': {
-        const hexPoints = [];
-        for (let i = 0; i < 6; i++) {
-          const angle = (Math.PI / 3) * i;
-          hexPoints.push(`${x + half * Math.cos(angle)},${y + half * Math.sin(angle)}`);
-        }
-        return (
-          <polygon
-            key={key}
-            points={hexPoints.join(' ')}
-            fill="none"
-            stroke="black"
-            strokeWidth="0.5"
-          />
-        );
-      }
-
-      case 'horizontalLine':
+      case 'horizontalLine': {
+        const lineLen = shape.lineLength || size;
+        const halfLen = lineLen / 2;
         return (
           <line
             key={key}
-            x1={x - half}
+            x1={x - halfLen}
             y1={y}
-            x2={x + half}
+            x2={x + halfLen}
             y2={y}
             stroke="black"
-            strokeWidth="0.5"
+            strokeWidth={size}
+            strokeLinecap="round"
           />
         );
+      }
 
-      case 'verticalLine':
+      case 'verticalLine': {
+        const lineLen = shape.lineLength || size;
+        const halfLen = lineLen / 2;
         return (
           <line
             key={key}
             x1={x}
-            y1={y - half}
+            y1={y - halfLen}
             x2={x}
-            y2={y + half}
+            y2={y + halfLen}
             stroke="black"
-            strokeWidth="0.5"
+            strokeWidth={size}
+            strokeLinecap="round"
           />
         );
+      }
 
       default:
         return null;

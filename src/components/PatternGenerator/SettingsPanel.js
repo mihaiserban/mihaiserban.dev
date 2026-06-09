@@ -10,6 +10,8 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
   const labelClass = "block text-sm font-medium mt-4";
   const groupClass = "mb-4";
 
+  const isLine = settings.shapeType === SHAPE_TYPES.HORIZONTAL_LINE || settings.shapeType === SHAPE_TYPES.VERTICAL_LINE;
+
   return (
     <div className="settings-panel">
       <h2 className="text-lg font-bold mb-4">Pattern Settings</h2>
@@ -98,21 +100,53 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
           <option value={SHAPE_TYPES.CIRCLE}>Circle</option>
           <option value={SHAPE_TYPES.SQUARE}>Square</option>
           <option value={SHAPE_TYPES.ROUNDED_RECTANGLE}>Rounded Rectangle</option>
-          <option value={SHAPE_TYPES.TRIANGLE}>Triangle</option>
-          <option value={SHAPE_TYPES.HEXAGON}>Hexagon</option>
           <option value={SHAPE_TYPES.HORIZONTAL_LINE}>Horizontal Line</option>
           <option value={SHAPE_TYPES.VERTICAL_LINE}>Vertical Line</option>
         </select>
 
-        <label className={labelClass}>Shape Size (mm)</label>
-        <input
-          type="number"
-          min={1}
-          max={500}
-          value={settings.shapeSize}
-          onChange={(e) => handleChange('shapeSize', Number(e.target.value))}
-          className={inputClass}
-        />
+        {isLine ? (
+          <>
+            <label className={labelClass}>Line Height (mm)</label>
+            <input
+              type="number"
+              min={1}
+              max={100}
+              value={settings.lineThickness}
+              onChange={(e) => handleChange('lineThickness', Number(e.target.value))}
+              className={inputClass}
+            />
+            <label className={labelClass}>Min Length (mm)</label>
+            <input
+              type="number"
+              min={1}
+              max={500}
+              value={settings.lineMinLength}
+              onChange={(e) => handleChange('lineMinLength', Number(e.target.value))}
+              className={inputClass}
+            />
+            <label className={labelClass}>Max Length (mm)</label>
+            <input
+              type="number"
+              min={1}
+              max={500}
+              value={settings.lineMaxLength}
+              onChange={(e) => handleChange('lineMaxLength', Number(e.target.value))}
+              className={inputClass}
+            />
+          </>
+        ) : (
+          <>
+            <label className={labelClass}>Shape Size (mm)</label>
+            <input
+              type="number"
+              min={1}
+              max={500}
+              value={settings.shapeSize}
+              onChange={(e) => handleChange('shapeSize', Number(e.target.value))}
+              className={inputClass}
+            />
+          </>
+        )}
 
         <label className={labelClass}>Spacing (mm)</label>
         <input

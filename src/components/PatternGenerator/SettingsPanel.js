@@ -1,7 +1,7 @@
 import React from 'react';
 import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
 
-const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount }) => {
+const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, coverage }) => {
   const handleChange = (key, value) => {
     onChange({ ...settings, [key]: value });
   };
@@ -87,7 +87,7 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount })
 
       <div className={groupClass}>
         <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Distribution</h3>
-        <label className={labelClass}>Opacity / Density (%)</label>
+        <label className={labelClass}>Density (%)</label>
         <input
           type="range"
           min={0}
@@ -104,8 +104,11 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount })
           onChange={(e) => handleChange('gradientType', e.target.value)}
           className={inputClass}
         >
-          <option value={GRADIENT_TYPES.HORIZONTAL}>Horizontal</option>
-          <option value={GRADIENT_TYPES.VERTICAL}>Vertical</option>
+          <option value={GRADIENT_TYPES.UNIFORM}>Uniform</option>
+          <option value={GRADIENT_TYPES.LEFT_TO_RIGHT}>Left to Right</option>
+          <option value={GRADIENT_TYPES.RIGHT_TO_LEFT}>Right to Left</option>
+          <option value={GRADIENT_TYPES.TOP_TO_BOTTOM}>Top to Bottom</option>
+          <option value={GRADIENT_TYPES.BOTTOM_TO_TOP}>Bottom to Top</option>
           <option value={GRADIENT_TYPES.RADIAL}>Radial</option>
         </select>
 
@@ -122,8 +125,11 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount })
       </div>
 
       <div className={groupClass}>
-        <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+        <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
           Shapes: {shapeCount}
+        </div>
+        <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+          Coverage: {coverage.toFixed(2)}%
         </div>
         <button
           onClick={onGenerate}

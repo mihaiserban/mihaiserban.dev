@@ -3,7 +3,21 @@ import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
 
 const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, coverage }) => {
   const handleChange = (key, value) => {
-    onChange({ ...settings, [key]: value });
+    const next = { ...settings, [key]: value };
+    if (key === 'shapeType') {
+      if (value === SHAPE_TYPES.HORIZONTAL_LINE || value === SHAPE_TYPES.VERTICAL_LINE) {
+        next.spacing = next.lineThickness || 30;
+      } else {
+        next.spacing = next.shapeSize || 20;
+      }
+    }
+    onChange(next);
+  };
+
+  const handleShapeSizeChange = (key, value) => {
+    const next = { ...settings, [key]: value };
+    next.spacing = value;
+    onChange(next);
   };
 
   const inputClass = "block w-full mt-1 px-2 py-1 border rounded text-sm bg-white dark:bg-gray-800 dark:text-white";
@@ -112,7 +126,7 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
               min={1}
               max={100}
               value={settings.lineThickness}
-              onChange={(e) => handleChange('lineThickness', Number(e.target.value))}
+              onChange={(e) => handleShapeSizeChange('lineThickness', Number(e.target.value))}
               className={inputClass}
             />
             <label className={labelClass}>Min Length (mm)</label>
@@ -142,7 +156,7 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
               min={1}
               max={500}
               value={settings.shapeSize}
-              onChange={(e) => handleChange('shapeSize', Number(e.target.value))}
+              onChange={(e) => handleShapeSizeChange('shapeSize', Number(e.target.value))}
               className={inputClass}
             />
           </>

@@ -1,9 +1,10 @@
 import React, { forwardRef } from 'react';
 
-const ARROW_SIZE = 4;
-const DIM_COLOR = '#666';
-const DIM_STROKE = '0.35';
-const DIM_FONT = 7;
+const ARROW_SIZE = 5;
+const DIM_COLOR = '#555';
+const DIM_STROKE = '0.4';
+const DIM_FONT = 11;
+const DIM_PAD = 28;
 
 const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom, marginLeft, marginRight }, ref) => {
   const renderShape = (shape, index) => {
@@ -104,16 +105,21 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
   const ml = marginLeft || 0;
   const mr = marginRight || 0;
 
-  const dimY = height - Math.max(mb * 0.3, 6);
-  const dimX = Math.max(ml * 0.3, 6);
+  const vbx = -DIM_PAD;
+  const vby = -DIM_PAD;
+  const vbw = width + DIM_PAD * 2;
+  const vbh = height + DIM_PAD * 2;
+
+  const dimBotY = height + DIM_PAD * 0.65;
+  const dimLeftX = -DIM_PAD * 0.65;
 
   return (
     <div className="svg-preview-container">
       <svg
         ref={ref}
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
+        width={vbw}
+        height={vbh}
+        viewBox={`${vbx} ${vby} ${vbw} ${vbh}`}
         xmlns="http://www.w3.org/2000/svg"
         style={{
           maxWidth: '100%',
@@ -122,6 +128,9 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
           background: 'white',
         }}
       >
+        {/* Canvas background outline */}
+        <rect x={0} y={0} width={width} height={height} fill="white" stroke="none" />
+
         {/* Margin visualization */}
         <rect x={0} y={0} width={width} height={mt} fill="rgba(255, 200, 200, 0.3)" stroke="none" />
         <rect x={0} y={height - mb} width={width} height={mb} fill="rgba(255, 200, 200, 0.3)" stroke="none" />
@@ -129,19 +138,23 @@ const SvgPreview = forwardRef(({ width, height, shapes, marginTop, marginBottom,
         <rect x={width - mr} y={mt} width={mr} height={height - mt - mb} fill="rgba(255, 200, 200, 0.3)" stroke="none" />
         <rect x={ml} y={mt} width={width - ml - mr} height={height - mt - mb} fill="none" stroke="rgba(255, 100, 100, 0.5)" strokeWidth="0.5" strokeDasharray="5,5" />
 
-        {/* Dimension: Width (bottom, spans full canvas) */}
-        <line x1={0} y1={dimY} x2={width} y2={dimY} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} />
-        <polygon points={`0,${dimY} ${ARROW_SIZE},${dimY-ARROW_SIZE} ${ARROW_SIZE},${dimY+ARROW_SIZE}`} fill={DIM_COLOR} />
-        <polygon points={`${width},${dimY} ${width-ARROW_SIZE},${dimY-ARROW_SIZE} ${width-ARROW_SIZE},${dimY+ARROW_SIZE}`} fill={DIM_COLOR} />
-        <text x={width / 2} y={dimY - 4} textAnchor="middle" fontSize={DIM_FONT} fill={DIM_COLOR} fontFamily="sans-serif">
+        {/* Dimension: Width (below canvas) */}
+        <line x1={0} y1={dimBotY} x2={width} y2={dimBotY} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} />
+        <polygon points={`0,${dimBotY} ${ARROW_SIZE},${dimBotY-ARROW_SIZE} ${ARROW_SIZE},${dimBotY+ARROW_SIZE}`} fill={DIM_COLOR} />
+        <polygon points={`${width},${dimBotY} ${width-ARROW_SIZE},${dimBotY-ARROW_SIZE} ${width-ARROW_SIZE},${dimBotY+ARROW_SIZE}`} fill={DIM_COLOR} />
+        <line x1={0} y1={dimBotY - 8} x2={0} y2={0} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} strokeDasharray="2,2" />
+        <line x1={width} y1={dimBotY - 8} x2={width} y2={0} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} strokeDasharray="2,2" />
+        <text x={width / 2} y={dimBotY - 5} textAnchor="middle" fontSize={DIM_FONT} fill={DIM_COLOR} fontFamily="sans-serif">
           {width} mm
         </text>
 
-        {/* Dimension: Height (left, spans full canvas) */}
-        <line x1={dimX} y1={0} x2={dimX} y2={height} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} />
-        <polygon points={`${dimX},0 ${dimX-ARROW_SIZE},${ARROW_SIZE} ${dimX+ARROW_SIZE},${ARROW_SIZE}`} fill={DIM_COLOR} />
-        <polygon points={`${dimX},${height} ${dimX-ARROW_SIZE},${height-ARROW_SIZE} ${dimX+ARROW_SIZE},${height-ARROW_SIZE}`} fill={DIM_COLOR} />
-        <text x={dimX + 6} y={height / 2} textAnchor="middle" fontSize={DIM_FONT} fill={DIM_COLOR} fontFamily="sans-serif" transform={`rotate(-90, ${dimX + 6}, ${height / 2})`}>
+        {/* Dimension: Height (left of canvas) */}
+        <line x1={dimLeftX} y1={0} x2={dimLeftX} y2={height} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} />
+        <polygon points={`${dimLeftX},0 ${dimLeftX-ARROW_SIZE},${ARROW_SIZE} ${dimLeftX+ARROW_SIZE},${ARROW_SIZE}`} fill={DIM_COLOR} />
+        <polygon points={`${dimLeftX},${height} ${dimLeftX-ARROW_SIZE},${height-ARROW_SIZE} ${dimLeftX+ARROW_SIZE},${height-ARROW_SIZE}`} fill={DIM_COLOR} />
+        <line x1={dimLeftX - 8} y1={0} x2={0} y2={0} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} strokeDasharray="2,2" />
+        <line x1={dimLeftX - 8} y1={height} x2={0} y2={height} stroke={DIM_COLOR} strokeWidth={DIM_STROKE} strokeDasharray="2,2" />
+        <text x={dimLeftX - 7} y={height / 2} textAnchor="middle" fontSize={DIM_FONT} fill={DIM_COLOR} fontFamily="sans-serif" transform={`rotate(-90, ${dimLeftX - 7}, ${height / 2})`}>
           {height} mm
         </text>
 

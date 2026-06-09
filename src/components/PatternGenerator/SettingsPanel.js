@@ -207,7 +207,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
           className="block w-full mt-1"
         />
         <div className="text-xs text-gray-500 text-right">{settings.opacity}%</div>
-        <div className="text-xs text-gray-400 mt-1 leading-tight">Chance each cell gets a shape. 100% = every possible slot is filled.</div>
+        <div className="text-xs text-gray-400 mt-1 leading-tight">Maximum density at the dense end of the gradient. The sparse end stays around 10% of this. Non-linear curve with Floyd-Steinberg dithering for an even spread.</div>
 
         <label className={labelClass}>Gradient Direction</label>
         <select

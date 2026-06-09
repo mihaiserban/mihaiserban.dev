@@ -21,7 +21,7 @@ const DEFAULT_SETTINGS = {
   shapeType: "circle",
   shapeSize: 20,
   spacing: 40,
-  opacity: 50,
+  opacity: 20,
   gradientType: "topToBottom",
   lineThickness: 30,
   lineMinLength: 100,

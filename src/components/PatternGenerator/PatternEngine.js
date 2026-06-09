@@ -135,17 +135,14 @@ function generateLinePattern(options, random, randomState) {
         if (lineLength < minLen) break;
 
         const halfLen = lineLength / 2;
-        const jitterX = randomization > 0 ? (random() - 0.5) * (randomization / 100) * spacing : 0;
-        const jitterY = randomization > 0 ? (random() - 0.5) * (randomization / 100) * (thick * 0.5) : 0;
 
-        let x = cursorX + halfLen + jitterX;
+        let x = cursorX + halfLen;
         x = Math.max(marginLeft + halfLen, Math.min(width - marginRight - halfLen, x));
-        if (x - halfLen < cursorX) x = cursorX + halfLen;
 
         shapes.push({
           type: shapeType,
           x,
-          y: y + jitterY,
+          y,
           size: thick,
           lineLength,
         });
@@ -181,16 +178,13 @@ function generateLinePattern(options, random, randomState) {
         if (lineLength < minLen) break;
 
         const halfLen = lineLength / 2;
-        const jitterX = randomization > 0 ? (random() - 0.5) * (randomization / 100) * (thick * 0.5) : 0;
-        const jitterY = randomization > 0 ? (random() - 0.5) * (randomization / 100) * spacing : 0;
 
-        let y = cursorY + halfLen + jitterY;
+        let y = cursorY + halfLen;
         y = Math.max(marginTop + halfLen, Math.min(height - marginBottom - halfLen, y));
-        if (y - halfLen < cursorY) y = cursorY + halfLen;
 
         shapes.push({
           type: shapeType,
-          x: x + jitterX,
+          x,
           y,
           size: thick,
           lineLength,
@@ -263,15 +257,11 @@ export function generatePattern(options) {
         continue;
       }
 
-      const jitterScale = (randomization / 100) * spacing;
-      const jitterX = (random() - 0.5) * jitterScale;
-      const jitterY = (random() - 0.5) * jitterScale;
-
       const baseX = offsetX + col * cellSize + shapeSize / 2;
       const baseY = offsetY + row * cellSize + shapeSize / 2;
 
-      let x = baseX + jitterX;
-      let y = baseY + jitterY;
+      let x = baseX;
+      let y = baseY;
 
       const halfSize = shapeSize / 2;
       x = Math.max(marginLeft + halfSize, Math.min(width - marginRight - halfSize, x));

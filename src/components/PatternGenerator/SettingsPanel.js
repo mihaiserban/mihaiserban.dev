@@ -185,17 +185,6 @@ const SettingsPanel = ({ settings, onChange, onExport, onGenerate, shapeCount, c
           <option value={GRADIENT_TYPES.BOTTOM_TO_TOP}>Bottom to Top</option>
           <option value={GRADIENT_TYPES.RADIAL}>Radial</option>
         </select>
-
-        <label className={labelClass}>Randomization (%)</label>
-        <input
-          type="range"
-          min={0}
-          max={100}
-          value={settings.randomization}
-          onChange={(e) => handleChange('randomization', Number(e.target.value))}
-          className="block w-full mt-1"
-        />
-        <div className="text-xs text-gray-500 text-right">{settings.randomization}%</div>
       </div>
 
       <div className={groupClass}>

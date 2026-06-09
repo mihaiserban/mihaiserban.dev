@@ -18,10 +18,6 @@ const DEFAULT_SETTINGS = {
   spacing: 40,
   opacity: 50,
   gradientType: 'uniform',
-  randomization: 0,
-  lineThickness: 30,
-  lineMinLength: 100,
-  lineMaxLength: 400,
   seed: 12345,
 };
 

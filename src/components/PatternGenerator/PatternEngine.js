@@ -112,6 +112,11 @@ export function generatePattern(options) {
   const cols = Math.floor((availableWidth + spacing) / cellSize);
   const rows = Math.floor((availableHeight + spacing) / cellSize);
 
+  const totalWidth = cols * shapeSize + (cols - 1) * spacing;
+  const totalHeight = rows * shapeSize + (rows - 1) * spacing;
+  const offsetX = marginLeft + (availableWidth - totalWidth) / 2;
+  const offsetY = marginTop + (availableHeight - totalHeight) / 2;
+
   const shapes = [];
   const seed = options.seed || 12345;
   let randomState = seed;
@@ -136,8 +141,8 @@ export function generatePattern(options) {
       const jitterX = (random() - 0.5) * jitterScale;
       const jitterY = (random() - 0.5) * jitterScale;
 
-      const baseX = marginLeft + col * cellSize + shapeSize / 2;
-      const baseY = marginTop + row * cellSize + shapeSize / 2;
+      const baseX = offsetX + col * cellSize + shapeSize / 2;
+      const baseY = offsetY + row * cellSize + shapeSize / 2;
 
       let x = baseX + jitterX;
       let y = baseY + jitterY;

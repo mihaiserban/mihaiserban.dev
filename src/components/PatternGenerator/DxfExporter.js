@@ -68,22 +68,26 @@ function round4(n) {
 export function exportToDxf(shapes, filename, width, height) {
   const entities = [];
 
-  const outlineData = polygonToDxf(0, 0, width, height, 0);
+  const outlineData = polygonToDxf(0, height, width, 0, 0);
   entities.push({
     type: 'LWPOLYLINE',
     vertexCount: 4,
     data: outlineData,
   });
 
+  const flipY = (svgy) => round4(height - svgy);
+
   for (const shape of shapes) {
-    const { type, x, y, size } = shape;
+    const { type, x, size } = shape;
+    const svgy = round4(shape.y);
+    const dxfY = flipY(shape.y);
 
     switch (type) {
       case 'circle': {
         const radius = round4(size / 2);
         entities.push({
           type: 'CIRCLE',
-          data: circleToDxf(round4(x), round4(y), radius),
+          data: circleToDxf(round4(x), dxfY, radius),
         });
         break;
       }
@@ -93,10 +97,10 @@ export function exportToDxf(shapes, filename, width, height) {
         const cr = shape.cornerRadius != null ? shape.cornerRadius : 0;
         const r = round4(half * (cr / 50));
         const x1 = round4(x - half);
-        const y1 = round4(y - half);
         const x2 = round4(x + half);
-        const y2 = round4(y + half);
-        const data = polygonToDxf(x1, y1, x2, y2, r);
+        const y1 = round4(svgy - half);
+        const y2 = round4(svgy + half);
+        const data = polygonToDxf(x1, flipY(y2), x2, flipY(y1), r);
         entities.push({
           type: 'LWPOLYLINE',
           vertexCount: cr > 0 ? 8 : 4,
@@ -112,10 +116,10 @@ export function exportToDxf(shapes, filename, width, height) {
         const cr = shape.cornerRadius != null ? shape.cornerRadius : 50;
         const r = round4(halfH * (cr / 50));
         const x1 = round4(x - halfLen);
-        const y1 = round4(y - halfH);
         const x2 = round4(x + halfLen);
-        const y2 = round4(y + halfH);
-        const data = polygonToDxf(x1, y1, x2, y2, r);
+        const y1 = round4(svgy - halfH);
+        const y2 = round4(svgy + halfH);
+        const data = polygonToDxf(x1, flipY(y2), x2, flipY(y1), r);
         entities.push({
           type: 'LWPOLYLINE',
           vertexCount: cr > 0 ? 8 : 4,
@@ -131,10 +135,10 @@ export function exportToDxf(shapes, filename, width, height) {
         const cr = shape.cornerRadius != null ? shape.cornerRadius : 50;
         const r = round4(halfH * (cr / 50));
         const x1 = round4(x - halfH);
-        const y1 = round4(y - halfLen);
         const x2 = round4(x + halfH);
-        const y2 = round4(y + halfLen);
-        const data = polygonToDxf(x1, y1, x2, y2, r);
+        const y1 = round4(svgy - halfLen);
+        const y2 = round4(svgy + halfLen);
+        const data = polygonToDxf(x1, flipY(y2), x2, flipY(y1), r);
         entities.push({
           type: 'LWPOLYLINE',
           vertexCount: cr > 0 ? 8 : 4,

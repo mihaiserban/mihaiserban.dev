@@ -68,6 +68,13 @@ function round4(n) {
 export function exportToDxf(shapes, filename, width, height) {
   const entities = [];
 
+  const outlineData = polygonToDxf(0, 0, width, height, 0);
+  entities.push({
+    type: 'LWPOLYLINE',
+    vertexCount: 4,
+    data: outlineData,
+  });
+
   for (const shape of shapes) {
     const { type, x, y, size } = shape;
 

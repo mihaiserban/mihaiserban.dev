@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
 
 const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shapeCount, coverage }) => {
+  const [exportFormat, setExportFormat] = useState('pdf');
   const handleChange = (key, value) => {
     const next = { ...settings, [key]: value };
     if (key === 'shapeType') {
@@ -239,11 +240,20 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
         >
           Generate New Pattern
         </button>
-        <button
-          onClick={onExport}
-          className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        <label className={labelClass}>Export Format</label>
+        <select
+          value={exportFormat}
+          onChange={(e) => setExportFormat(e.target.value)}
+          className={inputClass}
         >
-          Download PDF
+          <option value="pdf">PDF</option>
+          <option value="dxf">DXF</option>
+        </select>
+        <button
+          onClick={() => onExport(exportFormat)}
+          className="w-full px-4 py-2 mt-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        >
+          Export
         </button>
         {onReset && (
           <button

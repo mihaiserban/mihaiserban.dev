@@ -7,6 +7,7 @@ import {
   calculateCoverage,
 } from "../components/PatternGenerator/PatternEngine";
 import { exportToPdf } from "../components/PatternGenerator/PdfExporter";
+import { exportToDxf } from "../components/PatternGenerator/DxfExporter";
 import usePersistedSettings from "../components/PatternGenerator/usePersistedSettings";
 import ThemeTogglerComponent from "../components/themeToggler";
 import "../styles/scss/components/pattern-generator.scss";
@@ -43,7 +44,18 @@ const DesignPatternPage = () => {
     [shapes, settings.width, settings.height],
   );
 
-  const handleExport = useCallback(async () => {
+  const handleExport = useCallback(async (format) => {
+    if (format === "dxf") {
+      try {
+        const filename = `pattern-${settings.width}x${settings.height}.dxf`;
+        exportToDxf(shapes, filename, settings.width, settings.height);
+      } catch (error) {
+        console.error("DXF export failed:", error);
+        alert("DXF export failed. Please try again.");
+      }
+      return;
+    }
+
     if (!svgRef.current) return;
     try {
       const filename = `pattern-${settings.width}x${settings.height}.pdf`;
@@ -58,7 +70,7 @@ const DesignPatternPage = () => {
       console.error("PDF export failed:", error);
       alert("PDF export failed. Please try again.");
     }
-  }, [settings]);
+  }, [settings, shapes]);
 
   const handleGenerate = useCallback(() => {
     setSettings((prev) => ({

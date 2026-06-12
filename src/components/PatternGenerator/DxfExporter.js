@@ -1,3 +1,5 @@
+import { getSheetVertices } from './sheetOutline';
+
 const BULGE_90 = Math.tan(Math.PI / 8);
 
 function polygonToDxf(x1, y1, x2, y2, r) {
@@ -65,17 +67,21 @@ function round4(n) {
   return Math.round(n * 10000) / 10000;
 }
 
-export function exportToDxf(shapes, filename, width, height) {
+export function exportToDxf(shapes, filename, width, height, sheetShape) {
   const entities = [];
 
-  const outlineData = polygonToDxf(0, height, width, 0, 0);
+  const vertices = getSheetVertices(width, height, sheetShape);
+  const flipY = (svgy) => round4(height - svgy);
+  const outlineData = [];
+  for (const v of vertices) {
+    outlineData.push(['10', round4(v.x)]);
+    outlineData.push(['20', flipY(v.y)]);
+  }
   entities.push({
     type: 'LWPOLYLINE',
-    vertexCount: 4,
+    vertexCount: vertices.length,
     data: outlineData,
   });
-
-  const flipY = (svgy) => round4(height - svgy);
 
   for (const shape of shapes) {
     const { type, x, size } = shape;

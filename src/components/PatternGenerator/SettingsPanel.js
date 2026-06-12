@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
+import { getSheetVertices, getVertexAngles, SHEET_SHAPE_DEFAULT } from './sheetOutline';
 
 const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shapeCount, coverage }) => {
   const [exportFormat, setExportFormat] = useState('pdf');
@@ -24,6 +25,53 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
   const groupClass = "mb-4";
 
   const isLine = settings.shapeType === SHAPE_TYPES.HORIZONTAL_LINE || settings.shapeType === SHAPE_TYPES.VERTICAL_LINE;
+
+  const sheetShape = settings.sheetShape || SHEET_SHAPE_DEFAULT;
+  const corners = useMemo(
+    () => getVertexAngles(getSheetVertices(settings.width, settings.height, sheetShape), sheetShape),
+    [settings.width, settings.height, sheetShape],
+  );
+
+  const updateSheetShape = (key, patch) => {
+    const current = settings.sheetShape || SHEET_SHAPE_DEFAULT;
+    onChange({
+      ...settings,
+      sheetShape: {
+        ...current,
+        [key]: { ...(current[key] || { enabled: false, position: 0.5 }), ...patch },
+      },
+    });
+  };
+
+  const handleSheetShapeChange = (key, field, value) => {
+    if (field === 'enabled') {
+      updateSheetShape(key, { enabled: Boolean(value) });
+      return;
+    }
+    if (field === 'position') {
+      const n = Number(value);
+      const clamped = Math.max(0, Math.min(100, Number.isFinite(n) ? n : 0));
+      updateSheetShape(key, { position: clamped / 100 });
+    }
+  };
+
+  const handleResetAllEdges = () => {
+    onChange({ ...settings, sheetShape: SHEET_SHAPE_DEFAULT });
+  };
+
+  const EDGE_META = [
+    { key: 'topSplit', label: 'Top', totalAxis: settings.width },
+    { key: 'rightSplit', label: 'Right', totalAxis: settings.height },
+    { key: 'bottomSplit', label: 'Bottom', totalAxis: settings.width },
+    { key: 'leftSplit', label: 'Left', totalAxis: settings.height },
+  ];
+
+  const formatSubEdges = (split, totalAxis) => {
+    const pos = (split && split.position != null) ? split.position : 0.5;
+    const a = Math.round(totalAxis * pos);
+    const b = Math.round(totalAxis * (1 - pos));
+    return `${a} mm  /  ${b} mm`;
+  };
 
   return (
     <div className="settings-panel">
@@ -50,6 +98,59 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
           onChange={(e) => handleChange('height', Number(e.target.value))}
           className={inputClass}
         />
+      </div>
+
+      <div className={groupClass}>
+        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Sheet Shape</h3>
+        {EDGE_META.map(({ key, label, totalAxis }) => {
+          const split = sheetShape[key] || { enabled: false, position: 0.5 };
+          const sliderValue = Math.round((split.position || 0) * 100);
+          return (
+            <div key={key} className="mt-2">
+              <label className="flex items-center text-sm font-medium">
+                <input
+                  type="checkbox"
+                  className="mr-2"
+                  checked={Boolean(split.enabled)}
+                  onChange={(e) => handleSheetShapeChange(key, 'enabled', e.target.checked)}
+                />
+                <span>Split {label.toLowerCase()} edge</span>
+              </label>
+              <input
+                type="range"
+                min={0}
+                max={100}
+                step={1}
+                value={sliderValue}
+                disabled={!split.enabled}
+                onChange={(e) => handleSheetShapeChange(key, 'position', e.target.value)}
+                className="block w-full mt-1 disabled:opacity-40"
+              />
+              <div className="text-xs text-gray-500 text-right">
+                {formatSubEdges(split, totalAxis)}
+              </div>
+            </div>
+          );
+        })}
+
+        <div className="mt-3">
+          <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Corners</h4>
+          <ul className="mt-1 text-xs text-gray-600 dark:text-gray-300">
+            {corners.map((c, i) => (
+              <li key={`corner-${i}`}>
+                {c.role} — {c.angleDegrees}°
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleResetAllEdges}
+          className="mt-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline"
+        >
+          Reset all edges
+        </button>
       </div>
 
       <div className={groupClass}>

@@ -6,6 +6,7 @@ import {
   generatePattern,
   calculateCoverage,
 } from "../components/PatternGenerator/PatternEngine";
+import { SHEET_SHAPE_DEFAULT } from "../components/PatternGenerator/sheetOutline";
 import { exportToPdf } from "../components/PatternGenerator/PdfExporter";
 import { exportToDxf } from "../components/PatternGenerator/DxfExporter";
 import usePersistedSettings from "../components/PatternGenerator/usePersistedSettings";
@@ -19,6 +20,7 @@ const DEFAULT_SETTINGS = {
   marginBottom: 50,
   marginLeft: 50,
   marginRight: 50,
+  sheetShape: SHEET_SHAPE_DEFAULT,
   shapeType: "circle",
   shapeSize: 20,
   spacing: 40,
@@ -48,7 +50,7 @@ const DesignPatternPage = () => {
     if (format === "dxf") {
       try {
         const filename = `pattern-${settings.width}x${settings.height}.dxf`;
-        exportToDxf(shapes, filename, settings.width, settings.height);
+        exportToDxf(shapes, filename, settings.width, settings.height, settings.sheetShape);
       } catch (error) {
         console.error("DXF export failed:", error);
         alert("DXF export failed. Please try again.");
@@ -114,6 +116,7 @@ const DesignPatternPage = () => {
             marginBottom={settings.marginBottom}
             marginLeft={settings.marginLeft}
             marginRight={settings.marginRight}
+            sheetShape={settings.sheetShape}
           />
         </div>
       </div>

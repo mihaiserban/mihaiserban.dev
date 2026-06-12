@@ -86,6 +86,22 @@ const buildParamRows = (settings) => {
   rows.push({ label: 'Spacing', value: `${settings.spacing} mm` });
   rows.push({ label: 'Density', value: `${settings.opacity}%` });
   rows.push({ label: 'Gradient', value: formatGradientLabel(settings.gradientType) });
+
+  const shape = settings.sheetShape;
+  if (shape) {
+    const enabledEdges = [];
+    if (shape.topSplit && shape.topSplit.enabled) enabledEdges.push('Top');
+    if (shape.rightSplit && shape.rightSplit.enabled) enabledEdges.push('Right');
+    if (shape.bottomSplit && shape.bottomSplit.enabled) enabledEdges.push('Bottom');
+    if (shape.leftSplit && shape.leftSplit.enabled) enabledEdges.push('Left');
+    rows.push({
+      label: 'Sheet Shape',
+      value: enabledEdges.length === 0
+        ? 'Rectangle'
+        : `Custom (${enabledEdges.length} split${enabledEdges.length === 1 ? '' : 's'}: ${enabledEdges.join(', ')})`,
+    });
+  }
+
   return rows;
 };
 

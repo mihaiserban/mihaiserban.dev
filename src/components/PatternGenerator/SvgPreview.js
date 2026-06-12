@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import { getSheetVertices } from "./sheetOutline";
 
 const ARROW_SIZE = 10;
 const DIM_COLOR = "#000000";
@@ -8,7 +9,7 @@ const DIM_PAD = 28;
 
 const SvgPreview = forwardRef(
   (
-    { width, height, shapes, marginTop, marginBottom, marginLeft, marginRight },
+    { width, height, shapes, marginTop, marginBottom, marginLeft, marginRight, sheetShape },
     ref,
   ) => {
     const renderShape = (shape, index) => {
@@ -116,6 +117,9 @@ const SvgPreview = forwardRef(
     const dimBotY = height + DIM_PAD * 0.65;
     const dimLeftX = -DIM_PAD * 0.65;
 
+    const sheetVertices = getSheetVertices(width, height, sheetShape);
+    const pointsAttr = sheetVertices.map((v) => `${v.x},${v.y}`).join(' ');
+
     return (
       <div className="svg-preview-container">
         <svg
@@ -132,11 +136,8 @@ const SvgPreview = forwardRef(
           }}
         >
           <g className="svg-guides">
-            <rect
-              x={0}
-              y={0}
-              width={width}
-              height={height}
+            <polygon
+              points={pointsAttr}
               fill="white"
               stroke="black"
               strokeWidth="1"

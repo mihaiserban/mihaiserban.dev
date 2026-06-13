@@ -127,18 +127,20 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
                 min={-maxOffset}
                 max={maxOffset}
                 step={1}
-                value={edge.startOffsetMm}
-                onChange={(e) => updateEdge(key, 'startOffsetMm', e.target.value)}
+                value={-edge.startOffsetMm}
+                onChange={(e) => updateEdge(key, 'startOffsetMm', -Number(e.target.value))}
                 className="block w-full mt-1"
+                style={{ direction: 'rtl' }}
               />
               <input
                 type="range"
                 min={-maxOffset}
                 max={maxOffset}
                 step={1}
-                value={edge.endOffsetMm}
-                onChange={(e) => updateEdge(key, 'endOffsetMm', e.target.value)}
+                value={-edge.endOffsetMm}
+                onChange={(e) => updateEdge(key, 'endOffsetMm', -Number(e.target.value))}
                 className="block w-full mt-1"
+                style={{ direction: 'rtl' }}
               />
             </div>
           );

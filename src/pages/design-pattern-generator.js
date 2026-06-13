@@ -6,7 +6,6 @@ import {
   generatePattern,
   calculateCoverage,
 } from "../components/PatternGenerator/PatternEngine";
-import { SHEET_SHAPE_DEFAULT } from "../components/PatternGenerator/sheetOutline";
 import { exportToPdf } from "../components/PatternGenerator/PdfExporter";
 import { exportToDxf } from "../components/PatternGenerator/DxfExporter";
 import usePersistedSettings from "../components/PatternGenerator/usePersistedSettings";
@@ -20,7 +19,12 @@ const DEFAULT_SETTINGS = {
   marginBottom: 50,
   marginLeft: 50,
   marginRight: 50,
-  sheetShape: SHEET_SHAPE_DEFAULT,
+  sheetShape: {
+    topEdge: { startOffsetMm: 0, endOffsetMm: 0 },
+    rightEdge: { startOffsetMm: 0, endOffsetMm: 0 },
+    bottomEdge: { startOffsetMm: 0, endOffsetMm: 0 },
+    leftEdge: { startOffsetMm: 0, endOffsetMm: 0 },
+  },
   shapeType: "circle",
   shapeSize: 20,
   spacing: 40,
@@ -36,7 +40,7 @@ const DEFAULT_SETTINGS = {
 const DesignPatternPage = () => {
   const [settings, setSettings, resetSettings] = usePersistedSettings(
     DEFAULT_SETTINGS,
-    "settings.v1",
+    "settings.v2",
   );
   const svgRef = useRef(null);
 

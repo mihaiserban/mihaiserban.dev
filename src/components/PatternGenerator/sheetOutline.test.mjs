@@ -24,7 +24,9 @@ describe('normalizeSheetShape', () => {
     const result = normalizeSheetShape({ topEdge: { startOffsetMm: 5 } }, 100, 200);
     assert.strictEqual(result.topEdge.startOffsetMm, 5);
     assert.strictEqual(result.topEdge.endOffsetMm, 0);
-    assert.strictEqual(result.rightEdge.startOffsetMm, 0);
+    assert.deepStrictEqual(result.rightEdge, { startOffsetMm: 0, endOffsetMm: 0 });
+    assert.deepStrictEqual(result.bottomEdge, { startOffsetMm: 0, endOffsetMm: 0 });
+    assert.deepStrictEqual(result.leftEdge, { startOffsetMm: 0, endOffsetMm: 0 });
   });
 
   it('clamps offsets to half the shortest dimension', () => {
@@ -62,8 +64,8 @@ describe('getSheetVertices', () => {
     const v = getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: 10, endOffsetMm: 10 },
     });
-    closeTo(v[0], { x: -10, y: -10 });
-    closeTo(v[1], { x: 110, y: -10 });
+    closeTo(v[0], { x: 0, y: -10 });
+    closeTo(v[1], { x: 100, y: -10 });
     closeTo(v[2], { x: 100, y: 200 });
     closeTo(v[3], { x: 0, y: 200 });
   });
@@ -99,16 +101,16 @@ describe('getSheetVertices', () => {
     const v = getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: -10, endOffsetMm: -10 },
     });
-    closeTo(v[0], { x: 10, y: 10 });
-    closeTo(v[1], { x: 90, y: 10 });
+    closeTo(v[0], { x: 0, y: 10 });
+    closeTo(v[1], { x: 100, y: 10 });
   });
 
   it('clamps offsets beyond the bound', () => {
     const v = getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: 1000, endOffsetMm: -1000 },
     });
-    closeTo(v[0], { x: -50, y: -50 });
-    closeTo(v[1], { x: 150, y: -50 });
+    closeTo(v[0], { x: 0, y: -50 });
+    closeTo(v[1], { x: 100, y: 50 });
   });
 
   it('handles missing sheetShape defensively', () => {
@@ -131,9 +133,9 @@ describe('getVertexAngles', () => {
 
   it('reports non-90° angles for displaced corners', () => {
     const angles = getVertexAngles(getSheetVertices(100, 200, {
-      topEdge: { startOffsetMm: 10, endOffsetMm: 10 },
+      topEdge: { startOffsetMm: 0, endOffsetMm: 20 },
     }));
-    assert.notStrictEqual(angles[0].angleDegrees, 90);
+    assert.strictEqual(angles[0].angleDegrees, 90);
     assert.notStrictEqual(angles[1].angleDegrees, 90);
     assert.strictEqual(angles[2].angleDegrees, 90);
     assert.strictEqual(angles[3].angleDegrees, 90);

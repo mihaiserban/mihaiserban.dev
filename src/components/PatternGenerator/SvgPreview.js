@@ -1,11 +1,9 @@
 import React, { forwardRef } from "react";
 import { getSheetVertices } from "./sheetOutline";
 
-const ARROW_SIZE = 10;
 const DIM_COLOR = "#000000";
-const DIM_STROKE = "1";
-const DIM_FONT = 40;
-const DIM_PAD = 28;
+const DIM_FONT = 28;
+const DIM_PAD = 70;
 
 const SvgPreview = forwardRef(
   (
@@ -109,16 +107,38 @@ const SvgPreview = forwardRef(
     const ml = marginLeft || 0;
     const mr = marginRight || 0;
 
-    const vbx = -DIM_PAD;
-    const vby = -DIM_PAD;
-    const vbw = width + DIM_PAD * 2 + 50;
-    const vbh = height + DIM_PAD * 2 + 50;
-
-    const dimBotY = height + DIM_PAD * 0.65;
-    const dimLeftX = -DIM_PAD * 0.65;
-
     const sheetVertices = getSheetVertices(width, height, sheetShape);
     const pointsAttr = sheetVertices.map((v) => `${v.x},${v.y}`).join(' ');
+
+    const minX = Math.min(...sheetVertices.map((v) => v.x));
+    const maxX = Math.max(...sheetVertices.map((v) => v.x));
+    const minY = Math.min(...sheetVertices.map((v) => v.y));
+    const maxY = Math.max(...sheetVertices.map((v) => v.y));
+
+    const vbx = minX - DIM_PAD;
+    const vby = minY - DIM_PAD;
+    const vbw = maxX - minX + DIM_PAD * 2 + 50;
+    const vbh = maxY - minY + DIM_PAD * 2 + 50;
+
+    const edgeLabels = sheetVertices.map((v1, i) => {
+      const v2 = sheetVertices[(i + 1) % sheetVertices.length];
+      const dx = v2.x - v1.x;
+      const dy = v2.y - v1.y;
+      const length = Math.round(Math.sqrt(dx * dx + dy * dy));
+      const midX = (v1.x + v2.x) / 2;
+      const midY = (v1.y + v2.y) / 2;
+      const normalLen = Math.sqrt(dx * dx + dy * dy);
+      const normalX = normalLen > 0 ? dy / normalLen : 0;
+      const normalY = normalLen > 0 ? -dx / normalLen : 0;
+      const labelOffset = 50;
+      const labelX = midX + normalX * labelOffset;
+      const labelY = midY + normalY * labelOffset;
+      let textAnchor = 'middle';
+      if (Math.abs(normalX) > Math.abs(normalY)) {
+        textAnchor = normalX > 0 ? 'start' : 'end';
+      }
+      return { labelX, labelY, textAnchor, length };
+    });
 
     return (
       <div className="svg-preview-container">
@@ -187,66 +207,21 @@ const SvgPreview = forwardRef(
               fill="none"
             />
 
-            {/* Dimension: Width */}
-            <line
-              x1={0}
-              y1={dimBotY}
-              x2={width}
-              y2={dimBotY}
-              stroke={DIM_COLOR}
-              strokeWidth={DIM_STROKE}
-            />
-            <polygon
-              points={`0,${dimBotY} ${ARROW_SIZE},${dimBotY - ARROW_SIZE} ${ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
-              fill={DIM_COLOR}
-            />
-            <polygon
-              points={`${width},${dimBotY} ${width - ARROW_SIZE},${dimBotY - ARROW_SIZE} ${width - ARROW_SIZE},${dimBotY + ARROW_SIZE}`}
-              fill={DIM_COLOR}
-            />
-            <line x1={0} y1={dimBotY - 8} x2={0} y2={0} />
-            <line x1={width} y1={dimBotY - 8} x2={width} y2={0} />
-            <text
-              x={width / 2}
-              y={dimBotY + DIM_FONT}
-              textAnchor="middle"
-              fontSize={DIM_FONT}
-              fill={DIM_COLOR}
-              fontFamily="sans-serif"
-            >
-              {width} mm
-            </text>
-
-            {/* Dimension: Height */}
-            <line
-              x1={dimLeftX}
-              y1={0}
-              x2={dimLeftX}
-              y2={height}
-              stroke={DIM_COLOR}
-              strokeWidth={DIM_STROKE}
-            />
-            <polygon
-              points={`${dimLeftX},0 ${dimLeftX - ARROW_SIZE},${ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${ARROW_SIZE}`}
-              fill={DIM_COLOR}
-            />
-            <polygon
-              points={`${dimLeftX},${height} ${dimLeftX - ARROW_SIZE},${height - ARROW_SIZE} ${dimLeftX + ARROW_SIZE},${height - ARROW_SIZE}`}
-              fill={DIM_COLOR}
-            />
-            <line x1={dimLeftX - 8} y1={0} x2={0} y2={0} />
-            <line x1={dimLeftX - 8} y1={height} x2={0} y2={height} />
-            <text
-              x={dimLeftX - 7}
-              y={height / 2}
-              textAnchor="middle"
-              fontSize={DIM_FONT}
-              fill={DIM_COLOR}
-              fontFamily="sans-serif"
-              transform={`rotate(-90, ${dimLeftX - 7}, ${height / 2})`}
-            >
-              {height} mm
-            </text>
+            {/* Edge dimension labels */}
+            {edgeLabels.map((edge, i) => (
+              <text
+                key={`edge-label-${i}`}
+                x={edge.labelX}
+                y={edge.labelY}
+                textAnchor={edge.textAnchor}
+                fontSize={DIM_FONT}
+                fill={DIM_COLOR}
+                fontFamily="sans-serif"
+                dominantBaseline="central"
+              >
+                {edge.length} mm
+              </text>
+            ))}
           </g>
           {shapes.map((shape, index) => renderShape(shape, index))}
         </svg>

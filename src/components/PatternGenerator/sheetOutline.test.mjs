@@ -60,12 +60,12 @@ describe('getSheetVertices', () => {
     closeTo(v[3], { x: 0, y: 200 });
   });
 
-  it('shifts an edge parallel when start and end offsets are equal', () => {
+  it('extends an edge equally when start and end offsets are equal', () => {
     const v = getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: 10, endOffsetMm: 10 },
     });
-    closeTo(v[0], { x: 0, y: -10 });
-    closeTo(v[1], { x: 100, y: -10 });
+    closeTo(v[0], { x: -10, y: 0 });
+    closeTo(v[1], { x: 110, y: 0 });
     closeTo(v[2], { x: 100, y: 200 });
     closeTo(v[3], { x: 0, y: 200 });
   });
@@ -75,7 +75,7 @@ describe('getSheetVertices', () => {
       topEdge: { startOffsetMm: 0, endOffsetMm: 20 },
     });
     closeTo(v[0], { x: 0, y: 0 });
-    closeTo(v[1], { x: 100, y: -20 });
+    closeTo(v[1], { x: 120, y: 0 });
     closeTo(v[2], { x: 100, y: 200 });
     closeTo(v[3], { x: 0, y: 200 });
   });
@@ -85,8 +85,8 @@ describe('getSheetVertices', () => {
       topEdge: { startOffsetMm: 10, endOffsetMm: 10 },
       bottomEdge: { startOffsetMm: 10, endOffsetMm: 10 },
     });
-    assert.strictEqual(v[0].y, -10);
-    assert.strictEqual(v[2].y, 210);
+    assert.strictEqual(v[0].x, -10);
+    assert.strictEqual(v[2].x, 110);
   });
 
   it('moves shared corners diagonally when adjacent edges offset', () => {
@@ -94,23 +94,23 @@ describe('getSheetVertices', () => {
       topEdge: { startOffsetMm: 10, endOffsetMm: 0 },
       leftEdge: { startOffsetMm: 0, endOffsetMm: 20 },
     });
-    closeTo(v[0], { x: -20, y: -10 });
+    closeTo(v[0], { x: -10, y: -20 });
   });
 
   it('moves corners inward with negative offsets', () => {
     const v = getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: -10, endOffsetMm: -10 },
     });
-    closeTo(v[0], { x: 0, y: 10 });
-    closeTo(v[1], { x: 100, y: 10 });
+    closeTo(v[0], { x: 10, y: 0 });
+    closeTo(v[1], { x: 90, y: 0 });
   });
 
   it('clamps offsets beyond the bound', () => {
     const v = getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: 1000, endOffsetMm: -1000 },
     });
-    closeTo(v[0], { x: 0, y: -50 });
-    closeTo(v[1], { x: 100, y: 50 });
+    closeTo(v[0], { x: -50, y: 0 });
+    closeTo(v[1], { x: 50, y: 0 });
   });
 
   it('handles missing sheetShape defensively', () => {
@@ -135,9 +135,9 @@ describe('getVertexAngles', () => {
     const angles = getVertexAngles(getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: 0, endOffsetMm: 20 },
     }));
-    assert.notStrictEqual(angles[0].angleDegrees, 90);
+    assert.strictEqual(angles[0].angleDegrees, 90);
     assert.notStrictEqual(angles[1].angleDegrees, 90);
-    assert.strictEqual(angles[2].angleDegrees, 90);
+    assert.notStrictEqual(angles[2].angleDegrees, 90);
     assert.strictEqual(angles[3].angleDegrees, 90);
   });
 

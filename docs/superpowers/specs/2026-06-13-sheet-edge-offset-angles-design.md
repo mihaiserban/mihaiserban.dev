@@ -58,17 +58,17 @@ Coordinate system: origin at top-left, y increases downward (matches SVG/DXF).
 
 Per-edge unit normals (positive = outward from the original rectangle interior):
 
-- Top edge: `(0, -1)`
-- Right edge: `(1, 0)`
-- Bottom edge: `(0, 1)`
-- Left edge: `(-1, 0)`
+- Top edge: `(1, 0)` — horizontal, offset moves left/right
+- Right edge: `(0, -1)` — vertical, offset moves up/down
+- Bottom edge: `(1, 0)` — horizontal, offset moves left/right
+- Left edge: `(0, -1)` — vertical, offset moves up/down
 
 For each corner, compute the displacement as the sum of the perpendicular offsets from the two edges that meet there:
 
-- Top-left corner: `topEdge.startOffsetMm * (0, -1) + leftEdge.endOffsetMm * (-1, 0)`
-- Top-right corner: `topEdge.endOffsetMm * (0, -1) + rightEdge.startOffsetMm * (1, 0)`
-- Bottom-right corner: `rightEdge.endOffsetMm * (1, 0) + bottomEdge.startOffsetMm * (0, 1)`
-- Bottom-left corner: `bottomEdge.endOffsetMm * (0, 1) + leftEdge.startOffsetMm * (-1, 0)`
+- Top-left corner: `topEdge.startOffsetMm * (1, 0) + leftEdge.endOffsetMm * (0, -1)`
+- Top-right corner: `topEdge.endOffsetMm * (1, 0) + rightEdge.startOffsetMm * (0, -1)`
+- Bottom-right corner: `rightEdge.endOffsetMm * (0, -1) + bottomEdge.startOffsetMm * (1, 0)`
+- Bottom-left corner: `bottomEdge.endOffsetMm * (1, 0) + leftEdge.startOffsetMm * (0, -1)`
 
 Emit the four displaced corners in clockwise order:
 

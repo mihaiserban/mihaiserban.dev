@@ -42,10 +42,10 @@ export function getSheetVertices(width, height, sheetShape) {
   const leftStart = shape.leftEdge.startOffsetMm;
   const leftEnd = shape.leftEdge.endOffsetMm;
 
-  const tl = { x: round(-leftEnd), y: round(-topStart) };
-  const tr = { x: round(w + rightStart), y: round(-topEnd) };
-  const br = { x: round(w + rightEnd), y: round(h + bottomStart) };
-  const bl = { x: round(-leftStart), y: round(h + bottomEnd) };
+  const tl = { x: round(-topStart), y: round(-leftEnd) };
+  const tr = { x: round(w + topEnd), y: round(-rightStart) };
+  const br = { x: round(w + bottomStart), y: round(h + rightEnd) };
+  const bl = { x: round(-bottomEnd), y: round(h + leftStart) };
 
   return [tl, tr, br, bl];
 }

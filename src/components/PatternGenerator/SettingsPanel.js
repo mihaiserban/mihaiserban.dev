@@ -91,14 +91,16 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
       </div>
 
       <div className={groupClass}>
-        <button
-          type="button"
+        <div
+          role="button"
+          tabIndex={0}
           onClick={() => setSheetShapeOpen(!sheetShapeOpen)}
-          className="flex items-center justify-between w-full text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 bg-transparent border-none cursor-pointer p-0"
+          onKeyDown={(e) => { if (e.key === 'Enter') setSheetShapeOpen(!sheetShapeOpen); }}
+          className="flex items-center justify-between w-full text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 cursor-pointer"
         >
           <span>Sheet Shape</span>
           <span>{sheetShapeOpen ? '▾' : '▸'}</span>
-        </button>
+        </div>
         {sheetShapeOpen && (
           <>
             {EDGE_META.map(({ key, label, startCorner, endCorner }) => {

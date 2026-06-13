@@ -89,16 +89,21 @@ const buildParamRows = (settings) => {
 
   const shape = settings.sheetShape;
   if (shape) {
-    const enabledEdges = [];
-    if (shape.topSplit && shape.topSplit.enabled) enabledEdges.push('Top');
-    if (shape.rightSplit && shape.rightSplit.enabled) enabledEdges.push('Right');
-    if (shape.bottomSplit && shape.bottomSplit.enabled) enabledEdges.push('Bottom');
-    if (shape.leftSplit && shape.leftSplit.enabled) enabledEdges.push('Left');
+    const edges = ['topEdge', 'rightEdge', 'bottomEdge', 'leftEdge'];
+    const labels = { topEdge: 'T', rightEdge: 'R', bottomEdge: 'B', leftEdge: 'L' };
+    const nonZero = [];
+    for (const key of edges) {
+      const edge = shape[key];
+      if (!edge) continue;
+      const start = Number(edge.startOffsetMm) || 0;
+      const end = Number(edge.endOffsetMm) || 0;
+      if (start !== 0 || end !== 0) {
+        nonZero.push(`${labels[key]} ${start}/${end}`);
+      }
+    }
     rows.push({
       label: 'Sheet Shape',
-      value: enabledEdges.length === 0
-        ? 'Rectangle'
-        : `Custom (${enabledEdges.length} split${enabledEdges.length === 1 ? '' : 's'}: ${enabledEdges.join(', ')})`,
+      value: nonZero.length === 0 ? 'Rectangle' : nonZero.join(', '),
     });
   }
 

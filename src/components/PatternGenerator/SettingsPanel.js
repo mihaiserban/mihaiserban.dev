@@ -34,10 +34,11 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
   const sheetShape = normalizeSheetShape(settings.sheetShape, settings.width, settings.height);
   const corners = useMemo(
     () => getVertexAngles(getSheetVertices(settings.width, settings.height, sheetShape)),
-    [settings.width, settings.height, sheetShape],
+    [settings.width, settings.height, settings.sheetShape],
   );
 
   const updateEdge = (key, field, value) => {
+    if (value === '') return;
     const current = settings.sheetShape || SHEET_SHAPE_DEFAULT;
     onChange({
       ...settings,
@@ -59,7 +60,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
     { key: 'leftEdge', label: 'Left', startCorner: 'Bottom-left', endCorner: 'Top-left' },
   ];
 
-  const maxOffset = Math.min(settings.width, settings.height) / 2;
+  const maxOffset = Math.max(1, Math.min(settings.width, settings.height) / 2);
 
   return (
     <div className="settings-panel">
@@ -91,7 +92,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
       <div className={groupClass}>
         <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Sheet Shape</h3>
         {EDGE_META.map(({ key, label, startCorner, endCorner }) => {
-          const edge = sheetShape[key] || SHEET_SHAPE_DEFAULT[key];
+          const edge = sheetShape[key];
           return (
             <div key={key} className="mt-3">
               <div className="text-sm font-medium">{label}</div>

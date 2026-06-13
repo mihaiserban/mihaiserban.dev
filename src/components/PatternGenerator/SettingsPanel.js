@@ -9,6 +9,7 @@ import {
 
 const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shapeCount, coverage }) => {
   const [exportFormat, setExportFormat] = useState('pdf');
+  const [sheetShapeOpen, setSheetShapeOpen] = useState(false);
   const handleChange = (key, value) => {
     const next = { ...settings, [key]: value };
     if (key === 'shapeType') {
@@ -90,86 +91,97 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
       </div>
 
       <div className={groupClass}>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Sheet Shape</h3>
-        {EDGE_META.map(({ key, label, startCorner, endCorner }) => {
-          const edge = sheetShape[key];
-          return (
-            <div key={key} className="mt-3">
-              <div className="text-sm font-medium">{label}</div>
-              <div className="grid grid-cols-2 gap-2 mt-1">
-                <div>
-                  <label className="block text-xs text-gray-500">{startCorner}</label>
-                  <input
-                    type="number"
-                    min={-maxOffset}
-                    max={maxOffset}
-                    step={1}
-                    value={edge.startOffsetMm}
-                    onChange={(e) => updateEdge(key, 'startOffsetMm', e.target.value)}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-500">{endCorner}</label>
-                  <input
-                    type="number"
-                    min={-maxOffset}
-                    max={maxOffset}
-                    step={1}
-                    value={edge.endOffsetMm}
-                    onChange={(e) => updateEdge(key, 'endOffsetMm', e.target.value)}
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-              <input
-                type="range"
-                min={-maxOffset}
-                max={maxOffset}
-                step={1}
-                value={key === 'topEdge' || key === 'bottomEdge' ? edge.startOffsetMm : -edge.startOffsetMm}
-                onChange={(e) => {
-                  const val = key === 'topEdge' || key === 'bottomEdge' ? Number(e.target.value) : -Number(e.target.value);
-                  updateEdge(key, 'startOffsetMm', val);
-                }}
-                className="block w-full mt-1"
-                style={{ direction: key === 'topEdge' || key === 'bottomEdge' ? 'ltr' : 'rtl' }}
-              />
-              <input
-                type="range"
-                min={-maxOffset}
-                max={maxOffset}
-                step={1}
-                value={key === 'topEdge' || key === 'bottomEdge' ? edge.endOffsetMm : -edge.endOffsetMm}
-                onChange={(e) => {
-                  const val = key === 'topEdge' || key === 'bottomEdge' ? Number(e.target.value) : -Number(e.target.value);
-                  updateEdge(key, 'endOffsetMm', val);
-                }}
-                className="block w-full mt-1"
-                style={{ direction: key === 'topEdge' || key === 'bottomEdge' ? 'ltr' : 'rtl' }}
-              />
-            </div>
-          );
-        })}
-
-        <div className="mt-3">
-          <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Corners</h4>
-          <ul className="mt-1 text-xs text-gray-600 dark:text-gray-300">
-            {corners.map((c, i) => (
-              <li key={`corner-${i}`}>
-                {c.role} — {c.angleDegrees}°
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <button
           type="button"
-          onClick={handleResetAllEdges}
-          className="mt-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline"
+          onClick={() => setSheetShapeOpen(!sheetShapeOpen)}
+          className="flex items-center justify-between w-full text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
         >
-          Reset all edges
+          <span>Sheet Shape</span>
+          <span>{sheetShapeOpen ? '▾' : '▸'}</span>
         </button>
+        {sheetShapeOpen && (
+          <>
+            {EDGE_META.map(({ key, label, startCorner, endCorner }) => {
+              const edge = sheetShape[key];
+              return (
+                <div key={key} className="mt-3">
+                  <div className="text-sm font-medium">{label}</div>
+                  <div className="grid grid-cols-2 gap-2 mt-1">
+                    <div>
+                      <label className="block text-xs text-gray-500">{startCorner}</label>
+                      <input
+                        type="number"
+                        min={-maxOffset}
+                        max={maxOffset}
+                        step={1}
+                        value={edge.startOffsetMm}
+                        onChange={(e) => updateEdge(key, 'startOffsetMm', e.target.value)}
+                        className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-gray-500">{endCorner}</label>
+                      <input
+                        type="number"
+                        min={-maxOffset}
+                        max={maxOffset}
+                        step={1}
+                        value={edge.endOffsetMm}
+                        onChange={(e) => updateEdge(key, 'endOffsetMm', e.target.value)}
+                        className={inputClass}
+                      />
+                    </div>
+                  </div>
+                  <input
+                    type="range"
+                    min={-maxOffset}
+                    max={maxOffset}
+                    step={1}
+                    value={key === 'topEdge' || key === 'bottomEdge' ? edge.startOffsetMm : -edge.startOffsetMm}
+                    onChange={(e) => {
+                      const val = key === 'topEdge' || key === 'bottomEdge' ? Number(e.target.value) : -Number(e.target.value);
+                      updateEdge(key, 'startOffsetMm', val);
+                    }}
+                    className="block w-full mt-1"
+                    style={{ direction: key === 'topEdge' || key === 'bottomEdge' ? 'ltr' : 'rtl' }}
+                  />
+                  <input
+                    type="range"
+                    min={-maxOffset}
+                    max={maxOffset}
+                    step={1}
+                    value={key === 'topEdge' || key === 'bottomEdge' ? edge.endOffsetMm : -edge.endOffsetMm}
+                    onChange={(e) => {
+                      const val = key === 'topEdge' || key === 'bottomEdge' ? Number(e.target.value) : -Number(e.target.value);
+                      updateEdge(key, 'endOffsetMm', val);
+                    }}
+                    className="block w-full mt-1"
+                    style={{ direction: key === 'topEdge' || key === 'bottomEdge' ? 'ltr' : 'rtl' }}
+                  />
+                </div>
+              );
+            })}
+
+            <div className="mt-3">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Corners</h4>
+              <ul className="mt-1 text-xs text-gray-600 dark:text-gray-300">
+                {corners.map((c, i) => (
+                  <li key={`corner-${i}`}>
+                    {c.role} — {c.angleDegrees}°
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleResetAllEdges}
+              className="mt-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline"
+            >
+              Reset all edges
+            </button>
+          </>
+        )}
       </div>
 
       <div className={groupClass}>

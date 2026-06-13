@@ -1,6 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { SHAPE_TYPES, GRADIENT_TYPES } from './PatternEngine';
-import { getSheetVertices, getVertexAngles, SHEET_SHAPE_DEFAULT } from './sheetOutline';
+import {
+  getSheetVertices,
+  getVertexAngles,
+  normalizeSheetShape,
+  SHEET_SHAPE_DEFAULT,
+} from './sheetOutline';
 
 const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shapeCount, coverage }) => {
   const [exportFormat, setExportFormat] = useState('pdf');
@@ -26,33 +31,21 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
 
   const isLine = settings.shapeType === SHAPE_TYPES.HORIZONTAL_LINE || settings.shapeType === SHAPE_TYPES.VERTICAL_LINE;
 
-  const sheetShape = settings.sheetShape || SHEET_SHAPE_DEFAULT;
+  const sheetShape = normalizeSheetShape(settings.sheetShape, settings.width, settings.height);
   const corners = useMemo(
-    () => getVertexAngles(getSheetVertices(settings.width, settings.height, sheetShape), sheetShape),
+    () => getVertexAngles(getSheetVertices(settings.width, settings.height, sheetShape)),
     [settings.width, settings.height, sheetShape],
   );
 
-  const updateSheetShape = (key, patch) => {
+  const updateEdge = (key, field, value) => {
     const current = settings.sheetShape || SHEET_SHAPE_DEFAULT;
     onChange({
       ...settings,
       sheetShape: {
         ...current,
-        [key]: { ...(current[key] || { enabled: false, position: 0.5 }), ...patch },
+        [key]: { ...(current[key] || {}), [field]: Number(value) },
       },
     });
-  };
-
-  const handleSheetShapeChange = (key, field, value) => {
-    if (field === 'enabled') {
-      updateSheetShape(key, { enabled: Boolean(value) });
-      return;
-    }
-    if (field === 'position') {
-      const n = Number(value);
-      const clamped = Math.max(0, Math.min(100, Number.isFinite(n) ? n : 0));
-      updateSheetShape(key, { position: clamped / 100 });
-    }
   };
 
   const handleResetAllEdges = () => {
@@ -60,18 +53,13 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
   };
 
   const EDGE_META = [
-    { key: 'topSplit', label: 'Top', totalAxis: settings.width },
-    { key: 'rightSplit', label: 'Right', totalAxis: settings.height },
-    { key: 'bottomSplit', label: 'Bottom', totalAxis: settings.width },
-    { key: 'leftSplit', label: 'Left', totalAxis: settings.height },
+    { key: 'topEdge', label: 'Top', startCorner: 'Top-left', endCorner: 'Top-right' },
+    { key: 'rightEdge', label: 'Right', startCorner: 'Top-right', endCorner: 'Bottom-right' },
+    { key: 'bottomEdge', label: 'Bottom', startCorner: 'Bottom-right', endCorner: 'Bottom-left' },
+    { key: 'leftEdge', label: 'Left', startCorner: 'Bottom-left', endCorner: 'Top-left' },
   ];
 
-  const formatSubEdges = (split, totalAxis) => {
-    const pos = (split && split.position != null) ? split.position : 0.5;
-    const a = Math.round(totalAxis * pos);
-    const b = Math.round(totalAxis * (1 - pos));
-    return `${a} mm  /  ${b} mm`;
-  };
+  const maxOffset = Math.min(settings.width, settings.height) / 2;
 
   return (
     <div className="settings-panel">
@@ -102,33 +90,55 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
 
       <div className={groupClass}>
         <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Sheet Shape</h3>
-        {EDGE_META.map(({ key, label, totalAxis }) => {
-          const split = sheetShape[key] || { enabled: false, position: 0.5 };
-          const sliderValue = Math.round((split.position || 0) * 100);
+        {EDGE_META.map(({ key, label, startCorner, endCorner }) => {
+          const edge = sheetShape[key] || SHEET_SHAPE_DEFAULT[key];
           return (
-            <div key={key} className="mt-2">
-              <label className="flex items-center text-sm font-medium">
-                <input
-                  type="checkbox"
-                  className="mr-2"
-                  checked={Boolean(split.enabled)}
-                  onChange={(e) => handleSheetShapeChange(key, 'enabled', e.target.checked)}
-                />
-                <span>Split {label.toLowerCase()} edge</span>
-              </label>
+            <div key={key} className="mt-3">
+              <div className="text-sm font-medium">{label}</div>
+              <div className="grid grid-cols-2 gap-2 mt-1">
+                <div>
+                  <label className="block text-xs text-gray-500">{startCorner}</label>
+                  <input
+                    type="number"
+                    min={-maxOffset}
+                    max={maxOffset}
+                    step={1}
+                    value={edge.startOffsetMm}
+                    onChange={(e) => updateEdge(key, 'startOffsetMm', e.target.value)}
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-500">{endCorner}</label>
+                  <input
+                    type="number"
+                    min={-maxOffset}
+                    max={maxOffset}
+                    step={1}
+                    value={edge.endOffsetMm}
+                    onChange={(e) => updateEdge(key, 'endOffsetMm', e.target.value)}
+                    className={inputClass}
+                  />
+                </div>
+              </div>
               <input
                 type="range"
-                min={0}
-                max={100}
+                min={-maxOffset}
+                max={maxOffset}
                 step={1}
-                value={sliderValue}
-                disabled={!split.enabled}
-                onChange={(e) => handleSheetShapeChange(key, 'position', e.target.value)}
-                className="block w-full mt-1 disabled:opacity-40"
+                value={edge.startOffsetMm}
+                onChange={(e) => updateEdge(key, 'startOffsetMm', e.target.value)}
+                className="block w-full mt-1"
               />
-              <div className="text-xs text-gray-500 text-right">
-                {formatSubEdges(split, totalAxis)}
-              </div>
+              <input
+                type="range"
+                min={-maxOffset}
+                max={maxOffset}
+                step={1}
+                value={edge.endOffsetMm}
+                onChange={(e) => updateEdge(key, 'endOffsetMm', e.target.value)}
+                className="block w-full mt-1"
+              />
             </div>
           );
         })}

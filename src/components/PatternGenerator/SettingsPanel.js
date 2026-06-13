@@ -127,20 +127,26 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
                 min={-maxOffset}
                 max={maxOffset}
                 step={1}
-                value={-edge.startOffsetMm}
-                onChange={(e) => updateEdge(key, 'startOffsetMm', -Number(e.target.value))}
+                value={key === 'topEdge' || key === 'bottomEdge' ? edge.startOffsetMm : -edge.startOffsetMm}
+                onChange={(e) => {
+                  const val = key === 'topEdge' || key === 'bottomEdge' ? Number(e.target.value) : -Number(e.target.value);
+                  updateEdge(key, 'startOffsetMm', val);
+                }}
                 className="block w-full mt-1"
-                style={{ direction: 'rtl' }}
+                style={{ direction: key === 'topEdge' || key === 'bottomEdge' ? 'ltr' : 'rtl' }}
               />
               <input
                 type="range"
                 min={-maxOffset}
                 max={maxOffset}
                 step={1}
-                value={-edge.endOffsetMm}
-                onChange={(e) => updateEdge(key, 'endOffsetMm', -Number(e.target.value))}
+                value={key === 'topEdge' || key === 'bottomEdge' ? edge.endOffsetMm : -edge.endOffsetMm}
+                onChange={(e) => {
+                  const val = key === 'topEdge' || key === 'bottomEdge' ? Number(e.target.value) : -Number(e.target.value);
+                  updateEdge(key, 'endOffsetMm', val);
+                }}
                 className="block w-full mt-1"
-                style={{ direction: 'rtl' }}
+                style={{ direction: key === 'topEdge' || key === 'bottomEdge' ? 'ltr' : 'rtl' }}
               />
             </div>
           );

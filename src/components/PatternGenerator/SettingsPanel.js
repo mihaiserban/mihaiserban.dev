@@ -94,7 +94,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
         <button
           type="button"
           onClick={() => setSheetShapeOpen(!sheetShapeOpen)}
-          className="flex items-center justify-between w-full text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="flex items-center justify-between w-full text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 bg-transparent border-none cursor-pointer p-0"
         >
           <span>Sheet Shape</span>
           <span>{sheetShapeOpen ? '▾' : '▸'}</span>

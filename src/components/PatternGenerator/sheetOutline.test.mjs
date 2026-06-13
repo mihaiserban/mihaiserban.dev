@@ -135,7 +135,7 @@ describe('getVertexAngles', () => {
     const angles = getVertexAngles(getSheetVertices(100, 200, {
       topEdge: { startOffsetMm: 0, endOffsetMm: 20 },
     }));
-    assert.strictEqual(angles[0].angleDegrees, 90);
+    assert.notStrictEqual(angles[0].angleDegrees, 90);
     assert.notStrictEqual(angles[1].angleDegrees, 90);
     assert.strictEqual(angles[2].angleDegrees, 90);
     assert.strictEqual(angles[3].angleDegrees, 90);

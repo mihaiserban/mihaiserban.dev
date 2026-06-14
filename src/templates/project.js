@@ -30,6 +30,15 @@ const Template = ({ data }) => {
         title={`${project.frontmatter.title} - ${project.frontmatter.platforms
           .join(", ")} - Mihai Serban`}
         description={project.excerpt}
+        ogType="article"
+        publishedDate={project.frontmatter.rawStartDate}
+        tags={[
+          ...(project.frontmatter.technologies || []),
+          ...(project.frontmatter.platforms || []),
+          ...(project.frontmatter.industries || []),
+        ]}
+        image={project.frontmatter.previewImage}
+        pathname={`/project/${project.frontmatter.slug}`}
       />
       <article>
         <div>
@@ -137,6 +146,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         startDate(formatString: "DD MMMM YYYY")
+        rawStartDate: startDate
         endDate(formatString: "DD MMMM YYYY")
         title
         slug

@@ -12,7 +12,11 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Blog - Mihai Serban" />
+      <SEO
+        title="Blog - Mihai Serban"
+        description="Articles about software engineering, JavaScript, React, AWS, and more by Mihai Serban."
+        pathname="/"
+      />
       <div>
         <h1>Blog</h1>
         <div className="flex flex-col mt-8">

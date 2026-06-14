@@ -19,3 +19,5 @@ npm-debug.log*
 
 # Local Netlify folder
 .netlify
+.pi
+.pi-agency

@@ -12,7 +12,14 @@ const Blog = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={blog.frontmatter.title} description={blog.frontmatter.description} />
+      <SEO
+        title={blog.frontmatter.title}
+        description={blog.frontmatter.description}
+        ogType="article"
+        publishedDate={blog.frontmatter.rawDate}
+        tags={blog.frontmatter.tags}
+        pathname={`/blog/${blog.frontmatter.slug}`}
+      />
       <article>
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           {blog.frontmatter.title}
@@ -61,6 +68,8 @@ export const pageQuery = graphql`
         title
         description
         date(formatString: "DD MMMM YYYY")
+        rawDate: date
+        tags
       }
       html
       timeToRead

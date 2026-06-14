@@ -12,7 +12,11 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Bookshelf - Mihai Serban" />
+      <SEO
+        title="Bookshelf - Mihai Serban"
+        description="Books I've read and recommend. Mostly Science Fiction and Personal Development. See my reading list and suggest a book."
+        pathname="/bookshelf"
+      />
       <div>
         <h1>Bookshelf</h1>
         <p className="mt-4">

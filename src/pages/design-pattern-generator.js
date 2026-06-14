@@ -1,5 +1,6 @@
 import React, { useRef, useMemo, useCallback } from "react";
 import { ArrowLeft } from "react-feather";
+import Helmet from "react-helmet";
 import SettingsPanel from "../components/PatternGenerator/SettingsPanel";
 import SvgPreview from "../components/PatternGenerator/SvgPreview";
 import {
@@ -87,6 +88,19 @@ const DesignPatternPage = () => {
 
 
   return (
+    <>
+      <Helmet>
+        <title>Design Pattern Generator — Mihai Serban</title>
+        <meta name="description" content="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF. Customize shapes, density, gradients, and sheet dimensions." />
+        <meta property="og:title" content="Design Pattern Generator — Mihai Serban" />
+        <meta property="og:description" content="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mihaiserban.dev/design-pattern-generator" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Design Pattern Generator — Mihai Serban" />
+        <meta name="twitter:description" content="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF." />
+        <link rel="canonical" href="https://mihaiserban.dev/design-pattern-generator" />
+      </Helmet>
     <div className="pattern-generator-standalone">
       <div className="pattern-generator-header">
         <a href="/" className="pattern-back-button">
@@ -125,6 +139,7 @@ const DesignPatternPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

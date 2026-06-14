@@ -12,7 +12,11 @@ const ProjectsIndex = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Projects - Mihai Serban" />
+      <SEO
+        title="Projects - Mihai Serban"
+        description="Portfolio of projects I've worked on — iOS, Android, web, and backend applications across various industries."
+        pathname="/projects"
+      />
       <div>
         <h1>Projects</h1>
         <div className="flex flex-col mt-8">

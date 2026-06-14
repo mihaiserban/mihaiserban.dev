@@ -80,13 +80,6 @@ const About = (props) => {
           {description}
           <AnimatedBlock>▌</AnimatedBlock>
         </span>
-        <p className="mt-4 description">
-          Want to hire me for your next project?{" "}
-          <a href={`mailto:${process.env.GATSBY_EMAIL}?subject=Hey 👋`}>
-            Get in touch.
-          </a>
-        </p>
-
         <div className="flex flex-col mt-8">
           <Link
             to="/"

@@ -13,7 +13,11 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="About me - Mihai Serban" />
+      <SEO
+        title="About me - Mihai Serban"
+        description="Software engineer in constant search for new and exciting technologies. Learn about my background, experience, and skills."
+        pathname="/about"
+      />
       <div>
         <h1>About me</h1>
         <div

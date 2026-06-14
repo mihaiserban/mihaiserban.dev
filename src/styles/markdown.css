@@ -12,6 +12,12 @@
   margin-top: 1rem;
 }
 
+.md-remark img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* code block */
 .md-remark pre {
   padding: 20px;

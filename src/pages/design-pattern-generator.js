@@ -1,6 +1,6 @@
-import React, { useRef, useMemo, useCallback } from "react";
+import React, { useRef, useMemo, useCallback, useState } from "react";
 import { ArrowLeft } from "react-feather";
-import Helmet from "react-helmet";
+import SEO from "../components/SEO";
 import SettingsPanel from "../components/PatternGenerator/SettingsPanel";
 import SvgPreview from "../components/PatternGenerator/SvgPreview";
 import {
@@ -12,6 +12,7 @@ import { exportToDxf } from "../components/PatternGenerator/DxfExporter";
 import usePersistedSettings from "../components/PatternGenerator/usePersistedSettings";
 import ThemeTogglerComponent from "../components/themeToggler";
 import "../styles/scss/components/pattern-generator.scss";
+
 
 const DEFAULT_SETTINGS = {
   width: 1000,
@@ -44,8 +45,9 @@ const DesignPatternPage = () => {
     "settings.v2",
   );
   const svgRef = useRef(null);
+  const [generation, setGeneration] = useState(0);
 
-  const shapes = useMemo(() => generatePattern(settings), [settings]);
+  const shapes = useMemo(() => generatePattern(settings), [settings, generation]);
   const coverage = useMemo(
     () => calculateCoverage(shapes, settings.width, settings.height),
     [shapes, settings.width, settings.height],
@@ -80,27 +82,17 @@ const DesignPatternPage = () => {
   }, [settings, shapes]);
 
   const handleGenerate = useCallback(() => {
-    setSettings((prev) => ({
-      ...prev,
-      _generation: Date.now(),
-    }));
+    setGeneration((n) => n + 1);
   }, []);
 
 
   return (
     <>
-      <Helmet>
-        <title>Design Pattern Generator — Mihai Serban</title>
-        <meta name="description" content="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF. Customize shapes, density, gradients, and sheet dimensions." />
-        <meta property="og:title" content="Design Pattern Generator — Mihai Serban" />
-        <meta property="og:description" content="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mihaiserban.dev/design-pattern-generator" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Design Pattern Generator — Mihai Serban" />
-        <meta name="twitter:description" content="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF." />
-        <link rel="canonical" href="https://mihaiserban.dev/design-pattern-generator" />
-      </Helmet>
+      <SEO
+        title="Design Pattern Generator - Mihai Serban"
+        description="Generate randomized cutout patterns for CNC laser cutting. Export to DXF or PDF. Customize shapes, density, gradients, and sheet dimensions."
+        pathname="/design-pattern-generator"
+      />
     <div className="pattern-generator-standalone">
       <div className="pattern-generator-header">
         <a href="/" className="pattern-back-button">

@@ -16,13 +16,13 @@ const Template = ({ data }) => {
 
   const project = data.markdownRemark;
 
-  const filteredImages = project.frontmatter.gallery.filter(
+  const gallery = project.frontmatter.gallery || [];
+  const filteredImages = gallery.filter(
     (image) => image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.svg')
   );
-  const filteredVideos = project.frontmatter.gallery.filter(
+  const filteredVideos = gallery.filter(
     (image) => image.endsWith('.mp4') || image.endsWith('.mov')
   );
-  const images = filteredImages;
 
   return (
     <Layout>

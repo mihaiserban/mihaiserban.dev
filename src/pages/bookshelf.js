@@ -37,11 +37,13 @@ const Page = ({ data }) => {
         </p>
         <ul className="flex flex-col mt-4 list">
           {books.map((book) => (
-            <Link to={book.url} key={book.id}>
-              <li className={classNames({ "font-bold": book.favorite })}>
-                {book.title}
-              </li>
-            </Link>
+            <li key={book.id}>
+              <Link to={book.url}>
+                <span className={classNames({ "font-bold": book.favorite })}>
+                  {book.title}
+                </span>
+              </Link>
+            </li>
           ))}
         </ul>
       </div>

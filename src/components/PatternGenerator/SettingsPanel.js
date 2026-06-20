@@ -22,10 +22,6 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
     onChange(next);
   };
 
-  const handleShapeSizeChange = (key, value) => {
-    onChange({ ...settings, [key]: value });
-  };
-
   const inputClass = "block w-full mt-1 px-2 py-1 border rounded text-sm bg-white dark:bg-gray-800 dark:text-white";
   const labelClass = "block text-sm font-medium mt-4";
   const groupClass = "mb-4";
@@ -258,7 +254,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
               min={1}
               max={100}
               value={settings.lineThickness}
-              onChange={(e) => handleShapeSizeChange('lineThickness', Number(e.target.value))}
+              onChange={(e) => handleChange('lineThickness', Number(e.target.value))}
               className={inputClass}
             />
             <label className={labelClass}>Min Length (mm)</label>
@@ -298,7 +294,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
               min={1}
               max={500}
               value={settings.shapeSize}
-              onChange={(e) => handleShapeSizeChange('shapeSize', Number(e.target.value))}
+              onChange={(e) => handleChange('shapeSize', Number(e.target.value))}
               className={inputClass}
             />
             {settings.shapeType === SHAPE_TYPES.SQUARE && (

@@ -1,12 +1,11 @@
 import React from "react";
-import { Link as glink, graphql } from "gatsby";
-
-import Link from "../components/link";
 import Layout from "../components/layout";
+import SEO from "../components/SEO";
 import "../styles/scss/pages/designSystem.scss";
 
 const Page = () => (
   <Layout>
+    <SEO title="Design System - Mihai Serban" pathname="/designSystem" />
     <div className="flex flex-col container">
       <h1>Design System</h1>
       <div className="mt-4">

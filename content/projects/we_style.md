@@ -22,12 +22,12 @@ gallery:
   - /images/projects/we_style/gallery-6.png
 ---
 
-# Context
+## Context
 
 WeStyle is a social media application which offers instant style feedback plus discovery options that shift style uncertainty into total outfit confidence. 
 It alows the user to share his fashion style with a like minded community, and receive feedback.
 
-# Responsibilities
+## Responsibilities
 
 - iOS development
 - project managment

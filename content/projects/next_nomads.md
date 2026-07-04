@@ -19,11 +19,11 @@ gallery:
   - /images/projects/next_nomads/gallery-4.png
 ---
 
-# Context
+## Context
 
 NextNomads is designed to be a network of coworking spaces around the world, where freelancers, entrepreneurs and urban nomads can work whenever needed. The app lets users access the list of spaces via a map and shows the nearest offices and their amenities. It also gives access inside the offices, letting the users in via account token/wireless unlocking of the gates/doors.
 
-# Responsibilities
+## Responsibilities
 
 - iOS development
 - testing

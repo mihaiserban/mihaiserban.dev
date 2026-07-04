@@ -8,17 +8,17 @@
   background: linear-gradient(
     to right,
     transparent 0%,
-    var(--separator-color) 30%,
-    var(--separator-color) 70%,
+    var(--hairline) 30%,
+    var(--hairline) 70%,
     transparent 100%
   );
 }
 
 .blogLink {
-  color: var(--primary-color);
+  color: var(--ink);
 
   &:hover {
-    color: var(--textLink);
+    color: var(--accent);
   }
 }
 

@@ -20,11 +20,11 @@ gallery:
   - /images/projects/forevermap/gallery-2.png
 ---
 
-# Context
+## Context
 
 ForeverMap by Skobbler GmbH is an offline navigation application available for iOS (iPhone/iPod Touch/iPad). ForeverMap provides address/POI search, route calculation and Wikipedia information. OpenStreetMap Maps and POI data is the main source of information of this app.
 
-# Responsibilities
+## Responsibilities
 
 - iOS development as part of a larger team
 - code reviews, follow best practices

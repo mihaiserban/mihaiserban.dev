@@ -30,7 +30,7 @@ const Index = ({ data }) => {
                       {blog.frontmatter.date}
                     </p>
                     <Link to={`/blog/${blog.frontmatter.slug}`} className="blogLink mt-1">
-                      <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100">
+                      <h4 className="text-lg md:text-xl font-medium mb-2 w-full">
                         {blog.frontmatter.title}
                       </h4>
                     </Link>
@@ -42,7 +42,7 @@ const Index = ({ data }) => {
                         ))}
                       </div>
                     )}
-                    <p className="text-gray-600 dark:text-gray-400 mt-2">
+                    <p className="mt-2">
                       {blog.frontmatter.description}
                     </p>
                   </div>

@@ -22,11 +22,11 @@ gallery:
   - /images/projects/callsign/video-1.mov
 ---
 
-# Context
+## Context
 
 Callsign has built a secure mobile multi-factor authentication and authorisation engine, through the introduction of patented machine-learning biometric, behavioural, geo-location and identity analysis, combined with traditional methods.
 
-# Responsibilities
+## Responsibilities
 
 - participate in Scrum meetings, and provide clear reports of the work progress
 - lead the development efforts on creating the interface for their Ruleset Manager using React and D3.js. The final product can be seen in the showcase video.

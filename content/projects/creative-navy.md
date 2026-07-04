@@ -27,11 +27,11 @@ gallery:
   - /images/projects/creative-navy/gallery-9.png
 ---
 
-# Context
+## Context
 
 Creative Navy is a London based design agency which focuses on user research, user experience design and UI design. Creative Navy ranked Top-5-global UX agencies from 2017 to 2019.
 
-# Responsibilities
+## Responsibilities
 
 Create a new website from scratch following their designs.
 Google audit score in the 90th percentile.

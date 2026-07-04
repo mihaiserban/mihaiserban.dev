@@ -21,11 +21,11 @@ gallery:
   - /images/projects/elho/gallery-6.png
 ---
 
-# Context
+## Context
 
 iPad app created for the Elho sales team to showcase all of Elho's products. Elho is a fast growing family company, specialized in plastic plant pots.
 
-# Responsibilities
+## Responsibilities
 
 
 - iOS development

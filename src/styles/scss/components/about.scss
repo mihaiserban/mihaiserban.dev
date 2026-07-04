@@ -1,16 +1,7 @@
-.description {
-  color: var(--secondary-color);
-}
-
 .wrapper {
   &:after {
     content: "";
-    background: linear-gradient(
-      180deg,
-      var(--separator-color) 0,
-      var(--separator-color) 48%,
-      var(--bg)
-    );
+    background: var(--hairline);
     min-height: 540px;
     width: 1px;
     min-width: 1px;
@@ -24,37 +15,87 @@
   }
 }
 
+.container {
+  padding: 8px 0;
+}
+
+.description {
+  color: var(--ink-muted);
+}
+
 .image {
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
 
+.socialIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .socialIcon {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  border: 1px solid var(--separator-color);
-  color: var(--primary-color);
+  border: 1px solid var(--hairline);
+  color: var(--ink);
   cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s;
 
   &:hover {
-    color: var(--textLink);
+    color: var(--accent);
+    border-color: var(--accent);
   }
+}
+
+.menuSection {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
 }
 
 .menuLink {
-  color: var(--primary-color);
-  border-bottom: 1px solid transparent;
+  position: relative;
+  display: block;
+  color: var(--ink);
+  border-bottom: none;
+  padding: 4px 0;
+  line-height: 1.5;
+  border-radius: 4px;
+  transition: color 0.2s ease;
 
   &:hover {
-    color: var(--textLink);
-    border-bottom: 1px solid var(--textLink);
+    color: var(--accent);
+  }
+
+  &.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent);
   }
 }
 
-.active {
-  border-bottom: 1px solid var(--primary-color);
+@media screen and (max-width: 1003px) {
+  .menuLink.active::after {
+    right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menuLink,
+  .socialIcon {
+    transition: none;
+  }
 }

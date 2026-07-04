@@ -6,17 +6,18 @@ class ThemeTogglerComponent extends React.Component {
     return (
       <ThemeToggler>
         {({ theme, toggleTheme }) => (
-          <button
-            aria-label="Toggle Dark Mode"
-            type="button"
-            className="bg-gray-200 dark:bg-gray-800 rounded p-3 h-10 w-10"
-            onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}
-          >
+            <button
+              aria-label="Toggle Dark Mode"
+              title="Toggle theme"
+              type="button"
+              className="themeButton"
+              onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}
+            >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-4 w-4 text-gray-800 dark:text-gray-200"
+              className="h-4 w-4 text-ink"
             >
               {theme === "dark" ? (
                 <path

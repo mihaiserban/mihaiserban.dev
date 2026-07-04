@@ -7,8 +7,6 @@ hidden: false
 tags: []
 ---
 
-# Building Semantic Search Over a Knowledge Base
-
 Keyword search breaks whenever users and authors describe the same concept differently. A user searching *"how do I take money out of my account"* may never find an article titled *"Withdrawal Methods"*, even though it's exactly what they want.
 
 Semantic search fixes this by ranking documents based on meaning instead of token overlap. This post walks through a production semantic-search architecture for knowledge bases: retrieval, reranking, chunking, ingestion, caching, evaluation, and the operational tradeoffs that matter once you go past a prototype.

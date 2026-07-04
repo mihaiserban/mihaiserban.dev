@@ -4,66 +4,111 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji";
-  }
   h1 {
-    @apply text-3xl font-normal;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.8px;
   }
+
   h2 {
-    @apply text-2xl font-medium;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
   }
+
   h3 {
-    @apply text-xl font-semibold;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.1px;
   }
+
   h4 {
-    @apply text-lg font-semibold;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
   }
+
   h5 {
-    @apply text-base font-bold;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
   }
+}
+
+html {
+  --canvas: #faf9f5;
+  --surface: #f3f0ea;
+  --ink: #141413;
+  --ink-muted: #5a5753;
+  --hairline: #e6dfd8;
+  --accent: #cc7858;
+  --accent-hover: #b5674a;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+}
+
+html.dark {
+  --canvas: #141413;
+  --surface: #1a1918;
+  --ink: #f3f0ea;
+  --ink-muted: #8e8b82;
+  --hairline: #2a2825;
+  --accent: #d4845a;
+  --accent-hover: #e0966a;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
 }
 
 body {
-  --bg: white;
-  --alternate-bg: transparent;
-  --primary-color: #222;
-  --secondary-color: rgb(96, 96, 96);
-  --textLink: #1e56a9;
-  --separator-color: #e6e6e6;
-
-  &.dark {
-    --bg: #000;
-    --alternate-bg: white;
-    --primary-color: white;
-    --secondary-color: #aaaaaa;
-    --textLink: #3ea6ff;
-    --separator-color: #e6e6e6;
-  }
-
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-width: 320px;
   font-feature-settings: "kern";
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg);
-  color: var(--primary-color);
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 ::selection {
-  background-color: var(--textLink);
+  background-color: var(--accent);
   color: white;
 }
 
 a {
-  color: var(--textLink);
+  color: var(--accent);
   text-decoration: none;
-  transition: all 0.2s ease;
-  
+  transition: color 0.2s ease;
+
   &:hover {
-    opacity: 0.8;
+    color: var(--accent-hover);
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+button {
+  font-family: inherit;
 }
 
 /* Customize website's scrollbar like Mac OS
@@ -77,7 +122,7 @@ Not supports in Firefox and IE */
   }
 
   &-thumb {
-    box-shadow: inset 0 0 14px 14px #bbbbbe;
+    box-shadow: inset 0 0 14px 14px var(--scrollbar-thumb);
     border: solid 4px transparent;
     border-radius: 14px;
   }
@@ -96,6 +141,7 @@ Not supports in Firefox and IE */
   user-select: none;
 }
 
-.text-secondary-color {
-  color: var(--secondary-color);
+.text-secondary-color,
+.text-ink-muted {
+  color: var(--ink-muted);
 }

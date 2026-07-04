@@ -23,7 +23,7 @@ gallery:
   - /images/projects/scout_global/gallery-3.jpg
 ---
 
-# Context
+## Context
 
 Scout is a map and navigation app for iOS devices (iPhone and iPad with cellular support) built on top of OpenStreetMap.
 
@@ -32,7 +32,7 @@ Features
 - shows traffic on the map with data by Inrix
 - shows speed cameras that were reported on the german platform blitzer.de
 
-# Responsibilities
+## Responsibilities
 
 - lead a team of 5 iOS developers
 - iOS development

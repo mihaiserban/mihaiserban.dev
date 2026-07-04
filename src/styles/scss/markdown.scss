@@ -23,24 +23,28 @@
     padding: 20px;
     white-space: pre-wrap;
     border-radius: 4px;
-    background-color: rgba(242, 242, 242, 1);
+    border: 1px solid var(--hairline);
+    background-color: var(--surface);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
   }
 
   code {
     padding: 2px 4px;
-    background-color: rgba(242, 242, 242, 1);
+    border-radius: 4px;
+    background-color: var(--surface);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
   }
 }
 
 .dark {
   .md-remark {
     pre {
-      border: 1px solid rgba(55, 65, 81, 1);
-      background-color: rgba(17, 24, 39, 1);
+      border: 1px solid var(--hairline);
+      background-color: var(--surface);
     }
 
     code {
-      background-color: rgba(17, 24, 39, 1);
+      background-color: var(--surface);
     }
   }
 }

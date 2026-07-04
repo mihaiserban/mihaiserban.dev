@@ -21,7 +21,7 @@ const Blog = ({ data }) => {
         pathname={`/blog/${blog.frontmatter.slug}`}
       />
       <article>
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+        <h1 className="mb-4">
           {blog.frontmatter.title}
         </h1>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-8">
@@ -29,10 +29,10 @@ const Blog = ({ data }) => {
             <img
               src={about.frontmatter.image}
               className="headshot rounded-full"
-              alt="Headshot Mihai Serban"
+              alt="Mihai Serban"
               style={{ width: "24px", height: "24px" }}
             />
-            <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
+            <p className="text-sm ml-2">
               Serban Mihai / {blog.frontmatter.date}
             </p>
           </div>

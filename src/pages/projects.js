@@ -21,15 +21,21 @@ const ProjectsIndex = ({ data }) => {
         <h1>Projects</h1>
         <div className="flex flex-col mt-8">
           {projects.map(({ node: project }, index) => {
-            if (project.frontmatter.hidden && project.frontmatter.hidden === true) return null;
+            if (
+              project.frontmatter.hidden &&
+              project.frontmatter.hidden === true
+            )
+              return null;
             return (
               <div className="flex flex-col" key={project.frontmatter.slug}>
                 <div className="flex flex-row projectContainer">
                   {project.frontmatter.previewImage && (
-                    <Link to={`/project/${project.frontmatter.slug}`} className=" mr-24">
+                    <Link
+                      to={`/project/${project.frontmatter.slug}`}
+                      className=" mr-24"
+                    >
                       <img
                         className="imageProjects"
-                        style={{ objectFit: "fill" }}
                         src={project.frontmatter.previewImage}
                         alt={project.frontmatter.title}
                       />
@@ -44,7 +50,11 @@ const ProjectsIndex = ({ data }) => {
                     </Link>
                     <p className="mt-1 text-sm text-secondary-color min-w-32">
                       {project.frontmatter.startDate}&nbsp;-&nbsp;
-                      {project.frontmatter.endDate ? <>{project.frontmatter.endDate}</> : <>present</>}
+                      {project.frontmatter.endDate ? (
+                        <>{project.frontmatter.endDate}</>
+                      ) : (
+                        <>present</>
+                      )}
                     </p>
                     {project.frontmatter.technologies !== null && (
                       <div className="tags flex flex-row flex-wrap mt-2">
@@ -54,9 +64,7 @@ const ProjectsIndex = ({ data }) => {
                       </div>
                     )}
                     {project.excerpt && (
-                      <p className="mt-2">
-                        {project.excerpt}
-                      </p>
+                      <p className="mt-2">{project.excerpt}</p>
                     )}
                   </div>
                 </div>

@@ -7,8 +7,6 @@ hidden: false
 tags: ["react", "gatsby", "cnc", "laser-cutting", "svg", "dxf"]
 ---
 
-# Building a Design Pattern Generator for CNC & Laser Cutting
-
 I needed a front gate. Not just any gate — a metal gate with a perforated pattern that lets light through while keeping privacy. The kind of thing you see on modern architectural builds, where the sheet metal is laser-cut with a gradient of holes or lines that fade from dense to sparse.
 
 I called a few laser-cutting shops. Every single one asked the same thing: *"Can you send us the CAD file?"*

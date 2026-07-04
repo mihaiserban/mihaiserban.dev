@@ -21,13 +21,13 @@ gallery:
   - /images/projects/blitzer_de/gallery-4.jpg
 ---
 
-# Context
+## Context
 
 While working at skobbler I had the opportunity to contribute to the Blitzer.de, the #1 speed cam application on the German App Store.
 
 It uses skobbler's map technology stack alongside Blizer.de up to date speedcam database to inform the users of upcoming speedcams. 
 
-# Responsibilities
+## Responsibilities
 
 - iOS development as part of a team of 3 iOS developers
 - synchronize data from Blitzer.de database

@@ -22,7 +22,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
     onChange(next);
   };
 
-  const inputClass = "block w-full mt-1 px-2 py-1 border rounded text-sm bg-white dark:bg-gray-800 dark:text-white";
+  const inputClass = "block w-full mt-1 px-2 py-1 border border-hairline rounded text-sm bg-surface text-ink";
   const labelClass = "block text-sm font-medium mt-4";
   const groupClass = "mb-4";
 
@@ -64,7 +64,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
       <h2 className="text-lg font-bold mb-4">Pattern Settings</h2>
 
       <div className={groupClass}>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Canvas</h3>
+        <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Canvas</h3>
         <label className={labelClass}>Width (mm)</label>
         <input
           type="number"
@@ -92,7 +92,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
           tabIndex={0}
           onClick={() => setSheetShapeOpen(!sheetShapeOpen)}
           onKeyDown={(e) => { if (e.key === 'Enter') setSheetShapeOpen(!sheetShapeOpen); }}
-          className="flex items-center justify-between w-full text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 cursor-pointer"
+          className="flex items-center justify-between w-full text-sm font-semibold text-ink-muted uppercase tracking-wider hover:text-ink dark:text-ink-muted dark:hover:text-ink cursor-pointer"
         >
           <span>Sheet Shape</span>
           <span>{sheetShapeOpen ? '▾' : '▸'}</span>
@@ -106,7 +106,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
                   <div className="text-sm font-medium">{label}</div>
                   <div className="grid grid-cols-2 gap-2 mt-1">
                     <div>
-                      <label className="block text-xs text-gray-500">{startCorner}</label>
+                      <label className="block text-xs text-ink-muted">{startCorner}</label>
                       <input
                         type="number"
                         min={-maxOffset}
@@ -118,7 +118,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-gray-500">{endCorner}</label>
+                      <label className="block text-xs text-ink-muted">{endCorner}</label>
                       <input
                         type="number"
                         min={-maxOffset}
@@ -161,8 +161,8 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
             })}
 
             <div className="mt-3">
-              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Corners</h4>
-              <ul className="mt-1 text-xs text-gray-600 dark:text-gray-300">
+              <h4 className="text-xs font-semibold text-ink-muted uppercase tracking-wider">Corners</h4>
+              <ul className="mt-1 text-xs text-ink-muted dark:text-ink">
                 {corners.map((c, i) => (
                   <li key={`corner-${i}`}>
                     {c.role} — {c.angleDegrees}°
@@ -174,7 +174,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
             <button
               type="button"
               onClick={handleResetAllEdges}
-              className="mt-2 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline"
+              className="mt-2 text-xs text-ink-muted hover:text-ink dark:text-ink-muted dark:hover:text-ink underline"
             >
               Reset all edges
             </button>
@@ -183,7 +183,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
       </div>
 
       <div className={groupClass}>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Margins (mm)</h3>
+        <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Margins (mm)</h3>
         <div className="grid grid-cols-2 gap-2">
           <div>
             <label className="block text-xs font-medium mt-2">Top</label>
@@ -233,7 +233,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
       </div>
 
       <div className={groupClass}>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Shape</h3>
+        <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Shape</h3>
         <label className={labelClass}>Shape Type</label>
         <select
           value={settings.shapeType}
@@ -284,7 +284,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
               onChange={(e) => handleChange('lineCornerRadius', Number(e.target.value))}
               className="block w-full mt-1"
             />
-            <div className="text-xs text-gray-500 text-right">{settings.lineCornerRadius != null ? settings.lineCornerRadius : 50}%</div>
+            <div className="text-xs text-ink-muted text-right">{settings.lineCornerRadius != null ? settings.lineCornerRadius : 50}%</div>
           </>
         ) : (
           <>
@@ -308,7 +308,7 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
                   onChange={(e) => handleChange('cornerRadius', Number(e.target.value))}
                   className="block w-full mt-1"
                 />
-                <div className="text-xs text-gray-500 text-right">{settings.cornerRadius != null ? settings.cornerRadius : 0}%</div>
+                <div className="text-xs text-ink-muted text-right">{settings.cornerRadius != null ? settings.cornerRadius : 0}%</div>
               </>
             )}
           </>
@@ -323,11 +323,11 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
           onChange={(e) => handleChange('spacing', Number(e.target.value))}
           className={inputClass}
         />
-        <div className="text-xs text-gray-400 leading-tight">Gap between shapes. Auto-sets to shape size when changing type or size.</div>
+        <div className="text-xs text-ink-muted leading-tight">Gap between shapes. Auto-sets to shape size when changing type or size.</div>
       </div>
 
       <div className={groupClass}>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Distribution</h3>
+        <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Distribution</h3>
         <label className={labelClass}>Density (%)</label>
         <input
           type="range"
@@ -337,8 +337,8 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
           onChange={(e) => handleChange('opacity', Number(e.target.value))}
           className="block w-full mt-1"
         />
-        <div className="text-xs text-gray-500 text-right">{settings.opacity}%</div>
-        <div className="text-xs text-gray-400 mt-1 leading-tight">Maximum density at the dense end of the gradient. The sparse end stays around 10% of this. Non-linear curve with Floyd-Steinberg dithering for an even spread.</div>
+        <div className="text-xs text-ink-muted text-right">{settings.opacity}%</div>
+        <div className="text-xs text-ink-muted mt-1 leading-tight">Maximum density at the dense end of the gradient. The sparse end stays around 10% of this. Non-linear curve with Floyd-Steinberg dithering for an even spread.</div>
 
         <label className={labelClass}>Gradient Direction</label>
         <select
@@ -353,20 +353,20 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
           <option value={GRADIENT_TYPES.BOTTOM_TO_TOP}>Bottom to Top</option>
           <option value={GRADIENT_TYPES.RADIAL}>Radial</option>
         </select>
-        <div className="text-xs text-gray-400 mt-1 leading-tight">How density fades across the canvas. Uniform keeps it even everywhere.</div>
+        <div className="text-xs text-ink-muted mt-1 leading-tight">How density fades across the canvas. Uniform keeps it even everywhere.</div>
       </div>
 
       <div className={groupClass}>
-        <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+        <div className="text-sm text-ink-muted dark:text-ink mb-1">
           Shapes: {shapeCount}
         </div>
-        <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+        <div className="text-sm text-ink-muted dark:text-ink mb-1">
           Cutout: {coverage.toFixed(2)}%
         </div>
-        <div className="text-xs text-gray-400 mb-2 leading-tight">Total area removed from sheet. Depends on shape size, spacing, and density.</div>
+        <div className="text-xs text-ink-muted mb-2 leading-tight">Total area removed from sheet. Depends on shape size, spacing, and density.</div>
         <button
           onClick={onGenerate}
-          className="w-full px-4 py-2 mb-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+          className="w-full px-4 py-2 mb-2 bg-accent text-white rounded hover:bg-accent-hover transition"
         >
           Generate New Pattern
         </button>
@@ -381,14 +381,14 @@ const SettingsPanel = ({ settings, onChange, onReset, onExport, onGenerate, shap
         </select>
         <button
           onClick={() => onExport(exportFormat)}
-          className="w-full px-4 py-2 mt-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          className="w-full px-4 py-2 mt-2 bg-accent text-white rounded hover:bg-accent-hover transition"
         >
           Export
         </button>
         {onReset && (
           <button
             onClick={onReset}
-            className="w-full px-2 py-1 mt-1 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline"
+            className="w-full px-2 py-1 mt-1 text-xs text-ink-muted hover:text-ink dark:text-ink-muted dark:hover:text-ink underline"
           >
             Reset to defaults
           </button>

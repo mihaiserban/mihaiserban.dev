@@ -1,5 +1,10 @@
 /* eslint-disable */
 
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/jetbrains-mono/400.css";
+
 import "./src/styles/scss/global.scss";
 import "./src/styles/scss/markdown.scss";
 

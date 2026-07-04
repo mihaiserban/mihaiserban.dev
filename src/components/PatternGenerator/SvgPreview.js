@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { getSheetVertices } from "./sheetOutline";
 
-const DIM_COLOR = "#000000";
+const DIM_COLOR = "var(--ink)";
 const DIM_FONT = 28;
 const DIM_PAD = 70;
 
@@ -151,8 +151,8 @@ const SvgPreview = forwardRef(
           style={{
             maxWidth: "100%",
             maxHeight: "100%",
-            border: "1px solid #ccc",
-            background: "white",
+            border: "1px solid var(--hairline)",
+            background: "var(--canvas)",
           }}
         >
           <g className="svg-guides">

@@ -23,13 +23,13 @@ gallery:
   - /images/projects/geobrain/gallery-5.jpg
 ---
 
-# Context
+## Context
 
 GeoBrain is a interactive geo quiz game available on the iPhone and iPad. I was the only iOS developer working on the project. 
 
 Project included working with SQLite databases, networking, implementing game logic according to specified workflows, mixing OpenGL with UIKit elements.
 
-# Responsibilities
+## Responsibilities
 
 - iOS development
 - participate in daily Scrum meetings

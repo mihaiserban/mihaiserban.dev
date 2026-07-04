@@ -63,12 +63,12 @@ const About = (props) => {
           <img src={image} className="image" alt="Headshot Mihai Serban" />
         </Link>
 
-        <h2 className="mt-2">
+        <h2 className="mt-4">
           <Link to="/" className="mt-8" aria-label="Home">
-            <span style={{ color: "var(--primary-color)" }}>{name}</span>
+            <span>{name}</span>
           </Link>
         </h2>
-        <p className="mt-2">
+        <p className="mt-4">
           <FontAwesomeIcon
             icon={faMapMarkerAlt}
             size="sm"
@@ -80,7 +80,7 @@ const About = (props) => {
           {description}
           <AnimatedBlock>▌</AnimatedBlock>
         </span>
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-10">
           <Link
             to="/"
             aria-label="Blog"
@@ -115,7 +115,7 @@ const About = (props) => {
           >
             Projects
           </Link>
-          <p className="mt-4 bold">Apps</p>
+          <span className="menuSection">Apps</span>
           <Link
             aria-label="Head over to the design pattern generator"
             to="/design-pattern-generator"
@@ -127,60 +127,38 @@ const About = (props) => {
           </Link>
         </div>
 
-        <div className="mt-8 flex flex-row">
+        <div className="mt-10 socialIcons">
           <Link to={twitter} aria-label="Head over to my X">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faXTwitter} />
             </div>
           </Link>
-          <Link
-            to={linkedIn}
-            className="ml-4"
-            aria-label="Head over to my LinkedIn"
-          >
+          <Link to={linkedIn} aria-label="Head over to my LinkedIn">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faLinkedin} />
             </div>
           </Link>
-          <Link
-            to={github}
-            className="ml-4"
-            aria-label="Head over to my Github"
-          >
+          <Link to={github} aria-label="Head over to my Github">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faGithub} />
             </div>
           </Link>
-          <Link
-            to={stackoverflow}
-            className="ml-4"
-            aria-label="Head over to my StackOverflow"
-          >
+          <Link to={stackoverflow} aria-label="Head over to my StackOverflow">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faStackOverflow} />
             </div>
           </Link>
-        </div>
-        <div className="mt-2 flex flex-row">
           <Link to={medium} aria-label="Head over to my Medium blog">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faMedium} />
             </div>
           </Link>
-          <Link
-            to={instagram}
-            className="ml-4"
-            aria-label="Head over to my Instagram"
-          >
+          <Link to={instagram} aria-label="Head over to my Instagram">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faInstagram} />
             </div>
           </Link>
-          <Link
-            to={goodreads}
-            className="ml-4"
-            aria-label="Head over to my Goodreads"
-          >
+          <Link to={goodreads} aria-label="Head over to my Goodreads">
             <div className="socialIcon flex items-center justify-center">
               <FontAwesomeIcon icon={faGoodreads} />
             </div>

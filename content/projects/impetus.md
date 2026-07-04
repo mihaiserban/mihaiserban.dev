@@ -33,7 +33,7 @@ gallery:
   - /images/projects/impetus/gallery-13.png
 ---
 
-# Context
+## Context
 
 Impetus is a platform for reward based advertising and the cryptocurrency to run it. Meet Impetus One and the Nudge token. It’s where brands meet customers who actually want them in their lives.
 
@@ -44,7 +44,7 @@ The fee is split between the customer, and the ad publisher where the customer j
 Blockchain brings in low transaction fees, high velocity and geographically unbound means of currency distribution.
 
 
-# Responsibilities
+## Responsibilities
 
 
 - ReactJS development

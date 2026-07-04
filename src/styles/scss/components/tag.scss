@@ -1,10 +1,25 @@
 .tag {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 12px;
-  padding-right: 12px;
-  border: 1px solid var(--separator-color);
-  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
   margin: 4px;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink-muted);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.dark {
+  .tag {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag {
+    transition: none;
+  }
 }

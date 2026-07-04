@@ -6,11 +6,11 @@ import Link from "./link";
 import ThemeToggler from "./themeToggler";
 import "../styles/scss/components/layout.scss";
 
-const sideMenuWidth = 240;
+const sideMenuWidth = 260;
 
 const Layout = ({ children }) => (
   <>
-    <div className="flex justify-center p-8 flex-wrap layout">
+    <div className="flex justify-center p-8 layout">
       <div className="about">
         <About width={sideMenuWidth} />
       </div>
@@ -22,18 +22,15 @@ const Layout = ({ children }) => (
           </div>
         </div>
 
-        <div className="flex justify-center mt-8">
-          <div className="flex flex-row items-center">
-            Built with Gatsby + Netlify = ❤️
-            <Link
-              to="https://github.com/mihaiserban/mihaiserban.dev"
-              className="ml-4"
-              aria-label="Source code for mihaiserban.dev"
-            >
-              [Source code]
-            </Link>
-          </div>
-        </div>
+        <footer className="footer">
+          Built with Gatsby + Netlify
+          <Link
+            to="https://github.com/mihaiserban/mihaiserban.dev"
+            aria-label="Source code for mihaiserban.dev"
+          >
+            Source code
+          </Link>
+        </footer>
       </div>
     </div>
   </>

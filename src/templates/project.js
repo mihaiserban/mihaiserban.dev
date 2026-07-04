@@ -41,36 +41,37 @@ const Template = ({ data }) => {
         pathname={`/project/${project.frontmatter.slug}`}
       />
       <article>
-        <div>
+        <div className="projectHeader">
           <div className="flex flex-row items-center">
             <h1>{project.frontmatter.title}</h1>
             {project.frontmatter.url !== null && (
               <Link to={project.frontmatter.url} className="ml-4">
                 <FontAwesomeIcon
                   icon={faExternalLinkAlt}
-                  color="var(--primary-color)"
+                  color="var(--accent)"
                 />
               </Link>
             )}
           </div>
-          <span className="mt-2 text-sm text-secondary-color min-w-32">
+          <span className="projectDate">
             {project.frontmatter.startDate}&nbsp;-&nbsp;
             {project.frontmatter.endDate ? <>{project.frontmatter.endDate}</> : <>present</>}
           </span>
+        </div>
 
-          {project.html !== null && (
-            <div className="flex flex-col mt-4">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: project.html,
-                }}
-                className="md-remark"
-              />
-            </div>
-          )}
+        {project.html !== null && (
+          <div className="projectBody">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: project.html,
+              }}
+              className="md-remark"
+            />
+          </div>
+        )}
 
           {project.frontmatter.technologies !== null && (
-            <div className="flex flex-col mt-4">
+            <div className="projectMeta">
               <h5>Technologies</h5>
               <div className="tags flex flex-row flex-wrap mt-2">
                 {project.frontmatter.technologies.map((title) => (
@@ -81,7 +82,7 @@ const Template = ({ data }) => {
           )}
 
           {project.frontmatter.industries !== null && project.frontmatter.industries.length > 0 && (
-            <div className="flex flex-col mt-4">
+            <div className="projectMeta">
               <h5>Industry</h5>
               <div className="tags flex flex-row flex-wrap mt-2">
                 {project.frontmatter.industries.map((title) => (
@@ -92,7 +93,7 @@ const Template = ({ data }) => {
           )}
 
           {project.frontmatter.platforms !== null && (
-            <div className="flex flex-col mt-4">
+            <div className="projectMeta">
               <h5>Platforms</h5>
               <div className="tags flex flex-row flex-wrap mt-2">
                 {project.frontmatter.platforms.map((title) => (
@@ -103,7 +104,7 @@ const Template = ({ data }) => {
           )}
 
           {(filteredVideos.length > 0 || filteredImages.length > 0) && (
-            <div className="flex flex-col justify-center mt-4">
+            <div className="projectGallery">
               {filteredVideos.length > 0 && (
                 <>
                   <h5 className="mb-4">Video</h5>
@@ -133,7 +134,6 @@ const Template = ({ data }) => {
               )}
             </div>
           )}
-        </div>
       </article>
     </Layout>
   );

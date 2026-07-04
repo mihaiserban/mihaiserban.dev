@@ -218,12 +218,10 @@ const Head = (props) => {
         <meta property="article:published_time" content={publishedDate} />
       )}
       {aOgType === "article" && (
-        <>
-          <meta property="article:author" content={author} />
-          {aKeywords && (
-            <meta property="article:tag" content={aKeywords} />
-          )}
-        </>
+        <meta property="article:author" content={author} />
+      )}
+      {aOgType === "article" && aKeywords && (
+        <meta property="article:tag" content={aKeywords} />
       )}
 
       {/* Twitter Card */}

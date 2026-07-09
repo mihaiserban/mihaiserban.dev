@@ -8,7 +8,7 @@ const isBrowser = () => typeof window !== "undefined";
 const stripTrailingSlash = (str) =>
   str.endsWith("/") && str !== "/" ? str.slice(0, -1) : str;
 
-const Head = (props) => {
+  const Head = (props) => {
   const {
     data: {
       about: {
@@ -42,7 +42,9 @@ const Head = (props) => {
     description,
     ogType,
     publishedDate,
+    modifiedDate,
     tags,
+    section,
     image,
     pathname,
     canonicalUrl,
@@ -66,6 +68,12 @@ const Head = (props) => {
       ? userTwitter
       : `@${userTwitter}`
     : "";
+
+  const ogImageType = aImage
+    ? aImage.endsWith(".png")
+      ? "image/png"
+      : "image/jpeg"
+    : "image/jpeg";
 
   // Schema.org structured data
   const jsonLd = [];
@@ -194,6 +202,18 @@ const Head = (props) => {
       <meta name="theme-color" content="#ffffff" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <meta name="msapplication-config" content="browserconfig.xml" />
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Mihai Șerban Blog RSS"
+        href="/rss.xml"
+      />
+      <link
+        rel="alternate"
+        type="application/atom+xml"
+        title="Mihai Șerban Blog Atom"
+        href="/atom.xml"
+      />
 
       {/* Standard meta */}
       <meta name="description" content={aDescription} />
@@ -212,16 +232,25 @@ const Head = (props) => {
       <meta property="og:image:alt" content={aDescription} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content={ogImageType} />
 
       {/* Article-specific Open Graph */}
       {aOgType === "article" && publishedDate && (
         <meta property="article:published_time" content={publishedDate} />
       )}
+      {aOgType === "article" && modifiedDate && (
+        <meta property="article:modified_time" content={modifiedDate} />
+      )}
+      {aOgType === "article" && section && (
+        <meta property="article:section" content={section} />
+      )}
       {aOgType === "article" && (
         <meta property="article:author" content={author} />
       )}
-      {aOgType === "article" && aKeywords && (
-        <meta property="article:tag" content={aKeywords} />
+      {aOgType === "article" && tags && tags.length > 0 && (
+        tags.map((tag) => (
+          <meta property="article:tag" content={tag} key={`tag-${tag}`} />
+        ))
       )}
 
       {/* Twitter Card */}

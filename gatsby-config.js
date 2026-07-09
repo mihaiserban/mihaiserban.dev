@@ -99,6 +99,119 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              const siteUrl = site.siteMetadata.siteUrl;
+              return allMarkdownRemark.edges
+                .filter((edge) => !edge.node.frontmatter.hidden)
+                .map((edge) => {
+                  const { slug, title, description, date, tags } =
+                    edge.node.frontmatter;
+                  return {
+                    title,
+                    description: description || edge.node.excerpt,
+                    date,
+                    url: `${siteUrl}/blog/${slug}/`,
+                    guid: `${siteUrl}/blog/${slug}/`,
+                    categories: tags || [],
+                    custom_elements: [{ "content:encoded": edge.node.html }],
+                  };
+                });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { frontmatter: { date: DESC } }
+                  filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      frontmatter {
+                        slug
+                        title
+                        description
+                        date
+                        tags
+                        hidden
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Mihai Serban | Software Engineer",
+            description:
+              "Software engineer sharing insights on JavaScript, React, AWS, mobile development, and building products.",
+            site_url: "https://mihaiserban.dev",
+          },
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              const siteUrl = site.siteMetadata.siteUrl;
+              return allMarkdownRemark.edges
+                .filter((edge) => !edge.node.frontmatter.hidden)
+                .map((edge) => {
+                  const { slug, title, description, date, tags } =
+                    edge.node.frontmatter;
+                  return {
+                    title,
+                    description: description || edge.node.excerpt,
+                    date,
+                    url: `${siteUrl}/blog/${slug}/`,
+                    guid: `${siteUrl}/blog/${slug}/`,
+                    categories: tags || [],
+                    custom_elements: [{ "content:encoded": edge.node.html }],
+                  };
+                });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { frontmatter: { date: DESC } }
+                  filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      frontmatter {
+                        slug
+                        title
+                        description
+                        date
+                        tags
+                        hidden
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/atom.xml",
+            title: "Mihai Serban | Software Engineer",
+            description:
+              "Software engineer sharing insights on JavaScript, React, AWS, mobile development, and building products.",
+            site_url: "https://mihaiserban.dev",
+            feed_url: "https://mihaiserban.dev/atom.xml",
+          },
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     "gatsby-transformer-json",
     "gatsby-plugin-styled-components",

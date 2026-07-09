@@ -1,3 +1,7 @@
 User-agent: *
+Allow: /
 
 Sitemap: https://mihaiserban.dev/sitemap.xml
+Sitemap: https://mihaiserban.dev/rss.xml
+Sitemap: https://mihaiserban.dev/atom.xml
+Sitemap: https://mihaiserban.dev/llms.txt

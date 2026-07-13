@@ -1,0 +1,15 @@
+# Serve markdown mirrors with the correct MIME type and a canonical
+# Link header back to the HTML page, per the agent-readability spec.
+# Netlify replaces :splat with the wildcard portion of the path, so
+# /blog/neural-llm-router.md -> Link: </blog/neural-llm-router/>; rel="canonical"
+/blog/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Link: </blog/:splat/>; rel="canonical"
+
+# Ensure the AI discovery files are served as plain text.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+/sitemap-md.xml
+  Content-Type: application/xml; charset=utf-8

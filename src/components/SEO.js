@@ -48,6 +48,7 @@ const stripTrailingSlash = (str) =>
     image,
     pathname,
     canonicalUrl,
+    markdownUrl,
   } = props;
 
   const aTitle = title || siteTitle;
@@ -181,6 +182,11 @@ const stripTrailingSlash = (str) =>
 
       {/* Canonical URL */}
       <link rel="canonical" href={aCanonicalUrl} />
+
+      {/* Markdown mirror for AI agents (llmstxt.org .md convention) */}
+      {markdownUrl && (
+        <link rel="alternate" type="text/markdown" href={markdownUrl} />
+      )}
 
       {/* Favicons */}
       <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />

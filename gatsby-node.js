@@ -88,6 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date(formatString: "YYYY-MM-DD")
               tags
             }
+            rawMarkdownBody
           }
         }
       }
@@ -249,6 +250,47 @@ exports.onPostBuild = async () => {
   fs.mkdirSync(publicDir, { recursive: true });
   fs.writeFileSync(path.join(publicDir, "llms.txt"), llmsTxt);
   fs.writeFileSync(path.join(publicDir, "llms-full.txt"), llmsFull);
+
+  // ------------------------------------------------------------------
+  // Markdown mirrors for AI agents.
+  //
+  // Write a clean Markdown version of each public blog post to
+  // /blog/<slug>.md so AI assistants (ChatGPT, Claude, Perplexity) that
+  // follow the <link rel="alternate" type="text/markdown"> tag from the
+  // HTML page get a low-noise version of the content (~3k tokens instead
+  // of ~15k of HTML soup). A dedicated sitemap-md.xml lists every .md
+  // route so crawlers can discover them (see marclou's note: pages often
+  // need to be indexed before an AI assistant can fetch them).
+  // ------------------------------------------------------------------
+  const blogMdDir = path.join(publicDir, "blog");
+  fs.mkdirSync(blogMdDir, { recursive: true });
+
+  const mdUrls = [];
+  blogs.edges.forEach(({ node }) => {
+    const { slug, title, description, date, tags } = node.frontmatter;
+    const body = node.rawMarkdownBody || "";
+    const htmlUrl = cleanUrl(`${siteUrl}/blog/${slug}`);
+    const mdUrl = `${siteUrl}/blog/${slug}.md`;
+
+    let md = `# ${title}\n\n`;
+    if (description) md += `> ${description}\n\n`;
+    md += `- **Date:** ${date}\n`;
+    md += `- **URL:** ${htmlUrl}\n`;
+    if (tags && tags.length > 0) md += `- **Tags:** ${tags.join(", ")}\n`;
+    md += `\n---\n\n${body}\n\n---\n\n## Sitemap\n\n- [HTML version](${htmlUrl})\n- [Markdown version](${mdUrl})\n`;
+
+    fs.writeFileSync(path.join(blogMdDir, `${slug}.md`), md);
+    mdUrls.push(mdUrl);
+  });
+
+  // Dedicated sitemap for the markdown mirrors, referenced from robots.txt.
+  let sitemapMd = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  sitemapMd += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  mdUrls.forEach((url) => {
+    sitemapMd += `  <url><loc>${url}</loc></url>\n`;
+  });
+  sitemapMd += `</urlset>\n`;
+  fs.writeFileSync(path.join(publicDir, "sitemap-md.xml"), sitemapMd);
 };
 
 function readContentMarkdown(contentDir) {

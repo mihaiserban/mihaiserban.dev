@@ -19,6 +19,7 @@ const Blog = ({ data }) => {
         publishedDate={blog.frontmatter.rawDate}
         tags={blog.frontmatter.tags}
         pathname={`/blog/${blog.frontmatter.slug}`}
+        markdownUrl={`/blog/${blog.frontmatter.slug}.md`}
       />
       <article>
         <h1 className="mb-4">

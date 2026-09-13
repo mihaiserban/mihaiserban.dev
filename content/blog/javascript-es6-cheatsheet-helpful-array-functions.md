@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-helpful-array-functions
-title: ES6 cheatsheet  —  Helpful array functions
+title: "ES6 cheatsheet: Helpful array functions"
 description: Dive into new array functions introduced in ES6
 date: "2018-10-21T00:00+02:00"
 hidden: false

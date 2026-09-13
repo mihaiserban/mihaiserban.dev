@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-spread-operator
-title: ES6 cheatsheet  —  Spread Operator
+title: "ES6 cheatsheet: Spread Operator"
 description: "The spread syntax is simply three dots: `...` It allows an iterable to expand in places where 0+ arguments are expected."
 date: "2018-10-21T00:00+02:00"
 hidden: false

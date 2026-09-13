@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-helpful-string-functions
-title: ES6 cheatsheet  —  Helpful string functions
+title: "ES6 cheatsheet: Helpful string functions"
 description: Quick look at some helpful string functions introduced in ES6
 date: "2018-10-21T00:00+02:00"
 hidden: false

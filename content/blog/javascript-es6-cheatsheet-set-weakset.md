@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-set-weakset
-title: "ES6 cheatsheet  —  Set & WeakSet"
+title: "ES6 cheatsheet: Set & WeakSet"
 description: A Set is a collection for unique values. The values can be primitives or object references.
 date: "2018-10-21T00:00+02:00"
 hidden: false

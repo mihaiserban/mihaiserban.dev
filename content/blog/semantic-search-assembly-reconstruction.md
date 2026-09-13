@@ -1,146 +1,131 @@
 ---
 slug: semantic-search-assembly-reconstruction
-title: "Semantic Search at Production Scale: Recall, Precision, Freshness"
+title: "An Example Semantic-Search Pipeline: Recall, Ranking, Freshness"
 date: "2026-07-15T21:00+03:00"
 hidden: false
 tags: ["search", "semantic-search", "embeddings", "architecture"]
 ---
 
-Keyword search breaks whenever users and authors describe the same concept differently. A user searching *"how do I take money out of my account"* may never find an article titled *"Withdrawal Methods"*, even though it's exactly what they want.
+A search for *"how do I take money out of my account"* should find *"Withdrawal Methods"*. Keyword search can miss that connection when the indexed text has no matching words. An embedding model may retrieve it because the texts express similar intent.
 
-Semantic search fixes this by ranking documents based on meaning instead of token overlap. This post walks through a production semantic-search architecture: retrieval, reranking, chunking, ingestion, caching, evaluation, and the operational tradeoffs that matter once you go past a prototype.
+This is an example knowledge-base search architecture. The candidate counts and ranking scores below are illustrative, not production measurements.
 
----
+## Lexical, semantic, and hybrid search
 
-## Lexical, Semantic, and Hybrid Search
+**Lexical search** such as BM25 is useful for exact strings including product codes, error messages, and proper nouns. **Semantic search** can retrieve paraphrases, but rare names and identifiers may rank poorly. **Hybrid search** combines candidates from both methods, for example with Reciprocal Rank Fusion, before reranking.
 
-Three retrieval approaches, each failing in different ways:
+Compare against a lexical baseline when users search for identifiers or error codes. A hybrid approach adds retrieval and tuning work, so measure whether it improves representative queries.
 
-**Lexical search** (BM25) is cheap, interpretable, requires no model, and excels at exact-match recall — product codes, error strings, proper nouns. Its failure mode: when user and author describe the same concept with different words, token overlap goes to zero. *"Take money out"* and *"Withdrawal Methods"* share no tokens.
+## Two-stage retrieval
 
-**Semantic search** embeds query and documents into a shared vector space and retrieves by similarity, so paraphrase and synonymy are handled by construction. Its weakness is the mirror image: rare tokens the embedding model never saw during training get smeared into nearby concepts. SKUs, internal API names, and version numbers retrieve poorly even when an exact copy exists in the corpus.
-
-**Hybrid search** runs both retrievers in parallel and fuses results with Reciprocal Rank Fusion or a weighted blend. You get exact-match recall on rare tokens *and* paraphrase recall on prose, at the cost of running two retrievers and tuning a fusion step.
-
-The selection rule: pure lexical for small structured corpora, pure semantic for prose-heavy knowledge bases, hybrid for mixed corpora where you can't predict which mode users will lean on. The rest of this post focuses on the semantic path — the harder system to get right — but the architecture extends to hybrid cleanly: lexical retrieval becomes a second candidate source feeding the same reranker.
-
----
-
-## The Core Idea: Two-Stage Retrieval
-
-No single model is both fast enough to score every document *and* accurate enough to rank the top results well. Modern semantic search uses two stages:
-
-```
-Query ──▶ Bi-encoder ──▶ Vector DB ──▶ Top 30 ──▶ Cross-encoder ──▶ Top N
-         (fast, broad)   (recall)              (slow, precise)
+```text
+Query → Query embedding → Vector search → 30 chunks → Reranker → Article results
 ```
 
-**Stage 1 — Retrieval (bi-encoder).** Embeds query and documents independently into the same vector space. Document vectors are precomputed; at query time you only embed the query and ask a vector database for the *k* nearest neighbours by cosine similarity. Fast: a single forward pass plus an ANN lookup.
+A bi-encoder embeds documents independently of queries. Store document vectors ahead of time, then embed a query and retrieve nearby vectors. A cross-encoder scores the resulting query-document pairs together. It adds work for every candidate, so the candidate set should be bounded.
 
-**Stage 2 — Reranking (cross-encoder).** Takes `(query, document)` pairs together and produces a relevance score. A bi-encoder compresses query and document independently, so token-level nuance is lost; a cross-encoder attends over both texts jointly, which is what lets it learn that *"take money out"* and *"withdrawal"* are the same intent. It can't be precomputed and is an order of magnitude slower — so you only run it over the top 30 candidates.
+For the withdrawal query, retrieval might return chunks from *Withdrawal Methods*, *Bank Transfer Limits*, *ATM Cash Withdrawal*, and *Account Closure*. The reranker can reorder those chunks, after which the API groups them into articles. It cannot recover an article that retrieval did not supply.
 
-The split matters: you scale recall with the bi-encoder and precision with the cross-encoder, and you keep latency bounded.
+## Model choice includes language and input formatting
 
-For production: `intfloat/multilingual-e5-small` (384 dimensions, CPU-friendly) as bi-encoder, `cross-encoder/ms-marco-TinyBERT-L2-v2` as cross-encoder. GPU inference is rarely justified at this scale. Always **L2-normalize** bi-encoder output — cosine similarity on normalized vectors becomes a dot product, which most vector indexes optimize for.
+One possible embedding model is [`intfloat/multilingual-e5-small`](https://huggingface.co/intfloat/multilingual-e5-small), which produces 384-dimensional vectors. Its retrieval inputs should start with `query: ` or `passage: `, including non-English text:
 
----
+```text
+query: how do I take money out of my account
+passage: Withdrawal Methods. You can withdraw funds by ...
+```
 
-## Vector Storage: PostgreSQL + pgvector
+Follow the model's pooling and normalization guidance. L2 normalization makes the dot product equal cosine similarity; it does not calibrate relevance across queries. A score of 0.8 on one query need not carry the same meaning on another.
 
-The reflexive choice is a dedicated vector database. For a lot of systems that's overkill. If you already run PostgreSQL, `pgvector` gives you vector columns alongside relational data, HNSW and IVFFlat indexes, ACID transactions, joins, filtering, and a boring, well-understood operational profile.
+For English, [`cross-encoder/ms-marco-TinyBERT-L2-v2`](https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L2-v2) is a small reranker to evaluate. Its model card is tagged English and describes MS MARCO training. Pairing it with a multilingual embedding model does not establish multilingual ranking quality. Evaluate a multilingual knowledge base in each supported language.
 
-Multi-tenancy is best handled by a `tenant` column rather than separate databases. One HNSW index serves everyone, you filter at query time, and you don't manage N migration pipelines.
+Benchmark inference with your text lengths, candidate count, batch size, and expected concurrency. Model names alone do not establish a latency target or whether a GPU is economical.
 
-Dedicated vector databases become the right call when vector counts reach tens or hundreds of millions, when filtered ANN queries dominate and pgvector's planner struggles to combine HNSW with `WHERE` clauses, when you need multi-region replication of the index itself, or when search becomes its own platform with a dedicated team. Before that point, pgvector is operationally simpler — one database, one backup story, one set of credentials.
+## Vector storage with PostgreSQL and pgvector
 
----
+If the application already uses PostgreSQL, pgvector can keep search data in the same database and transactions. Here is a starting schema for 384-dimensional vectors:
 
-## Chunking: The Underrated Decision
+```sql
+CREATE EXTENSION IF NOT EXISTS vector;
 
-A 2,000-word article embedded into a single vector is a bad vector. The signal from the introduction gets diluted by every paragraph that follows, and search recall drops on long-form content.
+CREATE TABLE embeddings (
+  id BIGSERIAL PRIMARY KEY,
+  article_id TEXT NOT NULL,
+  tenant TEXT NOT NULL,
+  language TEXT NOT NULL,
+  chunk_type TEXT NOT NULL,
+  text TEXT NOT NULL,
+  embedding VECTOR(384) NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-For a knowledge base, the natural chunks are **title** (short, dense, very high signal for direct intent matches), **summary** (captures the "what is this about" framing), and **paragraphs** (individual sections that may answer specific sub-questions). Each chunk becomes its own row, all pointing back to the same article.
+CREATE INDEX ON embeddings USING hnsw (embedding vector_cosine_ops);
+CREATE INDEX ON embeddings (tenant, language);
+```
 
-At search time, deduplicate to articles by taking the **weighted max** of chunk scores — weighted by chunk type so a title match counts for more than a paragraph match. Why max and not sum? Summing rewards long articles for having many paragraphs, which is the opposite of what you want. Without weighting, an article that merely *mentions* a query in passing can beat an article that *is about* the query.
+```sql
+SELECT article_id, chunk_type, text,
+       1 - (embedding <=> $1::vector) AS similarity
+FROM embeddings
+WHERE tenant = $2 AND language = $3
+ORDER BY embedding <=> $1::vector
+LIMIT 30;
+```
 
-For unstructured text (long-form docs, PDFs, scraped pages), use fixed-size chunking with ~10–20% overlap so a concept straddling a boundary still appears in at least one chunk. For structured KB articles, the natural sections are almost always cleaner than fixed token windows.
+Ordering by the distance operator with a limit makes the query eligible to use the HNSW index, although PostgreSQL still chooses the plan. Check it with `EXPLAIN ANALYZE` on representative data.
 
----
+With approximate indexes, pgvector applies filters after scanning index candidates. A selective tenant or language filter can leave fewer than 30 results. Starting with pgvector 0.8.0, iterative index scans can search further up to configured limits. Depending on the workload, exact filtered search, partitioning, or partial indexes may fit better. Measure recall as well as query time. [pgvector filtering documentation](https://github.com/pgvector/pgvector#filtering)
 
-## Ingestion: Make It Asynchronous
+A tenant column is one storage design, not an authorization boundary by itself. Derive the tenant from authenticated context and enforce article access rules in retrieval. Choose shared tables, row-level security, or stronger separation according to the application's isolation requirements.
 
-A naive ingestion endpoint embeds and writes synchronously inside the HTTP request. This works until an author bulk-uploads 5,000 articles and your API times out, or the embedding service goes briefly unhealthy and you lose writes.
+## Chunking changes what can be found
 
-The fix is two-phase ingestion with a queue between them: the API validates and enqueues (returning `202 Accepted` with a tracking ID), then a worker pool polls the queue, processes messages, and writes results to PostgreSQL. Worker concurrency scales on queue depth independently of HTTP traffic.
+Titles, summaries, and sections are useful starting boundaries. Split oversized sections to fit the model's token limit while retaining enough context to identify the chunk. For text without useful boundaries, overlapping token windows are another option. Tune chunk size and overlap against representative questions.
 
-For updates, delete existing chunks and re-embed — it's simpler and safer than diffing.
+Each chunk points to its parent article. After reranking, one aggregation rule is to keep the best-scoring chunk per article. This avoids rewarding long articles simply for having many paragraphs, and means 30 retrieved chunks may produce fewer than 30 articles.
 
----
+Chunk-type weights are a heuristic to test. With illustrative nonnegative similarity scores, a title weight of 1.0 and paragraph weight of 0.7 gives:
 
-## Caching: Search-Result Cache, Not Embedding Cache
+```text
+Article A: Reset Multi-Factor Authentication
+  title = 0.78; paragraph = 0.74
+  weighted maximum = max(0.78 × 1.0, 0.74 × 0.7) = 0.78
 
-The temptation is to cache embeddings. Don't bother — they're already in PostgreSQL, and recomputing them is rare. The high-value cache is at the **search-result** layer, where a popular query may be issued thousands of times per minute with the same answer.
+Article B: Account Security Best Practices
+  title = 0.70; paragraph = 0.82
+  weighted maximum = max(0.70 × 1.0, 0.82 × 0.7) = 0.70
+```
 
-Cache-aside is the right pattern: check Redis on query, return on hit, run the full pipeline on miss and store with a TTL. The cache key should encode every dimension that affects the result: tenant, language, version, filters, and query hash. A 5-minute TTL absorbs traffic spikes while stale results from edits self-heal.
+Without weighting, B wins with 0.82 against A's 0.78. With these weights, A wins with 0.78 against B's 0.70. The example shows how the heuristic can change ordering; it does not establish that the changed order is better. A paragraph discount cannot guarantee that a title match wins. If applying weights to reranker outputs, account for their scale: multiplying a negative score by 0.7 increases it rather than penalizing it.
 
-**Invalidation matters more than TTL.** When the ingestion worker writes a new article, it should delete cache entries that could now be wrong. Per-tenant invalidation is usually the right granularity — finer-grained invalidation is hard to get right and rarely worth the complexity.
+## Ingestion and caching
 
----
+For bulk imports or slow embedding work, an ingestion endpoint can validate and durably enqueue an update, then return `202 Accepted` with a tracking ID. A worker chunks, embeds, and stores it separately from search traffic.
 
-## Service Layout: Why Microservices Help Here
+Prepare replacement embeddings before removing current ones. Replace an article's chunks in a transaction scoped by tenant and article ID, so readers see either the old set or the new set. Give updates versions and make retries idempotent; an older job finishing late must not overwrite newer content.
 
-A single-service deployment works on day one. It fails on day 100 because the workloads scale on completely different signals:
+A result cache avoids retrieval and reranking for repeated searches. Query-embedding caching is a separate option when the same query is reused with different filters. Stored document vectors do not eliminate query-embedding work.
 
-| Service | Bottleneck | Scale on |
-|---|---|---|
-| Search API | HTTP/orchestration | Request rate |
-| Embedding | CPU (one inference/req) | CPU % |
-| Reranker | CPU (~30 inferences/req) | CPU % |
-| Ingestion | Backlog | Queue depth |
+```text
+search:{tenant}:{generation}:{model_version}:{lang}:{access_hash}:{filter_hash}:{query_hash}
+```
 
-The reranker is the interesting one. It receives 30 candidates *per search* and runs the cross-encoder over all of them in one batch — roughly 6–10× the CPU work of the embedding service per request. Under a 5× traffic spike, the reranker may need 8× capacity while the embedding service only needs 2×. If everything scaled together, the reranker would be the bottleneck and tail latencies would blow up.
+A result-cache key must include every input that changes the answer, including tenant, language, filters, access scope, and model or index version. Hash a canonical representation of the actual search inputs.
 
----
+Redis `DEL` accepts literal keys. `DEL search:{tenant}:*` does not expand the wildcard. One invalidation approach increments a tenant generation after an index update and uses that generation in subsequent cache keys. Another iterates with `SCAN MATCH` and deletes returned keys explicitly. Neither makes a database write and a Redis update atomic, so handle invalidation failures and avoid caching an in-flight result under a newer generation than the one it searched. [Redis DEL](https://redis.io/docs/latest/commands/del/), [SCAN](https://redis.io/docs/latest/commands/scan/)
 
-## Evaluation: The System You Actually Tune Against
+Choose the TTL from the allowed staleness. Permission changes may need stronger handling than ordinary article edits; cached results must not bypass current access checks.
 
-Without an evaluation set, every change — a new model, a different chunking strategy, tweaked weights — becomes anecdotal. *"It feels better"* is not a metric.
+## Measure before splitting services
 
-Build a labeled set early. 50–200 `(query, relevant_article_ids)` pairs are enough to start catching regressions. Then measure on every change:
+Start with a deployment you can operate. Isolate ingestion from interactive searches when they compete for resources. Split embedding and reranking into independently scaled services when measurements show different capacity or release needs.
 
-- **Recall@30** — did the relevant article appear in the top 30? Isolates the bi-encoder + index.
-- **MRR / nDCG@10** — was it ranked highly in the final result? Isolates the reranker and score-aggregation.
-- **Latency p50/p95** — broken down by stage so you can see which subsystem is moving.
-- **Cache hit rate** — whether your TTL and key design match real query patterns.
+Candidate count, text length, batching, and concurrency affect reranker cost. Record throughput and end-to-end p50, p95, and p99 latency under load. Set a budget for the full request, including network and orchestration overhead. Stage timings locate bottlenecks, but adding stage percentiles does not produce an end-to-end percentile.
 
-The diagnostic value matters more than any individual number:
+## Evaluate with knowledge-base questions
 
-- High Recall@30 but low MRR → **ranking problem**. Look at the reranker, scoring weights, or chunk selection.
-- Low Recall@30 → **retrieval problem**. Look at chunking, the bi-encoder, or filters that are too aggressive.
-- Both fine on the eval set but users complain → your **eval set doesn't represent real queries**. Sample from logs.
+Build a labeled set of queries and relevant article IDs. Include paraphrases, identifiers, supported languages, access restrictions, and queries with no relevant answer. Keep a held-out set when tuning models, chunk sizes, or weights.
 
----
+Track retrieval recall at the candidate cutoff, final MRR or nDCG, end-to-end latency, and freshness after updates. These measurements overlap: changing chunking or retrieval can change both the candidate set and final ranking.
 
-## Putting Numbers on It
-
-Reasonable targets on commodity hardware (entirely CPU-only):
-
-- **Cached search** (Redis hit): under 50ms end-to-end.
-- **Fresh search** (full pipeline): under 400ms p95.
-- **Ingestion**: 2–5 seconds per article, fully async. A pool of 4–8 workers handles tens of thousands of articles per hour.
-
-The whole stack runs comfortably for a few hundred dollars a month at moderate scale. This architecture uses small transformer encoders, not an LLM — there's no generative step in the request path, which is exactly why latency and cost stay flat.
-
----
-
-## A Mental Model to Keep
-
-Semantic search at production scale has three axes — **recall, precision, freshness** — and each subsystem moves only one:
-
-- The bi-encoder and HNSW index drive **recall**. Get the right candidates into the top 30.
-- The cross-encoder drives **precision**. Order them correctly.
-- The ingestion pipeline and cache invalidation drive **freshness**. Show what's true now.
-
-Most search-quality problems are misdiagnosed because someone tries to fix a precision problem with a recall tool, or vice versa. If the right answer isn't in the top 30, no reranker can save you. If it's there but ranked 8th, no amount of bi-encoder tuning helps. Look at where in the pipeline the answer falls out, then fix that stage.
-
-The surprising part of running production semantic search is that the hard problems are rarely model problems. They're systems problems: chunking, evaluation, cache invalidation, ingestion ordering, latency under load, and knowing whether a given failure is about recall or ranking.
+When a query fails, inspect its trace. If the relevant article never entered the candidate set, check ingestion, chunking, filters, and retrieval. If it arrived but ranked poorly, inspect reranker scores and article aggregation first. Keep the failing query as a regression example.

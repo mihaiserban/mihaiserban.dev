@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-string-templates
-title: ES6 cheatsheet — String Templates
+title: "ES6 cheatsheet: String Templates"
 description: "Template Strings use back-ticks (``) rather than the single or double quotes we’re used to with regular strings."
 date: "2018-10-17T00:00+02:00"
 hidden: false

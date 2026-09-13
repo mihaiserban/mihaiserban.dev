@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-classes
-title: ES6 cheatsheet  —  Classes
+title: "ES6 cheatsheet: Classes"
 description: "Prior to ES6, we implemented Classes by creating a constructor function and  adding properties by extending the prototype"
 date: "2018-10-21T00:00+02:00"
 hidden: false

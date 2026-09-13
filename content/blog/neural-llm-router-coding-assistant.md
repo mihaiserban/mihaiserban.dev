@@ -9,7 +9,7 @@ tags: ["llm", "router", "coding", "ai-agents"]
 
 I run an AI gateway that sits between my coding agents and a pool of LLM providers. The gateway handles health checks, failover, and model resolution. But it had one blind spot: it never looked at the *content* of what I was asking.
 
-Every request was routed based on whatever model the agent picked — opencode would say "I think this is a coding task, use `coder`" and the gateway would oblige. That leaves the gateway unable to distinguish an exploration request such as "search the codebase for User model references" from a request that needs a stronger coding model.
+Every request was routed based on whatever model the agent picked. If opencode chose `coder`, the gateway used that pool. That leaves the gateway unable to distinguish an exploration request such as "search the codebase for User model references" from a request that needs a stronger coding model.
 
 So I built a neural router that reads the *first user message* and classifies it into one of four task types: **explore**, **plan**, **build**, or **quick**. The task type selects a model pool and a configured reasoning effort. The classifier is a 7,168-weight linear head on top of Qwen3-0.6B.
 

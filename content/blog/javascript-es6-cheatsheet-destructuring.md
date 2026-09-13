@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-destructuring
-title: ES6 cheatsheet  —  Destructuring
+title: "ES6 cheatsheet: Destructuring"
 description: Destructuring is a convenient way of extracting multiple values from data stored in (possibly nested) objects and arrays.
 date: "2018-10-21T00:00+02:00"
 hidden: false

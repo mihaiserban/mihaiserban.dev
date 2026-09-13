@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-async-await
-title: JavaScript cheatsheet  —  Async/Await (ES2017)
+title: "JavaScript cheatsheet: Async/Await (ES2017)"
 description: Async/await was standardized in ES2017. Previous options for asynchronous code are callbacks and promises.
 date: "2018-10-21T00:00+02:00"
 hidden: false

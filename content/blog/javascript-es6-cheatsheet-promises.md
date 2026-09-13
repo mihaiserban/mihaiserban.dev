@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-promises
-title: ES6 cheatsheet  —  Promises
+title: "ES6 cheatsheet: Promises"
 description: Promises are one of the most exciting additions to JavaScript ES6. Promises are a pattern that greatly simplifies asynchronous programming by making the code look synchronous and avoid problems associated with callbacks.
 date: "2018-10-21T00:00+02:00"
 hidden: false

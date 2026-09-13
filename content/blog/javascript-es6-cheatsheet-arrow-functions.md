@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-arrow-functions
-title: ES6 cheatsheet  —  Arrow Functions
+title: "ES6 cheatsheet: Arrow Functions"
 description: "Arrows are a function shorthand using the => syntax. Arrow functions allow you to preserve the lexical value of this."
 date: "2018-10-21T00:00+02:00"
 hidden: false

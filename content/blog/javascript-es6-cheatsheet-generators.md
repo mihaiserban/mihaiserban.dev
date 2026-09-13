@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-generators
-title: ES6 cheatsheet  —  Generators
+title: "ES6 cheatsheet: Generators"
 description: A generator is a function which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
 date: "2018-10-21T00:00+02:00"
 hidden: false

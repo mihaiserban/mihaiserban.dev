@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-variable-declarations
-title: ES6 cheatsheet — Variable Declarations
+title: "ES6 cheatsheet: Variable Declarations"
 description: "An introduction to ES6 variable declarations, differences between var, let, const."
 date: "2018-10-17T00:00+02:00"
 hidden: false

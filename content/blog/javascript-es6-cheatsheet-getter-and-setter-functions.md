@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-getter-and-setter-functions
-title: ES6 cheatsheet  —  Getter and setter functions
+title: "ES6 cheatsheet: Getter and setter functions"
 description: "Let's take a look at getter and setter functions within ES6 classes. "
 date: "2018-10-21T00:00+02:00"
 hidden: false

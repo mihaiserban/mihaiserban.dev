@@ -91,11 +91,11 @@ Each chunk points to its parent article. After reranking, one simple aggregation
 Chunk-type weights are a further heuristic to test. For example, using illustrative nonnegative similarity scores, a title weight of 1.0 and paragraph weight of 0.7 gives:
 
 ```text
-Article A — Reset Multi-Factor Authentication
+Article A: Reset Multi-Factor Authentication
   title = 0.78; paragraph = 0.74
   weighted maximum = max(0.78 × 1.0, 0.74 × 0.7) = 0.78
 
-Article B — Account Security Best Practices
+Article B: Account Security Best Practices
   title = 0.70; paragraph = 0.82
   weighted maximum = max(0.70 × 1.0, 0.82 × 0.7) = 0.70
 ```

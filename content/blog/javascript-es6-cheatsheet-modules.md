@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-modules
-title: ES6 cheatsheet  —  Modules
+title: "ES6 cheatsheet: Modules"
 description: "Prior to ES6, we used libraries such as Browserify to create modules on the client-side, and require in Node.js. ES modules provide a standard import/export syntax."
 date: "2018-10-21T00:00+02:00"
 hidden: false

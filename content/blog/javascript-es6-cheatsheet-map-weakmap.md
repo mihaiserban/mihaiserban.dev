@@ -1,6 +1,6 @@
 ---
 slug: javascript-es6-cheatsheet-map-weakmap
-title: "ES6 cheatsheet  —  Map & WeakMap"
+title: "ES6 cheatsheet: Map & WeakMap"
 description: "Quick look into new Map & WeakMap introduced in ES6"
 date: "2018-10-21T00:00+02:00"
 hidden: false
@@ -69,11 +69,11 @@ const size = person.size
 
 We can also use a couple of methods to iterate:
 
-`entries()` — get all entries
+`entries()` returns all entries.
 
-`keys()` — get only all keys
+`keys()` returns all keys.
 
-`values()` — get only all values
+`values()` returns all values.
 
 Find more details about `Map` [**here**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 

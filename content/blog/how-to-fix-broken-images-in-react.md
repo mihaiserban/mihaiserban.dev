@@ -13,81 +13,56 @@ tags:
 
 In one of my recent projects we encountered many images which were missing from our S3 bucket. When I see something like this it just makes me sick 😫.
 
-`<img>` provides us with two events, `onLoad` and `onError`. We can use these two keep track of the status of the image.
+`<img>` provides us with two events, `onLoad` and `onError`. We can use these two to keep track of the status of the image.
 
 `onError` is called when our image has failed to load, and we can set `src` to our preferred fallback image.
 
 `onLoad` is called when our image loaded successfully, nothing for us to do here.
 
 ```
-import React from "react";  
-import PropTypes from "prop-types";  
+import React, { useEffect, useState } from "react";
 
-class Image extends React.Component {  
-  constructor(props) {  
-    super(props);  
-    this.state = { src: props.src };  
-  }  
+function Image({
+  src = "",
+  placeholder = "",
+  disableContextMenu = false,
+  onError,
+  onContextMenu,
+  ...other
+}) {
+  const [imageSrc, setImageSrc] = useState(src);
 
-  componentWillReceiveProps(nextProps) {  
-    if (this.props.src !== nextProps.src) {  
-      this.setState({  
-        src: props.src  
-      });  
-    }  
-  }  
+  useEffect(() => {
+    setImageSrc(src);
+  }, [src]);
 
-  handleImageLoad() {  
-    console.log("image loaded", this.state.src);  
-  }  
+  function handleImageError(event) {
+    if (placeholder && imageSrc !== placeholder) {
+      setImageSrc(placeholder);
+    }
+    onError?.(event);
+  }
 
-  handleImageError() {  
-    console.log("image failed loaded", this.state.src);  
-    if (this.props.placeholder) {  
-      console.log("try load placeholder");  
-      this.setState({ src: this.props.placeholder });  
-    }  
-  }  
+  function handleContextMenu(event) {
+    onContextMenu?.(event);
+    if (disableContextMenu) {
+      event.preventDefault();
+    }
+  }
 
-  handleOnContextMenu(e) {  
-    console.log("handleOnContextMenu");  
-    if (this.props.disableContextMenu) {  
-      e.preventDefault();  
-    }  
-  }  
-
-  render() {  
-    const { src, placeholder, disableContextMenu, ...other } = this.props; // es7  
-
-    return (  
-      <img  
-        src={this.state.src}  
-        onLoad={this.handleImageLoad.bind(this)}  
-        onError={this.handleImageError.bind(this)}  
-        {...other}  
-        onContextMenu={this.handleOnContextMenu.bind(this)}  
-      />  
-    );  
-  }  
-}  
-
-Image.defaultProps = {  
-  src: "",  
-  placeholder: "",  
-  disableContextMenu: false  
-};  
-
-Image.propTypes = {  
-  src: PropTypes.string.isRequired,  
-  placeholder: PropTypes.string,  
-  disableContextMenu: PropTypes.bool  
-};  
+  return (
+    <img
+      src={imageSrc}
+      onError={handleImageError}
+      {...other}
+      onContextMenu={handleContextMenu}
+    />
+  );
+}
 
 export default Image;
 ```
 
-Also available as a [Gist](https://gist.github.com/mihaiserban/751a84df361178db387e130d0c07693e).
+The [original 2018 version is also available as a Gist](https://gist.github.com/mihaiserban/751a84df361178db387e130d0c07693e).
 
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻
+> **Updated 2026-09-13:** The original example used `componentWillReceiveProps`, which is legacy React API. This version resets the image when `src` changes with an effect, and only attempts the fallback once.

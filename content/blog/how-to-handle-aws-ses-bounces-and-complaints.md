@@ -10,6 +10,8 @@ tags:
 
 If you’re thinking of implementing AWS Simple Email Service for your product, you might find out that you need a flow to handle email bounces and complaints before AWS approves your service quota increase and take your SES account out of sandbox mode.
 
+> **Updated 2026-09-13:** This guide reflects the 2018 SNS identity-notification workflow. Current SES can also publish events through configuration sets. Notification settings are scoped to the SES Region and sending identity, so confirm both before using the console steps below. Production access still requires a process for handling bounces and complaints.
+
 This requirement assures SES maintains a high reputation for only delivering mail people want and thereby maintaining a high deliverability for legitimate mail.
 
 What exactly are email bounces and complaints?
@@ -76,9 +78,7 @@ Call sns.confirmSubscription() with the Token or copy pasting SubscribeURL into 
 
 #### 2. Configure SES to publish notifications to each created SNS topic
 
-Go to the SES Managment Console -> Email Addresses -> Select email address, and open Notifications.
-
-Edit configuration and select the SNS topic for each type of notification.
+In the 2018 SES console, go to **Email Addresses**, select the sending identity, open **Notifications**, and select the SNS topic for each notification type. In the current console, use the matching identity notification settings, or a configuration set when you need event publishing for a specific sending flow.
 
 ![AWS SES notifications configuration](/images/blog/1_k4fHq6CgGYUeXZjNmyXOLA.png)
 
@@ -96,6 +96,4 @@ Mail sent to **ooto@simulator.amazonses.com** will be treated as delivered succe
 
 Mail sent to **complaint@simulator.amazonses.com** will simulate the case in which the recipient clicks **Mark as Spam** within their email application and the ISP sends a complaint response to Amazon SES.
 
-Mail sent to **blacklist@simulator.amazonses.com** will cause Amazon SES to block the send attempt and return a [MessageRejected](http://docs.amazonwebservices.com/ses/latest/DeveloperGuide/Troubleshooting.MessageRejected.html) error containing an “Address Blacklisted” error message.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻
+Mail sent to **suppressionlist@simulator.amazonses.com** simulates a hard bounce as though the recipient were on the Amazon SES global suppression list.

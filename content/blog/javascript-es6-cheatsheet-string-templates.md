@@ -57,11 +57,6 @@ __Unescaped template strings:__
 We can now construct strings that have special characters in them without needing to escape them explicitly.
 
 ```
-var text = "This string contains "double quotes" which are escaped.";
-let text = `This string contains "double quotes" which don't need to be escaped anymore.`;
+var escapedText = "This string contains \"double quotes\" which are escaped.";
+let templateText = `This string contains "double quotes" which don't need to be escaped anymore.`;
 ```
-
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻
-

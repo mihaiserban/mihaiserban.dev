@@ -1,7 +1,7 @@
 ---
 slug: javascript-es6-cheatsheet-async-await
-title: ES6 cheatsheet  —  Async Await
-description: Async/Await is a new way to write asynchronous code. Previous options for asynchronous code are callbacks and promises.
+title: JavaScript cheatsheet  —  Async/Await (ES2017)
+description: Async/await was standardized in ES2017. Previous options for asynchronous code are callbacks and promises.
 date: "2018-10-21T00:00+02:00"
 hidden: false
 tags:
@@ -11,28 +11,30 @@ tags:
 
 ![ES6 Async/Await](/images/blog/1_U5MZoXlTOdyxlwf7XBqcHw.png)
 
-*   Async/await is a new way to write asynchronous code. Previous options for asynchronous code are callbacks and promises.
+*   Async/await was standardized in ES2017. Previous options for asynchronous code are callbacks and promises.
 *   Async/await is built on top of promises. It cannot be used with plain callbacks or node callbacks.
 *   Async/await makes asynchronous code look and behave a little more like synchronous code.
 
-Note that `await` may only be used in functions marked with the `async` keyword. It works similarly to generators, suspending execution in your context until the promise settles. If the awaited expression isn’t a promise, its casted into a promise.
+In a regular script, `await` may only be used in functions marked with the `async` keyword. ECMAScript modules can also use top-level `await`. It suspends execution in its context until the promise settles. If the awaited expression isn’t a promise, it is converted to one.
 
 `async await` allows us to perform the same thing we accomplished using Generators and Promises with less effort:
 
 ```
-var request = require('request');  
+async function getJSON(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
+  return response.json();
+}
 
-function getJSON(url) {  
-  return new Promise(function(resolve, reject) {  
-    request(url, function(error, response, body) {  
-      resolve(body);  
-    });  
-  });  
-}  
-
-async function main() {  
-  var data = await getJSON();  
-  console.log(data);  
+async function main() {
+  try {
+    const data = await getJSON('https://api.example.com/data');
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
 }  
 
 main();
@@ -40,6 +42,4 @@ main();
 
 Under the hood, it performs similarly to [Generators](https://medium.com/@serbanmihai/javascript-es6-cheatsheet-generators-997cc977f7f1).
 
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻
+> **Updated 2026-09-13:** The original callback wrapper depended on the now-deprecated `request` package, ignored errors, and called `getJSON` without a URL. The example now uses `fetch`, available in modern browsers and Node.js 18+.

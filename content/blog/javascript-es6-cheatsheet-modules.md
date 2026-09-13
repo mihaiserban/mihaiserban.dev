@@ -1,7 +1,7 @@
 ---
 slug: javascript-es6-cheatsheet-modules
 title: ES6 cheatsheet  —  Modules
-description: "Prior to ES6, we used libraries such as Browserify to create modules on the client-side, and require in Node.js. With ES6, we can now directly use modules of all types (AMD and CommonJS)."
+description: "Prior to ES6, we used libraries such as Browserify to create modules on the client-side, and require in Node.js. ES modules provide a standard import/export syntax."
 date: "2018-10-21T00:00+02:00"
 hidden: false
 tags:
@@ -11,7 +11,7 @@ tags:
 
 ![ES6 modules](/images/blog/1_AVuC2PTg3VOE6EEZTfnydw.png)
 
-Prior to ES6, we used libraries such as [Browserify](http://browserify.org/) to create modules on the client-side, and [require](https://nodejs.org/api/modules.html#modules_module_require_id) in **Node.js**. With ES6, we can now directly use modules of all types (AMD and CommonJS).
+Prior to ES6, we used libraries such as [Browserify](http://browserify.org/) to create modules on the client-side, and [require](https://nodejs.org/api/modules.html#modules_module_require_id) in **Node.js**. ES modules provide a separate, standard module system built around `import` and `export`; CommonJS and AMD code need a compatible runtime, bundler, or migration layer.
 
 ### Exporting in CommonJS
 
@@ -90,7 +90,7 @@ export default function (x, y) {
 };  
 
 // app.js  
-import { default } from 'module';
+import multiply from 'module';
 ```
 
 ### Importing in ES6
@@ -117,9 +117,5 @@ import {
 and use wildcard (`*`) to import all exported statemets:
 
 ```
-import * from 'module';
+import * as module from 'module';
 ```
-
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻

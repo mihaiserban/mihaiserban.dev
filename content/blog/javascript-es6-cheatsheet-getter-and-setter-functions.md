@@ -42,14 +42,10 @@ let person = new Person("John Doe");
 
 // uses the get method in the background  
 if (person.name) {  
-  console.log(person.name);  // John Doe  
+  console.log(person.name);  // JOHN DOE
 }  
 
 // uses the setter in the background  
 person.name = "Jane Doe";  
-console.log(person.name);  // Jane Doe
+console.log(person.name);  // JANE DOE
 ```
-
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻

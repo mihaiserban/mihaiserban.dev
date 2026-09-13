@@ -113,7 +113,7 @@ for (const [index, element] of arr.entries()) {
 // 1 b
 ```
 
-We can use rest operator on an object as well (ES7):
+Object rest properties were standardized in ES2018. If you support older runtimes, transpile this syntax.
 
 ```
 let object = {  
@@ -123,10 +123,6 @@ let object = {
   d: 'D',  
 }
 
-const { a, b, ...other } = object; // es7  
+const { a, b, ...other } = object;
 console.log(other); // {c: 'C', d: 'D'}
 ```
-
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻

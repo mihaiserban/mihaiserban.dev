@@ -1,6 +1,6 @@
 ---
 slug: how-i-grew-my-twitter-followers-from-500-to-1000-in-just-12-days
-title: How I grew my Twitter followers from 500 to 1000 in just 12 days 👏👏👏
+title: How I grew my Twitter followers from 435 to 1000 in just 12 days 👏👏👏
 description: An experiment on growing my twitter following.
 date: "2018-05-12T00:00+02:00"
 hidden: false

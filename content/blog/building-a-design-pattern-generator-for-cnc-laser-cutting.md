@@ -1,75 +1,32 @@
 ---
 slug: building-a-design-pattern-generator-for-cnc-laser-cutting
-title: "Building a Design Pattern Generator for CNC & Laser Cutting"
-description: "I built a web-based pattern generator to design perforated sheet metal patterns for my front gate. It exports SVG, PDF, and DXF — and runs entirely in the browser."
+title: Building a Pattern Generator for My Front Gate
+description: "I built a browser tool to try perforated metal patterns for my front gate, with an SVG preview and PDF and DXF exports."
 date: "2026-06-10T00:00+03:00"
 hidden: false
 tags: ["react", "gatsby", "cnc", "laser-cutting", "svg", "dxf"]
 ---
 
-I needed a front gate. Not just any gate — a metal gate with a perforated pattern that lets light through while keeping privacy. The kind of thing you see on modern architectural builds, where the sheet metal is laser-cut with a gradient of holes or lines that fade from dense to sparse.
+I wanted a metal front gate with a perforated pattern. When I called laser-cutting shops, they asked for a CAD file. I had an idea of the pattern, but no drawing to send them.
 
-I called a few laser-cutting shops. Every single one asked the same thing: *"Can you send us the CAD file?"*
+I tried drawing patterns in Figma. Changing the spacing meant selecting, moving and copying shapes again. I wanted to adjust a few numbers and see what they would look like on a two-meter panel.
 
-I didn't have one. I had a mental image — something that gets denser at the bottom and fades toward the top, with rounded corners on the cutouts. Drawing that manually in CAD software, iterating on spacing and density, exporting to DXF, then realizing the proportions were off... that loop sounded like hours of pain. And I wanted to *see* the pattern before committing to a full sheet of metal.
+I built the [Design Pattern Generator](/design-pattern-generator) to do that in the browser and export a DXF. It's a React page on this Gatsby site; generating the pattern and exporting files happen locally, without an account or an upload.
 
-So I did what any developer with a deadline and a stubborn streak would do: I built a tool.
+## From settings to cutouts
 
----
+The generator supports circles, squares and horizontal or vertical slots. I can change the sheet dimensions, margins, spacing and cutout size, then use a density gradient to vary the pattern across the panel. Squares and slots can have rounded corners.
 
-## The Problem: From Idea to Cut File
-
-Laser and CNC machines are incredibly precise, but they are dumb. They follow paths. The creative part — deciding where those paths go — is entirely on you. Most workflows look like this:
-
-1. Sketch an idea on paper.
-2. Open Illustrator / Inkscape / AutoCAD.
-3. Draw shapes manually.
-4. Copy, paste, nudge, guess at spacing.
-5. Export to DXF or PDF.
-6. Send to the shop.
-7. Realize the scale is wrong. Go back to step 3.
-
-I wanted to collapse that loop into a single web page where I could tweak parameters and immediately see the result, measured in real millimeters, ready to export.
-
----
-
-## What I Built
-
-The [Design Pattern Generator](/design-pattern-generator) is a standalone React app embedded in my Gatsby site. It runs entirely in the browser — no backend, no uploads, no accounts. Everything is local.
-
-### Core Features
-
-**Live SVG preview** — Every change updates a vector preview in real time. Dimensions are exact: if you set the canvas to 1000 mm × 2000 mm, the preview and the exported file match that precisely.
-
-**Four shape types** — Circles, squares, horizontal lines, and vertical lines. Lines are particularly useful for slatted designs where you want airflow or visibility control. Squares support rounded corners. Lines support variable length and corner radius.
-
-**Gradient density control** — This is where the tool gets interesting. You can set a global density (0–100%), but you can also apply a directional gradient:
-- Uniform
-- Left-to-right, right-to-left
-- Top-to-bottom, bottom-to-top
-- Radial (dense in the center, fading outward)
-
-The gradient uses a curved falloff so the fade feels natural, not mechanically linear. The sparse end of the gradient never drops to zero — it stays around 10% of the max density so the pattern doesn't completely vanish.
-
-**Floyd-Steinberg dithering** — To avoid the "grid of dots" look, the engine uses Floyd-Steinberg error diffusion when deciding whether to place a shape at each grid cell. This gives the pattern an organic, slightly irregular feel that works much better aesthetically than a strict probabilistic grid.
-
-**Coverage calculation** — The tool shows the exact percentage of material that will be removed. This is critical for structural decisions: if you're cutting a gate panel, you need to know how much strength you're losing. If you're designing a speaker grille, you need to know how much sound will pass through.
-
-**Export formats** — PDF for print and sharing, DXF for direct import into CAD/CAM software. Both are vector formats, so the shop gets clean paths at any scale.
-
-**Dark mode** — Because I built this at night, and staring at a white canvas hurts.
-
----
-
-## How It Works
-
-The engine is a pure JavaScript function that takes a settings object and returns an array of shape descriptors. Each shape has a position, size, type, and optional properties like line length or corner radius.
+The engine returns shape descriptors, which the SVG preview renders. Here's a circle-pattern example with the margins supplied explicitly:
 
 ```javascript
-// Simplified idea
 const shapes = generatePattern({
   width: 1000,
   height: 2000,
+  marginTop: 50,
+  marginBottom: 50,
+  marginLeft: 50,
+  marginRight: 50,
   shapeType: 'circle',
   shapeSize: 20,
   spacing: 40,
@@ -78,30 +35,34 @@ const shapes = generatePattern({
 });
 ```
 
-The grid is computed from the canvas size, margins, shape size, and spacing. For each cell, the engine calculates a target density based on the gradient, applies the dithering algorithm, and if the cell passes, it places a shape. Lines are handled differently — they are placed in rows or columns with random lengths within a min/max range, skipping cells based on the same density logic.
+The `opacity` setting controls the target placement density, despite its name. It does not make the shapes translucent or specify the percentage of metal removed.
 
-The SVG preview renders these shapes directly. The PDF exporter uses `svg2pdf.js` to convert the live SVG DOM into a vector PDF with exact page dimensions. The DXF exporter writes raw DXF entities (LWPOLYLINE for lines, CIRCLE for circles) so the file opens cleanly in AutoCAD, LibreCAD, or any CAM software.
+For circles and squares, the engine builds a grid and decides which cells receive a cutout. It combines random placement with the 7/16, 3/16, 5/16 and 1/16 error-distribution weights from Floyd–Steinberg dithering. That spreads placement error across neighboring cells. The grid stays regular, but the occupied cells vary.
 
----
+Slots use a separate loop. It samples lengths between the configured minimum and maximum, leaves spacing between slots and uses the local density to decide whether to skip a position. This path does not use the grid's error diffusion.
 
-## Why This Matters
+The directional density curve has an exponent of 1.8 and a floor of 10% of the density setting. That floor applies to the placement target, not a guaranteed number of cutouts. Generating the pattern again can change the result because the engine uses `Math.random()`.
 
-The real win isn't the code — it's the iteration speed. I can sit with my laptop, adjust the density, see the pattern change, and know immediately whether it will look right on a 2-meter gate. I can check the coverage percentage and make sure I'm not cutting away so much metal that the panel loses rigidity. I can export a DXF, email it to the shop, and have a quote the same day.
+## Exporting a drawing
 
-Before writing this tool, I tried drawing patterns in Figma. It works, but it's tedious. Every change requires manual selection, nudging, and copy-pasting. The generator removes that friction entirely. The pattern is deterministic enough to look intentional, but random enough to feel organic.
+The preview uses SVG, and the download options are PDF and DXF.
 
----
+The PDF exporter uses `svg2pdf.js` and includes padding and a block of settings beside the drawing. Its page is therefore larger than the configured sheet. Print without “fit to page” scaling if you need to preserve the drawing scale.
 
-## The Gate
+The DXF exporter writes circles as `CIRCLE` entities and slot and polygon outlines as closed `LWPOLYLINE` entities. The coordinates follow the tool's millimeter dimensions. Check the import units and geometry with the shop before cutting; a file format alone does not guarantee that every CAD/CAM setup interprets it as intended.
 
-The gate I ended up with uses vertical lines, 30 mm thick, with a top-to-bottom density gradient. The lines are 100–400 mm long, placed in columns with random gaps. The top is sparse — almost open — letting light through. The bottom is dense, giving privacy and a solid visual anchor. The DXF went straight to the laser shop.
+## What the coverage number means
 
-The total cutout area is about 35% of the sheet. That felt right: enough transparency to keep the space from feeling like a wall, enough material to keep it strong.
+The coverage display is an estimate. The current calculation adds up circle areas and rectangular areas for squares and slots, then divides by the sheet's width times height. It does not subtract rounded corners or use the actual area of a nonrectangular sheet.
 
----
+For example, rounding a 20 mm square into a circle reduces its area from 400 mm² to about 314 mm², but the square calculation still counts 400 mm². The number is useful for comparing patterns with similar geometry; it is not an exact material-removal measurement.
 
-## Try It
+It also does not calculate panel strength or sound transmission. Material, thickness, remaining connections and mounting all matter to the finished panel. More cutout area means more open area, not proof that a gate is structurally suitable.
 
-You can use the generator here: [**/design-pattern-generator**](/design-pattern-generator)
+## The gate pattern
 
-It's free, runs in your browser, and exports PDF and DXF. If you build something with it — a gate, a grille, a lamp shade, a room divider — I'd love to see it.
+I used vertical slots 30 mm wide and 100–400 mm long, with a density gradient and gaps between them. The DXF went to the laser shop. The roughly 35% cutout figure is an estimate, subject to the calculation limits above.
+
+Adjusting the parameters was much quicker than redrawing the pattern in Figma. I could compare several versions at the panel's dimensions before choosing a file to send.
+
+You can [try the generator](/design-pattern-generator) with your own dimensions and export the result as PDF or DXF.

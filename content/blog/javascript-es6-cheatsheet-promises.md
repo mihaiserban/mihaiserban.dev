@@ -53,8 +53,12 @@ Into vertical code like so:
 ```
 func1(value1)  
     .then(func2)  
-    .then(func3, value3 => {  
+    .then(func3)
+    .then(value3 => {
         // Do something with value 3  
+    })
+    .catch(error => {
+        // Handle an error from any step
     });
 ```
 
@@ -86,7 +90,3 @@ Promise.all(promises)
     // Do something with results of all our promises  
  });
 ```
-
-You can find a more complete ES6 cheetsheet on my [Github](https://github.com/mihaiserban/es6-cheetsheet/blob/master/README.md) page.
-
-P.S. If you ❤️ this, make sure to follow me on [Twitter](https://x.com/MihaiSerban), and share this with your friends 😀🙏🏻

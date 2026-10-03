@@ -1,0 +1,61 @@
+/* Playloom Kids: the two pages the App Store links to. Same palette as the app (DESIGN.md). */
+:root {
+  --sky: #19d8ef;
+  --sun: #ffd23f;
+  --magenta: #e83cc0;
+  --navy: #2b2c6e;
+  --ink: #2b2c6e;
+  --paper: #ffffff;
+  --wash: #f3fbfd;
+  --muted: #5d5f8f;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: Nunito, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--wash);
+}
+header {
+  background: var(--sky);
+  color: var(--navy);
+  padding: 40px 16px 32px;
+  text-align: center;
+}
+header h1 { margin: 0 0 6px; font-size: 2.2rem; font-weight: 900; letter-spacing: -0.01em; }
+header p { margin: 0; font-weight: 700; color: var(--navy); opacity: 0.85; }
+nav { margin-top: 18px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+nav a {
+  display: inline-block;
+  background: var(--paper);
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+}
+nav a[aria-current] { background: var(--sun); }
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+h2 { font-size: 1.35rem; font-weight: 900; margin: 36px 0 10px; }
+h2:first-child { margin-top: 0; }
+p, li { margin: 0 0 12px; }
+ul { padding-left: 22px; }
+.card {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin: 0 0 20px;
+  box-shadow: 0 2px 0 rgba(43, 44, 110, 0.08);
+}
+.card h2 { margin-top: 0; }
+.card.good { border-left: 8px solid var(--sky); }
+.card.sun { border-left: 8px solid var(--sun); }
+a { color: var(--magenta); font-weight: 700; }
+dl { margin: 0; }
+dt { font-weight: 900; margin-top: 16px; }
+dd { margin: 4px 0 0; }
+footer { text-align: center; color: var(--muted); font-size: 0.95rem; padding: 0 16px 40px; }
+footer a { color: var(--muted); }

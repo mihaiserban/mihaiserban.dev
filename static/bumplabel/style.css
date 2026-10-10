@@ -1,0 +1,72 @@
+/* BumpLabel: the pages the App Store links to. Same palette and type as the app (SkinMVP DESIGN.md). */
+:root {
+  --paper: #fbf9f4;
+  --surface: #ffffff;
+  --ink: #1c1b19;
+  --muted: #6b665d;
+  --line: #e2dbce;
+  --accent: #0e5e5e;
+  --pen: #b23a26;
+  --tint: #dfeadf;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+header {
+  border-bottom: 1px solid var(--line);
+  padding: 40px 16px 28px;
+  text-align: center;
+}
+header h1 {
+  margin: 0 0 6px;
+  font-family: Newsreader, Georgia, serif;
+  font-weight: 500;
+  font-size: 2.4rem;
+  letter-spacing: -0.01em;
+}
+header p { margin: 0; color: var(--muted); }
+nav { margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+nav a {
+  display: inline-block;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+nav a[aria-current] { border-color: var(--accent); color: var(--accent); }
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+h2 {
+  font-family: Newsreader, Georgia, serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 36px 0 10px;
+}
+h2:first-child { margin-top: 0; }
+p, li { margin: 0 0 12px; }
+ul { padding-left: 22px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin: 0 0 20px;
+}
+.card h2 { margin-top: 0; }
+.card.good { border-left: 6px solid var(--accent); }
+.card.warn { border-left: 6px solid var(--pen); }
+a { color: var(--accent); font-weight: 500; overflow-wrap: anywhere; }
+dl { margin: 0; }
+dt { font-weight: 600; margin-top: 16px; }
+dd { margin: 4px 0 0; }
+footer { text-align: center; color: var(--muted); font-size: 0.95rem; padding: 0 16px 40px; }
+footer a { color: var(--muted); }

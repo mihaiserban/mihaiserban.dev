@@ -1,0 +1,72 @@
+/* Labelura: the pages the App Store links to. Same palette and type as the app (Labelura DESIGN.md, "Market Hall"). */
+:root {
+  --paper: #edf1f4;
+  --surface: #ffffff;
+  --ink: #1f2b37;
+  --muted: #526170;
+  --line: #d3dbe2;
+  --tile: #dfe6ec;
+  --warn: #c2410c;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: Onest, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+header {
+  border-bottom: 1px solid var(--line);
+  padding: 40px 16px 28px;
+  text-align: center;
+}
+header h1 {
+  margin: 0 0 6px;
+  font-family: "Bricolage Grotesque", Onest, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+}
+header p { margin: 0; color: var(--muted); }
+nav { margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+nav a {
+  display: inline-block;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+nav a[aria-current] { border-color: var(--ink); }
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+h2 {
+  font-family: "Bricolage Grotesque", Onest, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  margin: 36px 0 10px;
+}
+h2:first-child { margin-top: 0; }
+p, li { margin: 0 0 12px; }
+ul { padding-left: 22px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin: 0 0 20px;
+}
+.card h2 { margin-top: 0; }
+.card.good { border-left: 6px solid var(--ink); }
+.card.warn { border-left: 6px solid var(--warn); }
+a { color: var(--ink); font-weight: 600; overflow-wrap: anywhere; }
+dl { margin: 0; }
+dt { font-weight: 600; margin-top: 16px; }
+dd { margin: 4px 0 0; }
+footer { text-align: center; color: var(--muted); font-size: 0.95rem; padding: 0 16px 40px; }
+footer a { color: var(--muted); }
